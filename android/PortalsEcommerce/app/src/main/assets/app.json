@@ -1,0 +1,14 @@
+{
+  "store": {
+    "title": "Store",
+    "description": "This is the store view"
+  },
+  "profile": {
+    "title": "Profile",
+    "description": "This is the profile view"
+  },
+  "cart": {
+    "title": "Cart",
+    "description": "This is the cart view"
+  }
+}
