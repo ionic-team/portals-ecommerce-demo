@@ -8,53 +8,70 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Product Gallery View Controller-->
-        <scene sceneID="53J-pv-fBp">
+        <!--Shop-->
+        <scene sceneID="QRV-xp-NjZ">
             <objects>
-                <viewController id="SKr-JM-zR2" customClass="ProductGalleryViewController" customModule="Portals_Ecommerce" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="NNz-u5-y82">
+                <navigationController id="FGx-lO-k9A" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Shop" id="B27-ta-Olj"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vy1-N2-YrK">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="JQJ-N7-9vL" kind="relationship" relationship="rootViewController" id="bk4-G4-xVf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TsW-fG-cPq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="400" y="-551"/>
+        </scene>
+        <!--Product Gallery View Controller-->
+        <scene sceneID="DTK-So-l7f">
+            <objects>
+                <viewController id="JQJ-N7-9vL" customClass="ProductGalleryViewController" customModule="Ecommerce" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zS1-Tz-jT3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="y3c-rq-ocf"/>
+                        <viewLayoutGuide key="safeArea" id="cbY-8n-r9p"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" id="lsz-pk-gxl"/>
+                    <navigationItem key="navigationItem" id="LuH-qy-fkk"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kgl-ps-sPl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0GV-ur-Tgf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="400" y="-258"/>
+            <point key="canvasLocation" x="1148" y="-551"/>
         </scene>
-        <!--Cart View Controller-->
+        <!--Cart-->
         <scene sceneID="heY-hq-rfv">
             <objects>
-                <viewController id="bbt-W0-Ktf" customClass="CartViewController" customModule="Portals_Ecommerce" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bbt-W0-Ktf" customClass="CartViewController" customModule="Ecommerce" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AuZ-k9-cOj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="vxP-i6-cey"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" id="KcF-Ry-Rup"/>
+                    <tabBarItem key="tabBarItem" title="Cart" id="KcF-Ry-Rup"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="woX-lM-KGo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1148" y="-258"/>
+            <point key="canvasLocation" x="400" y="118"/>
         </scene>
-        <!--User Profile View Controller-->
+        <!--Account-->
         <scene sceneID="J6X-Qw-UfM">
             <objects>
-                <viewController id="Du8-dq-Z7t" customClass="UserProfileViewController" customModule="Portals_Ecommerce" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Du8-dq-Z7t" customClass="UserProfileViewController" customModule="Ecommerce" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pS7-8s-R5j">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="q92-dX-UiA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" id="B3i-Bs-Nl7"/>
+                    <tabBarItem key="tabBarItem" title="Account" id="B3i-Bs-Nl7"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pRY-32-HBZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1883" y="-258"/>
+            <point key="canvasLocation" x="1149" y="118"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Pai-wr-7t7">
@@ -66,9 +83,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="SKr-JM-zR2" kind="relationship" relationship="viewControllers" id="fwJ-ot-crK"/>
-                        <segue destination="bbt-W0-Ktf" kind="relationship" relationship="viewControllers" id="faB-pj-Ghl"/>
-                        <segue destination="Du8-dq-Z7t" kind="relationship" relationship="viewControllers" id="V5q-QR-ean"/>
+                        <segue destination="FGx-lO-k9A" kind="relationship" relationship="viewControllers" id="se2-0G-4Dr"/>
+                        <segue destination="bbt-W0-Ktf" kind="relationship" relationship="viewControllers" id="beR-c0-46W"/>
+                        <segue destination="Du8-dq-Z7t" kind="relationship" relationship="viewControllers" id="ZWZ-Q7-kKn"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tj6-pd-kLa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

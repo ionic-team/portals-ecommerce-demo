@@ -1,6 +1,7 @@
 import UIKit
 
-class CartViewController: UIViewController {
+class CartViewController: UIViewController, ApplicationCoordinationParticipant {
+    weak var coordinator: ApplicationCoordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()

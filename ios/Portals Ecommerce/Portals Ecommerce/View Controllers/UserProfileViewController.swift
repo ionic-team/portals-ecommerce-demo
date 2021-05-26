@@ -1,6 +1,7 @@
 import UIKit
 
-class UserProfileViewController: HostedContentViewController {
+class UserProfileViewController: UIViewController, ApplicationCoordinationParticipant {
+    weak var coordinator: ApplicationCoordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()
