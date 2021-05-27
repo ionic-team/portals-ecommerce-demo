@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import io.ionic.demo.ecommerce.R;
+import io.ionic.demo.ecommerce.data.model.Product;
 
 public class ProductFragment extends Fragment {
 
@@ -27,9 +28,9 @@ public class ProductFragment extends Fragment {
             }
         });
 
-        // Retrieve id example
-        int productId = ProductFragmentArgs.fromBundle(getArguments()).getProductId();
-        Log.d("ProductID", String.valueOf(productId));
+        // Retrieve example
+        Product product = ProductFragmentArgs.fromBundle(getArguments()).getProduct();
+        Log.d("Product", String.valueOf(product.title));
 
         return root;
     }

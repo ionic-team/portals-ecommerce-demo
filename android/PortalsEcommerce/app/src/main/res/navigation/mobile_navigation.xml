@@ -24,11 +24,10 @@
         <action
             android:id="@+id/product_to_help"
             app:destination="@id/navigation_help" />
-
         <argument
-            android:name="product_id"
-            app:argType="integer"
-            android:defaultValue="0" />
+            android:name="product"
+            app:argType="io.ionic.demo.ecommerce.data.model.Product" />
+
     </fragment>
 
     <fragment

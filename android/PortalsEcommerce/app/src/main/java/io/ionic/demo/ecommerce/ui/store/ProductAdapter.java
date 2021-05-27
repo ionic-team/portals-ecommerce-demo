@@ -10,9 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,8 +22,6 @@ import java.util.Currency;
 
 import io.ionic.demo.ecommerce.R;
 import io.ionic.demo.ecommerce.data.model.Product;
-import io.ionic.demo.ecommerce.ui.product.ProductFragment;
-import io.ionic.demo.ecommerce.ui.product.ProductFragmentDirections;
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
@@ -72,8 +68,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.productCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StoreFragmentDirections.StoreToProduct action = StoreFragmentDirections.storeToProduct();
-                action.setProductId(product.id);
+                StoreFragmentDirections.StoreToProduct action = StoreFragmentDirections.storeToProduct(product);
                 Navigation.findNavController(v).navigate(action);
             }
         });
