@@ -26,6 +26,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import { DataProvider } from './DataProvider';
 
 // Temp component for testing
 const Home = () => {
@@ -40,18 +41,20 @@ const Home = () => {
 
 function App() {
   return (
-    <IonApp>
-      <IonReactRouter>
-        <IonRouterOutlet>
-          <Route path="/" exact component={Home} />
-          <Route path="/address" exact component={AddressPage} />
-          <Route path="/checkout" exact component={CheckoutPage} />
-          <Route path="/help" exact component={HelpPage} />
-          <Route path="/payment" exact component={PaymentPage} />
-          <Route path="/user" exact component={UserDetailPage} />
-        </IonRouterOutlet>
-      </IonReactRouter>
-    </IonApp>
+    <DataProvider>
+      <IonApp>
+        <IonReactRouter>
+          <IonRouterOutlet>
+            <Route path="/" exact component={Home} />
+            <Route path="/address" exact component={AddressPage} />
+            <Route path="/checkout" exact component={CheckoutPage} />
+            <Route path="/help" exact component={HelpPage} />
+            <Route path="/payment" exact component={PaymentPage} />
+            <Route path="/user" exact component={UserDetailPage} />
+          </IonRouterOutlet>
+        </IonReactRouter>
+      </IonApp>
+    </DataProvider>
   );
 }
 
