@@ -12,7 +12,7 @@ public class StoreViewModel extends ViewModel {
 
     public StoreViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue(DataReader.getInstance().getAppData().store.description);
+        mText.setValue("This is the store view");
     }
 
     public LiveData<String> getText() {

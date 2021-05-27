@@ -12,7 +12,7 @@ public class ProfileViewModel extends ViewModel {
 
     public ProfileViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue(DataReader.getInstance().getAppData().profile.description);
+        mText.setValue("This is the profile view");
     }
 
     public LiveData<String> getText() {
