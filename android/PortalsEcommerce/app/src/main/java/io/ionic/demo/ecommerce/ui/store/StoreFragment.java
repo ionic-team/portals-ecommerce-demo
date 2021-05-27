@@ -31,8 +31,6 @@ public class StoreFragment extends Fragment {
                 textView.setText(s);
             }
         });
-
-        DataReader dataReader = DataReader.getInstance();
         return root;
     }
 }
