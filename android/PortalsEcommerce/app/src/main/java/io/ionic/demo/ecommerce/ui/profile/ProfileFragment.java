@@ -1,6 +1,7 @@
 package io.ionic.demo.ecommerce.ui.profile;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import io.ionic.demo.ecommerce.R;
+import io.ionic.demo.ecommerce.ui.product.ProductFragmentArgs;
 
 public class ProfileFragment extends Fragment {
 
@@ -30,6 +32,7 @@ public class ProfileFragment extends Fragment {
                 textView.setText(s);
             }
         });
+
         return root;
     }
 }

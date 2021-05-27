@@ -10,7 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -21,6 +24,8 @@ import java.util.Currency;
 
 import io.ionic.demo.ecommerce.R;
 import io.ionic.demo.ecommerce.data.model.Product;
+import io.ionic.demo.ecommerce.ui.product.ProductFragment;
+import io.ionic.demo.ecommerce.ui.product.ProductFragmentDirections;
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
@@ -64,6 +69,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         Picasso.get().load(resourceId).transform(new RoundedCornersTransformation(px,0)).into(holder.productImageView);
         holder.productTitle.setText(product.title);
         holder.productPrice.setText(format.format(product.price));
+        holder.productCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StoreFragmentDirections.StoreToProduct action = StoreFragmentDirections.storeToProduct();
+                action.setProductId(product.id);
+                Navigation.findNavController(v).navigate(action);
+            }
+        });
     }
 
     @Override
@@ -73,12 +86,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     static class ProductViewHolder extends RecyclerView.ViewHolder {
 
+        ConstraintLayout productCard;
         ImageView productImageView;
         TextView productTitle;
         TextView productPrice;
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
+            productCard = itemView.findViewById(R.id.product_card);
             productImageView = itemView.findViewById(R.id.product_image);
             productTitle = itemView.findViewById(R.id.product_title);
             productPrice = itemView.findViewById(R.id.product_price);
