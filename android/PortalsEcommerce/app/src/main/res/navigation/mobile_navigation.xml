@@ -9,7 +9,27 @@
         android:id="@+id/navigation_store"
         android:name="io.ionic.demo.ecommerce.ui.store.StoreFragment"
         android:label="@string/title_store"
-        tools:layout="@layout/fragment_store" />
+        tools:layout="@layout/fragment_store" >
+        <action
+            android:id="@+id/action_navigation_store_to_navigation_product"
+            app:destination="@id/navigation_product" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_product"
+        android:name="io.ionic.demo.ecommerce.ui.product.ProductFragment"
+        android:label="@string/title_product"
+        tools:layout="@layout/fragment_product" >
+        <action
+            android:id="@+id/action_navigation_product_to_navigation_help"
+            app:destination="@id/navigation_help" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_help"
+        android:name="io.ionic.demo.ecommerce.ui.product.HelpFragment"
+        android:label="@string/title_help"
+        tools:layout="@layout/fragment_help" />
 
     <fragment
         android:id="@+id/navigation_cart"

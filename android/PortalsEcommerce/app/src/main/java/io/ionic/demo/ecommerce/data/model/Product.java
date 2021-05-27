@@ -1,10 +1,10 @@
 package io.ionic.demo.ecommerce.data.model;
 
 public class Product {
-    int id;
-    String title;
-    String description;
-    String image;
-    String category;
-    float price;
+    public int id;
+    public String title;
+    public String description;
+    public String image;
+    public String category;
+    public float price;
 }

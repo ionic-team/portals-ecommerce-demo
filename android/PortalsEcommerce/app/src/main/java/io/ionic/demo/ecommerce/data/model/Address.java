@@ -1,10 +1,10 @@
 package io.ionic.demo.ecommerce.data.model;
 
 public class Address {
-    int id;
-    String street;
-    String city;
-    String state;
-    int postal;
-    boolean preferred;
+    public int id;
+    public String street;
+    public String city;
+    public String state;
+    public int postal;
+    public boolean preferred;
 }

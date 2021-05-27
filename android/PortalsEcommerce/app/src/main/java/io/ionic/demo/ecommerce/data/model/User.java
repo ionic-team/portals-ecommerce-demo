@@ -1,11 +1,11 @@
 package io.ionic.demo.ecommerce.data.model;
 
 public class User {
-    int id;
-    String firstName;
-    String lastName;
-    String email;
-    String image;
-    Address[] addresses;
-    CreditCard[] creditCards;
+    public int id;
+    public String firstName;
+    public String lastName;
+    public String email;
+    public String image;
+    public Address[] addresses;
+    public CreditCard[] creditCards;
 }
