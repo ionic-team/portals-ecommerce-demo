@@ -4,29 +4,29 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 import io.ionic.demo.ecommerce.R;
-import io.ionic.demo.ecommerce.data.DataReader;
 import io.ionic.demo.ecommerce.data.model.Product;
 
 public class StoreFragment extends Fragment {
 
     private StoreViewModel storeViewModel;
+
     private RecyclerView carouselView;
-    private CarouselAdapter carouselAdapter;
+    private RecyclerView gridView;
+
+    private ProductAdapter productAdapter;
+    private ProductAdapter gridAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         storeViewModel = new ViewModelProvider(this).get(StoreViewModel.class);
@@ -36,10 +36,17 @@ public class StoreFragment extends Fragment {
         storeViewModel.getProducts().observe(getViewLifecycleOwner(), new Observer<ArrayList<Product>>() {
             @Override
             public void onChanged(ArrayList<Product> products) {
-                carouselAdapter = new CarouselAdapter(StoreFragment.this.getContext(), products);
+                productAdapter = new ProductAdapter(StoreFragment.this.getContext(), products);
                 carouselView.setLayoutManager(new LinearLayoutManager(StoreFragment.this.getContext(), LinearLayoutManager.HORIZONTAL, false));
-                carouselView.setAdapter(carouselAdapter);
+                carouselView.setAdapter(productAdapter);
             }
+        });
+
+        gridView = root.findViewById(R.id.recycler_product_grid);
+        storeViewModel.getAllProducts().observe(getViewLifecycleOwner(), products -> {
+            gridAdapter = new ProductAdapter(StoreFragment.this.getContext(), products, true);
+            gridView.setLayoutManager(new GridLayoutManager(StoreFragment.this.getContext(), 2));
+            gridView.setAdapter(gridAdapter);
         });
 
         return root;

@@ -29,4 +29,8 @@ public class StoreViewModel extends ViewModel {
         return productList;
     }
 
+    public LiveData<ArrayList<Product>> getAllProducts() {
+        return productList;
+    }
+
 }

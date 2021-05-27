@@ -2,15 +2,17 @@ package io.ionic.demo.ecommerce.ui.store;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.imageview.ShapeableImageView;
 import com.squareup.picasso.Picasso;
 
 import java.text.NumberFormat;
@@ -19,15 +21,17 @@ import java.util.Currency;
 
 import io.ionic.demo.ecommerce.R;
 import io.ionic.demo.ecommerce.data.model.Product;
+import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
-public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.CarouselViewHolder> {
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
     Context context;
     ArrayList<Product> productList;
 
     NumberFormat format;
+    boolean isGrid;
 
-    public CarouselAdapter(Context context, ArrayList<Product> productList) {
+    public ProductAdapter(Context context, ArrayList<Product> productList) {
         this.context = context;
         this.productList = productList;
 
@@ -36,19 +40,28 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
         format.setCurrency(Currency.getInstance("USD"));
     }
 
+    public ProductAdapter(Context context, ArrayList<Product> productList, boolean isGrid) {
+        this(context, productList);
+        this.isGrid = isGrid;
+    }
+
     @NonNull
     @Override
-    public CarouselViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View rootView = LayoutInflater.from(context).inflate(R.layout.card_product,parent,false);
-        return new CarouselViewHolder(rootView);
+        if (isGrid) {
+            rootView.setLayoutParams(new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        }
+        return new ProductViewHolder(rootView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CarouselViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         Product product = productList.get(position);
         Resources resources = context.getResources();
         final int resourceId = resources.getIdentifier(product.image.substring(0, product.image.lastIndexOf(".")), "drawable", context.getPackageName());
-        Picasso.get().load(resourceId).into(holder.productImageView);
+        int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, context.getResources().getDisplayMetrics());
+        Picasso.get().load(resourceId).transform(new RoundedCornersTransformation(px,0)).into(holder.productImageView);
         holder.productTitle.setText(product.title);
         holder.productPrice.setText(format.format(product.price));
     }
@@ -58,13 +71,13 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
         return productList.size();
     }
 
-    static class CarouselViewHolder extends RecyclerView.ViewHolder {
+    static class ProductViewHolder extends RecyclerView.ViewHolder {
 
-        ShapeableImageView productImageView;
+        ImageView productImageView;
         TextView productTitle;
         TextView productPrice;
 
-        public CarouselViewHolder(@NonNull View itemView) {
+        public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
             productImageView = itemView.findViewById(R.id.product_image);
             productTitle = itemView.findViewById(R.id.product_title);
