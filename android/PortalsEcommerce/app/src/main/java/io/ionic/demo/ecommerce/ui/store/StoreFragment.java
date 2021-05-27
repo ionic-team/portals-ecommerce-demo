@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import io.ionic.demo.ecommerce.R;
+import io.ionic.demo.ecommerce.data.DataReader;
 
 public class StoreFragment extends Fragment {
 
