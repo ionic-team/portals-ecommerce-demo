@@ -27,9 +27,19 @@ const AddressPage = () => {
   const [present] = useIonPicker();
 
   // TODO: use variable to determine if you should prefill data or not
-  const isNewAddress = false;
+  const isNewAddress = true;
   const addressIndex = 0;
   const address = user?.addresses[addressIndex]
+
+  if (isNewAddress && user) {
+    user.firstName = '';
+    user.lastName = '';
+    user.addresses[addressIndex].street = '';
+    user.addresses[addressIndex].postal = '';
+    user.addresses[addressIndex].city = '';
+    user.addresses[addressIndex].state = '';
+    user.addresses[addressIndex].preferred = false;
+  }
 
   const pickStateCode = () => {
     present({
@@ -78,7 +88,7 @@ const AddressPage = () => {
                 setUser(user);
               }
             }}
-            value={isNewAddress ? '' : `${user?.firstName} ${user?.lastName}`}
+            value={`${user?.firstName} ${user?.lastName}`.trim()}
           ></IonInput>
         </IonItem>
         <IonItem lines="full">
@@ -91,7 +101,7 @@ const AddressPage = () => {
                 setUser(user);
               }
             }}
-            value={isNewAddress ? '' : address?.street}
+            value={user?.addresses[addressIndex].street}
           ></IonInput>
         </IonItem>
         <IonItem lines="full">
@@ -104,7 +114,7 @@ const AddressPage = () => {
                 setUser(user);
               }
             }}
-            value={isNewAddress ? '' : address?.postal}
+            value={user?.addresses[addressIndex].postal}
           ></IonInput>
         </IonItem>
         <IonItem lines="full">
@@ -117,7 +127,7 @@ const AddressPage = () => {
                 setUser(user);
               }
             }}
-            value={isNewAddress ? '' : address?.city}
+            value={address?.city}
           ></IonInput>
         </IonItem>
         <IonItem lines="full">
@@ -125,7 +135,7 @@ const AddressPage = () => {
           <IonInput 
             placeholder=""
             onClick={pickStateCode}
-            value={isNewAddress ? '' : address?.state}
+            value={user?.addresses[addressIndex].state}
           ></IonInput>
           {/* TODO: Style this to fit design better */}
           <IonButton
