@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="220dp"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/product_image"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:src="@drawable/capacitor_hat"
+        android:contentDescription="@string/product_image_cd"
+        app:shapeAppearanceOverlay="@style/roundedImageView"
+        app:layout_constraintDimensionRatio="W,1:1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/product_title"/>
+
+    <TextView
+        android:id="@+id/product_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Title Placeholder"
+        android:maxLines="1"
+        app:layout_constraintTop_toBottomOf="@id/product_image"
+        app:layout_constraintStart_toStartOf="@id/product_image"
+        app:layout_constraintEnd_toEndOf="@id/product_image"
+        app:layout_constraintBottom_toTopOf="@id/product_price" />
+
+    <TextView
+        android:id="@+id/product_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="$3.50"
+        app:layout_constraintTop_toBottomOf="@id/product_title"
+        app:layout_constraintStart_toStartOf="@id/product_image"
+        app:layout_constraintEnd_toEndOf="@id/product_image"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

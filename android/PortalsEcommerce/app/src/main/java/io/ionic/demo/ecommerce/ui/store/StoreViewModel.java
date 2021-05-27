@@ -4,18 +4,29 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import java.util.ArrayList;
+
 import io.ionic.demo.ecommerce.data.DataReader;
+import io.ionic.demo.ecommerce.data.model.Product;
 
 public class StoreViewModel extends ViewModel {
 
-    private MutableLiveData<String> mText;
+    private final MutableLiveData<ArrayList<Product>> productList;
 
     public StoreViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is the store view");
+        productList = new MutableLiveData<>();
+
+        // init data
+        getProductList();
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    void getProductList() {
+        ArrayList<Product> products = DataReader.getInstance().getAppData().products;
+        productList.setValue(products);
     }
+
+    public LiveData<ArrayList<Product>> getProducts() {
+        return productList;
+    }
+
 }

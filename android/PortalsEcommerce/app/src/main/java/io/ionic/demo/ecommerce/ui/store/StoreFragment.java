@@ -13,31 +13,32 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 import io.ionic.demo.ecommerce.R;
 import io.ionic.demo.ecommerce.data.DataReader;
+import io.ionic.demo.ecommerce.data.model.Product;
 
 public class StoreFragment extends Fragment {
 
     private StoreViewModel storeViewModel;
+    private RecyclerView carouselView;
+    private CarouselAdapter carouselAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         storeViewModel = new ViewModelProvider(this).get(StoreViewModel.class);
         View root = inflater.inflate(R.layout.fragment_store, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
-        storeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
 
-        // Example of navigating to a product
-        final Button testNavButton = root.findViewById(R.id.test_button);
-        testNavButton.setOnClickListener(new View.OnClickListener() {
+        carouselView = root.findViewById(R.id.recycler_carousel);
+        storeViewModel.getProducts().observe(getViewLifecycleOwner(), new Observer<ArrayList<Product>>() {
             @Override
-            public void onClick(View v) {
-                Navigation.findNavController(root).navigate(R.id.navigation_product);
+            public void onChanged(ArrayList<Product> products) {
+                carouselAdapter = new CarouselAdapter(StoreFragment.this.getContext(), products);
+                carouselView.setLayoutManager(new LinearLayoutManager(StoreFragment.this.getContext(), LinearLayoutManager.HORIZONTAL, false));
+                carouselView.setAdapter(carouselAdapter);
             }
         });
 
