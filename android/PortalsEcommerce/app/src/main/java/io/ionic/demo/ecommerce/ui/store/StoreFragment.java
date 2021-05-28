@@ -33,7 +33,7 @@ public class StoreFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_store, container, false);
 
         carouselView = root.findViewById(R.id.recycler_carousel);
-        storeViewModel.getProducts().observe(getViewLifecycleOwner(), new Observer<ArrayList<Product>>() {
+        storeViewModel.getFeaturedProducts().observe(getViewLifecycleOwner(), new Observer<ArrayList<Product>>() {
             @Override
             public void onChanged(ArrayList<Product> products) {
                 productAdapter = new ProductAdapter(StoreFragment.this.getContext(), products);

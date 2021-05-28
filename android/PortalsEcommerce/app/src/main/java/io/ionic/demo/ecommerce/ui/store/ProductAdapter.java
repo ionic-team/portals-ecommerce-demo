@@ -50,9 +50,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View rootView = LayoutInflater.from(context).inflate(R.layout.card_product,parent,false);
+
         if (isGrid) {
             rootView.setLayoutParams(new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         }
+
         return new ProductViewHolder(rootView);
     }
 
@@ -60,17 +62,19 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         Product product = productList.get(position);
         Resources resources = context.getResources();
-        final int resourceId = resources.getIdentifier(product.image.substring(0, product.image.lastIndexOf(".")), "drawable", context.getPackageName());
+
+        // Get image asset for the product and load into product card image view
+        String imageResourceName = product.image.substring(0, product.image.lastIndexOf("."));
+        final int resourceId = resources.getIdentifier(imageResourceName, "drawable", context.getPackageName());
         int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, context.getResources().getDisplayMetrics());
         Picasso.get().load(resourceId).transform(new RoundedCornersTransformation(px,0)).into(holder.productImageView);
+
         holder.productTitle.setText(product.title);
         holder.productPrice.setText(format.format(product.price));
-        holder.productCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                StoreFragmentDirections.StoreToProduct action = StoreFragmentDirections.storeToProduct(product);
-                Navigation.findNavController(v).navigate(action);
-            }
+        holder.productCard.setOnClickListener(v -> {
+            // Navigate to product page passing the product to be displayed, when tapped
+            StoreFragmentDirections.StoreToProduct action = StoreFragmentDirections.storeToProduct(product);
+            Navigation.findNavController(v).navigate(action);
         });
     }
 

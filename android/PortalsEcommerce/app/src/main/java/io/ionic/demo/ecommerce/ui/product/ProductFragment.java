@@ -28,7 +28,7 @@ public class ProductFragment extends Fragment {
             }
         });
 
-        // Retrieve example
+        // Retrieve data from navigation example
         Product product = ProductFragmentArgs.fromBundle(getArguments()).getProduct();
         Log.d("Product", String.valueOf(product.title));
 
