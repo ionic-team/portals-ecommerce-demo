@@ -11,8 +11,9 @@
         android:label="@string/title_store"
         tools:layout="@layout/fragment_store" >
         <action
-            android:id="@+id/action_navigation_store_to_navigation_product"
+            android:id="@+id/store_to_product"
             app:destination="@id/navigation_product" />
+
     </fragment>
 
     <fragment
@@ -21,8 +22,12 @@
         android:label="@string/title_product"
         tools:layout="@layout/fragment_product" >
         <action
-            android:id="@+id/action_navigation_product_to_navigation_help"
+            android:id="@+id/product_to_help"
             app:destination="@id/navigation_help" />
+        <argument
+            android:name="product"
+            app:argType="io.ionic.demo.ecommerce.data.model.Product" />
+
     </fragment>
 
     <fragment

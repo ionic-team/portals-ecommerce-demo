@@ -1,6 +1,7 @@
 package io.ionic.demo.ecommerce.ui.product;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import io.ionic.demo.ecommerce.R;
+import io.ionic.demo.ecommerce.data.model.Product;
 
 public class ProductFragment extends Fragment {
 
@@ -25,6 +27,10 @@ public class ProductFragment extends Fragment {
                 Navigation.findNavController(root).navigate(R.id.navigation_help);
             }
         });
+
+        // Retrieve data from navigation example
+        Product product = ProductFragmentArgs.fromBundle(getArguments()).getProduct();
+        Log.d("Product", String.valueOf(product.title));
 
         return root;
     }

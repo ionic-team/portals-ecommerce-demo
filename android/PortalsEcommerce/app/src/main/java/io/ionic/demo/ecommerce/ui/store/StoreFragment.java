@@ -4,41 +4,49 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 import io.ionic.demo.ecommerce.R;
-import io.ionic.demo.ecommerce.data.DataReader;
+import io.ionic.demo.ecommerce.data.model.Product;
 
 public class StoreFragment extends Fragment {
 
     private StoreViewModel storeViewModel;
 
+    private RecyclerView carouselView;
+    private RecyclerView gridView;
+
+    private ProductAdapter productAdapter;
+    private ProductAdapter gridAdapter;
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         storeViewModel = new ViewModelProvider(this).get(StoreViewModel.class);
         View root = inflater.inflate(R.layout.fragment_store, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
-        storeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+        carouselView = root.findViewById(R.id.recycler_carousel);
+        storeViewModel.getFeaturedProducts().observe(getViewLifecycleOwner(), new Observer<ArrayList<Product>>() {
             @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
+            public void onChanged(ArrayList<Product> products) {
+                productAdapter = new ProductAdapter(StoreFragment.this.getContext(), products);
+                carouselView.setLayoutManager(new LinearLayoutManager(StoreFragment.this.getContext(), LinearLayoutManager.HORIZONTAL, false));
+                carouselView.setAdapter(productAdapter);
             }
         });
 
-        // Example of navigating to a product
-        final Button testNavButton = root.findViewById(R.id.test_button);
-        testNavButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(root).navigate(R.id.navigation_product);
-            }
+        gridView = root.findViewById(R.id.recycler_product_grid);
+        storeViewModel.getAllProducts().observe(getViewLifecycleOwner(), products -> {
+            gridAdapter = new ProductAdapter(StoreFragment.this.getContext(), products, true);
+            gridView.setLayoutManager(new GridLayoutManager(StoreFragment.this.getContext(), 2));
+            gridView.setAdapter(gridAdapter);
         });
 
         return root;

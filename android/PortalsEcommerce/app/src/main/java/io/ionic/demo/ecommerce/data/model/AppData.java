@@ -1,6 +1,8 @@
 package io.ionic.demo.ecommerce.data.model;
 
+import java.util.ArrayList;
+
 public class AppData {
-    public Product[] products;
+    public ArrayList<Product> products;
     public User user;
 }
