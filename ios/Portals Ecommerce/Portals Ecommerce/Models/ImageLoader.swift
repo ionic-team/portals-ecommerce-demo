@@ -1,11 +1,11 @@
 import UIKit
 
-class ImageLoader {
+class ImageLoader: ProductImageLoaderProtocol {
     private var imageCache: [String:UIImage] = [:]
     private let imageWidth: CGFloat = 500
     private let imageHeight: CGFloat = 500
     
-    func imageForProduct(_ product: Product) -> UIImage {
+    func imageForProduct(_ product: Product) -> UIImage? {
         if let image = imageCache[product.id] {
             return image
         }
