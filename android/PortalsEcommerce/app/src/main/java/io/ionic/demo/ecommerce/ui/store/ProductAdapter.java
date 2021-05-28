@@ -73,7 +73,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.productPrice.setText(format.format(product.price));
         holder.productCard.setOnClickListener(v -> {
             // Navigate to product page passing the product to be displayed, when tapped
-            StoreFragmentDirections.StoreToProduct action = StoreFragmentDirections.storeToProduct(product);
+            StoreFragmentDirections.StoreToProduct action = StoreFragmentDirections.storeToProduct(product, product.title);
             Navigation.findNavController(v).navigate(action);
         });
     }

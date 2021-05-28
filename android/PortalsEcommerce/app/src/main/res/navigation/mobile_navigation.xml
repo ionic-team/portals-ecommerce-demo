@@ -19,7 +19,7 @@
     <fragment
         android:id="@+id/navigation_product"
         android:name="io.ionic.demo.ecommerce.ui.product.ProductFragment"
-        android:label="@string/title_product"
+        android:label="{pageTitle}"
         tools:layout="@layout/fragment_product" >
         <action
             android:id="@+id/product_to_help"
@@ -27,6 +27,12 @@
         <argument
             android:name="product"
             app:argType="io.ionic.demo.ecommerce.data.model.Product" />
+        <argument
+            android:name="pageTitle"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_navigation_product_to_navigation_cart"
+            app:destination="@id/navigation_cart" />
 
     </fragment>
 

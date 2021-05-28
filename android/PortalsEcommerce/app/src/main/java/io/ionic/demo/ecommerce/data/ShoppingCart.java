@@ -47,7 +47,6 @@ public class ShoppingCart {
     @Override
     public String toString() {
         StringBuilder output = new StringBuilder();
-
         for(Map.Entry<Product, Integer> product : contents.entrySet()) {
             output.append(product.getKey().title).append(": ").append(product.getValue()).append("\n");
         }
