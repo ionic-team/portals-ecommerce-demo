@@ -2,6 +2,9 @@ package io.ionic.demo.ecommerce.data.model;
 
 import java.util.ArrayList;
 
+/**
+ * An app user.
+ */
 public class User {
     public int id;
     public String firstName;
