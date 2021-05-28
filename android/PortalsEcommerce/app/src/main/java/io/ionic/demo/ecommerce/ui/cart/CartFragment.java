@@ -18,6 +18,9 @@ import io.ionic.demo.ecommerce.R;
 import io.ionic.demo.ecommerce.data.ShoppingCart;
 import io.ionic.demo.ecommerce.data.model.Product;
 
+/**
+ * Displays a shopping cart.
+ */
 public class CartFragment extends Fragment {
 
     private CartViewModel cartViewModel;

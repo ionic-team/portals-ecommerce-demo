@@ -28,6 +28,9 @@ import io.ionic.demo.ecommerce.R;
 import io.ionic.demo.ecommerce.data.model.Product;
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
+/**
+ * Displays information about a selected product.
+ */
 public class ProductFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

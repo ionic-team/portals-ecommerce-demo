@@ -17,6 +17,9 @@ import com.getcapacitor.WebViewListener;
 import io.ionic.demo.ecommerce.R;
 import io.ionic.demo.ecommerce.portals.FadeBridgeFragment;
 
+/**
+ * Displays an Ionic Portal containing a help app.
+ */
 public class HelpFragment extends Fragment {
 
     BridgeFragment embeddedFragment;

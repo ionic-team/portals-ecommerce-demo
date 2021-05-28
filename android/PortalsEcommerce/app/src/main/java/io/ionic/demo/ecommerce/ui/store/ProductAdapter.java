@@ -24,14 +24,37 @@ import io.ionic.demo.ecommerce.R;
 import io.ionic.demo.ecommerce.data.model.Product;
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
+/**
+ * An adapter used to create product lists on the Store Fragment.
+ */
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
-    Context context;
-    ArrayList<Product> productList;
+    /**
+     * The context of the adapter.
+     */
+    private final Context context;
 
-    NumberFormat format;
+    /**
+     * The list of products to use in the adapter.
+     */
+    private final ArrayList<Product> productList;
+
+    /**
+     * A formatter for currency.
+     */
+    private final NumberFormat format;
+
+    /**
+     * Whether the adapter is being used for a list or a grid view.
+     */
     boolean isGrid;
 
+    /**
+     * Constructs a ProductAdapter with context and a list of products to display.
+     *
+     * @param context The context containing the adapter.
+     * @param productList The list of products to display.
+     */
     public ProductAdapter(Context context, ArrayList<Product> productList) {
         this.context = context;
         this.productList = productList;
@@ -41,11 +64,26 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         format.setCurrency(Currency.getInstance("USD"));
     }
 
+    /**
+     * Constructs a ProductAdapter with context, a list of products to display, and whether
+     * the adapter will be used to display a grid or not.
+     *
+     * @param context The context containing the adapter.
+     * @param productList The list of products to display.
+     * @param isGrid True if the adapter will be used for a grid.
+     */
     public ProductAdapter(Context context, ArrayList<Product> productList, boolean isGrid) {
         this(context, productList);
         this.isGrid = isGrid;
     }
 
+    /**
+     * Inflates a product view to be used to display products in the adapter.
+     *
+     * @param parent The parent view group.
+     * @param viewType The view type.
+     * @return A view to display in the adapter.
+     */
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -58,6 +96,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         return new ProductViewHolder(rootView);
     }
 
+    /**
+     * Binds the product view in the adapter to the product data to display.
+     *
+     * @param holder The view to use to display the product information.
+     * @param position The id of the product to display within the view.
+     */
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         Product product = productList.get(position);
@@ -78,11 +122,19 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         });
     }
 
+    /**
+     * Get a total count of the products in the list to display.
+     *
+     * @return The count of products.
+     */
     @Override
     public int getItemCount() {
         return productList.size();
     }
 
+    /**
+     * A view holder used to display product information in the adapter.
+     */
     static class ProductViewHolder extends RecyclerView.ViewHolder {
 
         ConstraintLayout productCard;
