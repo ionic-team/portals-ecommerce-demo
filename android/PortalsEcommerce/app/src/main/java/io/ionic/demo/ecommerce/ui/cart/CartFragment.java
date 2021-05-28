@@ -12,7 +12,11 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import java.util.Map;
+
 import io.ionic.demo.ecommerce.R;
+import io.ionic.demo.ecommerce.data.ShoppingCart;
+import io.ionic.demo.ecommerce.data.model.Product;
 
 public class CartFragment extends Fragment {
 
@@ -24,10 +28,10 @@ public class CartFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_cart, container, false);
         final TextView textView = root.findViewById(R.id.text_dashboard);
 
-        cartViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        cartViewModel.getShoppingCart().observe(getViewLifecycleOwner(), new Observer<ShoppingCart>() {
             @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
+            public void onChanged(ShoppingCart shoppingCart) {
+                textView.setText(shoppingCart.toString());
             }
         });
 

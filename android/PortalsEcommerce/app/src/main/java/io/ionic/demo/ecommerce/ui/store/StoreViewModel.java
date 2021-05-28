@@ -4,18 +4,49 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 import io.ionic.demo.ecommerce.data.DataReader;
+import io.ionic.demo.ecommerce.data.model.Product;
 
 public class StoreViewModel extends ViewModel {
 
-    private MutableLiveData<String> mText;
+    private final MutableLiveData<ArrayList<Product>> productList;
+    private final MutableLiveData<ArrayList<Product>> featuredProducts;
 
     public StoreViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue(DataReader.getInstance().getAppData().store.description);
+        productList = new MutableLiveData<>();
+        featuredProducts = new MutableLiveData<>();
+
+        // init data
+        setupProductLists();
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    void setupProductLists() {
+        ArrayList<Product> products = DataReader.getInstance().getAppData().products;
+
+        // Featured products list
+        ArrayList<Product> featured = new ArrayList<>();
+        for (Product product : products) {
+            if (product.category.equalsIgnoreCase("MustHaves")) {
+                featured.add(product);
+            }
+        }
+
+        featuredProducts.setValue(featured);
+
+        // All products list
+        Collections.shuffle(products);
+        productList.setValue(products);
     }
+
+    public LiveData<ArrayList<Product>> getFeaturedProducts() {
+        return featuredProducts;
+    }
+
+    public LiveData<ArrayList<Product>> getAllProducts() {
+        return productList;
+    }
+
 }

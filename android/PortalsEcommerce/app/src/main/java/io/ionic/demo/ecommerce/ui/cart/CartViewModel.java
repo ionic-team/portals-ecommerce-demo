@@ -4,18 +4,19 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import io.ionic.demo.ecommerce.data.DataReader;
+import io.ionic.demo.ecommerce.EcommerceApp;
+import io.ionic.demo.ecommerce.data.ShoppingCart;
 
 public class CartViewModel extends ViewModel {
 
-    private MutableLiveData<String> mText;
+    final private MutableLiveData<ShoppingCart> shoppingCart;
 
     public CartViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue(DataReader.getInstance().getAppData().cart.description);
+        shoppingCart = new MutableLiveData<>();
+        shoppingCart.setValue(EcommerceApp.getInstance().getShoppingCart());
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public LiveData<ShoppingCart> getShoppingCart() {
+        return shoppingCart;
     }
 }

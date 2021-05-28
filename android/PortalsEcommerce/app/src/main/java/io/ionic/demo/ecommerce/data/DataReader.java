@@ -21,7 +21,7 @@ public class DataReader {
         Context context = EcommerceApp.getContext();
 
         try {
-            InputStream inputStream = context.getAssets().open("app.json");
+            InputStream inputStream = context.getAssets().open("data.json");
             int size = inputStream.available();
             byte[] buffer = new byte[size];
             inputStream.read(buffer);
