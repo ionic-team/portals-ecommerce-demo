@@ -13,8 +13,8 @@
             <objects>
                 <navigationController id="FGx-lO-k9A" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Shop" id="B27-ta-Olj"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vy1-N2-YrK">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="vy1-N2-YrK">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -25,16 +25,16 @@
             </objects>
             <point key="canvasLocation" x="400" y="-551"/>
         </scene>
-        <!--Product Gallery View Controller-->
+        <!--Shop-->
         <scene sceneID="DTK-So-l7f">
             <objects>
-                <viewController id="JQJ-N7-9vL" customClass="ProductGalleryViewController" customModule="Ecommerce" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Shop" id="JQJ-N7-9vL" customClass="ProductGalleryViewController" customModule="Ecommerce" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zS1-Tz-jT3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="b9V-Kc-fkd">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="S3B-eL-a1C">
                                     <size key="itemSize" width="128" height="128"/>
@@ -57,7 +57,7 @@
                             <constraint firstItem="cbY-8n-r9p" firstAttribute="trailing" secondItem="b9V-Kc-fkd" secondAttribute="trailing" id="dFR-AJ-s2g"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="LuH-qy-fkk"/>
+                    <navigationItem key="navigationItem" title="Shop" id="LuH-qy-fkk"/>
                     <connections>
                         <outlet property="collectionView" destination="b9V-Kc-fkd" id="XwR-cs-fEL"/>
                     </connections>

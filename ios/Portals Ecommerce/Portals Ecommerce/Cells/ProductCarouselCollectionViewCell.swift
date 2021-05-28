@@ -11,9 +11,9 @@ class ProductCarouselCollectionViewCell: UICollectionViewCell {
     static let fixedWidth: CGFloat = 242 // image width
     static let estimatedHeight: CGFloat = 232 + 44 // image height + labels
     
-    @IBOutlet var imageView: UIImageView!
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var priceLabel: UILabel!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var priceLabel: UILabel!
     
     func configure(with product: Product, loader: ProductImageLoaderProtocol?) {
         imageView.image = loader?.imageForProduct(product)

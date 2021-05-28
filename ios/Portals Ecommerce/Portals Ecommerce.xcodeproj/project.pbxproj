@@ -13,6 +13,25 @@
 		6216AF2026601CF1003E3152 /* GalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6216AF1F26601CF1003E3152 /* GalleryViewModel.swift */; };
 		6216AF2526603D18003E3152 /* ProductCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF2326603D18003E3152 /* ProductCollectionViewCell.xib */; };
 		6216AF2726617286003E3152 /* ProductCarouselCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF2626617286003E3152 /* ProductCarouselCollectionViewCell.xib */; };
+		6216AF5F2661825C003E3152 /* capacitor-mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF4E2661825B003E3152 /* capacitor-mask.png */; };
+		6216AF602661825C003E3152 /* ionic-shirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF4F2661825B003E3152 /* ionic-shirt.png */; };
+		6216AF612661825C003E3152 /* ionitron-shirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF502661825B003E3152 /* ionitron-shirt.png */; };
+		6216AF622661825C003E3152 /* stencil-shirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF512661825B003E3152 /* stencil-shirt.png */; };
+		6216AF632661825C003E3152 /* ionic-hoodie.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF522661825B003E3152 /* ionic-hoodie.png */; };
+		6216AF642661825C003E3152 /* ionic-sticker.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF532661825B003E3152 /* ionic-sticker.png */; };
+		6216AF652661825C003E3152 /* ionitron-ascii-shirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF542661825B003E3152 /* ionitron-ascii-shirt.png */; };
+		6216AF662661825C003E3152 /* capacitor-bottle.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF552661825B003E3152 /* capacitor-bottle.png */; };
+		6216AF672661825C003E3152 /* capacitor-hat.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF562661825B003E3152 /* capacitor-hat.png */; };
+		6216AF682661825C003E3152 /* capacitor-sticker.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF572661825B003E3152 /* capacitor-sticker.png */; };
+		6216AF692661825C003E3152 /* jt-avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF582661825B003E3152 /* jt-avatar.png */; };
+		6216AF6A2661825C003E3152 /* ionitron-sticker.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF592661825B003E3152 /* ionitron-sticker.png */; };
+		6216AF6B2661825C003E3152 /* portals-shirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF5A2661825B003E3152 /* portals-shirt.png */; };
+		6216AF6C2661825C003E3152 /* capacitor-shirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF5B2661825B003E3152 /* capacitor-shirt.png */; };
+		6216AF6D2661825C003E3152 /* portals-tote.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF5C2661825B003E3152 /* portals-tote.png */; };
+		6216AF6E2661825C003E3152 /* stencil-pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF5D2661825B003E3152 /* stencil-pin.png */; };
+		6216AF6F2661825C003E3152 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF5E2661825B003E3152 /* data.json */; };
+		6216AF722661858A003E3152 /* GallerySectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6216AF712661858A003E3152 /* GallerySectionHeaderView.swift */; };
+		6216AF74266185A0003E3152 /* GallerySectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF73266185A0003E3152 /* GallerySectionHeaderView.xib */; };
 		6258AB59265E99E5006E7D8C /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258AB58265E99E5006E7D8C /* Product.swift */; };
 		6258AB5C265EB413006E7D8C /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258AB5B265EB413006E7D8C /* CartViewController.swift */; };
 		6258AB5E265EB44F006E7D8C /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258AB5D265EB44F006E7D8C /* UserProfileViewController.swift */; };
@@ -39,6 +58,25 @@
 		6216AF1F26601CF1003E3152 /* GalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewModel.swift; sourceTree = "<group>"; };
 		6216AF2426603D18003E3152 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ProductCollectionViewCell.xib; sourceTree = "<group>"; };
 		6216AF2626617286003E3152 /* ProductCarouselCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCarouselCollectionViewCell.xib; sourceTree = "<group>"; };
+		6216AF4E2661825B003E3152 /* capacitor-mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capacitor-mask.png"; sourceTree = "<group>"; };
+		6216AF4F2661825B003E3152 /* ionic-shirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ionic-shirt.png"; sourceTree = "<group>"; };
+		6216AF502661825B003E3152 /* ionitron-shirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ionitron-shirt.png"; sourceTree = "<group>"; };
+		6216AF512661825B003E3152 /* stencil-shirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stencil-shirt.png"; sourceTree = "<group>"; };
+		6216AF522661825B003E3152 /* ionic-hoodie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ionic-hoodie.png"; sourceTree = "<group>"; };
+		6216AF532661825B003E3152 /* ionic-sticker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ionic-sticker.png"; sourceTree = "<group>"; };
+		6216AF542661825B003E3152 /* ionitron-ascii-shirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ionitron-ascii-shirt.png"; sourceTree = "<group>"; };
+		6216AF552661825B003E3152 /* capacitor-bottle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capacitor-bottle.png"; sourceTree = "<group>"; };
+		6216AF562661825B003E3152 /* capacitor-hat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capacitor-hat.png"; sourceTree = "<group>"; };
+		6216AF572661825B003E3152 /* capacitor-sticker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capacitor-sticker.png"; sourceTree = "<group>"; };
+		6216AF582661825B003E3152 /* jt-avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jt-avatar.png"; sourceTree = "<group>"; };
+		6216AF592661825B003E3152 /* ionitron-sticker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ionitron-sticker.png"; sourceTree = "<group>"; };
+		6216AF5A2661825B003E3152 /* portals-shirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "portals-shirt.png"; sourceTree = "<group>"; };
+		6216AF5B2661825B003E3152 /* capacitor-shirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capacitor-shirt.png"; sourceTree = "<group>"; };
+		6216AF5C2661825B003E3152 /* portals-tote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "portals-tote.png"; sourceTree = "<group>"; };
+		6216AF5D2661825B003E3152 /* stencil-pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stencil-pin.png"; sourceTree = "<group>"; };
+		6216AF5E2661825B003E3152 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		6216AF712661858A003E3152 /* GallerySectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GallerySectionHeaderView.swift; sourceTree = "<group>"; };
+		6216AF73266185A0003E3152 /* GallerySectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GallerySectionHeaderView.xib; sourceTree = "<group>"; };
 		6258AB58265E99E5006E7D8C /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		6258AB5B265EB413006E7D8C /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		6258AB5D265EB44F006E7D8C /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
@@ -85,7 +123,9 @@
 			isa = PBXGroup;
 			children = (
 				6216AF18265EFB02003E3152 /* ProductCarouselCollectionViewCell.swift */,
+				6216AF2626617286003E3152 /* ProductCarouselCollectionViewCell.xib */,
 				6216AF19265EFB02003E3152 /* ProductCollectionViewCell.swift */,
+				6216AF2326603D18003E3152 /* ProductCollectionViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -96,6 +136,48 @@
 				6216AF1F26601CF1003E3152 /* GalleryViewModel.swift */,
 			);
 			path = "View Models";
+			sourceTree = "<group>";
+		};
+		6216AF4C2661825B003E3152 /* Demo Data */ = {
+			isa = PBXGroup;
+			children = (
+				6216AF4D2661825B003E3152 /* images */,
+				6216AF5E2661825B003E3152 /* data.json */,
+			);
+			name = "Demo Data";
+			path = "Portals Ecommerce/Demo Data";
+			sourceTree = "<group>";
+		};
+		6216AF4D2661825B003E3152 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				6216AF4E2661825B003E3152 /* capacitor-mask.png */,
+				6216AF4F2661825B003E3152 /* ionic-shirt.png */,
+				6216AF502661825B003E3152 /* ionitron-shirt.png */,
+				6216AF512661825B003E3152 /* stencil-shirt.png */,
+				6216AF522661825B003E3152 /* ionic-hoodie.png */,
+				6216AF532661825B003E3152 /* ionic-sticker.png */,
+				6216AF542661825B003E3152 /* ionitron-ascii-shirt.png */,
+				6216AF552661825B003E3152 /* capacitor-bottle.png */,
+				6216AF562661825B003E3152 /* capacitor-hat.png */,
+				6216AF572661825B003E3152 /* capacitor-sticker.png */,
+				6216AF582661825B003E3152 /* jt-avatar.png */,
+				6216AF592661825B003E3152 /* ionitron-sticker.png */,
+				6216AF5A2661825B003E3152 /* portals-shirt.png */,
+				6216AF5B2661825B003E3152 /* capacitor-shirt.png */,
+				6216AF5C2661825B003E3152 /* portals-tote.png */,
+				6216AF5D2661825B003E3152 /* stencil-pin.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		6216AF7026618535003E3152 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6216AF712661858A003E3152 /* GallerySectionHeaderView.swift */,
+				6216AF73266185A0003E3152 /* GallerySectionHeaderView.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		6258AB5A265E99EB006E7D8C /* Models */ = {
@@ -126,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				62941E84265DA67F00EE7FE4 /* Portals Ecommerce */,
+				6216AF4C2661825B003E3152 /* Demo Data */,
 				62941E83265DA67F00EE7FE4 /* Products */,
 				08697526842D12382D3E6C06 /* Pods */,
 				AD9FE582D4D057DFA94ACD96 /* Frameworks */,
@@ -147,12 +230,11 @@
 				62941E87265DA67F00EE7FE4 /* SceneDelegate.swift */,
 				6258AB6B265EDA25006E7D8C /* ApplicationCoordinator.swift */,
 				6258AB64265ED770006E7D8C /* View Controllers */,
-				6216AF17265EFAEB003E3152 /* Cells */,
 				6258AB5A265E99EB006E7D8C /* Models */,
 				6216AF1C265FEB7B003E3152 /* View Models */,
+				6216AF7026618535003E3152 /* Views */,
+				6216AF17265EFAEB003E3152 /* Cells */,
 				62941E8B265DA67F00EE7FE4 /* Main.storyboard */,
-				6216AF2326603D18003E3152 /* ProductCollectionViewCell.xib */,
-				6216AF2626617286003E3152 /* ProductCarouselCollectionViewCell.xib */,
 				62941E8E265DA68100EE7FE4 /* Assets.xcassets */,
 				62941E90265DA68100EE7FE4 /* LaunchScreen.storyboard */,
 				62941E93265DA68100EE7FE4 /* Info.plist */,
@@ -227,11 +309,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6216AF5F2661825C003E3152 /* capacitor-mask.png in Resources */,
+				6216AF6A2661825C003E3152 /* ionitron-sticker.png in Resources */,
+				6216AF6B2661825C003E3152 /* portals-shirt.png in Resources */,
+				6216AF682661825C003E3152 /* capacitor-sticker.png in Resources */,
+				6216AF6E2661825C003E3152 /* stencil-pin.png in Resources */,
 				62941E92265DA68100EE7FE4 /* LaunchScreen.storyboard in Resources */,
+				6216AF642661825C003E3152 /* ionic-sticker.png in Resources */,
 				62941E8F265DA68100EE7FE4 /* Assets.xcassets in Resources */,
+				6216AF74266185A0003E3152 /* GallerySectionHeaderView.xib in Resources */,
+				6216AF672661825C003E3152 /* capacitor-hat.png in Resources */,
 				6216AF2526603D18003E3152 /* ProductCollectionViewCell.xib in Resources */,
+				6216AF6D2661825C003E3152 /* portals-tote.png in Resources */,
+				6216AF6F2661825C003E3152 /* data.json in Resources */,
+				6216AF662661825C003E3152 /* capacitor-bottle.png in Resources */,
+				6216AF632661825C003E3152 /* ionic-hoodie.png in Resources */,
 				62941E8D265DA67F00EE7FE4 /* Main.storyboard in Resources */,
+				6216AF692661825C003E3152 /* jt-avatar.png in Resources */,
 				6216AF2726617286003E3152 /* ProductCarouselCollectionViewCell.xib in Resources */,
+				6216AF622661825C003E3152 /* stencil-shirt.png in Resources */,
+				6216AF612661825C003E3152 /* ionitron-shirt.png in Resources */,
+				6216AF652661825C003E3152 /* ionitron-ascii-shirt.png in Resources */,
+				6216AF602661825C003E3152 /* ionic-shirt.png in Resources */,
+				6216AF6C2661825C003E3152 /* capacitor-shirt.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +394,7 @@
 				6216AF1B265EFB02003E3152 /* ProductCollectionViewCell.swift in Sources */,
 				6216AF2026601CF1003E3152 /* GalleryViewModel.swift in Sources */,
 				6258AB6A265ED8E2006E7D8C /* CheckoutViewController.swift in Sources */,
+				6216AF722661858A003E3152 /* GallerySectionHeaderView.swift in Sources */,
 				6258AB62265EB608006E7D8C /* User.swift in Sources */,
 				6258AB66265ED793006E7D8C /* HostedContentViewController.swift in Sources */,
 				62941E86265DA67F00EE7FE4 /* AppDelegate.swift in Sources */,
