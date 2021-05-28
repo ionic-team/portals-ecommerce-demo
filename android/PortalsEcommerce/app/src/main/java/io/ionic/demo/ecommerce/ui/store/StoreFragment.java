@@ -18,6 +18,9 @@ import java.util.ArrayList;
 import io.ionic.demo.ecommerce.R;
 import io.ionic.demo.ecommerce.data.model.Product;
 
+/**
+ * Displays products to be purchased.
+ */
 public class StoreFragment extends Fragment {
 
     private StoreViewModel storeViewModel;
@@ -32,6 +35,7 @@ public class StoreFragment extends Fragment {
         storeViewModel = new ViewModelProvider(this).get(StoreViewModel.class);
         View root = inflater.inflate(R.layout.fragment_store, container, false);
 
+        // A carousel view used to highlight best-selling items
         carouselView = root.findViewById(R.id.recycler_carousel);
         storeViewModel.getFeaturedProducts().observe(getViewLifecycleOwner(), new Observer<ArrayList<Product>>() {
             @Override
@@ -42,6 +46,7 @@ public class StoreFragment extends Fragment {
             }
         });
 
+        // A grid view used to display all products available to purchase
         gridView = root.findViewById(R.id.recycler_product_grid);
         storeViewModel.getAllProducts().observe(getViewLifecycleOwner(), products -> {
             gridAdapter = new ProductAdapter(StoreFragment.this.getContext(), products, true);

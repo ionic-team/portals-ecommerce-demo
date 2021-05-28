@@ -11,6 +11,9 @@ import androidx.fragment.app.Fragment;
 
 import io.ionic.demo.ecommerce.R;
 
+/**
+ * Displays an Ionic Portal containing a help app.
+ */
 public class HelpFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

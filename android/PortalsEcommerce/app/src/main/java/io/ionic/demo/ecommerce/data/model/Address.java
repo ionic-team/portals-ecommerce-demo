@@ -1,5 +1,8 @@
 package io.ionic.demo.ecommerce.data.model;
 
+/**
+ * A user address.
+ */
 public class Address {
     public int id;
     public String street;
