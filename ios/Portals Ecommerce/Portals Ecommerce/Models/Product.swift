@@ -18,7 +18,7 @@ struct Product: Codable {
         case imageName = "image"
     }
     
-    var id: String
+    var id: Int
     var title: String
     var description: String
     var price: Int

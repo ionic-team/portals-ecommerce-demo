@@ -6,14 +6,18 @@ class ImageLoader: ProductImageLoaderProtocol {
     private let imageHeight: CGFloat = 500
     
     func imageForProduct(_ product: Product) -> UIImage? {
-        if let image = imageCache[product.id] {
+        if let image = UIImage(named: product.imageName) {
+            return image
+        }
+        
+        if let image = imageCache["\(product.id)"] {
             return image
         }
         let image = UIGraphicsImageRenderer(size: CGSize(width: imageWidth, height: imageHeight)).image { context in
             UIColor.random.set()
             UIRectFill(CGRect(x: 0, y: 0, width: imageWidth, height: imageHeight))
         }
-        imageCache[product.id] = image
+        imageCache["\(product.id)"] = image
         return image
     }
 }
