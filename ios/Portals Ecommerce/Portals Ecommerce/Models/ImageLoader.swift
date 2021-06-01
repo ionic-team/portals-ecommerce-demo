@@ -1,7 +1,6 @@
 import UIKit
 
 class ImageLoader: ProductImageLoaderProtocol {
-    private var imageCache: [String:UIImage] = [:]
     private let imageWidth: CGFloat = 500
     private let imageHeight: CGFloat = 500
     
@@ -9,16 +8,11 @@ class ImageLoader: ProductImageLoaderProtocol {
         if let image = UIImage(named: product.imageName) {
             return image
         }
-        
-        if let image = imageCache["\(product.id)"] {
-            return image
-        }
-        let image = UIGraphicsImageRenderer(size: CGSize(width: imageWidth, height: imageHeight)).image { context in
+        // generate a random color image
+        return UIGraphicsImageRenderer(size: CGSize(width: imageWidth, height: imageHeight)).image { context in
             UIColor.random.set()
             UIRectFill(CGRect(x: 0, y: 0, width: imageWidth, height: imageHeight))
         }
-        imageCache["\(product.id)"] = image
-        return image
     }
 }
 

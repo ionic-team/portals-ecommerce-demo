@@ -1,19 +1,53 @@
 import UIKit
 
 class GalleryViewModel: NSObject, UICollectionViewDataSource {
-    var products: [Product] = []
+    var carouselProducts: [Product] = []
+    var listProducts: [Product] = []
     var imageLoader: ProductImageLoaderProtocol?
     
     private enum Sections: Int, CaseIterable {
         case carousel, list
     }
     
+    // MARK: - Public
+    
+    func configure(with collectionView: UICollectionView) {
+        collectionView.register(UINib(nibName: "ProductCarouselCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: ProductCarouselCollectionViewCell.cellIdentifier)
+        collectionView.register(UINib(nibName: "ProductCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: ProductCollectionViewCell.cellIdentifier)
+        collectionView.register(UINib(nibName: "GallerySectionHeaderView", bundle: nil), forSupplementaryViewOfKind: "header", withReuseIdentifier: GallerySectionHeaderView.viewIdentifier)
+        collectionView.setCollectionViewLayout(collectionLayout(), animated: false)
+        collectionView.dataSource = self
+    }
+    
+    func product(at indexPath: IndexPath) -> Product? {
+        if let section = Sections(rawValue: indexPath.section) {
+            switch section {
+            case .carousel:
+                if indexPath.item < carouselProducts.count {
+                    return carouselProducts[indexPath.item]
+                }
+            case .list:
+                if indexPath.item < listProducts.count {
+                    return listProducts[indexPath.item]
+                }
+            }
+        }
+        return nil
+    }
+    
+    // MARK: - UICollectionViewDataSource
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return Sections.allCases.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        products.count
+        switch Sections(rawValue: section)! {
+        case .carousel:
+            return carouselProducts.count
+        case .list:
+            return listProducts.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -21,12 +55,12 @@ class GalleryViewModel: NSObject, UICollectionViewDataSource {
         switch Sections(rawValue: indexPath.section)! {
         case .carousel:
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCarouselCollectionViewCell.cellIdentifier, for: indexPath) as? ProductCarouselCollectionViewCell {
-                cell.configure(with: products[indexPath.item], loader: imageLoader)
+                cell.configure(with: carouselProducts[indexPath.item], loader: imageLoader)
                 return cell
             }
         case .list:
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.cellIdentifier, for: indexPath) as? ProductCollectionViewCell {
-                cell.configure(with: products[indexPath.item], loader: imageLoader)
+                cell.configure(with: listProducts[indexPath.item], loader: imageLoader)
                 return cell
             }
         }
@@ -43,22 +77,16 @@ class GalleryViewModel: NSObject, UICollectionViewDataSource {
         
         switch Sections(rawValue: indexPath.section)! {
         case .carousel:
-            headerView.title = "Must Haves"
+            headerView.title = ProductCategory.mustHaves.title
         case .list:
-            headerView.title = "Products"
+            headerView.title = ProductCategory.featured.title
         }
         return headerView
     }
     
-    func configure(with collectionView: UICollectionView) {
-        collectionView.register(UINib(nibName: "ProductCarouselCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: ProductCarouselCollectionViewCell.cellIdentifier)
-        collectionView.register(UINib(nibName: "ProductCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: ProductCollectionViewCell.cellIdentifier)
-        collectionView.register(UINib(nibName: "GallerySectionHeaderView", bundle: nil), forSupplementaryViewOfKind: "header", withReuseIdentifier: GallerySectionHeaderView.viewIdentifier)
-        collectionView.setCollectionViewLayout(collectionLayout(), animated: false)
-        collectionView.dataSource = self
-    }
+    // MARK: - Internal
     
-    func collectionLayout() -> UICollectionViewLayout {
+    private func collectionLayout() -> UICollectionViewLayout {
         let compositionalLayout = UICollectionViewCompositionalLayout {
             (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             
@@ -99,6 +127,7 @@ class GalleryViewModel: NSObject, UICollectionViewDataSource {
     }
     
     private func listSection() -> NSCollectionLayoutSection {
+        // item
         let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(ProductCollectionViewCell.fixedWidth), heightDimension: .estimated(ProductCollectionViewCell.estimatedHeight))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         

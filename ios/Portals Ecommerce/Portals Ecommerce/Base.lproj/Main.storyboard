@@ -60,13 +60,30 @@
                     <navigationItem key="navigationItem" title="Shop" id="LuH-qy-fkk"/>
                     <connections>
                         <outlet property="collectionView" destination="b9V-Kc-fkd" id="XwR-cs-fEL"/>
+                        <segue destination="wFR-xQ-379" kind="show" identifier="ShowDetailSegue" id="wpE-AI-Pe8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0GV-ur-Tgf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1148" y="-551"/>
         </scene>
-        <!--Cart-->
+        <!--Product Detail View Controller-->
+        <scene sceneID="rhD-zs-uBM">
+            <objects>
+                <viewController id="wFR-xQ-379" customClass="ProductDetailViewController" customModule="Ecommerce" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BZI-Rx-w8C">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="c4v-oT-9cw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="MdB-CZ-1DL"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XOH-Pc-Xnu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1943" y="-551"/>
+        </scene>
+        <!--Cart View Controller-->
         <scene sceneID="heY-hq-rfv">
             <objects>
                 <viewController id="bbt-W0-Ktf" customClass="CartViewController" customModule="Ecommerce" customModuleProvider="target" sceneMemberID="viewController">
