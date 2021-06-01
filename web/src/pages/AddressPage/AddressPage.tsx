@@ -27,13 +27,11 @@ const AddressPage = () => {
   const [present] = useIonPicker();
 
   // TODO: use variable to determine if you should prefill data or not
-  const isNewAddress = true;
+  const isNewAddress = false;
   const addressIndex = 0;
   const address = user?.addresses[addressIndex]
 
   if (isNewAddress && user) {
-    user.firstName = '';
-    user.lastName = '';
     user.addresses[addressIndex].street = '';
     user.addresses[addressIndex].postal = '';
     user.addresses[addressIndex].city = '';
@@ -80,14 +78,7 @@ const AddressPage = () => {
           <IonLabel position="fixed">Full Name</IonLabel>
           <IonInput
             placeholder=""
-            onIonBlur={(event) => {
-              if (user) {
-                // TODO: Split out names better
-                user.firstName = (event.target as any).value.split(' ')[0];
-                user.lastName = (event.target as any).value.split(' ').slice(-1).join(' ');
-                setUser(user);
-              }
-            }}
+            disabled
             value={`${user?.firstName} ${user?.lastName}`.trim()}
           ></IonInput>
         </IonItem>
@@ -95,7 +86,8 @@ const AddressPage = () => {
           <IonLabel position="fixed">Address</IonLabel>
           <IonInput 
             placeholder=""
-            onIonBlur={(event) => {
+            debounce={500}
+            onIonChange={(event) => {
               if (user) {
                 user.addresses[addressIndex].street = (event.target as any).value
                 setUser(user);
@@ -108,7 +100,8 @@ const AddressPage = () => {
           <IonLabel position="fixed">Zip Code</IonLabel>
           <IonInput 
             placeholder=""
-            onIonBlur={(event) => {
+            debounce={500}
+            onIonChange={(event) => {
               if (user) {
                 user.addresses[addressIndex].postal = (event.target as any).value
                 setUser(user);
@@ -121,7 +114,8 @@ const AddressPage = () => {
           <IonLabel position="fixed">City</IonLabel>
           <IonInput 
             placeholder=""
-            onIonBlur={(event) => {
+            debounce={500}
+            onIonChange={(event) => {
               if (user) {
                 user.addresses[addressIndex].city = (event.target as any).value
                 setUser(user);
@@ -140,6 +134,7 @@ const AddressPage = () => {
           {/* TODO: Style this to fit design better */}
           <IonButton
             color="light"
+            fill="clear"
             expand="block"
             onClick={pickStateCode}
           >
