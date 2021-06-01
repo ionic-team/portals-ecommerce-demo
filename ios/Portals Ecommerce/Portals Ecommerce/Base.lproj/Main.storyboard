@@ -8,11 +8,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Shop-->
+        <!--Navigation Controller-->
         <scene sceneID="QRV-xp-NjZ">
             <objects>
                 <navigationController id="FGx-lO-k9A" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Shop" id="B27-ta-Olj"/>
+                    <tabBarItem key="tabBarItem" title="" image="tab-shop-icon" id="B27-ta-Olj"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="vy1-N2-YrK">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -76,13 +76,13 @@
                         <viewLayoutGuide key="safeArea" id="vxP-i6-cey"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Cart" id="KcF-Ry-Rup"/>
+                    <tabBarItem key="tabBarItem" title="" image="tab-cart-icon" id="KcF-Ry-Rup"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="woX-lM-KGo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="400" y="118"/>
         </scene>
-        <!--Account-->
+        <!--User Profile View Controller-->
         <scene sceneID="J6X-Qw-UfM">
             <objects>
                 <viewController id="Du8-dq-Z7t" customClass="UserProfileViewController" customModule="Ecommerce" customModuleProvider="target" sceneMemberID="viewController">
@@ -92,7 +92,7 @@
                         <viewLayoutGuide key="safeArea" id="q92-dX-UiA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Account" id="B3i-Bs-Nl7"/>
+                    <tabBarItem key="tabBarItem" title="" image="tab-profile-icon" id="B3i-Bs-Nl7"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pRY-32-HBZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -119,6 +119,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="tab-cart-icon" width="24" height="24"/>
+        <image name="tab-profile-icon" width="24" height="24"/>
+        <image name="tab-shop-icon" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
