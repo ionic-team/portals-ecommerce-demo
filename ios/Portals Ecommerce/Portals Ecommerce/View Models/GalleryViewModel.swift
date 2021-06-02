@@ -3,7 +3,7 @@ import UIKit
 class GalleryViewModel: NSObject, UICollectionViewDataSource {
     var carouselProducts: [Product] = []
     var listProducts: [Product] = []
-    var imageLoader: ProductImageLoaderProtocol?
+    var imageLoader: ImageLoaderProtocol?
     
     private enum Sections: Int, CaseIterable {
         case carousel, list

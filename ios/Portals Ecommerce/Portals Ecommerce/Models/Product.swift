@@ -1,7 +1,7 @@
 import UIKit
 
-protocol ProductImageLoaderProtocol {
-    func imageForProduct(_ product: Product) -> UIImage?
+protocol ImageLoaderProtocol {
+    func imageFor(_ imageName: String) -> UIImage?
 }
 
 enum ProductCategory: String, Codable {
@@ -20,7 +20,7 @@ enum ProductCategory: String, Codable {
     }
 }
 
-struct Product: Codable {
+struct Product: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case id, title, description, price, category
         

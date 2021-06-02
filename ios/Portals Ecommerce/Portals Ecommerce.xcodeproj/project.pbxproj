@@ -48,6 +48,11 @@
 		62941E8F265DA68100EE7FE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62941E8E265DA68100EE7FE4 /* Assets.xcassets */; };
 		62941E92265DA68100EE7FE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62941E90265DA68100EE7FE4 /* LaunchScreen.storyboard */; };
 		62941E9A265DA71B00EE7FE4 /* ProductGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62941E99265DA71B00EE7FE4 /* ProductGalleryViewController.swift */; };
+		62D12EB226680BFD0014A836 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D12EB126680BFD0014A836 /* Address.swift */; };
+		62D12EB426680C0C0014A836 /* CreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D12EB326680C0C0014A836 /* CreditCard.swift */; };
+		62D12EB726681AA50014A836 /* ShopAPIPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D12EB626681AA50014A836 /* ShopAPIPlugin.swift */; };
+		62D12EB926681ACA0014A836 /* ShopAPIPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D12EB826681ACA0014A836 /* ShopAPIPlugin.m */; };
+		62D12EBB266826310014A836 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D12EBA266826310014A836 /* Cart.swift */; };
 		8E55486C2A09F73AF58E5676 /* Pods_Ecommerce.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD6373925DD5ED498B13A0CE /* Pods_Ecommerce.framework */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +101,11 @@
 		62941E91265DA68100EE7FE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		62941E93265DA68100EE7FE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62941E99265DA71B00EE7FE4 /* ProductGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductGalleryViewController.swift; sourceTree = "<group>"; };
+		62D12EB126680BFD0014A836 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		62D12EB326680C0C0014A836 /* CreditCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCard.swift; sourceTree = "<group>"; };
+		62D12EB626681AA50014A836 /* ShopAPIPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopAPIPlugin.swift; sourceTree = "<group>"; };
+		62D12EB826681ACA0014A836 /* ShopAPIPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopAPIPlugin.m; sourceTree = "<group>"; };
+		62D12EBA266826310014A836 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		AEE463C69A9373EBC3F6A25B /* Pods-Ecommerce.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ecommerce.debug.xcconfig"; path = "Target Support Files/Pods-Ecommerce/Pods-Ecommerce.debug.xcconfig"; sourceTree = "<group>"; };
 		BD6373925DD5ED498B13A0CE /* Pods_Ecommerce.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ecommerce.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -188,6 +198,9 @@
 				6216AF7526618A50003E3152 /* DemoData.swift */,
 				6258AB58265E99E5006E7D8C /* Product.swift */,
 				6258AB61265EB608006E7D8C /* User.swift */,
+				62D12EB126680BFD0014A836 /* Address.swift */,
+				62D12EB326680C0C0014A836 /* CreditCard.swift */,
+				62D12EBA266826310014A836 /* Cart.swift */,
 				6216AF15265EDF07003E3152 /* ImageLoader.swift */,
 			);
 			path = Models;
@@ -232,6 +245,7 @@
 				62941E85265DA67F00EE7FE4 /* AppDelegate.swift */,
 				62941E87265DA67F00EE7FE4 /* SceneDelegate.swift */,
 				6258AB6B265EDA25006E7D8C /* ApplicationCoordinator.swift */,
+				62D12EB526681A710014A836 /* Plugins */,
 				6258AB64265ED770006E7D8C /* View Controllers */,
 				6258AB5A265E99EB006E7D8C /* Models */,
 				6216AF1C265FEB7B003E3152 /* View Models */,
@@ -243,6 +257,15 @@
 				62941E93265DA68100EE7FE4 /* Info.plist */,
 			);
 			path = "Portals Ecommerce";
+			sourceTree = "<group>";
+		};
+		62D12EB526681A710014A836 /* Plugins */ = {
+			isa = PBXGroup;
+			children = (
+				62D12EB626681AA50014A836 /* ShopAPIPlugin.swift */,
+				62D12EB826681ACA0014A836 /* ShopAPIPlugin.m */,
+			);
+			path = Plugins;
 			sourceTree = "<group>";
 		};
 		AD9FE582D4D057DFA94ACD96 /* Frameworks */ = {
@@ -286,6 +309,7 @@
 				TargetAttributes = {
 					62941E81265DA67F00EE7FE4 = {
 						CreatedOnToolsVersion = 12.5;
+						LastSwiftMigration = 1250;
 					};
 				};
 			};
@@ -392,18 +416,23 @@
 				62941E9A265DA71B00EE7FE4 /* ProductGalleryViewController.swift in Sources */,
 				6258AB5E265EB44F006E7D8C /* UserProfileViewController.swift in Sources */,
 				6258AB68265ED89E006E7D8C /* HelpPageViewController.swift in Sources */,
+				62D12EB226680BFD0014A836 /* Address.swift in Sources */,
 				6216AF1A265EFB02003E3152 /* ProductCarouselCollectionViewCell.swift in Sources */,
 				6258AB60265EB46C006E7D8C /* ProductDetailViewController.swift in Sources */,
 				6258AB5C265EB413006E7D8C /* CartViewController.swift in Sources */,
 				6216AF1B265EFB02003E3152 /* ProductCollectionViewCell.swift in Sources */,
 				6216AF2026601CF1003E3152 /* GalleryViewModel.swift in Sources */,
 				6258AB6A265ED8E2006E7D8C /* CheckoutViewController.swift in Sources */,
+				62D12EBB266826310014A836 /* Cart.swift in Sources */,
 				6216AF722661858A003E3152 /* GallerySectionHeaderView.swift in Sources */,
 				6258AB62265EB608006E7D8C /* User.swift in Sources */,
 				6258AB66265ED793006E7D8C /* HostedContentViewController.swift in Sources */,
 				62941E86265DA67F00EE7FE4 /* AppDelegate.swift in Sources */,
+				62D12EB426680C0C0014A836 /* CreditCard.swift in Sources */,
+				62D12EB926681ACA0014A836 /* ShopAPIPlugin.m in Sources */,
 				62941E88265DA67F00EE7FE4 /* SceneDelegate.swift in Sources */,
 				6258AB59265E99E5006E7D8C /* Product.swift in Sources */,
+				62D12EB726681AA50014A836 /* ShopAPIPlugin.swift in Sources */,
 				6258AB6C265EDA25006E7D8C /* ApplicationCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -560,6 +589,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9YN2HU59K8;
 				INFOPLIST_FILE = "Portals Ecommerce/Info.plist";
@@ -570,6 +600,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.ionic.portals.ecommerce;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -581,6 +612,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9YN2HU59K8;
 				INFOPLIST_FILE = "Portals Ecommerce/Info.plist";
