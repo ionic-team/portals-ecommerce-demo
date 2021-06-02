@@ -4,6 +4,7 @@
     <string name="title_product">Product</string>
     <string name="title_help">Help</string>
     <string name="title_cart">Cart</string>
+    <string name="title_checkout">Checkout</string>
     <string name="title_profile">Profile</string>
     <string name="product_image_cd">Product Image</string>
     <string name="shop_must_haves_title"><![CDATA[Must Haves, Bestsellers & More]]></string>

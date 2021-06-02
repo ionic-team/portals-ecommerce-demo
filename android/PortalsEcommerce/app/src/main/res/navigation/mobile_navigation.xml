@@ -46,7 +46,17 @@
         android:id="@+id/navigation_cart"
         android:name="io.ionic.demo.ecommerce.ui.cart.CartFragment"
         android:label="@string/title_cart"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_navigation_cart_to_navigation_checkout"
+            app:destination="@id/navigation_checkout" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/navigation_checkout"
+        android:name="io.ionic.demo.ecommerce.ui.cart.CheckoutDialogFragment"
+        android:label="@string/title_checkout"
+        tools:layout="@layout/fragment_checkout" />
 
     <fragment
         android:id="@+id/navigation_profile"
