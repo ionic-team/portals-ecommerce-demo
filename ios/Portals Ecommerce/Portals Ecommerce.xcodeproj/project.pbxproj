@@ -42,6 +42,7 @@
 		6258AB68265ED89E006E7D8C /* HelpPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258AB67265ED89E006E7D8C /* HelpPageViewController.swift */; };
 		6258AB6A265ED8E2006E7D8C /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258AB69265ED8E2006E7D8C /* CheckoutViewController.swift */; };
 		6258AB6C265EDA25006E7D8C /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258AB6B265EDA25006E7D8C /* ApplicationCoordinator.swift */; };
+		6286965726695E8F00F3AE9A /* DataStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6286965626695E8F00F3AE9A /* DataStoreViewModel.swift */; };
 		62941E86265DA67F00EE7FE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62941E85265DA67F00EE7FE4 /* AppDelegate.swift */; };
 		62941E88265DA67F00EE7FE4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62941E87265DA67F00EE7FE4 /* SceneDelegate.swift */; };
 		62941E8D265DA67F00EE7FE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62941E8B265DA67F00EE7FE4 /* Main.storyboard */; };
@@ -93,6 +94,7 @@
 		6258AB67265ED89E006E7D8C /* HelpPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpPageViewController.swift; sourceTree = "<group>"; };
 		6258AB69265ED8E2006E7D8C /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 		6258AB6B265EDA25006E7D8C /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
+		6286965626695E8F00F3AE9A /* DataStoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreViewModel.swift; sourceTree = "<group>"; };
 		62941E82265DA67F00EE7FE4 /* Ecommerce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ecommerce.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62941E85265DA67F00EE7FE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62941E87265DA67F00EE7FE4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				6216AF1F26601CF1003E3152 /* GalleryViewModel.swift */,
+				6286965626695E8F00F3AE9A /* DataStoreViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				62941E9A265DA71B00EE7FE4 /* ProductGalleryViewController.swift in Sources */,
 				6258AB5E265EB44F006E7D8C /* UserProfileViewController.swift in Sources */,
 				6258AB68265ED89E006E7D8C /* HelpPageViewController.swift in Sources */,
+				6286965726695E8F00F3AE9A /* DataStoreViewModel.swift in Sources */,
 				62D12EB226680BFD0014A836 /* Address.swift in Sources */,
 				6216AF1A265EFB02003E3152 /* ProductCarouselCollectionViewCell.swift in Sources */,
 				6258AB60265EB46C006E7D8C /* ProductDetailViewController.swift in Sources */,
