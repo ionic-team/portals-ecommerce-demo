@@ -36,7 +36,7 @@ class Cart {
 extension Cart: Encodable {
     // keys for Encodable support
     enum CodingKeys: String, CodingKey {
-        case id, total, basket
+        case id, subTotal, basket
     }
     enum BasketKeys: String, CodingKey {
         case productId, quantity
@@ -46,7 +46,7 @@ extension Cart: Encodable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
         let total = contents.reduce(0) { $0 + ($1.product.price * Int($1.quantity)) }
-        try container.encode(total, forKey: .total)
+        try container.encode(total, forKey: .subTotal)
         
         var cartContents = container.nestedUnkeyedContainer(forKey: .basket)
         for item in contents {
