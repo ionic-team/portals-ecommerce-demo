@@ -2,7 +2,11 @@ import UIKit
 import Capacitor
 
 class HostedContentViewController: CAPBridgeViewController, ApplicationCoordinationParticipant {
-    weak var coordinator: ApplicationCoordinator?
+    weak var coordinator: ApplicationCoordinator? {
+        didSet {
+            apiPlugin?.dataProvider = coordinator?.dataStore
+        }
+    }
     
     private(set) var isObservingWebLoading: Bool = false
     private var apiPlugin: ShopAPIPlugin?
@@ -14,6 +18,7 @@ class HostedContentViewController: CAPBridgeViewController, ApplicationCoordinat
         super.viewDidLoad()
         // find the plugin the bridge has instantiated and store a reference to it
         apiPlugin = bridge?.plugin(withName: "ShopAPI") as? ShopAPIPlugin
+        apiPlugin?.dataProvider = coordinator?.dataStore
     }
     
     func webViewCompletedInitialLoad() {
