@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.NumberFormat;
 import java.util.Currency;
+import java.util.EventListener;
 
 import io.ionic.demo.ecommerce.R;
 import io.ionic.demo.ecommerce.data.ShoppingCart;
@@ -44,27 +45,32 @@ public class CartFragment extends Fragment {
         });
 
         // Observe values on cart
+        recyclerView = root.findViewById(R.id.cart_recycler_view);
+        cartViewModel.getShoppingCart().observe(getViewLifecycleOwner(), products -> {
+            cartAdapter = new CartAdapter(CartFragment.this.getActivity(), v -> {
+                updateCartText(root);
+            });
+            recyclerView.setLayoutManager(new LinearLayoutManager(CartFragment.this.getContext(), LinearLayoutManager.VERTICAL, false));
+            recyclerView.setAdapter(cartAdapter);
+            updateCartText(root);
+        });
+
+        return root;
+    }
+
+    private void updateCartText(View root) {
         TextView subtotalTextView = root.findViewById(R.id.text_view_subtotal_value);
         TextView estimatedTotalTextView = root.findViewById(R.id.text_view_total_value);
+        TextView shippingTextView = root.findViewById(R.id.text_view_shipping_value);
 
         NumberFormat format = NumberFormat.getCurrencyInstance();
         format.setMaximumFractionDigits(2);
         format.setMinimumFractionDigits(2);
         format.setCurrency(Currency.getInstance("USD"));
-        recyclerView = root.findViewById(R.id.cart_recycler_view);
-        cartViewModel.getShoppingCart().observe(getViewLifecycleOwner(), products -> {
-            cartAdapter = new CartAdapter(CartFragment.this.getActivity());
-            recyclerView.setLayoutManager(new LinearLayoutManager(CartFragment.this.getContext(), LinearLayoutManager.VERTICAL, false));
-            recyclerView.setAdapter(cartAdapter);
+        String price = format.format(cartViewModel.getShoppingCart().getValue().getTotalPriceOfProductsInCart());
 
-            String price = format.format(cartViewModel.getShoppingCart().getValue().getTotalPriceOfProductsInCart());
-            subtotalTextView.setText(price);
-            estimatedTotalTextView.setText(price + " + Tax");
-        });
-
-        TextView shippingTextView = root.findViewById(R.id.text_view_shipping_value);
+        subtotalTextView.setText(price);
+        estimatedTotalTextView.setText(price + " + Tax");
         shippingTextView.setText(R.string.standard_shipping);
-
-        return root;
     }
 }

@@ -24,6 +24,7 @@ import com.squareup.picasso.Picasso;
 
 import java.text.NumberFormat;
 import java.util.Currency;
+import java.util.EventListener;
 import java.util.Map;
 
 import io.ionic.demo.ecommerce.EcommerceApp;
@@ -44,13 +45,19 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     private final NumberFormat format;
 
     /**
+     * Update listener for navbar badge
+     */
+    private View.OnClickListener updateListener;
+
+    /**
      * Constructs a ProductAdapter with context, a list of products to display, and whether
      * the adapter will be used to display a grid or not.
      *
      * @param Activity The Activity containing the adapter.
      */
-    public CartAdapter(Activity activity) {
+    public CartAdapter(Activity activity, View.OnClickListener updateListener) {
         this.activity = activity;
+        this.updateListener = updateListener;
 
         format = NumberFormat.getCurrencyInstance();
         format.setMaximumFractionDigits(0);
@@ -114,6 +121,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                 }
 
                 self.notifyDataSetChanged();
+                updateListener.onClick(v);
             });
             builder.show();
         });
