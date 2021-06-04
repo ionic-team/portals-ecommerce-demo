@@ -10,8 +10,8 @@ class ProductCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var priceLabel: UILabel!
     
-    func configure(with product: Product, loader: ProductImageLoaderProtocol?) {
-        imageView.image = loader?.imageForProduct(product)
+    func configure(with product: Product, loader: ImageLoaderProtocol?) {
+        imageView.image = loader?.imageFor(product.imageName)
         titleLabel.text = product.title
         priceLabel.text = product.formattedPrice
 

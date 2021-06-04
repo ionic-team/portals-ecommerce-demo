@@ -1,12 +1,24 @@
 import UIKit
 import Capacitor
 
-class HostedContentViewController: CAPBridgeViewController {
+class HostedContentViewController: CAPBridgeViewController, ApplicationCoordinationParticipant {
+    weak var coordinator: ApplicationCoordinator? {
+        didSet {
+            apiPlugin?.dataProvider = coordinator?.dataStore
+        }
+    }
+    
     private(set) var isObservingWebLoading: Bool = false
+    private var apiPlugin: ShopAPIPlugin?
 
     override func viewDidLoad() {
+        // register for KVO
+        observeWebView()
+        // now call super which will start the initial load
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        // find the plugin the bridge has instantiated and store a reference to it
+        apiPlugin = bridge?.plugin(withName: "ShopAPI") as? ShopAPIPlugin
+        apiPlugin?.dataProvider = coordinator?.dataStore
     }
     
     func webViewCompletedInitialLoad() {

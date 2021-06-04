@@ -11,11 +11,12 @@ class ProductGalleryViewController: UIViewController, ApplicationCoordinationPar
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.carouselProducts = (coordinator?.products ?? [])
+        
+        viewModel.carouselProducts = (coordinator?.dataStore.products ?? [])
             .filter({ $0.category == .mustHaves })
-        viewModel.listProducts = (coordinator?.products ?? [])
+        viewModel.listProducts = (coordinator?.dataStore.products ?? [])
             .shuffled()
-        viewModel.imageLoader = coordinator?.imageLoader
+        viewModel.imageLoader = coordinator?.dataStore.imageLoader
         viewModel.configure(with: collectionView)
     }
     

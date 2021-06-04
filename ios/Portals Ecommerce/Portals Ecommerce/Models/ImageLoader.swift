@@ -1,18 +1,23 @@
 import UIKit
 
-class ImageLoader: ProductImageLoaderProtocol {
+class ImageLoader: ImageLoaderProtocol {
     private let imageWidth: CGFloat = 500
     private let imageHeight: CGFloat = 500
+    private var generatedImageCache: [String:UIImage] = [:]
     
-    func imageForProduct(_ product: Product) -> UIImage? {
-        if let image = UIImage(named: product.imageName) {
+    func imageFor(_ imageName: String) -> UIImage? {
+        if let image = UIImage(named: imageName) {
             return image
         }
         // generate a random color image
-        return UIGraphicsImageRenderer(size: CGSize(width: imageWidth, height: imageHeight)).image { context in
+        if let image = generatedImageCache[imageName] {
+            return image
+        }
+        generatedImageCache[imageName] = UIGraphicsImageRenderer(size: CGSize(width: imageWidth, height: imageHeight)).image { context in
             UIColor.random.set()
             UIRectFill(CGRect(x: 0, y: 0, width: imageWidth, height: imageHeight))
         }
+        return generatedImageCache[imageName]!
     }
 }
 
