@@ -51,10 +51,9 @@ public class CartFragment extends Fragment {
         format.setMaximumFractionDigits(2);
         format.setMinimumFractionDigits(2);
         format.setCurrency(Currency.getInstance("USD"));
-
         recyclerView = root.findViewById(R.id.cart_recycler_view);
         cartViewModel.getShoppingCart().observe(getViewLifecycleOwner(), products -> {
-            cartAdapter = new CartAdapter(CartFragment.this.getContext());
+            cartAdapter = new CartAdapter(CartFragment.this.getActivity());
             recyclerView.setLayoutManager(new LinearLayoutManager(CartFragment.this.getContext(), LinearLayoutManager.VERTICAL, false));
             recyclerView.setAdapter(cartAdapter);
 
@@ -64,7 +63,7 @@ public class CartFragment extends Fragment {
         });
 
         TextView shippingTextView = root.findViewById(R.id.text_view_shipping_value);
-        shippingTextView.setText("Standard - Free");
+        shippingTextView.setText(R.string.standard_shipping);
 
         return root;
     }

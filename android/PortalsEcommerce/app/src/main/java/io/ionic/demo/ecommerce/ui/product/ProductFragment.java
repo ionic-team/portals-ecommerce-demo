@@ -71,7 +71,7 @@ public class ProductFragment extends Fragment {
             BottomNavigationView navView = getActivity().findViewById(R.id.nav_view);
             BadgeDrawable badge = navView.getOrCreateBadge(R.id.navigation_cart);
             badge.setVisible(true);
-            badge.setNumber(badge.getNumber()+1);
+            badge.setNumber(EcommerceApp.getInstance().getShoppingCart().getTotalItemCount());
         });
 
         return root;

@@ -1,0 +1,84 @@
+package io.ionic.demo.ecommerce.ui.cart;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.material.badge.BadgeDrawable;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import io.ionic.demo.ecommerce.EcommerceApp;
+import io.ionic.demo.ecommerce.R;
+import io.ionic.demo.ecommerce.data.model.Product;
+
+public class CartQuantityDialog extends AlertDialog {
+
+    public static class Builder extends AlertDialog.Builder {
+        /**
+         * The dialog root view
+         */
+        private View root;
+
+        /**
+         * The product associated with this dialog
+         */
+        private Product product;
+
+        private Activity activity;
+
+        public Builder(Activity activity) {
+            super(activity);
+        }
+
+        public void createView(ViewGroup viewGroup, Product product, int qty) {
+            root = LayoutInflater.from(super.getContext()).inflate(R.layout.dialog_cart_quantity, viewGroup, false);
+            TextView quantityText = root.findViewById(R.id.text_quantity);
+            quantityText.setText(""+qty);
+            this.product = product;
+            super.setView(root);
+        }
+
+        public void setupListeners() {
+            Button increment = root.findViewById(R.id.increment_button);
+            Button decrement = root.findViewById(R.id.decrement_button);
+            TextView quantityText = root.findViewById(R.id.text_quantity);
+
+            increment.setOnClickListener(v -> {
+                int qty = Integer.parseInt(quantityText.getText().toString());
+                qty += 1;
+                quantityText.setText(""+qty);
+                EcommerceApp.getInstance().getShoppingCart().addItem(product);
+
+                // Increment badge number on the bottom nav
+                BottomNavigationView navView = activity.findViewById(R.id.nav_view);
+                BadgeDrawable badge = navView.getOrCreateBadge(R.id.navigation_cart);
+                badge.setNumber(EcommerceApp.getInstance().getShoppingCart().getTotalItemCount());
+                if (EcommerceApp.getInstance().getShoppingCart().getTotalItemCount() > 0) {
+                    badge.setVisible(true);
+                }
+            });
+
+            decrement.setOnClickListener(v -> {
+                int qty = Integer.parseInt(quantityText.getText().toString());
+                qty -= 1;
+                if (qty >= 0) {
+                    EcommerceApp.getInstance().getShoppingCart().removeItem(product);
+                } else {
+                    qty = 0;
+                }
+                quantityText.setText(""+qty);
+            });
+        }
+    }
+
+    public CartQuantityDialog(@NonNull Context context) {
+        super(context);
+    }
+}
