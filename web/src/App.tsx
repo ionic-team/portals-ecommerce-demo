@@ -1,7 +1,8 @@
 import React from 'react';
-import { IonApp, IonRouterOutlet } from '@ionic/react';
+import { IonApp, IonContent, IonHeader, IonPage, IonRouterOutlet, IonTitle, IonToolbar } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Route } from 'react-router';
+import { Link } from 'react-router-dom'
 import { AddressPage } from './pages/AddressPage';
 import { CheckoutPage } from './pages/CheckoutPage';
 import { HelpPage } from './pages/HelpPage';
@@ -28,16 +29,28 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import { DataProvider } from './DataProvider';
 
-// Temp component for testing
-const Home = () => {
-  return <div>
-    <a href="/address">Address</a>&nbsp;
-    <a href="/checkout">Checkout</a>&nbsp;
-    <a href="/help">Help</a>&nbsp;
-    <a href="/payment">Payment</a>&nbsp;
-    <a href="/user">User</a>&nbsp;
-  </div>
-}
+interface HomeProps {}
+
+const Home: React.FC<HomeProps> = () => {
+  return (
+    <IonPage>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Home</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent>
+        <div>
+          <Link to="/address">Address</Link>&nbsp;
+          <Link to="/checkout">Checkout</Link>&nbsp;
+          <Link to="/help">Help</Link>&nbsp;
+          <Link to="/payment">Payment</Link>&nbsp;
+          <Link to="/user">User</Link>&nbsp;
+        </div>
+      </IonContent>
+    </IonPage>
+  );
+};
 
 function App() {
   return (

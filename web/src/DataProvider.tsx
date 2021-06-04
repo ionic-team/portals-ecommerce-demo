@@ -25,7 +25,10 @@ export const DataProvider: React.FC = ({ children }) => {
   useEffect(() => {
     async function init() {
       setIsLoading(true);
-      const [user, products] = await Promise.all([getUserDetails(), getProducts()]);
+      const [user, products] = await Promise.all([
+        getUserDetails(),
+        getProducts(),
+      ]);
       setUser(user);
       setProducts(products);
       setIsLoading(false);
@@ -47,7 +50,7 @@ export const DataProvider: React.FC = ({ children }) => {
         user,
         products,
         setUser: setUserData,
-        cart
+        cart,
       }}
     >
       {children}
@@ -58,11 +61,13 @@ export const DataProvider: React.FC = ({ children }) => {
 async function getUserDetails(): Promise<User> {
   if (Capacitor.isNativePlatform()) {
     // todo: make calls into native
-    return {} as any;
+    const response = await fetch('/data.json');
+    const data = (await response.json()) as Data;
+    return data.user;
   } else {
     // mock data for use in dev
     const response = await fetch('/data.json');
-    const data = await response.json() as Data;
+    const data = (await response.json()) as Data;
     return data.user;
   }
 }
@@ -70,7 +75,9 @@ async function getUserDetails(): Promise<User> {
 async function getProducts(): Promise<Product[]> {
   if (Capacitor.isNativePlatform()) {
     // todo: make calls into native
-    return {} as any;
+    const response = await fetch('/data.json');
+    const data = (await response.json()) as Data;
+    return data.products;
   } else {
     // mock data for use in dev
     const response = await fetch('/data.json');
@@ -86,5 +93,3 @@ async function updateUserDetails(user: User): Promise<void> {
     // noop for use in dev
   }
 }
-
-
