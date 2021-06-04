@@ -22,23 +22,23 @@ class ShopAPIPlugin: CAPPlugin {
     weak var actionDelegate: ShopAPIActionDelegateProtocol?
     
     @objc func getCart(_ call: CAPPluginCall) {
-        if let cart = dataProvider?.cart, let object = encode(CartWrapper(cart)) {
+        if let cart = dataProvider?.cart, let object = encode(cart) {
             call.resolve(object)
         }
         call.reject("Cart unavailable!")
     }
     
     @objc func getUserDetails(_ call: CAPPluginCall) {
-        if let user = dataProvider?.user, let object = encode(UserWrapper(user)) {
+        if let user = dataProvider?.user, let object = encode(user) {
             call.resolve(object)
         }
         call.reject("User unavailable!")
     }
     
     @objc func updateUserDetails(_ call: CAPPluginCall) {
-        if let wrapper: UserWrapper = decode(object: call.jsObjectRepresentation) {
+        if let user: User = decode(object: call.jsObjectRepresentation) {
             call.resolve()
-            dataProvider?.user = wrapper.user
+            dataProvider?.user = user
         }
         else {
             call.reject("Invalid user details!")
@@ -55,27 +55,11 @@ class ShopAPIPlugin: CAPPlugin {
     }
     
     @objc func getUserPicture(_ call: CAPPluginCall) {
-        call.resolve()
+        call.resolve(["picture": ""])
     }
     
     @objc func setUserPicture(_ call: CAPPluginCall) {
         call.resolve()
-    }
-}
-
-private struct CartWrapper: Encodable {
-    var cart: Cart
-    
-    init(_ cart: Cart) {
-        self.cart = cart
-    }
-}
-
-private struct UserWrapper: Codable {
-    var user: User
-    
-    init(_ user: User) {
-        self.user = user
     }
 }
 

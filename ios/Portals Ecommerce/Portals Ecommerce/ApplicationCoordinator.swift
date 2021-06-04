@@ -5,15 +5,11 @@ protocol ApplicationCoordinationParticipant: AnyObject {
 }
 
 @objc class ApplicationCoordinator: NSObject, UINavigationControllerDelegate {
-    let imageLoader = ImageLoader()
-    private(set) var products: [Product]
-    private(set) var user: User
-    private(set) var cart: Cart
+    private(set) var dataStore: DataStoreViewModel
     
     override init() {
-        products = ApplicationCoordinator.generatedProducts()
-        user = ApplicationCoordinator.generatedUser()
-        cart = Cart()
+        var products = ApplicationCoordinator.generatedProducts()
+        var user = ApplicationCoordinator.generatedUser()
         
         if let path = Bundle.main.path(forResource: "data", ofType: "json") {
             let url = URL(fileURLWithPath: path)
@@ -27,6 +23,8 @@ protocol ApplicationCoordinationParticipant: AnyObject {
                 assertionFailure("Failed to load demo JSON")
             }
         }
+        
+        dataStore = DataStoreViewModel(with: user, products: products, imageLoader: ImageLoader())
     }
     
     // MARK: - UINavigationControllerDelegate

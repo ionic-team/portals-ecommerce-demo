@@ -147,8 +147,8 @@
 		6216AF1C265FEB7B003E3152 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
-				6216AF1F26601CF1003E3152 /* GalleryViewModel.swift */,
 				6286965626695E8F00F3AE9A /* DataStoreViewModel.swift */,
+				6216AF1F26601CF1003E3152 /* GalleryViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";

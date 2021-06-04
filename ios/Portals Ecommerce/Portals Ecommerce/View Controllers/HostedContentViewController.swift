@@ -10,7 +10,7 @@ class HostedContentViewController: CAPBridgeViewController, ApplicationCoordinat
     override func viewDidLoad() {
         // register for KVO
         observeWebView()
-        // now call super which will trigger the initial load
+        // now call super which will start the initial load
         super.viewDidLoad()
         // find the plugin the bridge has instantiated and store a reference to it
         apiPlugin = bridge?.plugin(withName: "ShopAPI") as? ShopAPIPlugin

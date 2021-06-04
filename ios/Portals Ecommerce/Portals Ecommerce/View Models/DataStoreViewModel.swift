@@ -1,9 +1,11 @@
 import Foundation
 
 class DataStoreViewModel: ShopAPIDataProviderProtocol {
+    private(set) var imageLoader: ImageLoaderProtocol
+    // MARK: - ShopAPIDataProviderProtocol
+    private(set) var cart: Cart = Cart()
     var products: [Product] = []
     var user: User
-    private(set) var cart: Cart = Cart()
     var userImage: String {
         get {
             return ""
@@ -12,11 +14,10 @@ class DataStoreViewModel: ShopAPIDataProviderProtocol {
             
         }
     }
-    private var loader: ImageLoaderProtocol?
     
-    init(with user: User, products: [Product], loader: ImageLoaderProtocol) {
+    init(with user: User, products: [Product], imageLoader: ImageLoaderProtocol) {
         self.user = user
         self.products = products
-        self.loader = loader
+        self.imageLoader = imageLoader
     }
 }
