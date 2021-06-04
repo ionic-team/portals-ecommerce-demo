@@ -30,6 +30,7 @@ public class ProfileFragment extends Fragment {
                 textView.setText(s);
             }
         });
+
         return root;
     }
 }

@@ -18,8 +18,9 @@ export const DataProvider: React.FC = ({ children }) => {
   const [products, setProducts] = useState<Product[]>();
   const [cart] = useState<Cart>({
     id: 1,
-    basket: [],
-  });
+    subTotal: 1,
+    basket: []
+  })
 
   useEffect(() => {
     async function init() {
