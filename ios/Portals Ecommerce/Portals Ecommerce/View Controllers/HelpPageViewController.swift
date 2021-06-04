@@ -1,6 +1,6 @@
 import UIKit
 
-class HelpPageViewController: HostedContentViewController {
+class HelpPageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

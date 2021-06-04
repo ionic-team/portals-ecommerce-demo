@@ -125,7 +125,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="ffr-aZ-MBE"/>
                                                         </constraints>
-                                                        <state key="normal" title="Button"/>
+                                                        <state key="normal" title="Add to cart"/>
                                                         <connections>
                                                             <action selector="addToCart:" destination="wFR-xQ-379" eventType="touchUpInside" id="qdp-iW-tyr"/>
                                                         </connections>
@@ -168,7 +168,7 @@
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="MdB-CZ-1DL">
                         <barButtonItem key="rightBarButtonItem" image="toolbar-help-icon" style="plain" id="qoT-Ie-PH1">
                             <connections>
-                                <action selector="showHelp:" destination="wFR-xQ-379" id="Bwi-Aa-bwK"/>
+                                <segue destination="iHC-wE-jbf" kind="show" id="Ojj-VC-RLa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -184,6 +184,22 @@
             </objects>
             <point key="canvasLocation" x="1943" y="-551"/>
         </scene>
+        <!--Help Page View Controller-->
+        <scene sceneID="bPR-bq-L84">
+            <objects>
+                <viewController id="iHC-wE-jbf" customClass="HelpPageViewController" customModule="Ecommerce" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1sn-Nk-onj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="fm6-h2-iDn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="e2a-51-eao"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dCI-8A-gop" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2799" y="-551"/>
+        </scene>
         <!--Cart View Controller-->
         <scene sceneID="heY-hq-rfv">
             <objects>
@@ -191,10 +207,29 @@
                     <view key="view" contentMode="scaleToFill" id="AuZ-k9-cOj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qlA-YP-Q3s">
+                                <rect key="frame" x="16" y="44" width="382" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vxP-i6-cey"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qlA-YP-Q3s" firstAttribute="leading" secondItem="vxP-i6-cey" secondAttribute="leading" constant="16" id="0oY-OL-0Kx"/>
+                            <constraint firstItem="vxP-i6-cey" firstAttribute="bottom" secondItem="qlA-YP-Q3s" secondAttribute="bottom" id="SEv-rw-YGZ"/>
+                            <constraint firstItem="vxP-i6-cey" firstAttribute="trailing" secondItem="qlA-YP-Q3s" secondAttribute="trailing" constant="16" id="edX-sX-kFt"/>
+                            <constraint firstItem="qlA-YP-Q3s" firstAttribute="top" secondItem="vxP-i6-cey" secondAttribute="top" id="wSo-0z-f4n"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="tab-cart-icon" id="KcF-Ry-Rup"/>
+                    <connections>
+                        <outlet property="textView" destination="qlA-YP-Q3s" id="ndu-ff-1UT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="woX-lM-KGo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -241,6 +276,9 @@
         <image name="tab-profile-icon" width="24" height="24"/>
         <image name="tab-shop-icon" width="24" height="24"/>
         <image name="toolbar-help-icon" width="24" height="24"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

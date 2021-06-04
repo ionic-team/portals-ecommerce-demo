@@ -22,11 +22,10 @@ class ProductDetailViewController: UIViewController, ApplicationCoordinationPart
     }
     
     @IBAction func addToCart(_ sender: Any?) {
-        
-    }
-    
-    @IBAction func showHelp(_ sender: Any?) {
-        
+        guard let product = product else {
+            return
+        }
+        coordinator?.dataStore.cart.add(product: product, quantity: 1)
     }
     
     // MARK: - Internal
