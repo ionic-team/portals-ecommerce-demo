@@ -9,4 +9,7 @@
     <string name="product_image_cd">Product Image</string>
     <string name="shop_must_haves_title"><![CDATA[Must Haves, Bestsellers & More]]></string>
     <string name="add_to_cart">Add to cart</string>
+    <string name="subtotal">Subtotal</string>
+    <string name="shipping">Shipping</string>
+    <string name="estimated_total">Estimated Total</string>
 </resources>
