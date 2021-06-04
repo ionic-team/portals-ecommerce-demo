@@ -18,6 +18,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.google.android.material.badge.BadgeDrawable;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
 
 import java.text.NumberFormat;
@@ -64,7 +66,12 @@ public class ProductFragment extends Fragment {
         final Button addToCartButton = root.findViewById(R.id.add_cart_button);
         addToCartButton.setOnClickListener(v -> {
             EcommerceApp.getInstance().getShoppingCart().addItem(product);
-            Navigation.findNavController(getView()).navigate(R.id.navigation_cart);
+
+            // Increment badge number on the bottom nav
+            BottomNavigationView navView = getActivity().findViewById(R.id.nav_view);
+            BadgeDrawable badge = navView.getOrCreateBadge(R.id.navigation_cart);
+            badge.setVisible(true);
+            badge.setNumber(EcommerceApp.getInstance().getShoppingCart().getTotalItemCount());
         });
 
         return root;
