@@ -1,14 +1,6 @@
 import { registerPlugin } from "@capacitor/core";
 import { Cart, User } from "./models";
 
-export interface CartResult {
-  cart: Cart;
-}
-
-export interface UserResult {
-  user: User;
-}
-
 export interface CheckoutResult {
   result: "success" | "cancel" | "failure";
 }
@@ -18,9 +10,9 @@ export interface UserPicture {
 }
 
 export interface ShopAPIPlugin {
-  getCart(): Promise<CartResult>;
-  getUserDetails(): Promise<UserResult>;
-  updateUserDetails(result: UserResult): Promise<void>;
+  getCart(): Promise<Cart>;
+  getUserDetails(): Promise<User>;
+  updateUserDetails(result: User): Promise<void>;
   checkoutResult(result: CheckoutResult): Promise<void>;
   getUserPicture(): Promise<UserPicture>;
   setUserPicture(picture: UserPicture): Promise<void>;
