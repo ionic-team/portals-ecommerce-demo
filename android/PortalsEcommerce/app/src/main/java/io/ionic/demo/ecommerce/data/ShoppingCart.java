@@ -2,6 +2,7 @@ package io.ionic.demo.ecommerce.data;
 
 import androidx.annotation.NonNull;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -88,5 +89,54 @@ public class ShoppingCart {
         }
 
         return output.toString();
+    }
+
+    /**
+     * Gets the number of unique products in the cart
+     * @return the number of unique products in the cart
+     */
+    public int getUniqueItemCount() {
+        return contents.keySet().size();
+    }
+
+    /**
+     * Gets the total number of products in the cart
+     * @return the total number of products in the cart
+     */
+    public int getTotalItemCount() {
+        int sum = 0;
+        Collection<Integer> nums = contents.values();
+        for (int num : nums) {
+            sum += num;
+        }
+        return sum;
+    }
+
+    /**
+     * Get the products in the cart as a Map
+     * @return A map of Products and their quantities with the keys being product and the values being the quantities
+     */
+    public Map<Product, Integer> getProductsInCart() {
+        return contents;
+    }
+
+    /**
+     * Gets the products in the cart as an Array
+     * @return An array of unique Products currently in the cart
+     */
+    public Product[] getProductsInCartAsArray() {
+        return contents.keySet().toArray(new Product[0]);
+    }
+
+    /**
+     * Get the total sum of the Products in the shopping cart
+     * @return The total price of the items in the cart
+     */
+    public float getTotalPriceOfProductsInCart() {
+        float sum = 0;
+        for(Map.Entry<Product, Integer> product : contents.entrySet()) {
+            sum += product.getKey().price * product.getValue();
+        }
+        return sum;
     }
 }
