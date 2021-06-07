@@ -3,12 +3,15 @@ import UIKit
 class CartViewController: UIViewController, ApplicationCoordinationParticipant {
     weak var coordinator: ApplicationCoordinator?
     
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var emptyCartContainerView: UIView!
     @IBOutlet private weak var textView: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         textView.text = ""
+        tableView.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
