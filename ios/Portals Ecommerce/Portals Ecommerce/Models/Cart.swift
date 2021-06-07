@@ -26,11 +26,11 @@ class Cart {
     
     func update(product: Product, quantity: UInt) {
         // do we already have this product?
-        let index = contents.firstIndex { item in
+        let existingIndex = contents.firstIndex { item in
             item.product == product
         }
         // if not, insert it
-        guard let index = index else {
+        guard let index = existingIndex else {
             if quantity > 0 {
                 contents.append(Item(product: product, quantity: quantity))
             }
