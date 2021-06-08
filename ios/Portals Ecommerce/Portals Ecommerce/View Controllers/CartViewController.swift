@@ -6,12 +6,20 @@ class CartViewController: UIViewController, ApplicationCoordinationParticipant {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var emptyCartContainerView: UIView!
     @IBOutlet private weak var textView: UITextView!
-
+    
+    private var viewModel: CartViewModel = CartViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         textView.text = ""
-        tableView.isHidden = true
+        emptyCartContainerView.isHidden = true
+        
+        if let cart = coordinator?.dataStore.cart {
+            viewModel.cart = cart
+        }
+        viewModel.imageLoader = coordinator?.dataStore.imageLoader
+        viewModel.configure(with: tableView)
     }
     
     override func viewDidAppear(_ animated: Bool) {

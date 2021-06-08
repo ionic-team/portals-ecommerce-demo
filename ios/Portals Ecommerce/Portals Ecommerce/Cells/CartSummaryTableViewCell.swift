@@ -1,7 +1,8 @@
 import UIKit
 
 class CartSummaryTableViewCell: UITableViewCell {
-
+    static let cellIdentifier = "CartSummaryTableViewCell"
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

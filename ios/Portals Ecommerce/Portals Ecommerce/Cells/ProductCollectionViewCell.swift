@@ -14,6 +14,5 @@ class ProductCollectionViewCell: UICollectionViewCell {
         imageView.image = loader?.imageFor(product.imageName)
         titleLabel.text = product.title
         priceLabel.text = product.formattedPrice
-
     }
 }

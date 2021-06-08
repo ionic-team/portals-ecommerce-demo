@@ -4,13 +4,12 @@ class ProductGalleryViewController: UIViewController, ApplicationCoordinationPar
     weak var coordinator: ApplicationCoordinator?
     
     @IBOutlet private weak var collectionView: UICollectionView!
-    var viewModel: GalleryViewModel = GalleryViewModel()
     
-    let detailSegueIdentifier = "ShowDetailSegue"
+    private var viewModel: GalleryViewModel = GalleryViewModel()
+    private let detailSegueIdentifier = "ShowDetailSegue"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         viewModel.carouselProducts = (coordinator?.dataStore.products ?? [])
             .filter({ $0.category == .mustHaves })
