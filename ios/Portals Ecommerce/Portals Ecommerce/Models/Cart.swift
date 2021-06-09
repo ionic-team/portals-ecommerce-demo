@@ -52,6 +52,10 @@ class Cart {
             contents.remove(at: index)
         }
     }
+    
+    func clear() {
+        contents = []
+    }
 }
 
 extension Cart: Encodable {
