@@ -3,6 +3,7 @@ import Combine
 
 class CartViewController: UIViewController, ApplicationCoordinationParticipant, CartInteractionDelegate {
     weak var coordinator: ApplicationCoordinator?
+    var requiresPreloading: Bool { return true }
     
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var emptyCartContainerView: UIView!
@@ -15,6 +16,10 @@ class CartViewController: UIViewController, ApplicationCoordinationParticipant, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // we don't have an easy way to customize the badge appearance, so instead we will make
+        // the badge clear and customize the appearance of the string that we set in it
+        tabBarItem.badgeColor = .clear
+        tabBarItem.setBadgeTextAttributes([.foregroundColor: UIColor(displayP3Red: 255/255.0, green: 184/255.0, blue: 0/255.0, alpha: 1), .font : UIFont.systemFont(ofSize: 8)], for: .normal)
         // add the hidden picker input
         pickerInput.selectionAction = { [weak self] (newQuantity) in
             if let item = self?.selectedItem {
@@ -52,7 +57,9 @@ class CartViewController: UIViewController, ApplicationCoordinationParticipant, 
     
     func requestCheckout() {
         let controller = UIAlertController(title: "Checkout", message: nil, preferredStyle: .alert)
-        controller.addAction(UIAlertAction(title:"OK", style: .cancel, handler: nil))
+        controller.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { [weak self] action in
+            self?.viewModel.cart.clear()
+        }))
         controller.title = "Checkout"
         present(controller, animated: true, completion: nil)
     }
@@ -63,10 +70,12 @@ class CartViewController: UIViewController, ApplicationCoordinationParticipant, 
         if viewModel.cart.contents.count > 0 {
             emptyCartContainerView.isHidden = true
             tableView.isHidden = false
+            tabBarItem.badgeValue = "●"
         }
         else {
             emptyCartContainerView.isHidden = false
             tableView.isHidden = true
+            tabBarItem.badgeValue = nil
         }
         if reloading {
             tableView.reloadData()

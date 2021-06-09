@@ -2,6 +2,11 @@ import UIKit
 
 protocol ApplicationCoordinationParticipant: AnyObject {
     var coordinator: ApplicationCoordinator? { get set }
+    var requiresPreloading: Bool { get }
+}
+
+extension ApplicationCoordinationParticipant {
+    var requiresPreloading: Bool { return false }
 }
 
 @objc class ApplicationCoordinator: NSObject, UINavigationControllerDelegate {

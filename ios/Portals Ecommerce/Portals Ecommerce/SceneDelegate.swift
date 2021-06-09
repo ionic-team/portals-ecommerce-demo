@@ -15,12 +15,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             for viewController in tabController.viewControllers ?? [] {
                 if let participant = viewController as? ApplicationCoordinationParticipant {
                     participant.coordinator = coordinator
+                    if participant.requiresPreloading {
+                        let _ = viewController.view
+                    }
                 }
                 else if let navController = viewController as? UINavigationController {
                     navController.delegate = coordinator
                     for viewController in navController.viewControllers {
                         if let participant = viewController as? ApplicationCoordinationParticipant {
                             participant.coordinator = coordinator
+                            if participant.requiresPreloading {
+                                let _ = viewController.view
+                            }
                         }
                     }
                 }
