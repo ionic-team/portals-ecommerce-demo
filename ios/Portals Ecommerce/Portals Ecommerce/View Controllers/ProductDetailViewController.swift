@@ -18,7 +18,7 @@ class ProductDetailViewController: UIViewController, ApplicationCoordinationPart
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        // style the button
         addButton.setBackgroundImage(view.tintColor.buttonImageWith(cornerRadius: 8), for: .normal)
         addButton.setTitleColor(.white, for: .normal)
     }
