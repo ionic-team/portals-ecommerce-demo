@@ -154,28 +154,30 @@ const PaymentPage = () => {
           <IonLabel position="fixed">CVV</IonLabel>
           <IonInput 
             placeholder=""
+            maxlength={4}
             debounce={500}
             onIonChange={(event) => {
               if (user) {
-                user.creditCards[paymentMethodIndex].id = (event.target as any).value;
+                user.creditCards[paymentMethodIndex].cvv = (event.target as any).value;
                 setUser(user);
               }
             }}
-            value={user?.creditCards[paymentMethodIndex].id}
+            value={user?.creditCards[paymentMethodIndex].cvv}
           ></IonInput>
         </IonItem>
         <IonItem lines="full">
           <IonLabel position="fixed">Zip Code</IonLabel>
           <IonInput 
             placeholder=""
+            maxlength={5}
             debounce={500}
             onIonChange={(event) => {
               if (user) {
-                // TODO Add zip to CC 
-                // user.creditCards[paymentMethodIndex]
+                user.creditCards[paymentMethodIndex].zip = (event.target as any).value;
+                setUser(user);
               }
             }}
-            value=''
+            value={user?.creditCards[paymentMethodIndex].zip}
           ></IonInput>
         </IonItem>
         <IonItem lines="none">

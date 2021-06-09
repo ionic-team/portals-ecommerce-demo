@@ -141,8 +141,9 @@
       {
         "id": 1,
         "company": "Visa",
-        "number": "4111-1111-1111-1234",
-        "expirationDate": "1/1/2025",
+        "number": "4111111111111234",
+        "cvv": "111",
+        "expirationDate": "6/2025",
         "preferred": true
       }
     ]
