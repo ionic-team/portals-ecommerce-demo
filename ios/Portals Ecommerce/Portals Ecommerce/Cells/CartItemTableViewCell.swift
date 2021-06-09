@@ -22,6 +22,7 @@ class CartItemTableViewCell: UITableViewCell {
         layoutMargins = .zero
         contentView.directionalLayoutMargins = .zero
         contentView.layoutMargins = .zero
+        selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

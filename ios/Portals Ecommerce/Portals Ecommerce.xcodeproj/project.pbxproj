@@ -51,6 +51,8 @@
 		62869665266EBEFD00F3AE9A /* CartTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62869664266EBEFD00F3AE9A /* CartTab.storyboard */; };
 		62869667266EBFFD00F3AE9A /* ProfileTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62869666266EBFFD00F3AE9A /* ProfileTab.storyboard */; };
 		62869669266EC18800F3AE9A /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62869668266EC18800F3AE9A /* CartViewModel.swift */; };
+		6286966C266FEF4800F3AE9A /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6286966B266FEF4800F3AE9A /* UIColor+Extensions.swift */; };
+		6286966E2671313F00F3AE9A /* QuantityPickerInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6286966D2671313F00F3AE9A /* QuantityPickerInputView.swift */; };
 		62941E86265DA67F00EE7FE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62941E85265DA67F00EE7FE4 /* AppDelegate.swift */; };
 		62941E88265DA67F00EE7FE4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62941E87265DA67F00EE7FE4 /* SceneDelegate.swift */; };
 		62941E8D265DA67F00EE7FE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62941E8B265DA67F00EE7FE4 /* Main.storyboard */; };
@@ -111,6 +113,8 @@
 		62869664266EBEFD00F3AE9A /* CartTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CartTab.storyboard; sourceTree = "<group>"; };
 		62869666266EBFFD00F3AE9A /* ProfileTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileTab.storyboard; sourceTree = "<group>"; };
 		62869668266EC18800F3AE9A /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
+		6286966B266FEF4800F3AE9A /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		6286966D2671313F00F3AE9A /* QuantityPickerInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityPickerInputView.swift; sourceTree = "<group>"; };
 		62941E82265DA67F00EE7FE4 /* Ecommerce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ecommerce.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62941E85265DA67F00EE7FE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62941E87265DA67F00EE7FE4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 			children = (
 				6216AF712661858A003E3152 /* GallerySectionHeaderView.swift */,
 				6216AF73266185A0003E3152 /* GallerySectionHeaderView.xib */,
+				6286966D2671313F00F3AE9A /* QuantityPickerInputView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -242,6 +247,14 @@
 				6258AB69265ED8E2006E7D8C /* CheckoutViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		6286966A266FEF0300F3AE9A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6286966B266FEF4800F3AE9A /* UIColor+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		62941E79265DA67F00EE7FE4 = {
@@ -275,6 +288,7 @@
 				6216AF1C265FEB7B003E3152 /* View Models */,
 				6216AF7026618535003E3152 /* Views */,
 				6216AF17265EFAEB003E3152 /* Cells */,
+				6286966A266FEF0300F3AE9A /* Extensions */,
 				62941E8B265DA67F00EE7FE4 /* Main.storyboard */,
 				62869662266EBDC700F3AE9A /* ShopTab.storyboard */,
 				62869664266EBEFD00F3AE9A /* CartTab.storyboard */,
@@ -454,6 +468,7 @@
 				6216AF1A265EFB02003E3152 /* ProductCarouselCollectionViewCell.swift in Sources */,
 				6258AB60265EB46C006E7D8C /* ProductDetailViewController.swift in Sources */,
 				6258AB5C265EB413006E7D8C /* CartViewController.swift in Sources */,
+				6286966C266FEF4800F3AE9A /* UIColor+Extensions.swift in Sources */,
 				6216AF1B265EFB02003E3152 /* ProductCollectionViewCell.swift in Sources */,
 				6216AF2026601CF1003E3152 /* GalleryViewModel.swift in Sources */,
 				6258AB6A265ED8E2006E7D8C /* CheckoutViewController.swift in Sources */,
@@ -461,6 +476,7 @@
 				6286965C266EB97700F3AE9A /* CartItemTableViewCell.swift in Sources */,
 				6216AF722661858A003E3152 /* GallerySectionHeaderView.swift in Sources */,
 				6286965E266EB99900F3AE9A /* CartSummaryTableViewCell.swift in Sources */,
+				6286966E2671313F00F3AE9A /* QuantityPickerInputView.swift in Sources */,
 				6258AB62265EB608006E7D8C /* User.swift in Sources */,
 				6258AB66265ED793006E7D8C /* HostedContentViewController.swift in Sources */,
 				62941E86265DA67F00EE7FE4 /* AppDelegate.swift in Sources */,
