@@ -7,9 +7,17 @@ class Cart {
         var quantity: UInt
     }
     
+    var subTotal: Int {
+        return contents.reduce(0) { $0 + ($1.product.price * Int($1.quantity)) }
+    }
+    
+    var formattedSubtotal: String? {
+        return Product.priceFormatter.string(from: NSNumber(value: subTotal))
+    }
+    
     // properties
     private(set) var id: Int = Int.random(in: 100...1000)
-    private(set) var contents: [Item] = []
+    @Published private(set) var contents: [Item] = []
     
     func add(product: Product, quantity: UInt) {
         // do we already have this product?
@@ -58,8 +66,7 @@ extension Cart: Encodable {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
-        let total = contents.reduce(0) { $0 + ($1.product.price * Int($1.quantity)) }
-        try container.encode(total, forKey: .subTotal)
+        try container.encode(subTotal, forKey: .subTotal)
         
         var cartContents = container.nestedUnkeyedContainer(forKey: .basket)
         for item in contents {

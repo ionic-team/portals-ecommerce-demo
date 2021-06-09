@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uqW-td-VtD">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="p44-md-hhH">
+            <objects>
+                <navigationController id="uqW-td-VtD" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="WyT-8B-ctb">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="07W-Dk-iTz" kind="relationship" relationship="rootViewController" id="iQ3-kH-zDp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7QN-3X-KH7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-464" y="71"/>
+        </scene>
+        <!--Cart-->
+        <scene sceneID="Xsh-JJ-cCB">
+            <objects>
+                <viewController title="Cart" id="07W-Dk-iTz" customClass="CartViewController" customModule="Ecommerce" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="R7i-Hb-hAG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VpH-Wa-Mp1">
+                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your cart is empty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EsM-Cu-hLx">
+                                        <rect key="frame" x="111" y="346" width="192.5" height="30"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="EsM-Cu-hLx" firstAttribute="centerY" secondItem="VpH-Wa-Mp1" secondAttribute="centerY" id="51c-01-y4f"/>
+                                    <constraint firstItem="EsM-Cu-hLx" firstAttribute="centerX" secondItem="VpH-Wa-Mp1" secondAttribute="centerX" id="eqR-7U-kPA"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EOc-si-Nm8">
+                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="InH-zL-9wq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="InH-zL-9wq" firstAttribute="bottom" secondItem="VpH-Wa-Mp1" secondAttribute="bottom" id="0t6-r4-M0Z"/>
+                            <constraint firstItem="EOc-si-Nm8" firstAttribute="top" secondItem="InH-zL-9wq" secondAttribute="top" id="FOd-rh-J8c"/>
+                            <constraint firstItem="EOc-si-Nm8" firstAttribute="leading" secondItem="InH-zL-9wq" secondAttribute="leading" id="Shr-C1-zeK"/>
+                            <constraint firstItem="InH-zL-9wq" firstAttribute="bottom" secondItem="EOc-si-Nm8" secondAttribute="bottom" id="TFq-MD-RzI"/>
+                            <constraint firstItem="InH-zL-9wq" firstAttribute="trailing" secondItem="EOc-si-Nm8" secondAttribute="trailing" id="c1O-G3-Hlk"/>
+                            <constraint firstItem="VpH-Wa-Mp1" firstAttribute="top" secondItem="InH-zL-9wq" secondAttribute="top" id="muX-GD-tt4"/>
+                            <constraint firstItem="InH-zL-9wq" firstAttribute="trailing" secondItem="VpH-Wa-Mp1" secondAttribute="trailing" id="vkL-mc-tOa"/>
+                            <constraint firstItem="VpH-Wa-Mp1" firstAttribute="leading" secondItem="InH-zL-9wq" secondAttribute="leading" id="weH-M7-MCt"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="tab-cart-icon" id="avg-C6-dXI"/>
+                    <navigationItem key="navigationItem" title="Cart" id="P21-cQ-ILr"/>
+                    <connections>
+                        <outlet property="emptyCartContainerView" destination="VpH-Wa-Mp1" id="DBW-gU-rUL"/>
+                        <outlet property="tableView" destination="EOc-si-Nm8" id="n1c-To-Z9Y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YQz-0E-zFQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="406" y="71"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="tab-cart-icon" width="24" height="24"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

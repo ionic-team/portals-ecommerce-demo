@@ -17,7 +17,7 @@ class ProductDetailViewController: UIViewController, ApplicationCoordinationPart
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        addButton.setBackgroundImage(buttonImageWithColor(view.tintColor, radius: 8), for: .normal)
+        addButton.setBackgroundImage(view.tintColor.buttonImageWith(cornerRadius: 8), for: .normal)
         addButton.setTitleColor(.white, for: .normal)
     }
     
@@ -40,15 +40,5 @@ class ProductDetailViewController: UIViewController, ApplicationCoordinationPart
         priceLabel.text = product.formattedPrice
         descriptionLabel.text = product.description
         navigationItem.title = product.title
-    }
-    
-    private func buttonImageWithColor(_ color: UIColor, radius: CGFloat) -> UIImage {
-        let dimension = (radius * 2) + 1.0
-        let image = UIGraphicsImageRenderer(size: CGSize(width: dimension, height: dimension)).image { context in
-            let path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: dimension, height: dimension), byRoundingCorners: [.allCorners], cornerRadii: CGSize(width: radius, height: radius))
-            color.set()
-            path.fill()
-        }
-        return image.stretchableImage(withLeftCapWidth: Int(ceil(radius)), topCapHeight: Int(ceil(radius)))
     }
 }
