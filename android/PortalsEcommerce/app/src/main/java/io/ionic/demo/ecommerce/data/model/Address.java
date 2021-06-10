@@ -8,6 +8,6 @@ public class Address {
     public String street;
     public String city;
     public String state;
-    public int postal;
+    public String postal;
     public boolean preferred;
 }
