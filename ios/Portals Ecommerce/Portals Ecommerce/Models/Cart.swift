@@ -11,13 +11,26 @@ class Cart {
     private(set) var id: Int = Int.random(in: 100...1000)
     private(set) var contents: [Item] = []
     
-    func update(product: Product, quantity: UInt) {
+    func add(product: Product, quantity: UInt) {
         // do we already have this product?
         let index = contents.firstIndex { item in
             item.product == product
         }
+        if let index = index {
+            update(product: product, quantity: quantity + contents[index].quantity)
+        }
+        else {
+            update(product: product, quantity: quantity)
+        }
+    }
+    
+    func update(product: Product, quantity: UInt) {
+        // do we already have this product?
+        let existingIndex = contents.firstIndex { item in
+            item.product == product
+        }
         // if not, insert it
-        guard let index = index else {
+        guard let index = existingIndex else {
             if quantity > 0 {
                 contents.append(Item(product: product, quantity: quantity))
             }
