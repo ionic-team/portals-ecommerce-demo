@@ -6,6 +6,7 @@ class HelpPageViewController: HostedContentViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        navigationItem.title = NSLocalizedString("Help", comment: "Help page title")
     }
     
     override func instanceDescriptor() -> InstanceDescriptor {

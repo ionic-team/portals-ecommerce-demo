@@ -177,9 +177,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="Zbh-kN-jvT">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Xlf-6S-BP8"/>
                         <barButtonItem key="rightBarButtonItem" image="toolbar-help-icon" id="AF6-aY-Iuc">
                             <connections>
-                                <segue destination="x8T-iu-pHz" kind="show" id="iBU-pu-9bF"/>
+                                <action selector="showHelp:" destination="dUU-BE-oDJ" id="WSm-AP-cvg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -194,22 +195,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HCi-DH-5Tn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1943" y="-551"/>
-        </scene>
-        <!--Help Page View Controller-->
-        <scene sceneID="WLh-UY-rFB">
-            <objects>
-                <viewController id="x8T-iu-pHz" customClass="HelpPageViewController" customModule="Ecommerce" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Gbe-9d-lre">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="JhM-uQ-rBJ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="v6M-ia-Pkr"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MoO-LJ-BWi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2765" y="-551"/>
         </scene>
     </scenes>
     <resources>

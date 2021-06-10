@@ -30,6 +30,13 @@ class ProductDetailViewController: UIViewController, ApplicationCoordinationPart
         coordinator?.dataStore.cart.add(product: product, quantity: 1)
     }
     
+    @IBAction func showHelp(_ sender: Any?) {
+        let controller = HelpPageViewController(nibName: nil, bundle: nil)
+        controller.prerender { [weak self] in
+            self?.navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+    
     // MARK: - Internal
     
     private func populateView() {
