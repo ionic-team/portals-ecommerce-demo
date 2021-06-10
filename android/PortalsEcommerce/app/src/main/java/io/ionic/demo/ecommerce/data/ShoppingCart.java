@@ -1,11 +1,16 @@
 package io.ionic.demo.ecommerce.data;
 
+import android.os.Build;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.ionic.demo.ecommerce.data.model.Cart;
+import io.ionic.demo.ecommerce.data.model.CartItem;
 import io.ionic.demo.ecommerce.data.model.Product;
 
 /**
@@ -72,6 +77,27 @@ public class ShoppingCart {
             } else {
                 contents.put(product, contents.get(product) - amount);
             }
+        }
+    }
+
+    public Cart getCart() {
+        Cart cart = new Cart();
+        cart.id = 1;
+        for(Map.Entry<Product, Integer> entry : contents.entrySet()) {
+            Product product = entry.getKey();
+            int quantity = entry.getValue();
+            CartItem cartItem = new CartItem();
+            cartItem.productId = product.id;
+            cartItem.quantity = quantity;
+            cart.subTotal += product.price * quantity;
+            cart.basket.add(cartItem);
+        }
+        return cart;
+    }
+
+    public void checkout(String result) {
+        if (result.equals("success")) {
+            this.contents.clear();
         }
     }
 
