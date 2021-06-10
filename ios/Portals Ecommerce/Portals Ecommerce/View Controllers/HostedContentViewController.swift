@@ -2,15 +2,28 @@ import UIKit
 import Capacitor
 
 class HostedContentViewController: CAPBridgeViewController, ApplicationCoordinationParticipant {
+    // MARK: - ApplicationCoordinationParticipant
     weak var coordinator: ApplicationCoordinator? {
         didSet {
             apiPlugin?.dataProvider = coordinator?.dataStore
         }
     }
+    var requiresPreloading: Bool { return false }
+    
+    // MARK: - Prerendering Support
+    typealias PrerenderingCompletion = () -> Void
+    private var prerenderingCompletion: PrerenderingCompletion?
+    
+    func prerender(_ completion: @escaping PrerenderingCompletion) {
+        prerenderingCompletion = completion
+        DispatchQueue.main.async {
+            let _ = self.view
+        }
+    }
     
     private(set) var isObservingWebLoading: Bool = false
-    private var apiPlugin: ShopAPIPlugin?
-
+    private(set) var apiPlugin: ShopAPIPlugin?
+    
     override func viewDidLoad() {
         // register for KVO
         observeWebView()
@@ -22,6 +35,8 @@ class HostedContentViewController: CAPBridgeViewController, ApplicationCoordinat
     }
     
     func webViewCompletedInitialLoad() {
+        prerenderingCompletion?()
+        prerenderingCompletion = nil
     }
     
     // MARK: - KVO
@@ -61,5 +76,4 @@ class HostedContentViewController: CAPBridgeViewController, ApplicationCoordinat
             isObservingWebLoading = false
         }
     }
-
 }

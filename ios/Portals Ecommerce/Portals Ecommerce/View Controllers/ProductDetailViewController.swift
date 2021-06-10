@@ -1,6 +1,8 @@
 import UIKit
 
 class ProductDetailViewController: UIViewController, ApplicationCoordinationParticipant {
+    var requiresPreloading: Bool { return false }
+    
     var product: Product?
     weak var coordinator: ApplicationCoordinator? {
         didSet {

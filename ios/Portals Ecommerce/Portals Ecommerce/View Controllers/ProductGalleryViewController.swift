@@ -2,6 +2,7 @@ import UIKit
 
 class ProductGalleryViewController: UIViewController, ApplicationCoordinationParticipant, UICollectionViewDelegate {
     weak var coordinator: ApplicationCoordinator?
+    var requiresPreloading: Bool { return false }
     
     @IBOutlet private weak var collectionView: UICollectionView!
     
