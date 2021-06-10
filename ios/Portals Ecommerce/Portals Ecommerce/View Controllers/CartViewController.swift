@@ -56,12 +56,11 @@ class CartViewController: UIViewController, ApplicationCoordinationParticipant, 
     }
     
     func requestCheckout() {
-        let controller = UIAlertController(title: "Checkout", message: nil, preferredStyle: .alert)
-        controller.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { [weak self] action in
-            self?.viewModel.cart.clear()
-        }))
-        controller.title = "Checkout"
-        present(controller, animated: true, completion: nil)
+        let controller = CheckoutViewController(nibName: nil, bundle: nil)
+        controller.modalPresentationStyle = .pageSheet
+        controller.prerender { [weak self] in
+            self?.present(controller, animated: true, completion: nil)
+        }
     }
     
     // MARK: - Private
