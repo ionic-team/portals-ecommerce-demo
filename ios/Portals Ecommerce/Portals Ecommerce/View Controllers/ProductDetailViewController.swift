@@ -1,6 +1,8 @@
 import UIKit
 
 class ProductDetailViewController: UIViewController, ApplicationCoordinationParticipant {
+    var requiresPreloading: Bool { return false }
+    
     var product: Product?
     weak var coordinator: ApplicationCoordinator? {
         didSet {
@@ -16,7 +18,7 @@ class ProductDetailViewController: UIViewController, ApplicationCoordinationPart
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        // style the button
         addButton.setBackgroundImage(view.tintColor.buttonImageWith(cornerRadius: 8), for: .normal)
         addButton.setTitleColor(.white, for: .normal)
     }
@@ -26,6 +28,13 @@ class ProductDetailViewController: UIViewController, ApplicationCoordinationPart
             return
         }
         coordinator?.dataStore.cart.add(product: product, quantity: 1)
+    }
+    
+    @IBAction func showHelp(_ sender: Any?) {
+        let controller = HelpPageViewController(nibName: nil, bundle: nil)
+        controller.prerender { [weak self] in
+            self?.navigationController?.pushViewController(controller, animated: true)
+        }
     }
     
     // MARK: - Internal

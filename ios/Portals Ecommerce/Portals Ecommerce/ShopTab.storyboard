@@ -81,12 +81,22 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k9v-cx-Nl9">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="722"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wff-8W-s85">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x0P-DW-nKL">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wff-8W-s85">
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="wff-8W-s85" secondAttribute="height" multiplier="1:1" id="ZaH-Od-Ijx"/>
+                                                    <constraint firstItem="wff-8W-s85" firstAttribute="top" secondItem="x0P-DW-nKL" secondAttribute="top" priority="750" id="Hnj-ej-3oL"/>
+                                                    <constraint firstAttribute="width" secondItem="x0P-DW-nKL" secondAttribute="height" multiplier="1:1" id="PiG-P4-23h"/>
+                                                    <constraint firstAttribute="bottom" secondItem="wff-8W-s85" secondAttribute="bottom" id="bln-Wm-51K"/>
+                                                    <constraint firstAttribute="trailing" secondItem="wff-8W-s85" secondAttribute="trailing" id="tvf-cQ-ZbA"/>
+                                                    <constraint firstItem="wff-8W-s85" firstAttribute="leading" secondItem="x0P-DW-nKL" secondAttribute="leading" id="waz-6D-qaX"/>
                                                 </constraints>
-                                            </imageView>
+                                            </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1QM-Gm-Q19">
                                                 <rect key="frame" x="16" y="454" width="382" height="248"/>
                                                 <subviews>
@@ -135,13 +145,13 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstItem="1QM-Gm-Q19" firstAttribute="top" secondItem="wff-8W-s85" secondAttribute="bottom" constant="40" id="2vN-Kf-AnT"/>
-                                            <constraint firstAttribute="trailing" secondItem="wff-8W-s85" secondAttribute="trailing" id="CLO-dd-JPg"/>
-                                            <constraint firstItem="wff-8W-s85" firstAttribute="top" secondItem="k9v-cx-Nl9" secondAttribute="top" id="FEe-Bg-X79"/>
+                                            <constraint firstAttribute="trailing" secondItem="x0P-DW-nKL" secondAttribute="trailing" id="KEi-xf-3Ae"/>
                                             <constraint firstAttribute="trailing" secondItem="1QM-Gm-Q19" secondAttribute="trailing" constant="16" id="LiN-c9-zXO"/>
-                                            <constraint firstItem="wff-8W-s85" firstAttribute="leading" secondItem="k9v-cx-Nl9" secondAttribute="leading" id="YYP-Fr-nLV"/>
+                                            <constraint firstItem="x0P-DW-nKL" firstAttribute="top" secondItem="k9v-cx-Nl9" secondAttribute="top" id="d8x-N3-AyO"/>
                                             <constraint firstAttribute="bottom" secondItem="1QM-Gm-Q19" secondAttribute="bottom" constant="20" id="qDT-7D-vI5"/>
                                             <constraint firstItem="1QM-Gm-Q19" firstAttribute="leading" secondItem="k9v-cx-Nl9" secondAttribute="leading" constant="16" id="uXr-5a-orW"/>
+                                            <constraint firstItem="1QM-Gm-Q19" firstAttribute="top" secondItem="x0P-DW-nKL" secondAttribute="bottom" constant="40" id="x7Y-j3-EVU"/>
+                                            <constraint firstItem="x0P-DW-nKL" firstAttribute="leading" secondItem="k9v-cx-Nl9" secondAttribute="leading" id="y6e-2J-x5q"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -159,6 +169,7 @@
                         <viewLayoutGuide key="safeArea" id="hjq-W1-opE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="wff-8W-s85" firstAttribute="top" relation="lessThanOrEqual" secondItem="hjq-W1-opE" secondAttribute="top" priority="900" id="HNf-ef-djp"/>
                             <constraint firstItem="l0i-T5-V4b" firstAttribute="leading" secondItem="hjq-W1-opE" secondAttribute="leading" id="RbF-Bz-oGe"/>
                             <constraint firstItem="hjq-W1-opE" firstAttribute="trailing" secondItem="l0i-T5-V4b" secondAttribute="trailing" id="eiz-FG-3KQ"/>
                             <constraint firstItem="l0i-T5-V4b" firstAttribute="top" secondItem="hjq-W1-opE" secondAttribute="top" id="jpt-Vh-L2S"/>
@@ -166,9 +177,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="Zbh-kN-jvT">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Xlf-6S-BP8"/>
                         <barButtonItem key="rightBarButtonItem" image="toolbar-help-icon" id="AF6-aY-Iuc">
                             <connections>
-                                <segue destination="x8T-iu-pHz" kind="show" id="iBU-pu-9bF"/>
+                                <action selector="showHelp:" destination="dUU-BE-oDJ" id="WSm-AP-cvg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -183,22 +195,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HCi-DH-5Tn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1943" y="-551"/>
-        </scene>
-        <!--Help Page View Controller-->
-        <scene sceneID="WLh-UY-rFB">
-            <objects>
-                <viewController id="x8T-iu-pHz" customClass="HelpPageViewController" customModule="Ecommerce" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Gbe-9d-lre">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="JhM-uQ-rBJ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="v6M-ia-Pkr"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MoO-LJ-BWi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2765" y="-551"/>
         </scene>
     </scenes>
     <resources>

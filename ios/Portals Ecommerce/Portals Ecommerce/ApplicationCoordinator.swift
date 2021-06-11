@@ -1,12 +1,11 @@
 import UIKit
 
-protocol ApplicationCoordinationParticipant: AnyObject {
+protocol ApplicationCoordinationParticipant: UIViewController {
+    // Coordinator object that will be injected
     var coordinator: ApplicationCoordinator? { get set }
+    // If the view controller wants to be preloaded at app launch. Only applies
+    // if the view controller is in the initial tab and/or navigation stack.
     var requiresPreloading: Bool { get }
-}
-
-extension ApplicationCoordinationParticipant {
-    var requiresPreloading: Bool { return false }
 }
 
 @objc class ApplicationCoordinator: NSObject, UINavigationControllerDelegate {

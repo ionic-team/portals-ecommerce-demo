@@ -12,7 +12,7 @@ export interface UserPicture {
 export interface ShopAPIPlugin {
   getCart(): Promise<Cart>;
   getUserDetails(): Promise<User>;
-  updateUserDetails(result: User): Promise<void>;
+  updateUserDetails(user: User): Promise<void>;
   checkoutResult(result: CheckoutResult): Promise<void>;
   getUserPicture(): Promise<UserPicture>;
   setUserPicture(picture: UserPicture): Promise<void>;

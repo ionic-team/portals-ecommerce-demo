@@ -32,6 +32,8 @@ export interface CreditCard {
   id: number;
   company: 'Visa',
   number: string;
+  cvv: number;
+  zip: number;
   expirationDate: string;
   preferred?: boolean;
 }
