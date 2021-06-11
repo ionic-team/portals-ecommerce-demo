@@ -1,10 +1,23 @@
 import React from 'react';
-import './PaymentPage.css';
+import {
+  IonContent,
+  IonPage,
+} from '@ionic/react';
+import { useParams } from 'react-router';
 
-const PaymentPage = () => {
+interface PaymentProps {}
+
+const Payment: React.FC<PaymentProps> = () => {
+  const params = useParams<{ id: string }>();
   return (
-    <h1>Payment Page</h1>
+    <IonPage>
+      <IonContent>
+        Payment
+        <br />
+        {params.id}
+      </IonContent>
+    </IonPage>
   );
 };
 
-export default PaymentPage;
+export default Payment;
