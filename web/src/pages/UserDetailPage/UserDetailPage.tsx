@@ -1,6 +1,5 @@
 import {
   IonButton,
-  IonCard,
   IonChip,
   IonContent,
   IonIcon,
@@ -8,6 +7,7 @@ import {
   IonItem,
   IonLabel,
   IonList,
+  IonListHeader,
   IonPage,
 } from '@ionic/react';
 import React, { useCallback, useContext, useEffect, useState } from 'react';
@@ -50,7 +50,7 @@ const UserDetailPage = () => {
   };
 
   return (
-    <IonPage>
+    <IonPage id="user-detail-page">
       <IonContent>
         {user && formData && (
           <>
@@ -99,8 +99,8 @@ const UserDetailPage = () => {
               </IonList>
 
               <div className="list-section">
-                <h4>Addresses</h4>
                 <IonList lines="none">
+                  <IonListHeader>Addresses</IonListHeader>
                   {user.addresses.map((address) => (
                     <IonItem className="ion-no-padding">
                       <IonLabel>
