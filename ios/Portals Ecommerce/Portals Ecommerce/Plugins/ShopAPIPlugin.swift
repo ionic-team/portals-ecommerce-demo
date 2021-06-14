@@ -22,27 +22,28 @@ class ShopAPIPlugin: CAPPlugin {
     weak var actionDelegate: ShopAPIActionDelegateProtocol?
     
     @objc func getCart(_ call: CAPPluginCall) {
-        if let cart = dataProvider?.cart, let object = encode(cart) {
-            call.resolve(object)
+        guard let cart = dataProvider?.cart, let object = encode(cart) else {
+            call.reject("Cart unavailable!")
+            return
         }
-        call.reject("Cart unavailable!")
+        call.resolve(object)
     }
     
     @objc func getUserDetails(_ call: CAPPluginCall) {
-        if let user = dataProvider?.user, let object = encode(user) {
-            call.resolve(object)
+        guard let user = dataProvider?.user, let object = encode(user) else {
+            call.reject("User unavailable!")
+            return
         }
-        call.reject("User unavailable!")
+        call.resolve(object)
     }
     
     @objc func updateUserDetails(_ call: CAPPluginCall) {
-        if let user: User = decode(object: call.jsObjectRepresentation) {
-            call.resolve()
-            dataProvider?.user = user
-        }
-        else {
+        guard let user: User = decode(object: call.jsObjectRepresentation) else {
             call.reject("Invalid user details!")
+            return
         }
+        call.resolve()
+        dataProvider?.user = user
     }
     
     @objc func checkoutResult(_ call: CAPPluginCall) {
@@ -55,10 +56,17 @@ class ShopAPIPlugin: CAPPlugin {
     }
     
     @objc func getUserPicture(_ call: CAPPluginCall) {
-        call.resolve(["picture": ""])
+        guard let picture = dataProvider?.userImage else {
+            call.reject("No picture available")
+            return
+        }
+        call.resolve(["picture": picture])
     }
     
     @objc func setUserPicture(_ call: CAPPluginCall) {
+        if let picture = call.getString("picture") {
+            dataProvider?.userImage = picture
+        }
         call.resolve()
     }
 }
@@ -66,8 +74,9 @@ class ShopAPIPlugin: CAPPlugin {
 private func encode<T: Encodable>(_ object: T) -> JSObject? {
     do {
         let data = try JSONEncoder().encode(object)
-        if let json = try JSONSerialization.jsonObject(with: data, options: []) as? JSObject {
-            return json
+        let dictionary = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary
+        if let object = JSTypes.coerceDictionaryToJSObject(dictionary) {
+            return object
         }
     }
     catch {
@@ -83,7 +92,7 @@ private func decode<T: Decodable>(object: JSObject) -> T? {
         return result
     }
     catch {
-        assertionFailure("Failed to decode object from JSON")
+        print("failed to decode object from JSON:\(error)")
     }
     return nil
 }
