@@ -3,6 +3,17 @@ source 'https://github.com/native-portal/podspecs.git'
 platform :ios, '12.0'
 use_frameworks!
 
-target 'Ecommerce' do
-  pod 'Portals'
+def portals_pods
+    pod 'Portals'
 end
+
+target 'Ecommerce' do
+  portals_pods
+end
+
+target 'EcommerceTests' do
+  portals_pods
+end
+
+
+
