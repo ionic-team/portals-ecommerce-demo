@@ -56,8 +56,9 @@ dependencies {
 }
 
 task CopyWebAssets(type: Copy) {
-    from '../../../web/build'
-    into layout.projectDirectory.dir("src/main/assets")
+    def webBuildFolder = '../../../web/build'
+    from webBuildFolder
+    into layout.projectDirectory.dir("src/main/assets/webapp")
 }
 
 preBuild.dependsOn(CopyWebAssets)

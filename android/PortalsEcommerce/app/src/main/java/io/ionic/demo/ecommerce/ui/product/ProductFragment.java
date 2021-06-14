@@ -45,7 +45,7 @@ public class ProductFragment extends Fragment {
 
         // Load product image
         final ImageView productImage = root.findViewById(R.id.product_image);
-        String imageResourceName = product.image.substring(0, product.image.lastIndexOf("."));
+        String imageResourceName = product.image.substring(0, product.image.lastIndexOf(".")).replaceAll("-", "_");
         final int resourceId = getResources().getIdentifier(imageResourceName, "drawable", getContext().getPackageName());
         Picasso.get().load(resourceId).into(productImage);
 
