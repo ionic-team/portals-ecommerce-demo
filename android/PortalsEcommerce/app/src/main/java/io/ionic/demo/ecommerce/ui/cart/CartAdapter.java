@@ -95,7 +95,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         Resources resources = activity.getResources();
 
         // Get image asset for the product and load into product card image view
-        String imageResourceName = product.image.substring(0, product.image.lastIndexOf("."));
+        String imageResourceName = product.image.substring(0, product.image.lastIndexOf(".")).replaceAll("-", "_");
         final int resourceId = resources.getIdentifier(imageResourceName, "drawable", activity.getPackageName());
         int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, activity.getResources().getDisplayMetrics());
         Picasso.get().load(resourceId).transform(new RoundedCornersTransformation(px,0)).into(holder.productImageView);
