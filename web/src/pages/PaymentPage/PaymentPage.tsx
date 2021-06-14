@@ -1,10 +1,16 @@
+import React, { useContext, useEffect, useState } from 'react';
 import { IonBackButton, IonButton, IonButtons, IonCheckbox, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonPage, IonText, IonTitle, IonToolbar, useIonPicker, } from '@ionic/react';
 import { caretDownOutline } from 'ionicons/icons';
-import React, { useContext, useState } from 'react';
+import { RouteComponentProps } from 'react-router';
 import { DataContext } from '../../DataProvider';
 import './PaymentPage.css';
+import { CreditCard } from '../../models';
 
-const setCcNumber = (value: string) => {
+type PaymentPageMatch = {
+  id: string;
+}
+
+const maskCreditCardNumber = (value: string) => {
   // Only change number if value is exactly 16 chars
   if (value.length >= 16) {
     return '**** **** **** ' + value.slice(-4);
@@ -19,25 +25,38 @@ const safeGetYear = (value: string | undefined) => {
   return '';
 }
 
-const PaymentPage = () => {
+const PaymentPage = (props: RouteComponentProps<PaymentPageMatch>) => {
+  const { id } = props.match.params;
   const { user, setUser } = useContext(DataContext);
   const [isChecked, setIsChecked] = useState(false);
   const [present] = useIonPicker();
 
   // TODO: use variable to determine if you should prefill data or not
-  const isNewPaymentMethod = false;
-  const paymentMethodIndex = 0;
-  const paymentMethod = user?.creditCards[paymentMethodIndex];
+  const isNewPaymentMethod = id === undefined;
+  const paymentMethodIndex = isNewPaymentMethod ? (user?.creditCards.length || 1) : +id;
+  let initialCreditCardValue: CreditCard;
 
-  if (isNewPaymentMethod && user) {
-    user.creditCards[paymentMethodIndex].company = 'Visa'
-    user.creditCards[paymentMethodIndex].expirationDate = '6/2021';
-    user.creditCards[paymentMethodIndex].id = 0;
-    user.creditCards[paymentMethodIndex].number = '';
-    user.creditCards[paymentMethodIndex].preferred = false;
+  if (isNewPaymentMethod) {
+    initialCreditCardValue = {
+      id: paymentMethodIndex + 1,
+      company: 'Visa',
+      expirationDate: '6/2021',
+      number: '',
+      cvv: 0,
+      zip: 0,
+      preferred: false,
+    }
+  } else {
+    initialCreditCardValue = user?.creditCards.find(value => {
+      return value.id === +id
+    }) as CreditCard;
   }
 
-  const [ccNum, setCcNum] = useState(user?.creditCards[paymentMethodIndex].number || '');
+  const [creditCard, setCreditCard] = useState<CreditCard>(initialCreditCardValue as CreditCard);
+
+  useEffect(() => {
+    setCreditCard(initialCreditCardValue);
+  }, [user])
 
   const pickMonth = () => {
     present({
@@ -46,9 +65,8 @@ const PaymentPage = () => {
           text: 'Confirm',
           handler: (selected) => {
             if (user) {
-              const year = safeGetYear(user.creditCards[paymentMethodIndex].expirationDate);
-              user.creditCards[paymentMethodIndex].expirationDate = `${selected.Month.value}/${year}`;
-              setUser(user);
+              const year = safeGetYear(creditCard.expirationDate);
+              setCreditCard({ ...creditCard, expirationDate: `${selected.Month.value}/${year}` })
             }
           },
         },
@@ -71,9 +89,8 @@ const PaymentPage = () => {
           text: 'Confirm',
           handler: (selected) => {
             if (user) {
-              const month = user.creditCards[paymentMethodIndex].expirationDate[0].split('/')[0]
-              user.creditCards[paymentMethodIndex].expirationDate = `${month}/${selected.Year.value}`;
-              setUser(user);
+              const month = creditCard.expirationDate[0].split('/')[0]
+              setCreditCard({ ...creditCard, expirationDate: `${month}/${selected.Year.value}` })
             }
           },
         },
@@ -89,114 +106,119 @@ const PaymentPage = () => {
     })
   }
 
-  return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>{isNewPaymentMethod ? 'Add' : 'Edit'} Payment Method</IonTitle>
-          <IonButtons slot="start">
-            <IonBackButton text="Cancel" />
-          </IonButtons>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent>
-        <IonItem lines="full">
-          <IonLabel position="fixed">Card Number</IonLabel>
-          <IonInput
-            maxlength={16}
-            placeholder=""
-            onIonFocus={(event) => {
-              if (user) {
-                setCcNum('')
-              }
-            }}
-            onIonBlur={(event) => {
-              if (user) {
-                user.creditCards[paymentMethodIndex].number = (event.target as any).value;
-                setCcNum(user.creditCards[paymentMethodIndex].number)
-                setUser(user);
-              }
-            }}
-            value={setCcNumber(ccNum)}
-          ></IonInput>
-        </IonItem>
-        <IonItem lines="full">
-          <IonLabel position="fixed">Exp. Date</IonLabel>
-          <IonInput 
-            placeholder=""
-            onClick={pickMonth}
-            value={user?.creditCards[paymentMethodIndex].expirationDate.split('/')[0]}
-          ></IonInput>
-          {/* TODO: Style this to fit design better */}
-          <IonButton
-            color="light"
-            fill="clear"
+  return <IonPage>
+    {
+      user && creditCard &&
+      <React.Fragment>
+        <IonHeader>
+          <IonToolbar>
+            <IonTitle>{isNewPaymentMethod ? 'Add' : 'Edit'} Payment Method</IonTitle>
+            <IonButtons slot="start">
+              <IonBackButton text="Cancel" />
+            </IonButtons>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent>
+          <IonItem lines="full">
+            <IonLabel position="fixed">Card Number</IonLabel>
+            <IonInput
+              maxlength={16}
+              placeholder=""
+              onIonFocus={(event) => {
+                if (user) {
+                  setCreditCard({ ...creditCard, number: ''})
+                }
+              }}
+              onIonBlur={(event) => {
+                if (user) {
+                  const number = (event.target as any).value;
+                  setCreditCard({ ...creditCard, number })
+                }
+              }}
+              value={maskCreditCardNumber(creditCard.number)}
+            ></IonInput>
+          </IonItem>
+          <IonItem lines="full">
+            <IonLabel position="fixed">Exp. Date</IonLabel>
+            <IonInput 
+              placeholder=""
+              onClick={pickMonth}
+              value={creditCard.expirationDate.split('/')[0]}
+            ></IonInput>
+            {/* TODO: Style this to fit design better */}
+            <IonButton
+              color="light"
+              fill="clear"
+              expand="block"
+              onClick={pickMonth}
+            >
+              <IonIcon slot="icon-only" icon={caretDownOutline} />
+            </IonButton>
+            <IonInput 
+              placeholder=""
+              onClick={pickMonth}
+              value={safeGetYear(creditCard.expirationDate)}
+            ></IonInput>
+            <IonButton
+              color="light"
+              fill="clear"
+              expand="block"
+              onClick={pickYear}
+            >
+              <IonIcon slot="icon-only" icon={caretDownOutline} />
+            </IonButton>
+          </IonItem>
+          <IonItem lines="full">
+            <IonLabel position="fixed">CVV</IonLabel>
+            <IonInput 
+              placeholder=""
+              maxlength={4}
+              debounce={500}
+              onIonChange={(event) => {
+                if (user) {
+                  const cvv = (event.target as any).value;
+                  setCreditCard({ ...creditCard, cvv })
+                }
+              }}
+              value={creditCard.cvv}
+            ></IonInput>
+          </IonItem>
+          <IonItem lines="full">
+            <IonLabel position="fixed">Zip Code</IonLabel>
+            <IonInput 
+              placeholder=""
+              maxlength={5}
+              debounce={500}
+              onIonChange={(event) => {
+                if (user) {
+                  const zip = (event.target as any).value;
+                  setCreditCard({ ...creditCard, zip })
+                }
+              }}
+              value={creditCard.zip}
+            ></IonInput>
+          </IonItem>
+          <IonItem lines="none">
+            <IonCheckbox checked={isChecked} onIonChange={e => setIsChecked(e.detail.checked)} />
+            <IonText>Set as default payment method</IonText>
+          </IonItem>
+          <IonButton 
             expand="block"
-            onClick={pickMonth}
-          >
-            <IonIcon slot="icon-only" icon={caretDownOutline} />
-          </IonButton>
-          <IonInput 
-            placeholder=""
-            onClick={pickMonth}
-            value={safeGetYear(user?.creditCards[paymentMethodIndex].expirationDate)}
-          ></IonInput>
-          <IonButton
-            color="light"
-            fill="clear"
-            expand="block"
-            onClick={pickYear}
-          >
-            <IonIcon slot="icon-only" icon={caretDownOutline} />
-          </IonButton>
-        </IonItem>
-        <IonItem lines="full">
-          <IonLabel position="fixed">CVV</IonLabel>
-          <IonInput 
-            placeholder=""
-            maxlength={4}
-            debounce={500}
-            onIonChange={(event) => {
+            onClick={() => {
               if (user) {
-                user.creditCards[paymentMethodIndex].cvv = (event.target as any).value;
-                setUser(user);
+                const newUser = user;
+                newUser.creditCards[paymentMethodIndex] = creditCard;
+                setUser(newUser);
+                window.location.href = `/payment/${creditCard.id}`
               }
             }}
-            value={user?.creditCards[paymentMethodIndex].cvv}
-          ></IonInput>
-        </IonItem>
-        <IonItem lines="full">
-          <IonLabel position="fixed">Zip Code</IonLabel>
-          <IonInput 
-            placeholder=""
-            maxlength={5}
-            debounce={500}
-            onIonChange={(event) => {
-              if (user) {
-                user.creditCards[paymentMethodIndex].zip = (event.target as any).value;
-                setUser(user);
-              }
-            }}
-            value={user?.creditCards[paymentMethodIndex].zip}
-          ></IonInput>
-        </IonItem>
-        <IonItem lines="none">
-          <IonCheckbox checked={isChecked} onIonChange={e => setIsChecked(e.detail.checked)} />
-          <IonText>Set as default payment method</IonText>
-        </IonItem>
-        <IonButton 
-          expand="block"
-          onClick={() => {
-            if (user) {
-              setUser(user);
-            }
-          }}
-        >
-          Save
-        </IonButton>
-      </IonContent>
-    </IonPage>
-  );
+          >
+            Save
+          </IonButton>
+        </IonContent>
+      </React.Fragment>
+    }
+    </IonPage>;
 };
 
 export default PaymentPage;

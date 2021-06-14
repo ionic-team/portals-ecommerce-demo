@@ -39,6 +39,7 @@ export const DataProvider: React.FC = ({ children }) => {
   const setUserData = useCallback(async (user: User) => {
     setIsLoading(true);
     await updateUserDetails(user);
+    console.log(user);
     setUser(user);
     setIsLoading(false);
   }, []);
