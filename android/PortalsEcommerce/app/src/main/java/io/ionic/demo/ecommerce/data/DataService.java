@@ -36,7 +36,7 @@ public class DataService {
         Context context = EcommerceApp.getContext();
 
         try {
-            InputStream inputStream = context.getAssets().open("data.json");
+            InputStream inputStream = context.getAssets().open("webapp/data.json");
             int size = inputStream.available();
             byte[] buffer = new byte[size];
             inputStream.read(buffer);

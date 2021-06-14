@@ -16,21 +16,19 @@ export const DataProvider: React.FC = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState<User>();
   const [products, setProducts] = useState<Product[]>();
-  const [cart] = useState<Cart>({
-    id: 1,
-    subTotal: 1,
-    basket: []
-  })
+  const [cart, setCart] = useState<Cart>();
 
   useEffect(() => {
     async function init() {
       setIsLoading(true);
-      const [user, products] = await Promise.all([
+      const [user, products, cart] = await Promise.all([
         getUserDetails(),
         getProducts(),
+        getCart()
       ]);
       setUser(user);
       setProducts(products);
+      setCart(cart);
       setIsLoading(false);
     }
     init();
@@ -91,5 +89,23 @@ async function updateUserDetails(user: User): Promise<void> {
     // todo: make calls into native
   } else {
     // noop for use in dev
+  }
+}
+
+async function getCart(): Promise<Cart> {
+  if (Capacitor.isNativePlatform()) {
+    // todo: make calls into native
+    return {
+      id: 1,
+      subTotal: 32.33,
+      basket: [{ productId: 1, quantity: 1 }],
+    };
+  } else {
+    // noop for use in dev
+    return {
+      id: 1,
+      subTotal: 32.33,
+      basket: [{ productId: 1, quantity: 1 }],
+    };
   }
 }

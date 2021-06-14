@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,6 +13,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.getcapacitor.BridgeFragment;
+import com.getcapacitor.WebViewListener;
 
 import io.ionic.demo.ecommerce.R;
 
@@ -31,9 +33,16 @@ public class CheckoutDialogFragment extends DialogFragment {
         super.onCreate(savedInstanceState);
 
         final FragmentManager fragmentManager = getChildFragmentManager();
-        embeddedFragment = BridgeFragment.newInstance("checkout_app");
+        embeddedFragment = BridgeFragment.newInstance("webapp");
+        embeddedFragment.addWebViewListener(new WebViewListener() {
+            @Override
+            public void onPageLoaded(WebView webView) {
+                super.onPageLoaded(webView);
+                // Inflate the fragment
+                // webView.evaluateJavascript("window.location.href = \"/payment\"", null);
+            }
+        });
 
-        // Inflate the fragment
         fragmentManager.beginTransaction().replace(R.id.checkout_web_app, embeddedFragment).commit();
     }
 }

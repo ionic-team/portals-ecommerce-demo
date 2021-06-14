@@ -135,6 +135,14 @@
         "state": "WI",
         "postal": "53717",
         "preferred": true
+      },
+      {
+        "id": 2,
+        "street": "5478 Shady Lane",
+        "city": "Middleton",
+        "state": "WI",
+        "postal": "53717",
+        "preferred": false
       }
     ],
     "creditCards": [
@@ -145,6 +153,13 @@
         "cvv": "111",
         "expirationDate": "6/2025",
         "preferred": true
+      },
+      {
+        "id": 2,
+        "company": "Mastercard",
+        "number": "4111-1111-1111-5678",
+        "expirationDate": "1/1/2025",
+        "preferred": false
       }
     ]
   }

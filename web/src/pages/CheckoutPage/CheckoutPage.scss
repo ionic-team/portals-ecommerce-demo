@@ -1,0 +1,19 @@
+#checkout-page {
+  ion-list {
+    padding: 10px;
+    ion-list-header {
+      padding: 0;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    ion-item {
+      --padding-start: 0;
+      --inner-padding-end: 0;
+    }
+  }
+
+  .order-button {
+    margin-top: 16px;
+  }
+}
