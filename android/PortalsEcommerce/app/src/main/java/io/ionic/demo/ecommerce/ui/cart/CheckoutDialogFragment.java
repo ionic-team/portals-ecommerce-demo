@@ -35,11 +35,14 @@ public class CheckoutDialogFragment extends DialogFragment {
         final FragmentManager fragmentManager = getChildFragmentManager();
         embeddedFragment = BridgeFragment.newInstance("webapp");
         embeddedFragment.addWebViewListener(new WebViewListener() {
+            private boolean isLoaded = false;
             @Override
             public void onPageLoaded(WebView webView) {
-                super.onPageLoaded(webView);
-                // Inflate the fragment
-                // webView.evaluateJavascript("window.location.href = \"/payment\"", null);
+
+                if (!isLoaded) {
+                    isLoaded = true;
+                    webView.evaluateJavascript("window.location.href = \"/checkout\"", null);
+                }
             }
         });
 

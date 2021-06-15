@@ -1,14 +1,19 @@
 import React, { useContext, useEffect, useState } from 'react';
 import {
+  IonBackButton,
   IonButton,
+  IonButtons,
   IonCheckbox,
   IonChip,
   IonContent,
+  IonHeader,
   IonItem,
   IonLabel,
   IonList,
   IonListHeader,
   IonPage,
+  IonTitle,
+  IonToolbar,
   useIonRouter,
 } from '@ionic/react';
 import { DataContext } from '../../DataProvider';
@@ -16,7 +21,7 @@ import './CheckoutPage.scss';
 import { Address, CreditCard } from '../../models';
 
 const CheckoutPage: React.FC = () => {
-  const { cart, user } = useContext(DataContext);
+  const { cart, user, checkout } = useContext(DataContext);
   const [selectedAddress, setSelectedAddress] = useState<Address>();
   const [selectedCreditCard, setSelectedCreditCard] = useState<CreditCard>();
   const router = useIonRouter();
@@ -36,7 +41,24 @@ const CheckoutPage: React.FC = () => {
 
   return (
     <IonPage id="checkout-page">
-      <IonContent>
+      <IonHeader>
+        <IonToolbar>
+          <IonButtons>
+            <IonButton
+              onClick={() => {
+                checkout({ result: 'cancel' });
+              }}
+            >
+              Cancel
+            </IonButton>
+          </IonButtons>
+          <IonTitle>Checkout</IonTitle>
+          <IonButtons slot="start">
+            <IonBackButton text="Cancel" />
+          </IonButtons>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent className="ion-padding">
         {cart && user && (
           <>
             <IonList lines="none">
@@ -132,7 +154,13 @@ const CheckoutPage: React.FC = () => {
                 <IonLabel>${cart.subTotal} + Tax</IonLabel>
               </IonItem>
             </IonList>
-            <IonButton className="order-button" expand="block">
+            <IonButton
+              className="order-button"
+              expand="block"
+              onClick={() => {
+                checkout({ result: 'success' });
+              }}
+            >
               Place Your Order
             </IonButton>
           </>

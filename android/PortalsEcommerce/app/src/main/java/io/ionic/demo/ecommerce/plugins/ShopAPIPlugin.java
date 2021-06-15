@@ -16,7 +16,7 @@ import io.ionic.demo.ecommerce.data.ShoppingCart;
 import io.ionic.demo.ecommerce.data.model.Cart;
 import io.ionic.demo.ecommerce.data.model.User;
 
-@CapacitorPlugin(name = "ShopAPIPlugin")
+@CapacitorPlugin(name = "ShopAPI")
 public class ShopAPIPlugin extends Plugin {
 
     DataService dataService;
