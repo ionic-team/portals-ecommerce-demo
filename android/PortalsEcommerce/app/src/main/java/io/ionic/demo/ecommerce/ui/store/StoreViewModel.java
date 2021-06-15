@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import io.ionic.demo.ecommerce.EcommerceApp;
 import io.ionic.demo.ecommerce.data.DataService;
 import io.ionic.demo.ecommerce.data.model.Product;
 
@@ -43,7 +44,7 @@ public class StoreViewModel extends ViewModel {
      * product data or not.
      */
     private void setupProductLists() {
-        ArrayList<Product> products = DataService.getInstance().getProducts();
+        ArrayList<Product> products = DataService.getInstance(EcommerceApp.getContext()).getProducts();
 
         // Featured products list
         ArrayList<Product> featured = new ArrayList<>();

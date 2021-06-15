@@ -32,9 +32,7 @@ public class DataService {
     /**
      * Constructs a DataReader object and reads the JSON file into memory.
      */
-    private DataService() {
-        Context context = EcommerceApp.getContext();
-
+    private DataService(Context context) {
         try {
             InputStream inputStream = context.getAssets().open("webapp/data.json");
             int size = inputStream.available();
@@ -58,9 +56,9 @@ public class DataService {
      *
      * @return A singleton instance of DataReader.
      */
-    public static DataService getInstance() {
+    public static DataService getInstance(Context context) {
         if (dataReader == null) {
-            dataReader = new DataService();
+            dataReader = new DataService(context);
         }
 
         return dataReader;

@@ -21,8 +21,8 @@ public class ShopAPIPlugin extends Plugin {
 
     DataService dataService;
 
-    ShopAPIPlugin() {
-        dataService = DataService.getInstance();
+    public ShopAPIPlugin() {
+        dataService = DataService.getInstance(EcommerceApp.getContext());
     }
 
     @PluginMethod
