@@ -8,6 +8,11 @@ class CheckoutViewController: HostedContentViewController, ShopAPIActionDelegate
         apiPlugin?.actionDelegate = self
     }
     
+    override func webViewCompletedInitialLoad() {
+        super.webViewCompletedInitialLoad()
+        webView?.evaluateJavaScript("window.location.href = \"/checkout\"", completionHandler: nil)
+    }
+    
     // MARK: - ShopAPIActionDelegateProtocol
     
     func completeCheckout(with status: ShopAPICheckoutStatus) {

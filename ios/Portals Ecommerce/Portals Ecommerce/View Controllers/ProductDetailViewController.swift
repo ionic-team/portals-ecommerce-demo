@@ -32,6 +32,7 @@ class ProductDetailViewController: UIViewController, ApplicationCoordinationPart
     
     @IBAction func showHelp(_ sender: Any?) {
         let controller = HelpPageViewController(nibName: nil, bundle: nil)
+        controller.coordinator = coordinator
         controller.prerender { [weak self] in
             self?.navigationController?.pushViewController(controller, animated: true)
         }
