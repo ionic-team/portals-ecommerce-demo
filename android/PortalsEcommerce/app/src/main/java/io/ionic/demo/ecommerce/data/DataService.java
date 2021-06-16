@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
@@ -71,12 +73,36 @@ public class DataService {
      *
      * @return ArrayList of products.
      */
-    public ArrayList<Product> getProducts() { return appData.products; }
+    public ArrayList<Product> getProducts() {
+        return appData.products;
+    }
 
-    public User getUser() { return appData.user; }
+    public User getUser() {
+        return appData.user;
+    }
 
     public void setUser(User user) {
         this.appData.user = user;
     }
 
+    public boolean storeUserImage(Context context, User user, String image) {
+        FileOutputStream saveStream;
+        if (image != null) {
+            try {
+                saveStream = context.openFileOutput("user-image.jpg", Context.MODE_PRIVATE);
+                saveStream.write(image.getBytes());
+                saveStream.flush();
+                saveStream.close();
+
+                // image was saved
+                user.image = "user-image.jpg";
+                return true;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        // image was not saved
+        return false;
+    }
 }

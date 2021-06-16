@@ -72,7 +72,7 @@ public class ShopAPIPlugin extends Plugin {
         }
 
         JSObject returnPicture = new JSObject();
-        returnPicture.put("picture", user.image);
+        returnPicture.put("picture", user.getImageBase64(getContext()));
         call.resolve(returnPicture);
     }
 
@@ -81,7 +81,7 @@ public class ShopAPIPlugin extends Plugin {
         String picture = call.getString("picture");
         if (picture != null && !picture.isEmpty()) {
             User user = dataService.getUser();
-            user.image = picture;
+            dataService.storeUserImage(getContext(), user, picture);
             dataService.setUser(user);
         }
         call.resolve();
