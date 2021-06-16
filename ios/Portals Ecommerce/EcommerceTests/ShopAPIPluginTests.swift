@@ -5,6 +5,20 @@ import XCTest
 class ShopAPIPluginTests: XCTestCase {
     var plugin: ShopAPIPlugin?
     var coordinator: ApplicationCoordinator?
+    static var rawDemoData: [AnyHashable: Any] = [:]
+    
+    override static func setUp() {
+        if let path = Bundle.main.path(forResource: "data", ofType: "json") {
+            let url = URL(fileURLWithPath: path)
+            do {
+                let data = try Data(contentsOf: url)
+                rawDemoData = try JSONSerialization.jsonObject(with: data, options: []) as? [AnyHashable: Any] ?? [:]
+            }
+            catch {
+                print("error loading demo data")
+            }
+        }
+    }
     
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -24,12 +38,19 @@ class ShopAPIPluginTests: XCTestCase {
     func testDemoData() throws {
         XCTAssertNotNil(plugin)
         XCTAssertNotNil(plugin?.dataProvider)
+        XCTAssertNotEqual(ShopAPIPluginTests.rawDemoData.keys.count, 0)
         XCTAssertEqual(coordinator?.dataStore.products.count, 15)
     }
     
     func testGetUser() throws {
         let call = CAPPluginCall(callbackId: "", options: [:]) { result, call in
-            print(result ?? "")
+            
+            guard case let .dictionary(data) = result?.resultData else {
+                XCTAssert(false, "No result!")
+                return
+            }
+            
+            XCTAssertEqual(data as NSDictionary, ShopAPIPluginTests.rawDemoData["user"] as? NSDictionary)
         } error: { error in
             print(error ?? "")
             XCTAssert(false, "Call errored!")
