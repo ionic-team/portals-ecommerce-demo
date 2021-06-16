@@ -1,5 +1,7 @@
 package io.ionic.demo.ecommerce.plugins;
 
+import androidx.lifecycle.ViewModelProvider;
+
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
@@ -21,7 +23,7 @@ public class ShopAPIPlugin extends Plugin {
 
     DataService dataService;
 
-    ShopAPIPlugin() {
+    public ShopAPIPlugin() {
         dataService = DataService.getInstance();
     }
 
@@ -61,6 +63,8 @@ public class ShopAPIPlugin extends Plugin {
         String result = call.getString("result");
         ShoppingCart cart = EcommerceApp.getInstance().getShoppingCart();
         cart.checkout(result);
+        ShopAPIViewModel viewModel = new ViewModelProvider(this.getActivity()).get(ShopAPIViewModel.class);
+        viewModel.onCheckout(result);
     }
 
     @PluginMethod
@@ -72,5 +76,5 @@ public class ShopAPIPlugin extends Plugin {
     public void setUserPicture(PluginCall call) {
         // todo
     }
-
 }
+

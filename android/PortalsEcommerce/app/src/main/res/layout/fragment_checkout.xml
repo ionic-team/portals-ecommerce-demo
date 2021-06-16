@@ -1,18 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.cart.CheckoutDialogFragment">
-
+    tools:context=".ui.cart.CheckoutDialogFragment"
+    android:background="@color/white" >
     <FrameLayout
         android:id="@+id/checkout_web_app"
-        android:layout_width="fill_parent"
-        android:layout_height="400dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</RelativeLayout>
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".ui.cart.CheckoutDialogFragment">-->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+<!--    <FrameLayout-->
+<!--        android:id="@+id/checkout_web_app"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent" />-->
+
+<!--</LinearLayout>-->
+
+<!--    <?xml version="1.0" encoding="utf-8"?>-->
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--android:orientation="vertical"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent">-->
+
+<!--<EditText-->
+<!--    android:id="@+id/username"-->
+<!--    android:inputType="textEmailAddress"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:layout_marginTop="16dp"-->
+<!--    android:layout_marginLeft="4dp"-->
+<!--    android:layout_marginRight="4dp"-->
+<!--    android:layout_marginBottom="4dp"/>-->
+<!--<EditText-->
+<!--    android:id="@+id/password"-->
+<!--    android:inputType="textPassword"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:layout_marginTop="4dp"-->
+<!--    android:layout_marginLeft="4dp"-->
+<!--    android:layout_marginRight="4dp"-->
+<!--    android:layout_marginBottom="16dp"-->
+<!--    android:fontFamily="sans-serif"/>-->
+<!--</LinearLayout>-->

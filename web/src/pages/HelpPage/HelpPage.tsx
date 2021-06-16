@@ -1,12 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { IonContent, IonIcon, IonItem, IonPage } from '@ionic/react';
 import { callOutline, mailOutline } from 'ionicons/icons';
 
 import './HelpPage.css';
-import { DataContext } from '../../DataProvider';
 
 const HelpPage = () => {
-  const { user } = useContext(DataContext);
   return (
     <IonPage>
       <IonContent>
@@ -15,12 +13,11 @@ const HelpPage = () => {
         </IonItem>
         <IonItem lines="none">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+          enim ad minim veniam, quis nostrud exercitation ullamco laboris
+          nisi ut aliquip ex ea commodo consequat.
           </p>
-          {JSON.stringify(user)}
         </IonItem>
         <IonItem lines="none">
           <a className="help-link" href="mailto:help@portals.ionic.io">
