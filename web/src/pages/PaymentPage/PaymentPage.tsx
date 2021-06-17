@@ -18,14 +18,12 @@ import {
   IonText,
   IonTitle,
   IonToolbar,
-  useIonPicker,
   useIonRouter,
 } from '@ionic/react';
-import { caretDownOutline } from 'ionicons/icons';
 import { RouteComponentProps } from 'react-router';
 import { DataContext } from '../../DataProvider';
 import './PaymentPage.css';
-import { CreditCard, User } from '../../models';
+import { CreditCard } from '../../models';
 
 type PaymentPageMatch = {
   id: string;
@@ -40,19 +38,11 @@ const maskCreditCardNumber = (value: string) => {
   return value;
 };
 
-const safeGetYear = (value: string | undefined) => {
-  const arr = (value || '').split('/');
-  if (arr.length > 1) return arr[1];
-  return '';
-};
-
 const PaymentPage = (props: RouteComponentProps<PaymentPageMatch>) => {
   const { id } = props.match.params;
   const { user, setUser } = useContext(DataContext);
   const [isChecked, setIsChecked] = useState(false);
-  const [present] = useIonPicker();
   const [creditCard, setCreditCard] = useState<CreditCard>();
-  // const [selectedDate, setSelectedDate] = useState();
   const router = useIonRouter();
 
   useEffect(() => {
@@ -71,8 +61,6 @@ const PaymentPage = (props: RouteComponentProps<PaymentPageMatch>) => {
           preferred: false,
         });
       }
-      // const expDate = creditCard?.expirationDate
-      // const date = new Date()
     }
   }, [id, user]);
 
@@ -80,9 +68,9 @@ const PaymentPage = (props: RouteComponentProps<PaymentPageMatch>) => {
     if (user && creditCard) {
       if (creditCard.id === 0) {
         const newId =
-          user.creditCards.length > 0
+          (user.creditCards.length > 0
             ? Math.max(...user.creditCards.map((x) => x.id))
-            : 1;
+            : 0) + 1;
         const newUser = {
           ...user,
           creditCards: [...user.creditCards, { ...creditCard, id: newId }],

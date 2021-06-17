@@ -53,9 +53,14 @@ public class ShopAPIPlugin extends Plugin {
 
     @PluginMethod
     public void updateUserDetails(PluginCall call) {
-        JSObject userJSObject = call.getData();
-        User user = new Gson().fromJson(userJSObject.toString(), User.class);
-        dataService.setUser(user);
+        try {
+            JSObject userJSObject = call.getData();
+            User user = new Gson().fromJson(userJSObject.toString(), User.class);
+            dataService.setUser(user);
+            call.resolve(userJSObject);
+        } catch(Exception e) {
+            call.reject("error updating user details");
+        }
     }
 
     @PluginMethod

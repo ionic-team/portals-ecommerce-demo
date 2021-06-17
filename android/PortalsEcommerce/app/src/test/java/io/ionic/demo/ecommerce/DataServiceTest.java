@@ -39,6 +39,8 @@ public class DataServiceTest {
             company = "Visa";
             number = "1111-1111-1111-1111";
             expirationDate = "12/24";
+            zip = "12345";
+            cvv = "123";
             preferred = true;
         }};
         appData.user.creditCards = new ArrayList<>();

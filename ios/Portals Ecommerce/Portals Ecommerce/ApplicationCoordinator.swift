@@ -75,7 +75,7 @@ private extension ApplicationCoordinator {
                                    expiration:
                                     "12/31/2024",
                                    cvv: "111",
-                                   isPreferred: true)
+                                   isPreferred: true, zip: "11111")
                     ])
     }
 }
