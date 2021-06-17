@@ -18,9 +18,8 @@
         <item name="colorPrimary">@color/white</item>
     </style>
 
-    <style name="CartDialog" parent="Theme.AppCompat.Light.DialogWhenLarge" >
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowIsFloating">false</item>
+    <style name="CartDialog" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     </style>
+
 </resources>
