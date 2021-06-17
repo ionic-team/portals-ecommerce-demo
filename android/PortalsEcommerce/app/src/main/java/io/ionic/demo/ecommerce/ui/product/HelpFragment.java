@@ -15,6 +15,7 @@ import com.getcapacitor.BridgeFragment;
 import com.getcapacitor.WebViewListener;
 
 import io.ionic.demo.ecommerce.R;
+import io.ionic.demo.ecommerce.plugins.ShopAPIPlugin;
 import io.ionic.demo.ecommerce.portals.FadeBridgeFragment;
 
 /**
@@ -47,6 +48,9 @@ public class HelpFragment extends Fragment {
                 }
             }
         });
+
+        // Add plugins
+        embeddedFragment.addPlugin(ShopAPIPlugin.class);
 
         // Inflate the fragment
         fragmentManager.beginTransaction().replace(R.id.help_web_app, embeddedFragment).commit();
