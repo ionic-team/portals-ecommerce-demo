@@ -1,6 +1,7 @@
 import { Capacitor } from '@capacitor/core';
 import React, { useCallback, useEffect, useState } from 'react';
 import { Cart, Data, Product, User } from './models';
+import ShopAPI, { CheckoutResult } from './ShopAPIPlugin';
 
 export interface DataState {
   loading: boolean;
@@ -8,6 +9,7 @@ export interface DataState {
   setUser: (user: User) => void;
   products?: Product[];
   cart?: Cart;
+  checkout: (result: CheckoutResult) => void;
 }
 
 export const DataContext = React.createContext<DataState>({} as any);
@@ -49,6 +51,7 @@ export const DataProvider: React.FC = ({ children }) => {
         products,
         setUser: setUserData,
         cart,
+        checkout: checkout
       }}
     >
       {children}
@@ -95,11 +98,7 @@ async function updateUserDetails(user: User): Promise<void> {
 async function getCart(): Promise<Cart> {
   if (Capacitor.isNativePlatform()) {
     // todo: make calls into native
-    return {
-      id: 1,
-      subTotal: 32.33,
-      basket: [{ productId: 1, quantity: 1 }],
-    };
+    return ShopAPI.getCart()
   } else {
     // noop for use in dev
     return {
@@ -107,5 +106,13 @@ async function getCart(): Promise<Cart> {
       subTotal: 32.33,
       basket: [{ productId: 1, quantity: 1 }],
     };
+  }
+}
+
+async function checkout(result: CheckoutResult) {
+  if (Capacitor.isNativePlatform()) {
+    ShopAPI.checkoutResult(result);
+  } else {
+    console.log('checkout: ', { result });
   }
 }
