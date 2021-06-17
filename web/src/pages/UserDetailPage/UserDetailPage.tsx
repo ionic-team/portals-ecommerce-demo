@@ -9,11 +9,12 @@ import {
   IonList,
   IonListHeader,
   IonPage,
+  useIonRouter,
 } from '@ionic/react';
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { DataContext } from '../../DataProvider';
 import { add } from 'ionicons/icons';
-import { Camera, CameraDirection, CameraResultType, CameraSource } from '@capacitor/camera';
+import { Camera, CameraDirection, CameraResultType } from '@capacitor/camera';
 import './UserDetailPage.scss';
 
 interface FormData {
@@ -26,6 +27,7 @@ const UserDetailPage = () => {
   const { user, setUser } = useContext(DataContext);
   const [imageUrl, setImageUrl] = useState<string>();
   const [formData, setFormData] = useState<FormData>();
+  const router = useIonRouter();
 
   useEffect(() => {
     if (user && !formData) {
@@ -140,7 +142,14 @@ const UserDetailPage = () => {
                     {creditCard.preferred && (
                       <IonChip color="success">Default</IonChip>
                     )}
-                    <IonButton fill="clear" slot="end">
+                    <IonButton
+                      fill="clear"
+                      slot="end"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        router.push(`/payment/${creditCard.id}`);
+                      }}
+                    >
                       Edit
                     </IonButton>
                   </IonItem>

@@ -64,7 +64,7 @@ function App() {
             <Route path="/checkout" exact component={CheckoutPage} />
             <Route path="/help" exact component={HelpPage} />
             <Route path="/payment" exact component={PaymentPage} />
-            <Route path="/payment/:id" exact component={PaymentPage} />
+            <Route path="/payment/:id" component={PaymentPage} />
             <Route path="/user" exact component={UserDetailPage} />
           </IonRouterOutlet>
         </IonReactRouter>

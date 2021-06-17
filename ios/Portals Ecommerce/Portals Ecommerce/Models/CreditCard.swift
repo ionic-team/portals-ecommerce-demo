@@ -2,7 +2,7 @@ import Foundation
 
 struct CreditCard: Codable {
     enum CodingKeys: String, CodingKey {
-        case id, company, number, cvv
+        case id, company, number, cvv, zip
         
         case expiration = "expirationDate"
         case isPreferred = "preferred"
@@ -14,4 +14,5 @@ struct CreditCard: Codable {
     var expiration: String
     var cvv: String
     var isPreferred: Bool = false
+    var zip: String
 }
