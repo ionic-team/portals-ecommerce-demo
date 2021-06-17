@@ -43,7 +43,7 @@ const CheckoutPage: React.FC = () => {
     <IonPage id="checkout-page">
       <IonHeader>
         <IonToolbar>
-          <IonButtons>
+          <IonButtons slot="start">
             <IonButton
               onClick={() => {
                 checkout({ result: 'cancel' });
@@ -53,9 +53,6 @@ const CheckoutPage: React.FC = () => {
             </IonButton>
           </IonButtons>
           <IonTitle>Checkout</IonTitle>
-          <IonButtons slot="start">
-            <IonBackButton text="Cancel" />
-          </IonButtons>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
