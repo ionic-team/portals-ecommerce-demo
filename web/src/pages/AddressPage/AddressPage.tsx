@@ -1,43 +1,59 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { caretDownOutline } from 'ionicons/icons';
-import { 
-  IonItem, 
-  IonLabel, 
-  IonInput, 
-  IonHeader, 
-  IonButtons, 
-  IonBackButton, 
-  IonToolbar, 
-  IonTitle, 
-  IonButton, 
-  IonContent, 
-  IonPage, 
+import {
+  IonItem,
+  IonLabel,
+  IonInput,
+  IonHeader,
+  IonButtons,
+  IonBackButton,
+  IonToolbar,
+  IonTitle,
+  IonButton,
+  IonContent,
+  IonPage,
   IonIcon,
   IonCheckbox,
   IonText,
   useIonPicker,
+  useIonRouter,
 } from '@ionic/react';
 import { DataContext } from '../../DataProvider';
 import { stateCodes } from '../../util/states';
 import './AddressPage.css';
+import { RouteComponentProps } from 'react-router';
+import { Address, User } from '../../models';
 
-const AddressPage = () => {
+type AddressPageProps = {
+  id: string;
+};
+
+const AddressPage: React.FC<RouteComponentProps<AddressPageProps>> = (
+  props
+) => {
+  const { id } = props.match.params;
   const { user, setUser } = useContext(DataContext);
-  const [isChecked, setIsChecked] = useState(false);
+  const [address, setAddress] = useState<Address>();
   const [present] = useIonPicker();
+  const router = useIonRouter();
 
-  // TODO: use variable to determine if you should prefill data or not
-  const isNewAddress = false;
-  const addressIndex = 0;
-  const address = user?.addresses[addressIndex]
-
-  if (isNewAddress && user) {
-    user.addresses[addressIndex].street = '';
-    user.addresses[addressIndex].postal = '';
-    user.addresses[addressIndex].city = '';
-    user.addresses[addressIndex].state = '';
-    user.addresses[addressIndex].preferred = false;
-  }
+  useEffect(() => {
+    if (user) {
+      if (id) {
+        const a = user.addresses.find((x) => x.id === Number(id));
+        setAddress(a);
+      } else {
+        setAddress({
+          id: 0,
+          city: '',
+          postal: '',
+          state: '',
+          street: '',
+          preferred: false,
+        });
+      }
+    }
+  }, [id, user]);
 
   const pickStateCode = () => {
     present({
@@ -45,9 +61,8 @@ const AddressPage = () => {
         {
           text: 'Confirm',
           handler: (selected) => {
-            if (user) {
-              user.addresses[addressIndex].state = selected.StateCode.value;
-              setUser(user);
+            if (address) {
+              setAddress({ ...address, state: selected.StateCode.value });
             }
           },
         },
@@ -55,19 +70,54 @@ const AddressPage = () => {
       columns: [
         {
           name: 'StateCode',
-          options: stateCodes.map(code => { 
-            return { text: code, value: code }; 
-          })
+          options: stateCodes.map((code) => {
+            return { text: code, value: code };
+          }),
+          selectedIndex: stateCodes.findIndex((x) => x === address?.state),
         },
       ],
-    })
-  }
+    });
+  };
 
-  return (
+  const handleSave = () => {
+    if (user && address) {
+      let newUser: User;
+      if (address.id === 0) {
+        address.id =
+          (user.addresses.length > 0
+            ? Math.max(...user.addresses.map((x) => x.id))
+            : 0) + 1;
+        newUser = {
+          ...user,
+          addresses: [...user.addresses, address],
+        };
+      } else {
+        newUser = {
+          ...user,
+          addresses: [
+            ...user.addresses.map((x) => (x.id === address.id ? address : x)),
+          ],
+        };
+      }
+      if (address.preferred) {
+        newUser.addresses.forEach((x) => {
+          if (x.id !== address.id) {
+            x.preferred = false;
+          }
+        });
+      }
+      setUser(newUser);
+      if (router.canGoBack()) {
+        router.goBack();
+      }
+    }
+  };
+
+  return user && address ? (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>{isNewAddress ? 'Add' : 'Edit'} Address</IonTitle>
+          <IonTitle>{address.id === 0 ? 'Add' : 'Edit'} Address</IonTitle>
           <IonButtons slot="start">
             <IonBackButton text="Cancel" />
           </IonButtons>
@@ -84,52 +134,45 @@ const AddressPage = () => {
         </IonItem>
         <IonItem lines="full">
           <IonLabel position="fixed">Address</IonLabel>
-          <IonInput 
+          <IonInput
             placeholder=""
             debounce={500}
             onIonChange={(event) => {
-              if (user) {
-                user.addresses[addressIndex].street = (event.target as any).value
-                setUser(user);
-              }
+              setAddress({ ...address, street: event.detail.value! });
             }}
-            value={user?.addresses[addressIndex].street}
+            value={address.street}
           ></IonInput>
         </IonItem>
         <IonItem lines="full">
           <IonLabel position="fixed">Zip Code</IonLabel>
-          <IonInput 
+          <IonInput
             placeholder=""
+            type="number"
+            pattern="[0-9]*"
             debounce={500}
             onIonChange={(event) => {
-              if (user) {
-                user.addresses[addressIndex].postal = (event.target as any).value
-                setUser(user);
-              }
+              setAddress({ ...address, postal: event.detail.value! });
             }}
-            value={user?.addresses[addressIndex].postal}
+            value={address.postal}
           ></IonInput>
         </IonItem>
         <IonItem lines="full">
           <IonLabel position="fixed">City</IonLabel>
-          <IonInput 
+          <IonInput
             placeholder=""
             debounce={500}
             onIonChange={(event) => {
-              if (user) {
-                user.addresses[addressIndex].city = (event.target as any).value
-                setUser(user);
-              }
+              setAddress({ ...address, city: event.detail.value! });
             }}
-            value={address?.city}
+            value={address.city}
           ></IonInput>
         </IonItem>
         <IonItem lines="full">
           <IonLabel position="fixed">State</IonLabel>
-          <IonInput 
+          <IonInput
             placeholder=""
             onClick={pickStateCode}
-            value={user?.addresses[addressIndex].state}
+            value={address.state}
           ></IonInput>
           {/* TODO: Style this to fit design better */}
           <IonButton
@@ -142,22 +185,20 @@ const AddressPage = () => {
           </IonButton>
         </IonItem>
         <IonItem lines="none">
-          <IonCheckbox checked={isChecked} onIonChange={e => setIsChecked(e.detail.checked)} />
+          <IonCheckbox
+            checked={address.preferred}
+            onIonChange={(e) => {
+              setAddress({ ...address, preferred: !address.preferred });
+            }}
+          />
           <IonText>Set as default address</IonText>
         </IonItem>
-        <IonButton 
-          expand="block"
-          onClick={() => {
-            if (user) {
-              setUser(user);
-            }
-          }}
-        >
+        <IonButton expand="block" onClick={handleSave}>
           Save
         </IonButton>
       </IonContent>
     </IonPage>
-  );
+  ) : null;
 };
 
 export default AddressPage;

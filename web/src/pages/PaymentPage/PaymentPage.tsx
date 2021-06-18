@@ -23,7 +23,7 @@ import {
 import { RouteComponentProps } from 'react-router';
 import { DataContext } from '../../DataProvider';
 import './PaymentPage.css';
-import { CreditCard } from '../../models';
+import { CreditCard, User } from '../../models';
 
 type PaymentPageMatch = {
   id: string;
@@ -41,7 +41,6 @@ const maskCreditCardNumber = (value: string) => {
 const PaymentPage = (props: RouteComponentProps<PaymentPageMatch>) => {
   const { id } = props.match.params;
   const { user, setUser } = useContext(DataContext);
-  const [isChecked, setIsChecked] = useState(false);
   const [creditCard, setCreditCard] = useState<CreditCard>();
   const router = useIonRouter();
 
@@ -66,18 +65,19 @@ const PaymentPage = (props: RouteComponentProps<PaymentPageMatch>) => {
 
   const handleSave = () => {
     if (user && creditCard) {
+      let newUser: User;
       if (creditCard.id === 0) {
-        const newId =
+        creditCard.id =
           (user.creditCards.length > 0
             ? Math.max(...user.creditCards.map((x) => x.id))
             : 0) + 1;
-        const newUser = {
+        newUser = {
           ...user,
-          creditCards: [...user.creditCards, { ...creditCard, id: newId }],
+          creditCards: [...user.creditCards, creditCard],
         };
         setUser(newUser);
       } else {
-        const newUser = {
+        newUser = {
           ...user,
           creditCards: [
             ...user.creditCards.map((x) =>
@@ -86,6 +86,13 @@ const PaymentPage = (props: RouteComponentProps<PaymentPageMatch>) => {
           ],
         };
         setUser(newUser);
+      }
+      if (creditCard.preferred) {
+        newUser.creditCards.forEach((x) => {
+          if (x.id !== creditCard.id) {
+            x.preferred = false;
+          }
+        });
       }
       if (router.canGoBack()) {
         router.goBack();
@@ -96,7 +103,7 @@ const PaymentPage = (props: RouteComponentProps<PaymentPageMatch>) => {
   return (
     <IonPage>
       {user && creditCard && (
-        <React.Fragment>
+        <>
           <IonHeader>
             <IonToolbar>
               <IonTitle>
@@ -109,11 +116,13 @@ const PaymentPage = (props: RouteComponentProps<PaymentPageMatch>) => {
           </IonHeader>
           <IonContent className="ion-padding">
             <IonList>
-              <IonItem lines="full">
+              <IonItem lines="none">
                 <IonLabel position="stacked">Card Number</IonLabel>
                 <IonInput
+                  type="number"
+                  pattern="[0-9]*"
                   maxlength={16}
-                  placeholder=""
+                  placeholder="Card Number"
                   onIonFocus={() => {
                     if (user) {
                       setCreditCard({ ...creditCard, number: '' });
@@ -128,7 +137,7 @@ const PaymentPage = (props: RouteComponentProps<PaymentPageMatch>) => {
                   value={maskCreditCardNumber(creditCard.number)}
                 ></IonInput>
               </IonItem>
-              <IonItem lines="full">
+              <IonItem lines="none">
                 <IonGrid>
                   <IonRow>
                     <IonCol>
@@ -137,20 +146,29 @@ const PaymentPage = (props: RouteComponentProps<PaymentPageMatch>) => {
                         displayFormat="MM/YYYY"
                         min="2021"
                         max="2031"
+                        placeholder="Exp Date"
                         value={creditCard.expirationDate}
+                        onIonChange={(event) =>
+                          setCreditCard({
+                            ...creditCard,
+                            expirationDate: event.detail.value!,
+                          })
+                        }
                       ></IonDatetime>
                     </IonCol>
                     <IonCol>
                       <IonLabel position="stacked">CVV</IonLabel>
                       <IonInput
-                        placeholder=""
+                        placeholder="CVV"
+                        type="number"
+                        pattern="[0-9]*"
                         maxlength={4}
                         debounce={500}
                         onIonChange={(event) => {
-                          if (user) {
-                            const cvv = (event.target as any).value;
-                            setCreditCard({ ...creditCard, cvv });
-                          }
+                          setCreditCard({
+                            ...creditCard,
+                            cvv: event.detail.value!,
+                          });
                         }}
                         value={creditCard.cvv}
                       ></IonInput>
@@ -158,25 +176,29 @@ const PaymentPage = (props: RouteComponentProps<PaymentPageMatch>) => {
                   </IonRow>
                 </IonGrid>
               </IonItem>
-              <IonItem lines="full">
+              <IonItem lines="none">
                 <IonLabel position="stacked">Zip Code</IonLabel>
                 <IonInput
-                  placeholder=""
+                  placeholder="Zip Code"
+                  type="number"
+                  pattern="[0-9]*"
                   maxlength={5}
                   debounce={500}
                   onIonChange={(event) => {
-                    if (user) {
-                      const zip = (event.target as any).value;
-                      setCreditCard({ ...creditCard, zip });
-                    }
+                    setCreditCard({ ...creditCard, zip: event.detail.value! });
                   }}
                   value={creditCard.zip}
                 ></IonInput>
               </IonItem>
               <IonItem lines="none">
                 <IonCheckbox
-                  checked={isChecked}
-                  onIonChange={(e) => setIsChecked(e.detail.checked)}
+                  checked={creditCard.preferred}
+                  onIonChange={(e) => {
+                    setCreditCard({
+                      ...creditCard,
+                      preferred: !creditCard.preferred,
+                    });
+                  }}
                 />
                 <IonText>Set as default payment method</IonText>
               </IonItem>
@@ -185,7 +207,7 @@ const PaymentPage = (props: RouteComponentProps<PaymentPageMatch>) => {
               Save
             </IonButton>
           </IonContent>
-        </React.Fragment>
+        </>
       )}
     </IonPage>
   );

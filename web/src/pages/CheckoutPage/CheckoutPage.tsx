@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import {
-  IonBackButton,
   IonButton,
   IonButtons,
   IonCheckbox,
@@ -27,17 +26,19 @@ const CheckoutPage: React.FC = () => {
   const router = useIonRouter();
 
   useEffect(() => {
-    if (user) {
+    if (user && !selectedAddress) {
       const address = user.addresses.find((x) => x.preferred);
       if (address) {
         setSelectedAddress(address);
       }
+    }
+    if (user && !selectedCreditCard) {
       const creditCard = user.creditCards.find((x) => x.preferred);
       if (creditCard) {
         setSelectedCreditCard(creditCard);
       }
     }
-  }, [user]);
+  }, [selectedAddress, selectedCreditCard, user]);
 
   return (
     <IonPage id="checkout-page">
