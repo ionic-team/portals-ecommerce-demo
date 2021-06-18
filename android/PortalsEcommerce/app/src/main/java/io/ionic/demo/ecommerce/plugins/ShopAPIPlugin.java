@@ -74,12 +74,29 @@ public class ShopAPIPlugin extends Plugin {
 
     @PluginMethod
     public void getUserPicture(PluginCall call) {
-        // todo
+        User user = dataService.getUser();
+        if (user.image != null && !user.image.isEmpty()) {
+            String picture = user.getImageBase64(getContext());
+            if (picture != null) {
+                JSObject returnPicture = new JSObject();
+                returnPicture.put("picture", picture);
+                call.resolve(returnPicture);
+                return;
+            }
+        }
+
+        call.reject("No picture available");
     }
 
     @PluginMethod
     public void setUserPicture(PluginCall call) {
-        // todo
+        String picture = call.getString("picture");
+        if (picture != null && !picture.isEmpty()) {
+            User user = dataService.getUser();
+            dataService.storeUserImage(getContext(), user, picture);
+            dataService.setUser(user);
+        }
+        call.resolve();
     }
 }
 
