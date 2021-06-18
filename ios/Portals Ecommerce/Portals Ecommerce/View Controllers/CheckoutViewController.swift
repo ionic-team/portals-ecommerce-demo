@@ -8,15 +8,21 @@ class CheckoutViewController: HostedContentViewController, ShopAPIActionDelegate
         apiPlugin?.actionDelegate = self
     }
     
+    override func webViewCompletedInitialLoad() {
+        super.webViewCompletedInitialLoad()
+        webView?.evaluateJavaScript("window.location.href = \"/checkout\"", completionHandler: nil)
+    }
+    
     // MARK: - ShopAPIActionDelegateProtocol
     
     func completeCheckout(with status: ShopAPICheckoutStatus) {
         if status == .completed {
             coordinator?.dataStore.cart.clear()
         }
-        dismiss(animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
-    
     // MARK: - CAPBridgeViewController
     
     override func instanceDescriptor() -> InstanceDescriptor {

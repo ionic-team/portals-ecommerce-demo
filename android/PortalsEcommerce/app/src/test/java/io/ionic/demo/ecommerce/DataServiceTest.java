@@ -25,6 +25,7 @@ public class DataServiceTest {
         appData.user = new User();
         appData.user.firstName = "Joe";
         appData.user.lastName = "Test";
+        appData.user.image = "defaultimage";
         appData.user.addresses = new ArrayList<>();
         Address address = new Address() {{
             id = 1;
@@ -39,6 +40,8 @@ public class DataServiceTest {
             company = "Visa";
             number = "1111-1111-1111-1111";
             expirationDate = "12/24";
+            zip = "12345";
+            cvv = "123";
             preferred = true;
         }};
         appData.user.creditCards = new ArrayList<>();
@@ -89,5 +92,22 @@ public class DataServiceTest {
         User user2 = dataService.getUser();
         assertEquals(2, user2.addresses.size());
         assertEquals("5678 Hard St", user2.addresses.get(1).street);
+    }
+
+    @Test
+    public void setUserPictureShouldStorePicture() {
+        User user = dataService.getUser();
+        user.image = "testimage";
+        dataService.setUser(user);
+        user = null;
+
+        User user2 = dataService.getUser();
+        assertEquals("testimage",user2.image);
+    }
+
+    @Test
+    public void getUserPictureShouldReturnPicture() {
+        User user = dataService.getUser();
+        assertEquals("defaultimage",user.image);
     }
 }

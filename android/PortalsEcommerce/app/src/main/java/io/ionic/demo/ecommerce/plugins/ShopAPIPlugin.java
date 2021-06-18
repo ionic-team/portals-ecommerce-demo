@@ -1,5 +1,7 @@
 package io.ionic.demo.ecommerce.plugins;
 
+import androidx.lifecycle.ViewModelProvider;
+
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
@@ -16,7 +18,7 @@ import io.ionic.demo.ecommerce.data.ShoppingCart;
 import io.ionic.demo.ecommerce.data.model.Cart;
 import io.ionic.demo.ecommerce.data.model.User;
 
-@CapacitorPlugin(name = "ShopAPIPlugin")
+@CapacitorPlugin(name = "ShopAPI")
 public class ShopAPIPlugin extends Plugin {
 
     DataService dataService;
@@ -51,9 +53,14 @@ public class ShopAPIPlugin extends Plugin {
 
     @PluginMethod
     public void updateUserDetails(PluginCall call) {
-        JSObject userJSObject = call.getData();
-        User user = new Gson().fromJson(userJSObject.toString(), User.class);
-        dataService.setUser(user);
+        try {
+            JSObject userJSObject = call.getData();
+            User user = new Gson().fromJson(userJSObject.toString(), User.class);
+            dataService.setUser(user);
+            call.resolve(userJSObject);
+        } catch(Exception e) {
+            call.reject("error updating user details");
+        }
     }
 
     @PluginMethod
@@ -61,16 +68,35 @@ public class ShopAPIPlugin extends Plugin {
         String result = call.getString("result");
         ShoppingCart cart = EcommerceApp.getInstance().getShoppingCart();
         cart.checkout(result);
+        ShopAPIViewModel viewModel = new ViewModelProvider(this.getActivity()).get(ShopAPIViewModel.class);
+        viewModel.onCheckout(result);
     }
 
     @PluginMethod
     public void getUserPicture(PluginCall call) {
-        // todo
+        User user = dataService.getUser();
+        if (user.image != null && !user.image.isEmpty()) {
+            String picture = user.getImageBase64(getContext());
+            if (picture != null) {
+                JSObject returnPicture = new JSObject();
+                returnPicture.put("picture", picture);
+                call.resolve(returnPicture);
+                return;
+            }
+        }
+
+        call.reject("No picture available");
     }
 
     @PluginMethod
     public void setUserPicture(PluginCall call) {
-        // todo
+        String picture = call.getString("picture");
+        if (picture != null && !picture.isEmpty()) {
+            User user = dataService.getUser();
+            dataService.storeUserImage(getContext(), user, picture);
+            dataService.setUser(user);
+        }
+        call.resolve();
     }
-
 }
+
