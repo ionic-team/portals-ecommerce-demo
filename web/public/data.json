@@ -151,15 +151,16 @@
         "company": "Visa",
         "number": "4111111111111234",
         "cvv": "111",
-        "expirationDate": "06/30/2025",
+        "expirationDate": "2023-06-31T11:59:59Z",
         "preferred": true,
         "zip": "53717"
       },
       {
         "id": 2,
         "company": "Mastercard",
-        "number": "4111-1111-1111-5678",
-        "expirationDate": "06/30/2023",
+        "number": "4111111111115678",
+        "cvv": "222",
+        "expirationDate": "2025-06-31T11:59:59Z",
         "preferred": false,
         "zip": "53717"
       }
