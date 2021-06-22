@@ -53,7 +53,12 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     // required if you want to use Mockito for unit tests
+    testImplementation 'org.json:json:20080701'
     testImplementation 'org.mockito:mockito-core:3.11.0'
+    testImplementation "org.powermock:powermock-module-junit4:2.0.4"
+    testImplementation "org.powermock:powermock-module-junit4-rule:2.0.4"
+    testImplementation "org.powermock:powermock-api-mockito2:2.0.4"
+    testImplementation "org.powermock:powermock-classloading-xstream:2.0.4"
 }
 
 task CopyWebAssets(type: Copy) {
