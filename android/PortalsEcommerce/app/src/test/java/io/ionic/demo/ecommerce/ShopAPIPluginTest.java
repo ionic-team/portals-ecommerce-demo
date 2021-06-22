@@ -23,6 +23,8 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import io.ionic.demo.ecommerce.data.DataService;
+import io.ionic.demo.ecommerce.data.ShoppingCart;
+import io.ionic.demo.ecommerce.data.model.Cart;
 import io.ionic.demo.ecommerce.plugins.ShopAPIPlugin;
 
 import static junit.framework.TestCase.assertEquals;
@@ -44,6 +46,7 @@ public class ShopAPIPluginTest {
     Bridge bridge = mock(Bridge.class);
     Bitmap bitmap = mock(Bitmap.class);
     FileOutputStream fileOutputStream = mock(FileOutputStream.class);
+    EcommerceApp ecommerceApp = mock(EcommerceApp.class);
 
     private InputStream getTestInputStream() {
         return this.getClass().getClassLoader().getResourceAsStream(ShopAPIPluginTest.APP_DATA);
@@ -52,16 +55,24 @@ public class ShopAPIPluginTest {
     @Before
     public void init() {
         try{
+            // general mocks
+            when(bridge.getContext()).thenReturn(context);
+            when(context.getAssets()).thenReturn(assetManager);
+            when(assetManager.open("data.json")).thenReturn(getTestInputStream());
+
+            // image tests
             PowerMockito.mockStatic(EcommerceApp.class);
             PowerMockito.mockStatic(BitmapFactory.class);
             PowerMockito.mockStatic(Base64.class);
-            when(context.getAssets()).thenReturn(assetManager);
-            when(assetManager.open("data.json")).thenReturn(getTestInputStream());
             when(EcommerceApp.getContext()).thenReturn(context);
             when(BitmapFactory.decodeResource(context.getResources(), R.drawable.jt_avatar)).thenReturn(bitmap);
             when(Base64.encodeToString(any(byte[].class), eq(Base64.DEFAULT))).thenReturn("storedimagebase64");
             when(context.openFileOutput("user-image.jpg", Context.MODE_PRIVATE)).thenReturn(fileOutputStream);
-            when(bridge.getContext()).thenReturn(context);
+
+            // data tests
+            when(EcommerceApp.getInstance()).thenReturn(ecommerceApp);
+            when(ecommerceApp.getShoppingCart()).thenReturn(new ShoppingCart());
+
         } catch (IOException e) {
             fail();
         }
@@ -87,5 +98,26 @@ public class ShopAPIPluginTest {
         plugin.setUserPicture(call);
 
         assertEquals("user-image.jpg", DataService.getInstance(context).getUser().image);
+    }
+
+    @Test
+    public void getCartShouldReturnCart() {
+        ShopAPIPlugin plugin = new ShopAPIPlugin();
+        plugin.getCart(call);
+
+        ArgumentCaptor<JSObject> argument = ArgumentCaptor.forClass(JSObject.class);
+        verify(call).resolve(argument.capture());
+        assertEquals("1", argument.getValue().getString("id"));
+    }
+
+    @Test
+    public void getUserDetailsShouldReturnDetails() {
+        ShopAPIPlugin plugin = new ShopAPIPlugin();
+        plugin.getUserDetails(call);
+
+        ArgumentCaptor<JSObject> argument = ArgumentCaptor.forClass(JSObject.class);
+        verify(call).resolve(argument.capture());
+        JSObject resultCheck = argument.getValue();
+        assertEquals("mock - Josh", argument.getValue().getString("firstName"));
     }
 }
