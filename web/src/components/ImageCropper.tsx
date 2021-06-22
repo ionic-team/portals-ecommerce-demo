@@ -40,7 +40,7 @@ const ImageCropper: React.FC<ImageCropperProps> = ({
     const cropper: any = imageElement?.cropper;
     const canvasData = cropper.getCanvasData();
     const cropBoxData = cropper.getCropBoxData();
-    console.log({ canvasData, cropBoxData });
+
     const canvasRight = canvasData.left + canvasData.width;
     const canvasBottom = canvasData.top + canvasData.height;
     const cropBoxRight = cropBoxData.left + cropBoxData.width;
