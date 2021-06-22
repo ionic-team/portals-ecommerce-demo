@@ -9,7 +9,8 @@ export interface DataState {
   setUser: (user: User) => void;
   cart?: Cart;
   checkout: (result: CheckoutResult) => void;
-  getUserPicture: () => Promise<string>;
+  userPhoto?: string;
+  setUserPhoto: (photo: string) => void;
 }
 
 export const DataContext = React.createContext<DataState>({} as any);
@@ -18,16 +19,19 @@ export const DataProvider: React.FC = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState<User>();
   const [cart, setCart] = useState<Cart>();
+  const [userPhoto, setUserPhoto] = useState<string>();
 
   useEffect(() => {
     async function init() {
       setIsLoading(true);
-      const [user, cart] = await Promise.all([
+      const [user, cart, photo] = await Promise.all([
         getUserDetails(),
         getCart(),
+        getUserPicture(),
       ]);
       setUser(user);
       setCart(cart);
+      setUserPhoto(photo);
       setIsLoading(false);
     }
     init();
@@ -40,6 +44,11 @@ export const DataProvider: React.FC = ({ children }) => {
     setIsLoading(false);
   }, []);
 
+  const setPhotoData = useCallback(async (photo: string) => {
+    await setUserPicture(photo);
+    setUserPhoto(photo);
+  }, []);
+
   return (
     <DataContext.Provider
       value={{
@@ -48,7 +57,8 @@ export const DataProvider: React.FC = ({ children }) => {
         setUser: setUserData,
         cart,
         checkout: checkout,
-        getUserPicture: getUserPicture
+        userPhoto,
+        setUserPhoto: setPhotoData
       }}
     >
       {children}
@@ -97,6 +107,16 @@ async function checkout(result: CheckoutResult) {
 }
 
 async function getUserPicture() {
-  const userPicture = await ShopAPI.getUserPicture();
-  return userPicture.picture;
+  if (Capacitor.isNativePlatform()) {
+    const userPicture = await ShopAPI.getUserPicture();
+    return userPicture.picture;
+  } else {
+    return 'images/jt-avatar.png';
+  }
+}
+
+async function setUserPicture(picture: string) {
+  if (Capacitor.isNativePlatform()) {
+    return await ShopAPI.setUserPicture({ picture });
+  }
 }

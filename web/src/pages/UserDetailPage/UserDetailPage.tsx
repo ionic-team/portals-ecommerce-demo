@@ -12,7 +12,7 @@ import {
   IonTitle,
   IonToolbar,
   useIonRouter,
-  useIonModal,
+  useIonModal
 } from '@ionic/react';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { DataContext } from '../../DataProvider';
@@ -30,14 +30,13 @@ interface FormData {
 }
 
 const UserDetailPage = () => {
-  const { user, setUser } = useContext(DataContext);
-  const [imageUrl, setImageUrl] = useState<string>();
+  const { user, setUser, userPhoto, setUserPhoto } = useContext(DataContext);
   const [formData, setFormData] = useState<FormData>();
   const [cameraImage, setCameraImage] = useState<string>();
   const router = useIonRouter();
 
   const handleCropComplete = (dataImageUrl: string) => {
-    setImageUrl(dataImageUrl);
+    setUserPhoto(dataImageUrl);
     setCameraImage(undefined);
     hideCropModal();
   };
@@ -51,15 +50,14 @@ const UserDetailPage = () => {
   );
 
   useEffect(() => {
-    if (user && !formData) {
+    if (user && userPhoto && !formData) {
       setFormData({
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
       });
-      setImageUrl(`images/${user.image}`);
     }
-  }, [formData, user]);
+  }, [formData, user, userPhoto]);
 
   const updateUser = useCallback(() => {
     if (user && formData) {
@@ -89,7 +87,7 @@ const UserDetailPage = () => {
         {user && formData && (
           <>
             <div className="user-image" onClick={handlePictureClick}>
-              <img src={imageUrl} alt={`${user.firstName} ${user.lastName}`} />
+              <img src={userPhoto} alt={`${user.firstName} ${user.lastName}`} />
               <IonIcon icon={add} />
             </div>
             <div className="user-info">
@@ -184,8 +182,6 @@ async function takePicture() {
   const image = await Camera.getPhoto({
     quality: 100,
     width: 300,
-    // height: 300,
-    // allowEditing: true,
     direction: CameraDirection.Front,
     resultType: CameraResultType.Uri,
   });

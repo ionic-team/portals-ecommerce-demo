@@ -40,7 +40,7 @@ public class User {
                         stringBuilder.append(line).append("\n");
                     }
                     reader.close();
-                    return stringBuilder.toString();
+                    return "data:image/jpeg;base64," + stringBuilder.toString();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -49,7 +49,7 @@ public class User {
                     Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.jt_avatar);
                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteStream);
                     byte[] imageBytes = byteStream.toByteArray();
-                    return Base64.encodeToString(imageBytes, Base64.DEFAULT);
+                    return "data:image/jpeg;base64," + Base64.encodeToString(imageBytes, Base64.DEFAULT);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

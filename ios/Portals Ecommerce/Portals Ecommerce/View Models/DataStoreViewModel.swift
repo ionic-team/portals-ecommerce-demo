@@ -13,7 +13,7 @@ class DataStoreViewModel: ShopAPIDataProviderProtocol {
             }
             let image = imageLoader.imageFor(user.imageName)
             if let data = image?.jpegData(compressionQuality: 1) {
-                return "data:image/jpeg;base64,\(data.base64EncodedData())"
+                return "data:image/jpeg;base64,\(data.base64EncodedString())"
             }
             return ""
         }
