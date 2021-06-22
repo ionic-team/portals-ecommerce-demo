@@ -2,11 +2,11 @@ import React from 'react';
 import { IonContent, IonIcon, IonItem, IonPage } from '@ionic/react';
 import { callOutline, mailOutline } from 'ionicons/icons';
 
-import './HelpPage.css';
+import './HelpPage.scss';
 
 const HelpPage = () => {
   return (
-    <IonPage>
+    <IonPage id="help-page">
       <IonContent>
         <IonItem lines="none">
           <h1>Get Assistance</h1>

@@ -1,7 +1,7 @@
 import {
   IonButton,
-  IonChip,
   IonContent,
+  IonHeader,
   IonIcon,
   IonInput,
   IonItem,
@@ -9,13 +9,19 @@ import {
   IonList,
   IonListHeader,
   IonPage,
+  IonTitle,
+  IonToolbar,
   useIonRouter,
+  useIonModal,
 } from '@ionic/react';
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { DataContext } from '../../DataProvider';
 import { add } from 'ionicons/icons';
 import { Camera, CameraDirection, CameraResultType } from '@capacitor/camera';
 import './UserDetailPage.scss';
+import AddressItem from '../../components/AddressItem';
+import PaymentItem from '../../components/PaymentItem';
+import ImageCropper from '../../components/ImageCropper';
 
 interface FormData {
   firstName: string;
@@ -27,7 +33,22 @@ const UserDetailPage = () => {
   const { user, setUser } = useContext(DataContext);
   const [imageUrl, setImageUrl] = useState<string>();
   const [formData, setFormData] = useState<FormData>();
+  const [cameraImage, setCameraImage] = useState<string>();
   const router = useIonRouter();
+
+  const handleCropComplete = (dataImageUrl: string) => {
+    setImageUrl(dataImageUrl);
+    setCameraImage(undefined);
+    hideCropModal();
+  };
+
+  const [showCropModal, hideCropModal] = useIonModal(
+    <ImageCropper
+      image={cameraImage!}
+      onCropComplete={handleCropComplete}
+      closeModal={() => hideCropModal()}
+    />
+  );
 
   useEffect(() => {
     if (user && !formData) {
@@ -48,12 +69,23 @@ const UserDetailPage = () => {
 
   const handlePictureClick = async () => {
     const image = await takePicture();
-    setImageUrl(image);
+    setCameraImage(image);
+    showCropModal();
   };
 
   return (
     <IonPage id="user-detail-page">
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Profile</IonTitle>
+        </IonToolbar>
+      </IonHeader>
       <IonContent>
+        <IonHeader collapse="condense">
+          <IonToolbar>
+            <IonTitle size="large">Profile</IonTitle>
+          </IonToolbar>
+        </IonHeader>
         {user && formData && (
           <>
             <div className="user-image" onClick={handlePictureClick}>
@@ -104,24 +136,19 @@ const UserDetailPage = () => {
                 <IonList lines="none">
                   <IonListHeader>Addresses</IonListHeader>
                   {user.addresses.map((address) => (
-                    <IonItem className="ion-no-padding">
-                      <IonLabel>
-                        {user.firstName} {user.lastName}
-                        <br />
-                        {address.street}
-                        <br />
-                        {address.city}, {address.state} {address.postal}
-                      </IonLabel>
-                      {address.preferred && (
-                        <IonChip color="success">Default</IonChip>
-                      )}
-                      <IonButton fill="clear" slot="end">
-                        Edit
-                      </IonButton>
-                    </IonItem>
+                    <AddressItem
+                      key={address.id}
+                      address={address}
+                      selectable={false}
+                      user={user}
+                    />
                   ))}
                 </IonList>
-                <IonButton expand="block" color="secondary">
+                <IonButton
+                  expand="block"
+                  color="secondary"
+                  onClick={() => router.push('/address')}
+                >
                   New Address
                 </IonButton>
               </div>
@@ -131,31 +158,18 @@ const UserDetailPage = () => {
               <h4>Payment Methods</h4>
               <IonList lines="none">
                 {user.creditCards.map((creditCard) => (
-                  <IonItem className="ion-no-padding">
-                    <IonLabel>
-                      {creditCard.company} ending in{' '}
-                      {creditCard.number.substring(
-                        creditCard.number.length - 4
-                      )}
-                      <br />
-                    </IonLabel>
-                    {creditCard.preferred && (
-                      <IonChip color="success">Default</IonChip>
-                    )}
-                    <IonButton
-                      fill="clear"
-                      slot="end"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        router.push(`/payment/${creditCard.id}`);
-                      }}
-                    >
-                      Edit
-                    </IonButton>
-                  </IonItem>
+                  <PaymentItem
+                    key={creditCard.id}
+                    creditCard={creditCard}
+                    selectable={false}
+                  />
                 ))}
               </IonList>
-              <IonButton expand="block" color="secondary">
+              <IonButton
+                expand="block"
+                color="secondary"
+                onClick={() => router.push('/payment')}
+              >
                 New Payment Method
               </IonButton>
             </div>
@@ -169,7 +183,9 @@ const UserDetailPage = () => {
 async function takePicture() {
   const image = await Camera.getPhoto({
     quality: 100,
-    allowEditing: false,
+    width: 300,
+    // height: 300,
+    // allowEditing: true,
     direction: CameraDirection.Front,
     resultType: CameraResultType.Uri,
   });

@@ -39,7 +39,7 @@ const Home: React.FC<HomeProps> = () => {
           <IonTitle>Home</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <IonContent fullscreen>
         <div>
           <Link to="/address">Address</Link>&nbsp;
           <Link to="/checkout">Checkout</Link>&nbsp;

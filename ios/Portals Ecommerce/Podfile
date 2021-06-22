@@ -5,6 +5,7 @@ use_frameworks!
 
 def portals_pods
     pod 'Portals'
+    pod "CapacitorCamera"
 end
 
 target 'Ecommerce' do

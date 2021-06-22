@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import {
   IonBackButton,
   IonButton,
@@ -27,15 +27,6 @@ import { CreditCard, User } from '../../models';
 
 type PaymentPageMatch = {
   id: string;
-};
-
-const maskCreditCardNumber = (value: string) => {
-  // Only change number if value is exactly 16 chars
-  if (value.length >= 16) {
-    return '**** **** **** ' + value.slice(-4);
-  }
-
-  return value;
 };
 
 const PaymentPage = (props: RouteComponentProps<PaymentPageMatch>) => {
@@ -100,22 +91,47 @@ const PaymentPage = (props: RouteComponentProps<PaymentPageMatch>) => {
     }
   };
 
+  const dateString = useMemo(() => {
+    if (creditCard) {
+      const date = new Date(creditCard.expirationDate);
+      return `${date.getMonth()}/${date.getFullYear()}`;
+    }
+  }, [creditCard]);
+
+  if (!user || !creditCard) {
+    return null;
+  }
+
   return (
     <IonPage>
-      {user && creditCard && (
-        <>
-          <IonHeader>
-            <IonToolbar>
-              <IonTitle>
-                {creditCard.id === 0 ? 'Add' : 'Edit'} Payment Method
-              </IonTitle>
-              <IonButtons slot="start">
-                <IonBackButton text="Cancel" />
-              </IonButtons>
-            </IonToolbar>
-          </IonHeader>
-          <IonContent className="ion-padding">
-            <IonList>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>
+            {creditCard.id === 0 ? 'Add' : 'Edit'} Payment Method
+          </IonTitle>
+          <IonButtons slot="start">
+            <IonBackButton text="Cancel" />
+          </IonButtons>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent className="ion-padding">
+        <IonList>
+          {creditCard.id > 0 ? (
+            <>
+              <IonItem lines="none">
+                <IonText slot="start">{creditCard.company}</IonText>
+              </IonItem>
+              <IonItem lines="none">
+                <IonText slot="start">Card last 4 digits</IonText>
+                <IonText slot="end">{creditCard.number.slice(-4)}</IonText>
+              </IonItem>
+              <IonItem lines="none">
+                <IonLabel slot="start">Card exp date</IonLabel>
+                <IonText slot="end">{dateString}</IonText>
+              </IonItem>
+            </>
+          ) : (
+            <>
               <IonItem lines="none">
                 <IonLabel position="stacked">Card Number</IonLabel>
                 <IonInput
@@ -134,7 +150,7 @@ const PaymentPage = (props: RouteComponentProps<PaymentPageMatch>) => {
                       setCreditCard({ ...creditCard, number });
                     }
                   }}
-                  value={maskCreditCardNumber(creditCard.number)}
+                  value={creditCard.number}
                 ></IonInput>
               </IonItem>
               <IonItem lines="none">
@@ -144,7 +160,7 @@ const PaymentPage = (props: RouteComponentProps<PaymentPageMatch>) => {
                       <IonLabel position="stacked">Exp Date</IonLabel>
                       <IonDatetime
                         displayFormat="MM/YYYY"
-                        min="2021"
+                        min={new Date().toISOString()}
                         max="2031"
                         placeholder="Exp Date"
                         value={creditCard.expirationDate}
@@ -176,39 +192,42 @@ const PaymentPage = (props: RouteComponentProps<PaymentPageMatch>) => {
                   </IonRow>
                 </IonGrid>
               </IonItem>
-              <IonItem lines="none">
-                <IonLabel position="stacked">Zip Code</IonLabel>
-                <IonInput
-                  placeholder="Zip Code"
-                  type="number"
-                  pattern="[0-9]*"
-                  maxlength={5}
-                  debounce={500}
-                  onIonChange={(event) => {
-                    setCreditCard({ ...creditCard, zip: event.detail.value! });
-                  }}
-                  value={creditCard.zip}
-                ></IonInput>
-              </IonItem>
-              <IonItem lines="none">
-                <IonCheckbox
-                  checked={creditCard.preferred}
-                  onIonChange={(e) => {
-                    setCreditCard({
-                      ...creditCard,
-                      preferred: !creditCard.preferred,
-                    });
-                  }}
-                />
-                <IonText>Set as default payment method</IonText>
-              </IonItem>
-            </IonList>
-            <IonButton expand="block" onClick={handleSave}>
-              Save
-            </IonButton>
-          </IonContent>
-        </>
-      )}
+            </>
+          )}
+          <IonItem lines="none">
+            <IonLabel position="stacked">Zip Code</IonLabel>
+            <IonInput
+              placeholder="Zip Code"
+              type="number"
+              pattern="[0-9]*"
+              maxlength={5}
+              debounce={500}
+              onIonChange={(event) => {
+                setCreditCard({
+                  ...creditCard,
+                  zip: event.detail.value!,
+                });
+              }}
+              value={creditCard.zip}
+            ></IonInput>
+          </IonItem>
+          <IonItem lines="none">
+            <IonCheckbox
+              checked={creditCard.preferred}
+              onIonChange={(e) => {
+                setCreditCard({
+                  ...creditCard,
+                  preferred: !creditCard.preferred,
+                });
+              }}
+            />
+            <IonText>Set as default payment method</IonText>
+          </IonItem>
+        </IonList>
+        <IonButton expand="block" onClick={handleSave}>
+          Save
+        </IonButton>
+      </IonContent>
     </IonPage>
   );
 };

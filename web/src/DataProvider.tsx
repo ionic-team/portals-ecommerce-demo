@@ -9,6 +9,7 @@ export interface DataState {
   setUser: (user: User) => void;
   cart?: Cart;
   checkout: (result: CheckoutResult) => void;
+  getUserPicture: () => Promise<string>;
 }
 
 export const DataContext = React.createContext<DataState>({} as any);
@@ -47,6 +48,7 @@ export const DataProvider: React.FC = ({ children }) => {
         setUser: setUserData,
         cart,
         checkout: checkout,
+        getUserPicture: getUserPicture
       }}
     >
       {children}
@@ -92,4 +94,9 @@ async function checkout(result: CheckoutResult) {
   } else {
     console.log('checkout: ', { result });
   }
+}
+
+async function getUserPicture() {
+  const userPicture = await ShopAPI.getUserPicture();
+  return userPicture.picture;
 }

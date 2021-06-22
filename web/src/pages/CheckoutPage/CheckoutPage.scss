@@ -9,6 +9,11 @@
     ion-item {
       --padding-start: 0;
       --inner-padding-end: 0;
+
+      ion-label {
+        line-height: 160%;
+        font-size: 16px;
+      }
     }
   }
 
