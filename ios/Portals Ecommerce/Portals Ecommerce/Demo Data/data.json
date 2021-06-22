@@ -131,7 +131,7 @@
       {
         "id": 1,
         "street": "1234 Shady Lane",
-        "city": "Middleton, WI 53717",
+        "city": "Middleton",
         "state": "WI",
         "postal": "53717",
         "preferred": true

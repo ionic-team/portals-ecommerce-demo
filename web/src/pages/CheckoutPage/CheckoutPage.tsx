@@ -3,7 +3,6 @@ import {
   IonButton,
   IonButtons,
   IonCheckbox,
-  IonChip,
   IonContent,
   IonHeader,
   IonItem,
@@ -18,6 +17,8 @@ import {
 import { DataContext } from '../../DataProvider';
 import './CheckoutPage.scss';
 import { Address, CreditCard } from '../../models';
+import AddressItem from '../../components/AddressItem';
+import PaymentItem from '../../components/PaymentItem';
 
 const CheckoutPage: React.FC = () => {
   const { cart, user, checkout } = useContext(DataContext);
@@ -62,39 +63,13 @@ const CheckoutPage: React.FC = () => {
             <IonList lines="none">
               <IonListHeader>Delivery</IonListHeader>
               {user.addresses.map((address) => (
-                <IonItem
-                  button
-                  detail={false}
+                <AddressItem
                   key={address.id}
-                  onClick={() => {
-                    if (address.id !== selectedAddress?.id) {
-                      setSelectedAddress(address);
-                    }
-                  }}
-                >
-                  <IonCheckbox
-                    slot="start"
-                    checked={address.id === selectedAddress?.id}
-                  ></IonCheckbox>
-                  <IonLabel>
-                    {user.firstName} {user.lastName} <br />
-                    {address.street} <br />
-                    {address.city}, {address.state} {address.postal}
-                  </IonLabel>
-                  {address.preferred && (
-                    <IonChip color="success">Default</IonChip>
-                  )}
-                  <IonButton
-                    fill="clear"
-                    slot="end"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      router.push(`/address/${address.id}`);
-                    }}
-                  >
-                    Edit
-                  </IonButton>
-                </IonItem>
+                  address={address}
+                  onAddressSelected={(address) => setSelectedAddress(address)}
+                  selectedId={selectedAddress?.id}
+                  user={user}
+                />
               ))}
             </IonList>
             <IonButton
@@ -108,34 +83,15 @@ const CheckoutPage: React.FC = () => {
             <IonList lines="none">
               <IonListHeader>Payment</IonListHeader>
               {user.creditCards.map((creditCard) => (
-                <IonItem
-                  button
-                  detail={false}
+                <PaymentItem
                   key={creditCard.id}
-                  onClick={() => {
-                    if (creditCard.id !== selectedCreditCard?.id) {
-                      setSelectedCreditCard(creditCard);
-                    }
-                  }}
-                >
-                  <IonCheckbox
-                    slot="start"
-                    checked={creditCard.id === selectedCreditCard?.id}
-                  ></IonCheckbox>
-                  <IonLabel>
-                    {creditCard.company} ending in {creditCard.number.slice(-4)}
-                  </IonLabel>
-                  <IonButton
-                    fill="clear"
-                    slot="end"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      router.push(`/payment/${creditCard.id}`);
-                    }}
-                  >
-                    Edit
-                  </IonButton>
-                </IonItem>
+                  creditCard={creditCard}
+                  selectedId={selectedCreditCard?.id}
+                  onPaymentSelected={(creditCard) =>
+                    setSelectedCreditCard(creditCard)
+                  }
+                  selectable={true}
+                />
               ))}
             </IonList>
             <IonButton
