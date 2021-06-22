@@ -1,5 +1,4 @@
 #user-detail-page {
-
   .ios & {
     ion-content {
       // compensate for the tab bar
@@ -15,10 +14,13 @@
   }
 
   .user-image {
-    display: flex;
-    justify-content: center;
+    margin-top: 10px;
+    position: relative;
+    height: 117px;
     img {
-      margin-top: 10px;
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%);
       width: 117px;
       height: 117px;
       border-radius: 100%;
@@ -26,13 +28,14 @@
 
     ion-icon {
       position: absolute;
-      left: calc(50% - 16px);
-      top: 160px;
+      left: 50%;
+      transform: translate(-50%);
+      bottom: -14px;
       font-size: 24px;
       color: white;
       background-color: var(--ion-color-primary);
       border-radius: 100%;
-      border: 4px solid white;
+      border: 4px solid var(--ion-color-light-tint);
     }
   }
 
