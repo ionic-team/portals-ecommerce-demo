@@ -70,7 +70,7 @@ public class CartFragment extends Fragment {
         String price = format.format(cartViewModel.getShoppingCart().getValue().getTotalPriceOfProductsInCart());
 
         subtotalTextView.setText(price);
-        estimatedTotalTextView.setText(price + " + Tax");
+        estimatedTotalTextView.setText(String.format("%s + Tax", price));
         shippingTextView.setText(R.string.standard_shipping);
     }
 }
