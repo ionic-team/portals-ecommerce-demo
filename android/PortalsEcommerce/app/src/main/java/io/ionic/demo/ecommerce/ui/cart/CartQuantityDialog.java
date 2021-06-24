@@ -28,8 +28,6 @@ public class CartQuantityDialog extends AlertDialog {
          */
         private Product product;
 
-        private Activity activity;
-
         public Builder(Activity activity) {
             super(activity);
         }
@@ -37,7 +35,7 @@ public class CartQuantityDialog extends AlertDialog {
         public void createView(ViewGroup viewGroup, Product product, int qty) {
             root = LayoutInflater.from(super.getContext()).inflate(R.layout.dialog_cart_quantity, viewGroup, false);
             TextView quantityText = root.findViewById(R.id.text_quantity);
-            quantityText.setText(""+qty);
+            quantityText.setText(String.valueOf(qty));
             this.product = product;
             super.setView(root);
         }
@@ -50,7 +48,7 @@ public class CartQuantityDialog extends AlertDialog {
             increment.setOnClickListener(v -> {
                 int qty = Integer.parseInt(quantityText.getText().toString());
                 qty += 1;
-                quantityText.setText(""+qty);
+                quantityText.setText(String.valueOf(qty));
                 EcommerceApp.getInstance().getShoppingCart().addItem(product);
             });
 
@@ -62,7 +60,7 @@ public class CartQuantityDialog extends AlertDialog {
                 } else {
                     qty = 0;
                 }
-                quantityText.setText(""+qty);
+                quantityText.setText(String.valueOf(qty));
             });
         }
     }
