@@ -41,6 +41,7 @@ public class StoreFragment extends Fragment {
             @Override
             public void onChanged(ArrayList<Product> products) {
                 productAdapter = new ProductAdapter(StoreFragment.this.getContext(), products);
+                productAdapter.setStateRestorationPolicy(RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY);
                 carouselView.setLayoutManager(new LinearLayoutManager(StoreFragment.this.getContext(), LinearLayoutManager.HORIZONTAL, false));
                 carouselView.setAdapter(productAdapter);
             }
@@ -50,6 +51,7 @@ public class StoreFragment extends Fragment {
         gridView = root.findViewById(R.id.recycler_product_grid);
         storeViewModel.getAllProducts().observe(getViewLifecycleOwner(), products -> {
             gridAdapter = new ProductAdapter(StoreFragment.this.getContext(), products, true);
+            gridAdapter.setStateRestorationPolicy(RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY);
             gridView.setLayoutManager(new GridLayoutManager(StoreFragment.this.getContext(), 2));
             gridView.setAdapter(gridAdapter);
         });
