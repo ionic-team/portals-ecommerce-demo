@@ -1,8 +1,6 @@
 package io.ionic.demo.ecommerce.ui.product;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,7 +18,6 @@ import androidx.navigation.Navigation;
 
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.squareup.picasso.Picasso;
 
 import java.text.NumberFormat;
 import java.util.Currency;
@@ -46,7 +43,7 @@ public class ProductFragment extends Fragment {
         final ImageView productImage = root.findViewById(R.id.product_image);
         String imageResourceName = product.image.substring(0, product.image.lastIndexOf(".")).replaceAll("-", "_");
         final int resourceId = getResources().getIdentifier(imageResourceName, "drawable", getContext().getPackageName());
-        Picasso.get().load(resourceId).into(productImage);
+        productImage.setImageResource(resourceId);
 
         // Load product text data
         final TextView productTitle = root.findViewById(R.id.product_page_title);

@@ -1,26 +1,20 @@
 package io.ionic.demo.ecommerce.ui.cart;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.res.Resources;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.squareup.picasso.Picasso;
+import com.google.android.material.imageview.ShapeableImageView;
 
 import java.text.NumberFormat;
 import java.util.Currency;
@@ -51,7 +45,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
      * Constructs a ProductAdapter with context, a list of products to display, and whether
      * the adapter will be used to display a grid or not.
      *
-     * @param Activity The Activity containing the adapter.
+     * @param activity The Activity containing the adapter.
      */
     public CartAdapter(Activity activity, View.OnClickListener updateListener) {
         this.activity = activity;
@@ -95,7 +89,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         // Get image asset for the product and load into product card image view
         String imageResourceName = product.image.substring(0, product.image.lastIndexOf(".")).replaceAll("-", "_");
         final int resourceId = resources.getIdentifier(imageResourceName, "drawable", activity.getPackageName());
-        Picasso.get().load(resourceId).into(holder.productImageView);
+        holder.productImageView.setImageResource(resourceId);
 
         CartAdapter self = this;
 
@@ -139,7 +133,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     static class CartViewHolder extends RecyclerView.ViewHolder {
 
         ConstraintLayout productCard;
-        ImageView productImageView;
+        ShapeableImageView productImageView;
         TextView productTitle;
         TextView productQty;
         TextView productPrice;
