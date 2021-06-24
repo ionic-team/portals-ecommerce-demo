@@ -6,7 +6,6 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.imageview.ShapeableImageView;
 import com.squareup.picasso.Picasso;
 
 import java.text.NumberFormat;
@@ -22,7 +22,6 @@ import java.util.Currency;
 
 import io.ionic.demo.ecommerce.R;
 import io.ionic.demo.ecommerce.data.model.Product;
-import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
 /**
  * An adapter used to create product lists on the Store Fragment.
@@ -110,8 +109,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         // Get image asset for the product and load into product card image view
         String imageResourceName = product.image.substring(0, product.image.lastIndexOf(".")).replaceAll("-", "_");
         final int resourceId = resources.getIdentifier(imageResourceName, "drawable", context.getPackageName());
-        int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, context.getResources().getDisplayMetrics());
-        Picasso.get().load(resourceId).transform(new RoundedCornersTransformation(px,0)).into(holder.productImageView);
+        holder.productImageView.setImageResource(resourceId);
 
         holder.productTitle.setText(product.title);
         holder.productPrice.setText(format.format(product.price));
@@ -138,7 +136,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     static class ProductViewHolder extends RecyclerView.ViewHolder {
 
         ConstraintLayout productCard;
-        ImageView productImageView;
+        ShapeableImageView productImageView;
         TextView productTitle;
         TextView productPrice;
 

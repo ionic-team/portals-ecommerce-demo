@@ -24,13 +24,11 @@ import com.squareup.picasso.Picasso;
 
 import java.text.NumberFormat;
 import java.util.Currency;
-import java.util.EventListener;
 import java.util.Map;
 
 import io.ionic.demo.ecommerce.EcommerceApp;
 import io.ionic.demo.ecommerce.R;
 import io.ionic.demo.ecommerce.data.model.Product;
-import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder> {
 
@@ -97,8 +95,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         // Get image asset for the product and load into product card image view
         String imageResourceName = product.image.substring(0, product.image.lastIndexOf(".")).replaceAll("-", "_");
         final int resourceId = resources.getIdentifier(imageResourceName, "drawable", activity.getPackageName());
-        int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, activity.getResources().getDisplayMetrics());
-        Picasso.get().load(resourceId).transform(new RoundedCornersTransformation(px,0)).into(holder.productImageView);
+        Picasso.get().load(resourceId).into(holder.productImageView);
 
         CartAdapter self = this;
 
