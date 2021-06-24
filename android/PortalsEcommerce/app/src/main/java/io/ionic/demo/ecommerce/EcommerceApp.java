@@ -3,11 +3,7 @@ package io.ionic.demo.ecommerce;
 import android.app.Application;
 import android.content.Context;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import io.ionic.demo.ecommerce.data.ShoppingCart;
-import io.ionic.demo.ecommerce.data.model.Product;
 
 /**
  * The parent Application Class for the E-Commerce app.

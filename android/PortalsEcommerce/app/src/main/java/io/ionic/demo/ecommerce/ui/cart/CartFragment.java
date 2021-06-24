@@ -9,21 +9,15 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.NumberFormat;
 import java.util.Currency;
-import java.util.EventListener;
 
 import io.ionic.demo.ecommerce.R;
-import io.ionic.demo.ecommerce.data.ShoppingCart;
-import io.ionic.demo.ecommerce.ui.store.ProductAdapter;
-import io.ionic.demo.ecommerce.ui.store.StoreFragment;
 
 /**
  * Displays a shopping cart.
