@@ -14,6 +14,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.BottomNavigationMenu;
 
@@ -73,15 +74,17 @@ public class CartFragment extends Fragment {
         shippingTextView.setText(R.string.standard_shipping);
 
         // Show/Hide if empty cart
+        BottomNavigationView navView = getActivity().findViewById(R.id.nav_view);
+        BadgeDrawable badge = navView.getOrCreateBadge(R.id.navigation_cart);
         int itemCount = EcommerceApp.getInstance().getShoppingCart().getTotalItemCount();
-        System.out.println(itemCount);
-
         if (itemCount == 0) {
             showEmptyCartViews(root);
+            badge.setVisible(false);
         } else {
+            badge.setVisible(true);
+            badge.setNumber(EcommerceApp.getInstance().getShoppingCart().getTotalItemCount());
             showNonEmptyCartViews(root);
         }
-
     }
 
     private void showEmptyCartViews(View root) {
