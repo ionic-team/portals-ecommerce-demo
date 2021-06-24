@@ -34,7 +34,7 @@ public class CartFragment extends Fragment {
     private RecyclerView recyclerView;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        cartViewModel = new ViewModelProvider(this).get(CartViewModel.class);
+        cartViewModel = new ViewModelProvider(requireActivity()).get(CartViewModel.class);
         View root = inflater.inflate(R.layout.fragment_cart, container, false);
 
         // Setup checkout to cart functionality
