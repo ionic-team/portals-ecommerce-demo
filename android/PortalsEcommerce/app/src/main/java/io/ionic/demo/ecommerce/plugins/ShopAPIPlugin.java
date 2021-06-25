@@ -17,6 +17,7 @@ import io.ionic.demo.ecommerce.data.DataService;
 import io.ionic.demo.ecommerce.data.ShoppingCart;
 import io.ionic.demo.ecommerce.data.model.Cart;
 import io.ionic.demo.ecommerce.data.model.User;
+import io.ionic.demo.ecommerce.ui.cart.CartViewModel;
 
 @CapacitorPlugin(name = "ShopAPI")
 public class ShopAPIPlugin extends Plugin {
@@ -66,8 +67,14 @@ public class ShopAPIPlugin extends Plugin {
     @PluginMethod
     public void checkoutResult(PluginCall call) {
         String result = call.getString("result");
-        ShoppingCart cart = EcommerceApp.getInstance().getShoppingCart();
+
+        // Update cart
+        CartViewModel cartViewModel = new ViewModelProvider(this.getActivity()).get(CartViewModel.class);
+        ShoppingCart cart = cartViewModel.getShoppingCart().getValue();
         cart.checkout(result);
+        cartViewModel.getShoppingCart().postValue(cart);
+
+        // Finish checking out
         ShopAPIViewModel viewModel = new ViewModelProvider(this.getActivity()).get(ShopAPIViewModel.class);
         viewModel.onCheckout(result);
     }

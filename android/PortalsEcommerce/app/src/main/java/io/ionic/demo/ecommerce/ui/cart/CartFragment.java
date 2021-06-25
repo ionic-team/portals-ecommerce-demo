@@ -9,21 +9,21 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.badge.BadgeDrawable;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomnavigation.BottomNavigationMenu;
+
 import java.text.NumberFormat;
 import java.util.Currency;
-import java.util.EventListener;
 
+import io.ionic.demo.ecommerce.EcommerceApp;
 import io.ionic.demo.ecommerce.R;
 import io.ionic.demo.ecommerce.data.ShoppingCart;
-import io.ionic.demo.ecommerce.ui.store.ProductAdapter;
-import io.ionic.demo.ecommerce.ui.store.StoreFragment;
 
 /**
  * Displays a shopping cart.
@@ -35,7 +35,7 @@ public class CartFragment extends Fragment {
     private RecyclerView recyclerView;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        cartViewModel = new ViewModelProvider(this).get(CartViewModel.class);
+        cartViewModel = new ViewModelProvider(requireActivity()).get(CartViewModel.class);
         View root = inflater.inflate(R.layout.fragment_cart, container, false);
 
         // Setup checkout to cart functionality
@@ -48,17 +48,17 @@ public class CartFragment extends Fragment {
         recyclerView = root.findViewById(R.id.cart_recycler_view);
         cartViewModel.getShoppingCart().observe(getViewLifecycleOwner(), products -> {
             cartAdapter = new CartAdapter(CartFragment.this.getActivity(), v -> {
-                updateCartText(root);
+                updateCartView(root);
             });
             recyclerView.setLayoutManager(new LinearLayoutManager(CartFragment.this.getContext(), LinearLayoutManager.VERTICAL, false));
             recyclerView.setAdapter(cartAdapter);
-            updateCartText(root);
+            updateCartView(root);
         });
 
         return root;
     }
 
-    private void updateCartText(View root) {
+    private void updateCartView(View root) {
         TextView subtotalTextView = root.findViewById(R.id.text_view_subtotal_value);
         TextView estimatedTotalTextView = root.findViewById(R.id.text_view_total_value);
         TextView shippingTextView = root.findViewById(R.id.text_view_shipping_value);
@@ -72,5 +72,50 @@ public class CartFragment extends Fragment {
         subtotalTextView.setText(price);
         estimatedTotalTextView.setText(price + " + Tax");
         shippingTextView.setText(R.string.standard_shipping);
+
+        // Show/Hide if empty cart
+        BottomNavigationView navView = getActivity().findViewById(R.id.nav_view);
+        BadgeDrawable badge = navView.getOrCreateBadge(R.id.navigation_cart);
+        int itemCount = EcommerceApp.getInstance().getShoppingCart().getTotalItemCount();
+        if (itemCount == 0) {
+            showEmptyCartViews(root);
+            badge.setVisible(false);
+        } else {
+            badge.setVisible(true);
+            badge.setNumber(EcommerceApp.getInstance().getShoppingCart().getTotalItemCount());
+            showNonEmptyCartViews(root);
+        }
+    }
+
+    private void showEmptyCartViews(View root) {
+        // middle "cart-empty" text view
+        root.findViewById(R.id.text_view_cart_empty).setVisibility(View.VISIBLE);
+
+        // bottom text views
+        root.findViewById(R.id.text_view_total_text).setVisibility(View.INVISIBLE);
+        root.findViewById(R.id.text_view_total_value).setVisibility(View.INVISIBLE);
+        root.findViewById(R.id.text_view_shipping_text).setVisibility(View.INVISIBLE);
+        root.findViewById(R.id.text_view_shipping_value).setVisibility(View.INVISIBLE);
+        root.findViewById(R.id.text_view_subtotal_text).setVisibility(View.INVISIBLE);
+        root.findViewById(R.id.text_view_subtotal_value).setVisibility(View.INVISIBLE);
+
+        // button
+        root.findViewById(R.id.cart_checkout_button).setVisibility(View.INVISIBLE);
+    }
+
+    private void showNonEmptyCartViews(View root) {
+        // middle "cart-empty" text view
+        root.findViewById(R.id.text_view_cart_empty).setVisibility(View.INVISIBLE);
+
+        // bottom text views
+        root.findViewById(R.id.text_view_total_text).setVisibility(View.VISIBLE);
+        root.findViewById(R.id.text_view_total_value).setVisibility(View.VISIBLE);
+        root.findViewById(R.id.text_view_shipping_text).setVisibility(View.VISIBLE);
+        root.findViewById(R.id.text_view_shipping_value).setVisibility(View.VISIBLE);
+        root.findViewById(R.id.text_view_subtotal_text).setVisibility(View.VISIBLE);
+        root.findViewById(R.id.text_view_subtotal_value).setVisibility(View.VISIBLE);
+
+        // button
+        root.findViewById(R.id.cart_checkout_button).setVisibility(View.VISIBLE);
     }
 }
