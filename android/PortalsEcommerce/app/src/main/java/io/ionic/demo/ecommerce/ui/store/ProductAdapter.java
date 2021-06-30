@@ -1,6 +1,5 @@
 package io.ionic.demo.ecommerce.ui.store;
 
-import android.content.Context;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,8 +7,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.navigation.Navigation;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.imageview.ShapeableImageView;
@@ -20,6 +21,7 @@ import java.util.Currency;
 
 import io.ionic.demo.ecommerce.R;
 import io.ionic.demo.ecommerce.data.model.Product;
+import io.ionic.demo.ecommerce.ui.product.ProductFragment;
 
 /**
  * An adapter used to create product lists on the Store Fragment.
@@ -29,7 +31,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     /**
      * The context of the adapter.
      */
-    private final Context context;
+    private final AppCompatActivity context;
 
     /**
      * The list of products to use in the adapter.
@@ -52,7 +54,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
      * @param context The context containing the adapter.
      * @param productList The list of products to display.
      */
-    public ProductAdapter(Context context, ArrayList<Product> productList) {
+    public ProductAdapter(AppCompatActivity context, ArrayList<Product> productList) {
         this.context = context;
         this.productList = productList;
 
@@ -69,7 +71,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
      * @param productList The list of products to display.
      * @param isGrid True if the adapter will be used for a grid.
      */
-    public ProductAdapter(Context context, ArrayList<Product> productList, boolean isGrid) {
+    public ProductAdapter(AppCompatActivity context, ArrayList<Product> productList, boolean isGrid) {
         this(context, productList);
         this.isGrid = isGrid;
     }
@@ -113,8 +115,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.productPrice.setText(format.format(product.price));
         holder.productCard.setOnClickListener(v -> {
             // Navigate to product page passing the product to be displayed, when tapped
-            StoreFragmentDirections.StoreToProduct action = StoreFragmentDirections.storeToProduct(product, product.title);
-            Navigation.findNavController(v).navigate(action);
+            Fragment productDetailFragment = ProductFragment.newInstance(context, product);
+            FragmentTransaction transaction = context.getSupportFragmentManager().beginTransaction();
+            transaction.addToBackStack(null);
+            transaction.replace(R.id.product_layout, productDetailFragment).commit();
+
+            context.getSupportActionBar().setHomeButtonEnabled(true);
         });
     }
 

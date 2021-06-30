@@ -13,11 +13,14 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.tabs.TabLayout;
 
 import java.text.NumberFormat;
 import java.util.Currency;
@@ -31,13 +34,20 @@ import io.ionic.demo.ecommerce.data.model.Product;
  */
 public class ProductFragment extends Fragment {
 
+    private AppCompatActivity context;
+    private Product product;
+
+    public static ProductFragment newInstance(AppCompatActivity context, Product product) {
+        ProductFragment productFragment = new ProductFragment();
+        productFragment.setProduct(product);
+        productFragment.setContext(context);
+        return productFragment;
+    }
+
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_product, container, false);
 
         setHasOptionsMenu(true);
-
-        // Retrieve product data from navigation
-        Product product = ProductFragmentArgs.fromBundle(getArguments()).getProduct();
 
         // Load product image
         final ImageView productImage = root.findViewById(R.id.product_image);
@@ -64,8 +74,8 @@ public class ProductFragment extends Fragment {
             EcommerceApp.getInstance().getShoppingCart().addItem(product);
 
             // Increment badge number on the bottom nav
-            BottomNavigationView navView = getActivity().findViewById(R.id.nav_view);
-            BadgeDrawable badge = navView.getOrCreateBadge(R.id.navigation_cart);
+            TabLayout tabs = getActivity().findViewById(R.id.tab_layout);
+            BadgeDrawable badge = tabs.getTabAt(1).getOrCreateBadge();
             badge.setVisible(true);
             badge.setNumber(EcommerceApp.getInstance().getShoppingCart().getTotalItemCount());
         });
@@ -82,10 +92,22 @@ public class ProductFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.help) {
-            Navigation.findNavController(getView()).navigate(R.id.navigation_help);
+            // Navigate to product page passing the product to be displayed, when tapped
+            Fragment helpFragment = new HelpFragment();
+            FragmentTransaction transaction = context.getSupportFragmentManager().beginTransaction();
+            transaction.addToBackStack(null);
+            transaction.replace(R.id.product_layout, helpFragment).commit();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void setProduct(Product product) {
+        this.product = product;
+    }
+
+    private void setContext(AppCompatActivity context) {
+        this.context = context;
     }
 }

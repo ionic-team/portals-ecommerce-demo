@@ -104,12 +104,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             builder.setupListeners();
             builder.setPositiveButton("OK", (dialog, which) -> {
                 // Decrement badge number on the bottom nav
-                BottomNavigationView navView = activity.findViewById(R.id.nav_view);
-                BadgeDrawable badge = navView.getOrCreateBadge(R.id.navigation_cart);
-                badge.setNumber(EcommerceApp.getInstance().getShoppingCart().getTotalItemCount());
-                if (EcommerceApp.getInstance().getShoppingCart().getTotalItemCount() == 0) {
-                    badge.setVisible(false);
-                }
+//                BottomNavigationView navView = activity.findViewById(R.id.nav_view);
+//                BadgeDrawable badge = navView.getOrCreateBadge(R.id.navigation_cart);
+//                badge.setNumber(EcommerceApp.getInstance().getShoppingCart().getTotalItemCount());
+//                if (EcommerceApp.getInstance().getShoppingCart().getTotalItemCount() == 0) {
+//                    badge.setVisible(false);
+//                }
 
                 self.notifyDataSetChanged();
                 updateListener.onClick(v);
