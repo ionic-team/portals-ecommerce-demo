@@ -5,9 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.cart.CheckoutDialogFragment"
-    android:background="@color/white" >
+    android:background="?attr/backgroundColor" >
+
     <FrameLayout
         android:id="@+id/checkout_web_app"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
 </RelativeLayout>

@@ -10,11 +10,12 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import io.ionic.demo.ecommerce.ui.cart.CartFragment;
 import io.ionic.demo.ecommerce.ui.profile.ProfileFragment;
+import io.ionic.demo.ecommerce.ui.store.StoreContainerFragment;
 import io.ionic.demo.ecommerce.ui.store.StoreFragment;
 
 public class PageAdapter extends FragmentStateAdapter {
 
-    private AppCompatActivity context;
+    private MainActivity context;
 
     public PageAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
@@ -24,7 +25,7 @@ public class PageAdapter extends FragmentStateAdapter {
         super(fragment);
     }
 
-    public PageAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, AppCompatActivity context) {
+    public PageAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, MainActivity context) {
         super(fragmentManager, lifecycle);
         this.context = context;
     }
@@ -35,7 +36,7 @@ public class PageAdapter extends FragmentStateAdapter {
         Fragment fragment = null;
         switch(position) {
             case 0:
-                fragment = StoreFragment.newInstance(context);
+                fragment = StoreContainerFragment.newInstance(context);
                 break;
             case 1:
                 fragment = new CartFragment();
@@ -44,6 +45,7 @@ public class PageAdapter extends FragmentStateAdapter {
                 fragment = new ProfileFragment();
                 break;
         }
+
         return fragment;
     }
 

@@ -32,7 +32,7 @@ public class CartViewModel extends ViewModel {
      *
      * @return The state of the shopping cart.
      */
-    public LiveData<ShoppingCart> getShoppingCart() {
+    public MutableLiveData<ShoppingCart> getShoppingCart() {
         return shoppingCart;
     }
 }

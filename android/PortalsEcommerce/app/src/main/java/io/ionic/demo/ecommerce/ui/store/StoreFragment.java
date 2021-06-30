@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import io.ionic.demo.ecommerce.MainActivity;
 import io.ionic.demo.ecommerce.R;
 import io.ionic.demo.ecommerce.data.model.Product;
 
@@ -24,7 +26,7 @@ import io.ionic.demo.ecommerce.data.model.Product;
  */
 public class StoreFragment extends Fragment {
 
-    private AppCompatActivity context;
+    private MainActivity context;
 
     private StoreViewModel storeViewModel;
 
@@ -34,7 +36,7 @@ public class StoreFragment extends Fragment {
     private ProductAdapter productAdapter;
     private ProductAdapter gridAdapter;
 
-    public static StoreFragment newInstance(AppCompatActivity context) {
+    public static StoreFragment newInstance(MainActivity context) {
         StoreFragment storeFragment = new StoreFragment();
         storeFragment.setContext(context);
         return storeFragment;
@@ -68,7 +70,7 @@ public class StoreFragment extends Fragment {
         return root;
     }
 
-    private void setContext(AppCompatActivity context) {
+    private void setContext(MainActivity context) {
         this.context = context;
     }
 }

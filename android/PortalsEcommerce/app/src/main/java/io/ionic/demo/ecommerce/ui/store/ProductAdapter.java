@@ -19,6 +19,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Currency;
 
+import io.ionic.demo.ecommerce.MainActivity;
 import io.ionic.demo.ecommerce.R;
 import io.ionic.demo.ecommerce.data.model.Product;
 import io.ionic.demo.ecommerce.ui.product.ProductFragment;
@@ -31,7 +32,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     /**
      * The context of the adapter.
      */
-    private final AppCompatActivity context;
+    private final MainActivity context;
 
     /**
      * The list of products to use in the adapter.
@@ -54,7 +55,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
      * @param context The context containing the adapter.
      * @param productList The list of products to display.
      */
-    public ProductAdapter(AppCompatActivity context, ArrayList<Product> productList) {
+    public ProductAdapter(MainActivity context, ArrayList<Product> productList) {
         this.context = context;
         this.productList = productList;
 
@@ -71,7 +72,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
      * @param productList The list of products to display.
      * @param isGrid True if the adapter will be used for a grid.
      */
-    public ProductAdapter(AppCompatActivity context, ArrayList<Product> productList, boolean isGrid) {
+    public ProductAdapter(MainActivity context, ArrayList<Product> productList, boolean isGrid) {
         this(context, productList);
         this.isGrid = isGrid;
     }
@@ -118,7 +119,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             Fragment productDetailFragment = ProductFragment.newInstance(context, product);
             FragmentTransaction transaction = context.getSupportFragmentManager().beginTransaction();
             transaction.addToBackStack(null);
-            transaction.replace(R.id.product_layout, productDetailFragment).commit();
+            transaction.replace(R.id.store_container_layout, productDetailFragment).commit();
+            context.showHelpMenu(true);
 
             context.getSupportActionBar().setHomeButtonEnabled(true);
         });

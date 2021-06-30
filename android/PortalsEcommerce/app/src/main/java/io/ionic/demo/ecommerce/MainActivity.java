@@ -1,25 +1,33 @@
 package io.ionic.demo.ecommerce;
 
 import android.os.Bundle;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.navigation.ui.AppBarConfiguration;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.widget.ViewPager2;
+
+import io.ionic.demo.ecommerce.data.model.Product;
+import io.ionic.demo.ecommerce.ui.product.HelpFragment;
 
 /**
  * The parent Activity used for the E-Commerce app.
  */
 public class MainActivity extends AppCompatActivity {
 
-    private AppBarConfiguration appBarConfiguration;
+    TabLayout tabLayout;
     PageAdapter pageAdapter;
     ViewPager2 viewPager;
+
+    Product selectedProduct;
+    boolean hideMenu = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +41,11 @@ public class MainActivity extends AppCompatActivity {
         pageAdapter = new PageAdapter(getSupportFragmentManager(), getLifecycle(), this);
         viewPager = findViewById(R.id.pager);
         viewPager.setAdapter(pageAdapter);
-        viewPager.setPageTransformer(new FadePageTransformer());
         viewPager.setUserInputEnabled(false);
         viewPager.setOffscreenPageLimit(3);
 
-        TabLayout tabLayout = findViewById(R.id.tab_layout);
-        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
+        tabLayout = findViewById(R.id.tab_layout);
+        new TabLayoutMediator(tabLayout, viewPager, true, false, (tab, position) -> {
             switch(position) {
                 case 0:
                     tab.setIcon(R.drawable.ic_shop__material);
@@ -58,16 +65,31 @@ public class MainActivity extends AppCompatActivity {
                 switch(tab.getPosition()) {
                     case 0:
                         getSupportActionBar().show();
-                        setTitle("Store");
+                        if (getSupportFragmentManager().getBackStackEntryCount() == 2) {
+                            setTitle("Help");
+                            showHelpMenu(false);
+                            showUpButton();
+                        } else if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
+                            setTitle(selectedProduct.title);
+                            showHelpMenu(true);
+                            showUpButton();
+                        }else {
+                            setTitle("Store");
+                            showHelpMenu(false);
+                            hideUpButton();
+                        }
                         break;
                     case 1:
                         getSupportActionBar().show();
-                        getSupportActionBar().setHomeButtonEnabled(false);
+                        hideUpButton();
+                        showHelpMenu(false);
                         setTitle("Checkout");
                         break;
                     case 2:
                         getSupportActionBar().hide();
-                        getSupportActionBar().setHomeButtonEnabled(false);
+                        hideUpButton();
+                        showHelpMenu(false);
+                        setTitle("Profile");
                         break;
                 }
             }
@@ -84,26 +106,69 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public static class FadePageTransformer implements ViewPager2.PageTransformer {
-        @Override
-        public void transformPage(@NonNull View page, float position) {
-            if(position <= -1.0F || position >= 1.0F) {
-                page.setTranslationX(page.getWidth() * position);
-                page.setAlpha(0.0F);
-            } else if( position == 0.0F ) {
-                page.setTranslationX(page.getWidth() * position);
-                page.setAlpha(1.0F);
-            } else {
-                // position is between -1.0F & 0.0F OR 0.0F & 1.0F
-                page.setTranslationX(page.getWidth() * -position);
-                page.setAlpha(1.0F - Math.abs(position));
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0 && tabLayout.getSelectedTabPosition() == 0) {
+            super.onBackPressed();
+
+            if(getSupportFragmentManager().getBackStackEntryCount() == 0) {
+                setTitle("Store");
+                selectedProduct = null;
+                hideUpButton();
+                showHelpMenu(false);
+            } else if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
+                showHelpMenu(true);
             }
         }
     }
 
-//    @Override
-//    public boolean onSupportNavigateUp() {
-////        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-////        return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp();
-//    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.help_menu, menu);
+
+        if (hideMenu) {
+            menu.getItem(0).setVisible(false);
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        } else if (item.getItemId() == R.id.help) {
+            Fragment helpFragment = new HelpFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.addToBackStack(null);
+            transaction.replace(R.id.store_container_layout, helpFragment).commit();
+            setTitle("Help");
+            showHelpMenu(false);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void setSelectedProduct(Product selectedProduct) {
+        this.selectedProduct = selectedProduct;
+        setTitle(selectedProduct.title);
+    }
+
+    private void hideUpButton() {
+        getSupportActionBar().setHomeButtonEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+    }
+
+    private void showUpButton() {
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    public void showHelpMenu(boolean showMenu) {
+        hideMenu = !showMenu;
+        invalidateOptionsMenu();
+    }
 }

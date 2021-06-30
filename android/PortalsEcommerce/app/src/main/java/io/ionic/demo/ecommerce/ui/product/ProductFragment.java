@@ -16,16 +16,15 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.Navigation;
 
 import com.google.android.material.badge.BadgeDrawable;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 import java.text.NumberFormat;
 import java.util.Currency;
 
 import io.ionic.demo.ecommerce.EcommerceApp;
+import io.ionic.demo.ecommerce.MainActivity;
 import io.ionic.demo.ecommerce.R;
 import io.ionic.demo.ecommerce.data.model.Product;
 
@@ -34,10 +33,10 @@ import io.ionic.demo.ecommerce.data.model.Product;
  */
 public class ProductFragment extends Fragment {
 
-    private AppCompatActivity context;
+    private MainActivity context;
     private Product product;
 
-    public static ProductFragment newInstance(AppCompatActivity context, Product product) {
+    public static ProductFragment newInstance(MainActivity context, Product product) {
         ProductFragment productFragment = new ProductFragment();
         productFragment.setProduct(product);
         productFragment.setContext(context);
@@ -47,7 +46,9 @@ public class ProductFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_product, container, false);
 
-        setHasOptionsMenu(true);
+        context.setSelectedProduct(product);
+        context.getSupportActionBar().setHomeButtonEnabled(true);
+        context.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Load product image
         final ImageView productImage = root.findViewById(R.id.product_image);
@@ -83,31 +84,11 @@ public class ProductFragment extends Fragment {
         return root;
     }
 
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.help_menu, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.help) {
-            // Navigate to product page passing the product to be displayed, when tapped
-            Fragment helpFragment = new HelpFragment();
-            FragmentTransaction transaction = context.getSupportFragmentManager().beginTransaction();
-            transaction.addToBackStack(null);
-            transaction.replace(R.id.product_layout, helpFragment).commit();
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     private void setProduct(Product product) {
         this.product = product;
     }
 
-    private void setContext(AppCompatActivity context) {
+    private void setContext(MainActivity context) {
         this.context = context;
     }
 }
