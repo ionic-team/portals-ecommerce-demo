@@ -1,36 +1,28 @@
 package io.ionic.demo.ecommerce.ui.cart;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.res.Resources;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.squareup.picasso.Picasso;
+import com.google.android.material.imageview.ShapeableImageView;
 
 import java.text.NumberFormat;
 import java.util.Currency;
-import java.util.EventListener;
+import java.util.Locale;
 import java.util.Map;
 
 import io.ionic.demo.ecommerce.EcommerceApp;
 import io.ionic.demo.ecommerce.R;
 import io.ionic.demo.ecommerce.data.model.Product;
-import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder> {
 
@@ -53,7 +45,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
      * Constructs a ProductAdapter with context, a list of products to display, and whether
      * the adapter will be used to display a grid or not.
      *
-     * @param Activity The Activity containing the adapter.
+     * @param activity The Activity containing the adapter.
      */
     public CartAdapter(Activity activity, View.OnClickListener updateListener) {
         this.activity = activity;
@@ -97,28 +89,27 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         // Get image asset for the product and load into product card image view
         String imageResourceName = product.image.substring(0, product.image.lastIndexOf(".")).replaceAll("-", "_");
         final int resourceId = resources.getIdentifier(imageResourceName, "drawable", activity.getPackageName());
-        int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, activity.getResources().getDisplayMetrics());
-        Picasso.get().load(resourceId).transform(new RoundedCornersTransformation(px,0)).into(holder.productImageView);
+        holder.productImageView.setImageResource(resourceId);
 
         CartAdapter self = this;
 
         holder.productTitle.setText(product.title);
-        holder.productQty.setText("Qty: " + quantity);
+        holder.productQty.setText(String.format(Locale.US,"Qty: %d", quantity));
         holder.productPrice.setText(format.format(product.price * quantity));
 
-        holder.productQtyButton.setOnClickListener(v -> {
+        holder.productQtySection.setOnClickListener(v -> {
             CartQuantityDialog.Builder builder = new CartQuantityDialog.Builder(activity);
             builder.setTitle(R.string.quantity);
             builder.createView((ViewGroup) v.getRootView(), product, quantity);
             builder.setupListeners();
             builder.setPositiveButton("OK", (dialog, which) -> {
                 // Decrement badge number on the bottom nav
-                BottomNavigationView navView = activity.findViewById(R.id.nav_view);
-                BadgeDrawable badge = navView.getOrCreateBadge(R.id.navigation_cart);
-                badge.setNumber(EcommerceApp.getInstance().getShoppingCart().getTotalItemCount());
-                if (EcommerceApp.getInstance().getShoppingCart().getTotalItemCount() == 0) {
-                    badge.setVisible(false);
-                }
+//                BottomNavigationView navView = activity.findViewById(R.id.nav_view);
+//                BadgeDrawable badge = navView.getOrCreateBadge(R.id.navigation_cart);
+//                badge.setNumber(EcommerceApp.getInstance().getShoppingCart().getTotalItemCount());
+//                if (EcommerceApp.getInstance().getShoppingCart().getTotalItemCount() == 0) {
+//                    badge.setVisible(false);
+//                }
 
                 self.notifyDataSetChanged();
                 updateListener.onClick(v);
@@ -142,11 +133,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     static class CartViewHolder extends RecyclerView.ViewHolder {
 
         ConstraintLayout productCard;
-        ImageView productImageView;
+        ConstraintLayout productQtySection;
+        ShapeableImageView productImageView;
         TextView productTitle;
         TextView productQty;
         TextView productPrice;
-        Button productQtyButton;
 
         public CartViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -154,8 +145,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             productImageView = itemView.findViewById(R.id.product_image);
             productTitle = itemView.findViewById(R.id.product_title);
             productQty = itemView.findViewById(R.id.product_cart_qty);
+            productQtySection = itemView.findViewById(R.id.quantity_section);
             productPrice = itemView.findViewById(R.id.product_price);
-            productQtyButton = itemView.findViewById(R.id.product_qty_button);
         }
     }
 }

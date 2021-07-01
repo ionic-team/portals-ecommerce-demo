@@ -1,8 +1,6 @@
 package io.ionic.demo.ecommerce.ui.product;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,39 +13,48 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.badge.BadgeDrawable;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.squareup.picasso.Picasso;
+import com.google.android.material.tabs.TabLayout;
 
 import java.text.NumberFormat;
 import java.util.Currency;
 
 import io.ionic.demo.ecommerce.EcommerceApp;
+import io.ionic.demo.ecommerce.MainActivity;
 import io.ionic.demo.ecommerce.R;
 import io.ionic.demo.ecommerce.data.model.Product;
-import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
 /**
  * Displays information about a selected product.
  */
 public class ProductFragment extends Fragment {
 
+    private MainActivity context;
+    private Product product;
+
+    public static ProductFragment newInstance(MainActivity context, Product product) {
+        ProductFragment productFragment = new ProductFragment();
+        productFragment.setProduct(product);
+        productFragment.setContext(context);
+        return productFragment;
+    }
+
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_product, container, false);
 
-        setHasOptionsMenu(true);
-
-        // Retrieve product data from navigation
-        Product product = ProductFragmentArgs.fromBundle(getArguments()).getProduct();
+        context.setSelectedProduct(product);
+        context.getSupportActionBar().setHomeButtonEnabled(true);
+        context.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Load product image
         final ImageView productImage = root.findViewById(R.id.product_image);
         String imageResourceName = product.image.substring(0, product.image.lastIndexOf(".")).replaceAll("-", "_");
         final int resourceId = getResources().getIdentifier(imageResourceName, "drawable", getContext().getPackageName());
-        Picasso.get().load(resourceId).into(productImage);
+        productImage.setImageResource(resourceId);
 
         // Load product text data
         final TextView productTitle = root.findViewById(R.id.product_page_title);
@@ -68,8 +75,8 @@ public class ProductFragment extends Fragment {
             EcommerceApp.getInstance().getShoppingCart().addItem(product);
 
             // Increment badge number on the bottom nav
-            BottomNavigationView navView = getActivity().findViewById(R.id.nav_view);
-            BadgeDrawable badge = navView.getOrCreateBadge(R.id.navigation_cart);
+            TabLayout tabs = getActivity().findViewById(R.id.tab_layout);
+            BadgeDrawable badge = tabs.getTabAt(1).getOrCreateBadge();
             badge.setVisible(true);
             badge.setNumber(EcommerceApp.getInstance().getShoppingCart().getTotalItemCount());
         });
@@ -77,19 +84,11 @@ public class ProductFragment extends Fragment {
         return root;
     }
 
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.help_menu, menu);
-        super.onCreateOptionsMenu(menu, inflater);
+    private void setProduct(Product product) {
+        this.product = product;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.help) {
-            Navigation.findNavController(getView()).navigate(R.id.navigation_help);
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    private void setContext(MainActivity context) {
+        this.context = context;
     }
 }

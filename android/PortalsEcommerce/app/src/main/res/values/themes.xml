@@ -5,6 +5,7 @@
         <item name="colorPrimary">#007AFF</item>
         <item name="colorPrimaryVariant">#007AFF</item>
         <item name="colorOnPrimary">@color/white</item>
+        <item name="backgroundColor">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
@@ -24,6 +25,11 @@
 
     <style name="CartDialog" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="roundedImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
     </style>
 
 </resources>

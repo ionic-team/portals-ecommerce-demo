@@ -6,13 +6,15 @@
     android:padding="8dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/product_image"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:src="@drawable/capacitor_hat"
+        app:shapeAppearanceOverlay="@style/roundedImageView"
         android:contentDescription="@string/product_image_cd"
         app:layout_constraintDimensionRatio="H,1:1"
+        android:scaleType="centerCrop"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

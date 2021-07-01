@@ -6,7 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -15,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import io.ionic.demo.ecommerce.MainActivity;
 import io.ionic.demo.ecommerce.R;
 import io.ionic.demo.ecommerce.data.model.Product;
 
@@ -23,6 +26,8 @@ import io.ionic.demo.ecommerce.data.model.Product;
  */
 public class StoreFragment extends Fragment {
 
+    private MainActivity context;
+
     private StoreViewModel storeViewModel;
 
     private RecyclerView carouselView;
@@ -30,6 +35,12 @@ public class StoreFragment extends Fragment {
 
     private ProductAdapter productAdapter;
     private ProductAdapter gridAdapter;
+
+    public static StoreFragment newInstance(MainActivity context) {
+        StoreFragment storeFragment = new StoreFragment();
+        storeFragment.setContext(context);
+        return storeFragment;
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         storeViewModel = new ViewModelProvider(this).get(StoreViewModel.class);
@@ -40,7 +51,8 @@ public class StoreFragment extends Fragment {
         storeViewModel.getFeaturedProducts().observe(getViewLifecycleOwner(), new Observer<ArrayList<Product>>() {
             @Override
             public void onChanged(ArrayList<Product> products) {
-                productAdapter = new ProductAdapter(StoreFragment.this.getContext(), products);
+                productAdapter = new ProductAdapter(context, products);
+                productAdapter.setStateRestorationPolicy(RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY);
                 carouselView.setLayoutManager(new LinearLayoutManager(StoreFragment.this.getContext(), LinearLayoutManager.HORIZONTAL, false));
                 carouselView.setAdapter(productAdapter);
             }
@@ -49,11 +61,16 @@ public class StoreFragment extends Fragment {
         // A grid view used to display all products available to purchase
         gridView = root.findViewById(R.id.recycler_product_grid);
         storeViewModel.getAllProducts().observe(getViewLifecycleOwner(), products -> {
-            gridAdapter = new ProductAdapter(StoreFragment.this.getContext(), products, true);
+            gridAdapter = new ProductAdapter(context, products, true);
+            gridAdapter.setStateRestorationPolicy(RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY);
             gridView.setLayoutManager(new GridLayoutManager(StoreFragment.this.getContext(), 2));
             gridView.setAdapter(gridAdapter);
         });
 
         return root;
+    }
+
+    private void setContext(MainActivity context) {
+        this.context = context;
     }
 }

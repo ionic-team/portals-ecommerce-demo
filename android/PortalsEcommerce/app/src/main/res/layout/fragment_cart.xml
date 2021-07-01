@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/backgroundColor"
     android:layout_marginTop="?android:attr/actionBarSize"
     tools:context=".ui.cart.CartFragment">
 
@@ -19,90 +20,90 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ScrollView
-        android:id="@+id/cart_scroll_view"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cart_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/text_view_subtotal_text"
+        android:padding="8dp"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toTopOf="@+id/cart_info"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/cart_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </ScrollView>
-
-    <Button
-        android:id="@+id/cart_checkout_button"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cart_info"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/title_checkout"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-    <TextView
-        android:id="@+id/text_view_total_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="@string/estimated_total"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/cart_checkout_button"
-        app:layout_constraintStart_toStartOf="@+id/cart_checkout_button" />
+        <Button
+            android:id="@+id/cart_checkout_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/title_checkout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/text_view_shipping_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="@string/shipping"
-        app:layout_constraintBottom_toTopOf="@+id/text_view_total_text"
-        app:layout_constraintStart_toStartOf="@+id/text_view_total_text" />
+        <TextView
+            android:id="@+id/text_view_total_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/estimated_total"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/cart_checkout_button"
+            app:layout_constraintStart_toStartOf="@+id/cart_checkout_button" />
 
-    <TextView
-        android:id="@+id/text_view_subtotal_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="@string/subtotal"
-        app:layout_constraintBottom_toTopOf="@+id/text_view_shipping_text"
-        app:layout_constraintStart_toStartOf="@+id/text_view_shipping_text" />
+        <TextView
+            android:id="@+id/text_view_shipping_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/shipping"
+            app:layout_constraintBottom_toTopOf="@+id/text_view_total_text"
+            app:layout_constraintStart_toStartOf="@+id/text_view_total_text" />
 
-    <TextView
-        android:id="@+id/text_view_subtotal_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="@+id/text_view_subtotal_text"
-        app:layout_constraintEnd_toEndOf="@+id/text_view_shipping_value" />
+        <TextView
+            android:id="@+id/text_view_subtotal_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/subtotal"
+            app:layout_constraintBottom_toTopOf="@+id/text_view_shipping_text"
+            app:layout_constraintStart_toStartOf="@+id/text_view_shipping_text" />
 
-    <TextView
-        android:id="@+id/text_view_shipping_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="@+id/text_view_shipping_text"
-        app:layout_constraintEnd_toEndOf="@+id/text_view_total_value" />
+        <TextView
+            android:id="@+id/text_view_subtotal_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="@+id/text_view_subtotal_text"
+            app:layout_constraintEnd_toEndOf="@+id/text_view_shipping_value" />
 
-    <TextView
-        android:id="@+id/text_view_total_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/text_view_total_text"
-        app:layout_constraintEnd_toEndOf="@+id/cart_checkout_button" />
+        <TextView
+            android:id="@+id/text_view_shipping_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="@+id/text_view_shipping_text"
+            app:layout_constraintEnd_toEndOf="@+id/text_view_total_value" />
+
+        <TextView
+            android:id="@+id/text_view_total_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/text_view_total_text"
+            app:layout_constraintEnd_toEndOf="@+id/cart_checkout_button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
