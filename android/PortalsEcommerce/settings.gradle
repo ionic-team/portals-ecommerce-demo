@@ -1,2 +1,4 @@
 include ':app'
 rootProject.name = "Portals Ecommerce"
+include ':portals'
+project(':portals').projectDir = new File(settingsDir, '../../../capacitor/android/capacitor/')
