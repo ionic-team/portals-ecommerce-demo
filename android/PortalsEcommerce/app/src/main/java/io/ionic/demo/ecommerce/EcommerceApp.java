@@ -3,7 +3,17 @@ package io.ionic.demo.ecommerce;
 import android.app.Application;
 import android.content.Context;
 
+import com.capacitorjs.plugins.camera.CameraPlugin;
+import com.getcapacitor.Plugin;
+
+import java.util.Arrays;
+import java.util.HashMap;
+
 import io.ionic.demo.ecommerce.data.ShoppingCart;
+import io.ionic.demo.ecommerce.plugins.ShopAPIPlugin;
+import io.ionic.demo.ecommerce.ui.product.HelpFragment;
+import io.ionic.portalslibrary.Portal;
+import io.ionic.portalslibrary.PortalManager;
 
 /**
  * The parent Application Class for the E-Commerce app.
@@ -58,5 +68,38 @@ public class EcommerceApp extends Application {
 
         // Start app with a fresh shopping cart
         shoppingCart = new ShoppingCart();
+
+//        Portal checkoutPortal = new Portal("checkout");
+//        checkoutPortal.setStartDir("webapp");
+//        checkoutPortal.setPlugin(ShopAPIPlugin.class);
+//
+//        Portal helpPortal = new Portal("help");
+//        helpPortal.setStartDir("webapp");
+//        helpPortal.setPlugin(ShopAPIPlugin.class);
+//
+//        Portal profilePortal = new Portal("profile");
+//        profilePortal.setStartDir("webapp");
+//        profilePortal.setPlugin(ShopAPIPlugin.class);
+//        profilePortal.setPlugin(CameraPlugin.class);
+//
+//        PortalManager.addPortal(checkoutPortal);
+//        PortalManager.addPortal(helpPortal);
+//        PortalManager.addPortal(profilePortal);
+
+
+        PortalManager.newPortal("checkout")
+                .setStartDir("webapp")
+                .setPlugins(Arrays.asList(ShopAPIPlugin.class))
+                .create();
+        HashMap<String, String> initialContext = new HashMap<>();
+        initialContext.put("startingRoute", "/help");
+        PortalManager.newPortal("help")
+                .setStartDir("webapp")
+                .setInitialContext(initialContext)
+                .setPlugins(Arrays.asList(ShopAPIPlugin.class))
+                .create();
+        PortalManager.newPortal("webapp")
+                .setPlugins(Arrays.asList(ShopAPIPlugin.class, CameraPlugin.class))
+                .create();
     }
 }

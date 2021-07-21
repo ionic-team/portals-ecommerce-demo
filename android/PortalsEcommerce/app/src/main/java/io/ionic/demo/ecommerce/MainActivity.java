@@ -6,7 +6,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.capacitorjs.plugins.camera.CameraPlugin;
+//import com.capacitorjs.plugins.camera.CameraPlugin;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -110,10 +110,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        PortalManager.addPortal("checkout", "webapp");
-        PortalManager.addPortal("user", "webapp");
-        PortalManager.addPlugin(ShopAPIPlugin.class);
-        PortalManager.addPlugin(CameraPlugin.class);
+//        PortalManager.addPortal("checkout", "webapp");
+//        PortalManager.addPortal("user", "webapp");
+//        PortalManager.addPlugin(ShopAPIPlugin.class);
+//        PortalManager.addPlugin(CameraPlugin.class);
     }
 
     @Override

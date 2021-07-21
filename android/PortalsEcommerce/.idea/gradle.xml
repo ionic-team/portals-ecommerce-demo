@@ -10,7 +10,9 @@
         <option name="gradleHome" value="/usr/local/Cellar/gradle/6.5.1/libexec" />
         <option name="modules">
           <set>
+            <option value="$PROJECT_DIR$/../../../capacitor-plugins/camera/android" />
             <option value="$PROJECT_DIR$/../../../capacitor/android/capacitor" />
+            <option value="$PROJECT_DIR$/../../../ionic-portals/android/IonicPortals" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
           </set>

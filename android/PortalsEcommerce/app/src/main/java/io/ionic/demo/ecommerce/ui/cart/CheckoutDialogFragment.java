@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,17 +13,16 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.getcapacitor.BridgeFragment;
-import com.getcapacitor.WebViewListener;
-
 import org.jetbrains.annotations.NotNull;
 
-import io.ionic.demo.ecommerce.Portal;
-import io.ionic.demo.ecommerce.PortalManager;
+import java.util.HashMap;
+
 import io.ionic.demo.ecommerce.R;
 import io.ionic.demo.ecommerce.plugins.CheckoutCallback;
-import io.ionic.demo.ecommerce.plugins.ShopAPIPlugin;
 import io.ionic.demo.ecommerce.plugins.ShopAPIViewModel;
+import io.ionic.portalslibrary.Portal;
+import io.ionic.portalslibrary.PortalFragment;
+import io.ionic.portalslibrary.PortalManager;
 
 /**
  * Displays an Ionic Portal containing a checkout app.
@@ -32,7 +30,9 @@ import io.ionic.demo.ecommerce.plugins.ShopAPIViewModel;
 
 public class CheckoutDialogFragment extends DialogFragment implements CheckoutCallback {
 //    BridgeFragment embeddedFragment;
-    Portal portal;
+//    PortalOld portalOld;
+    PortalFragment portalFragment;
+    Portal checkoutPortal;
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_checkout, container, false);
@@ -48,9 +48,24 @@ public class CheckoutDialogFragment extends DialogFragment implements CheckoutCa
         viewModel.setCheckoutCallback(this);
 
         final FragmentManager fragmentManager = getChildFragmentManager();
-        portal = PortalManager.getPortal("checkout");
-        portal.startingContext = "{\"startingRoute\": \"/checkout\"}";
-
+        checkoutPortal = PortalManager.getPortal("checkout");
+        HashMap<String, String> initialContext = new HashMap<>();
+        initialContext.put("startingRoute", "/checkout");
+        checkoutPortal.setInitialContext(initialContext);
+//        checkoutPortal.initialContext("{ \"startingRoute\": \"/user\" }");
+        portalFragment = new PortalFragment(checkoutPortal);
+//        portalFragment.addWebViewListener(new WebViewListener() {
+//            @Override
+//            public void onPageStarted(WebView webView) {
+//                super.onPageStarted(webView);
+//                webView.evaluateJavascript("window.portalInitialContext = {\"name\": \"checkout\", \"value\": { \"startingRoute\": \"/checkout\" }} ", null);
+//            }
+//        });
+//        portalOld = PortalManagerOld.getPortal("checkout");
+//        HashMap<String, String> startingContext = new HashMap<>();
+//        startingContext.put("startingRoute", "/checkout");
+//        portalOld.startingContext = startingContext;
+//        portal.startingContext = "{\"startingRoute\": \"/checkout\"}";
 
 //        embeddedFragment = BridgeFragment.newInstance("webapp");
 //        embeddedFragment.addWebViewListener(new WebViewListener() {
@@ -69,7 +84,7 @@ public class CheckoutDialogFragment extends DialogFragment implements CheckoutCa
 //        portal.addPlugin(ShopAPIPlugin.class);
 //        embeddedFragment.addPlugin(ShopAPIPlugin.class);
 
-        fragmentManager.beginTransaction().replace(R.id.checkout_web_app, portal.getFragment()).commit();
+        fragmentManager.beginTransaction().replace(R.id.checkout_web_app, portalFragment).commit();
 
     }
 

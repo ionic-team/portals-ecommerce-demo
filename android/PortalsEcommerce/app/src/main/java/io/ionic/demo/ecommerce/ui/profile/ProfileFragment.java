@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,20 +12,21 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.capacitorjs.plugins.camera.CameraPlugin;
-import com.getcapacitor.BridgeFragment;
-import com.getcapacitor.WebViewListener;
+//import com.capacitorjs.plugins.camera.CameraPlugin;
 
-import io.ionic.demo.ecommerce.Portal;
-import io.ionic.demo.ecommerce.PortalManager;
+import java.util.HashMap;
+
 import io.ionic.demo.ecommerce.R;
-import io.ionic.demo.ecommerce.plugins.ShopAPIPlugin;
-import io.ionic.demo.ecommerce.portals.FadeBridgeFragment;
+import io.ionic.portalslibrary.Portal;
+import io.ionic.portalslibrary.PortalFragment;
+import io.ionic.portalslibrary.PortalManager;
 
 public class ProfileFragment extends Fragment {
 
 //    BridgeFragment embeddedFragment;
-    Portal portal;
+//    PortalOld portalOld;
+    PortalFragment portalFragment;
+    Portal profilePortal;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -42,28 +42,13 @@ public class ProfileFragment extends Fragment {
         super.onCreate(savedInstanceState);
         final FragmentManager fragmentManager = getParentFragmentManager();
 
-        portal = PortalManager.getPortal("checkout");
-        portal.startingContext = "{\"startingRoute\": \"/user\"}";
+        profilePortal = PortalManager.getPortal("webapp");
 
-//        embeddedFragment = FadeBridgeFragment.newInstance("webapp", android.R.color.white, 500);
-//        embeddedFragment.addWebViewListener(new WebViewListener() {
-//            private boolean isLoaded = false;
-//            @Override
-//            public void onPageLoaded(WebView webView) {
-//                super.onPageLoaded(webView);
-//
-//                if (!isLoaded) {
-//                    isLoaded = true;
-//                    webView.evaluateJavascript("window.location.href = \"/user\"", null);
-//                }
-//            }
-//        });
-
-        // Add plugins
-//        embeddedFragment.addPlugin(ShopAPIPlugin.class);
-//        embeddedFragment.addPlugin(CameraPlugin.class);
+//        portalOld = PortalManagerOld.getPortal("checkout");
+        profilePortal.setInitialContext("{ \"startingRoute\": \"/user\" }");
+        portalFragment = new PortalFragment(profilePortal);
 
         // Inflate the fragment
-        fragmentManager.beginTransaction().replace(R.id.profile_web_app, portal.getFragment()).commit();
+        fragmentManager.beginTransaction().replace(R.id.profile_web_app, portalFragment).commit();
     }
 }

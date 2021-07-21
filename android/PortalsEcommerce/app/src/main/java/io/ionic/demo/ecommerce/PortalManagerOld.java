@@ -3,7 +3,6 @@ package io.ionic.demo.ecommerce;
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
-import androidx.fragment.app.Fragment;
 
 import com.getcapacitor.Plugin;
 
@@ -12,11 +11,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class PortalManager {
+public class PortalManagerOld {
     private static final List<Class<? extends Plugin>> initialPlugins = new ArrayList<>();
-    private static final Map<String, Portal> portals = new HashMap<>();
+    private static final Map<String, PortalOld> portals = new HashMap<>();
 
-    private PortalManager() {
+    private PortalManagerOld() {
 
     }
 
@@ -26,14 +25,14 @@ public class PortalManager {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public static void addPortal(String name, String startingDir) {
-        Portal portal = new Portal(startingDir);
-        portals.put(name, portal);
+        PortalOld portalOld = new PortalOld(name, startingDir);
+        portals.put(name, portalOld);
     }
 
-    public static Portal getPortal(String name) {
-        Portal portal =  portals.get(name);
-        portal.setPlugins(initialPlugins);
-        return portal;
+    public static PortalOld getPortal(String name) {
+        PortalOld portalOld =  portals.get(name);
+        portalOld.setPlugins(initialPlugins);
+        return portalOld;
     }
 
 //    @RequiresApi(api = Build.VERSION_CODES.N)
