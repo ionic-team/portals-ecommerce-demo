@@ -69,28 +69,11 @@ public class EcommerceApp extends Application {
         // Start app with a fresh shopping cart
         shoppingCart = new ShoppingCart();
 
-//        Portal checkoutPortal = new Portal("checkout");
-//        checkoutPortal.setStartDir("webapp");
-//        checkoutPortal.setPlugin(ShopAPIPlugin.class);
-//
-//        Portal helpPortal = new Portal("help");
-//        helpPortal.setStartDir("webapp");
-//        helpPortal.setPlugin(ShopAPIPlugin.class);
-//
-//        Portal profilePortal = new Portal("profile");
-//        profilePortal.setStartDir("webapp");
-//        profilePortal.setPlugin(ShopAPIPlugin.class);
-//        profilePortal.setPlugin(CameraPlugin.class);
-//
-//        PortalManager.addPortal(checkoutPortal);
-//        PortalManager.addPortal(helpPortal);
-//        PortalManager.addPortal(profilePortal);
-
-
         PortalManager.newPortal("checkout")
                 .setStartDir("webapp")
                 .setPlugins(Arrays.asList(ShopAPIPlugin.class))
                 .create();
+
         HashMap<String, String> initialContext = new HashMap<>();
         initialContext.put("startingRoute", "/help");
         PortalManager.newPortal("help")
@@ -98,6 +81,7 @@ public class EcommerceApp extends Application {
                 .setInitialContext(initialContext)
                 .setPlugins(Arrays.asList(ShopAPIPlugin.class))
                 .create();
+
         PortalManager.newPortal("webapp")
                 .setPlugins(Arrays.asList(ShopAPIPlugin.class, CameraPlugin.class))
                 .create();
