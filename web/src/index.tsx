@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 // import { getInitialContext } from './util/getInitialContext';
 // import reportWebVitals from './reportWebVitals';
-import { Portals } from 'ionic-portals';
+import { Portals } from '@ionic/portals';
 
 
 
