@@ -32,10 +32,9 @@ android {
 
 dependencies {
     // Ionic Portals Dependencies
-    // temporary local import. Switch to external lib import when available
-    implementation project(':capacitor')
-    implementation project(':capacitor-camera')
-    implementation project(':portals')
+    implementation 'io.ionic:portalslibrary:0.0.4'
+    implementation 'com.capacitorjs:core:3.1.2'
+    implementation 'com.capacitorjs:camera:1.0.3'
 
     // Other Dependencies
     implementation 'com.google.code.gson:gson:2.8.6'

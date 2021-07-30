@@ -17,15 +17,14 @@ import { Portals } from 'ionic-portals';
 // );
 
 
-// Portals.getInitialContext<{ startingRoute: string; }>().then((context) => {
+Portals.getInitialContext().then((context) => {
   ReactDOM.render(
     <React.StrictMode>
-      <App context={{} as any} />
-      {/* <App context={context.value} /> */}
+      <App context={context.value as any} />
     </React.StrictMode>,
     document.getElementById('root')
   );
-// });
+});
 
 // checkForContext();
 

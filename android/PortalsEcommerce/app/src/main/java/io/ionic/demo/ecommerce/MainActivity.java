@@ -109,11 +109,6 @@ public class MainActivity extends AppCompatActivity {
                 // not used
             }
         });
-
-//        PortalManager.addPortal("checkout", "webapp");
-//        PortalManager.addPortal("user", "webapp");
-//        PortalManager.addPlugin(ShopAPIPlugin.class);
-//        PortalManager.addPlugin(CameraPlugin.class);
     }
 
     @Override

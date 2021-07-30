@@ -1,9 +1,2 @@
 include ':app'
 rootProject.name = "Portals Ecommerce"
-
-include ':capacitor'
-project(':capacitor').projectDir = new File(settingsDir, '../../../capacitor/android/capacitor/')
-include ':capacitor-camera'
-project(':capacitor-camera').projectDir = new File(settingsDir, '../../../capacitor-plugins/camera/android/')
-include ':portals'
-project(':portals').projectDir = new File(settingsDir, '../../../ionic-portals/android/IonicPortals')

@@ -74,9 +74,7 @@ public class ShopAPIPlugin extends Plugin {
         cart.checkout(result);
         cartViewModel.getShoppingCart().postValue(cart);
 
-        // Finish checking out
-        ShopAPIViewModel viewModel = new ViewModelProvider(this.getActivity()).get(ShopAPIViewModel.class);
-        viewModel.onCheckout(result);
+        call.resolve();
     }
 
     @PluginMethod

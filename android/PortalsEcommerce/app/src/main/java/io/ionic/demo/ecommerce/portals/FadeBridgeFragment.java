@@ -3,54 +3,68 @@ package io.ionic.demo.ecommerce.portals;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.webkit.WebView;
 
-import com.getcapacitor.BridgeFragment;
 import com.getcapacitor.WebViewListener;
+import io.ionic.portals.Portal;
+import io.ionic.portals.PortalFragment;
 
-public class FadeBridgeFragment extends BridgeFragment {
-
-    private static final String ARG_START_DIR = "startDir";
+public class FadeBridgeFragment extends PortalFragment {
 
     private View fadeView;
-    private ViewGroup container;
 
-    private long duration;
-    private int colorResource;
+    private long duration = 500;
+    private int colorResource = android.R.color.white;
 
     public static FadeBridgeFragment newInstance(String startDir) {
-        return newInstance(startDir, android.R.color.darker_gray, 500);
+        return newInstance(startDir, android.R.color.white, 500);
     }
 
     public static FadeBridgeFragment newInstance(String startDir, int colorResource, long duration) {
         FadeBridgeFragment fragment = new FadeBridgeFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_START_DIR, startDir);
-        fragment.setArguments(args);
         fragment.duration = duration;
         fragment.colorResource = colorResource;
         return fragment;
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        this.container = container;
-        return super.onCreateView(inflater, container, savedInstanceState);
+    public FadeBridgeFragment() {
+        super();
+        addFadeListener();
+    }
+
+    public FadeBridgeFragment(Portal portal) {
+        super(portal);
+        addFadeListener();
+    }
+
+    private void addFadeListener() {
+        addWebViewListener(new WebViewListener() {
+
+            @Override
+            public void onPageLoaded(WebView webView) {
+                fadeView.animate()
+                        .alpha(0f)
+                        .setDuration(duration)
+                        .setListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                fadeView.setVisibility(View.GONE);
+                            }
+                        });
+            }});
     }
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         this.fadeView = new View(getActivity());
         fadeView.setId(View.generateViewId());
 
-        fadeView.setLayoutParams(bridge.getWebView().getLayoutParams());
+        fadeView.setLayoutParams(getBridge().getWebView().getLayoutParams());
         fadeView.setBackgroundResource(colorResource);
-        container.addView(fadeView, 0);
+        getBridge().getWebView().addView(fadeView, 0);
         fadeView.bringToFront();
     }
 
@@ -71,21 +85,4 @@ public class FadeBridgeFragment extends BridgeFragment {
         fadeView.setBackgroundResource(this.colorResource);
     }
 
-    public FadeBridgeFragment() {
-        super();
-
-        addWebViewListener(new WebViewListener() {
-            @Override
-            public void onPageLoaded(WebView webView) {
-                fadeView.animate()
-                        .alpha(0f)
-                        .setDuration(duration)
-                        .setListener(new AnimatorListenerAdapter() {
-                            @Override
-                            public void onAnimationEnd(Animator animation) {
-                                fadeView.setVisibility(View.GONE);
-                            }
-                        });
-            }});
-    }
 }

@@ -19,6 +19,7 @@ import './CheckoutPage.scss';
 import { Address, CreditCard } from '../../models';
 import AddressItem from '../../components/AddressItem';
 import PaymentItem from '../../components/PaymentItem';
+import { Portals } from 'ionic-portals'
 
 const CheckoutPage: React.FC = () => {
   const { cart, user, checkout } = useContext(DataContext);
@@ -48,7 +49,9 @@ const CheckoutPage: React.FC = () => {
           <IonButtons slot="start">
             <IonButton
               onClick={() => {
-                checkout({ result: 'cancel' });
+                const result = 'cancel'
+                checkout({ result })
+                Portals.sendMessage({ message: 'dismiss', payload: result })
               }}
             >
               Cancel
@@ -112,7 +115,9 @@ const CheckoutPage: React.FC = () => {
               className="order-button"
               expand="block"
               onClick={() => {
-                checkout({ result: 'success' });
+                const result = 'success'
+                checkout({ result })
+                Portals.sendMessage({ message: 'dismiss', payload: result })
               }}
             >
               Place Your Order

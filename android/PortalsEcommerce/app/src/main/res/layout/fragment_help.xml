@@ -7,7 +7,7 @@
     android:background="?attr/backgroundColor"
     tools:context=".ui.product.HelpFragment">
 
-    <io.ionic.portalslibrary.PortalView
+    <io.ionic.portals.PortalView
         app:portalId="help"
         android:id="@+id/help_web_app"
         android:layout_width="match_parent"

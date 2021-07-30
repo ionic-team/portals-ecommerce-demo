@@ -60,18 +60,13 @@ interface AppProps {
   };
 }
 
-
 const App: React.FC<AppProps> = ({ context }) => {
-
-console.log('TURRD');
-
   return (
     <DataProvider>
       <IonApp>
         <IonReactRouter>
           <IonRouterOutlet>
-            {/* <Redirect path="/" exact to={context.startingRoute} /> */}
-            <Redirect path="/" exact to={'/user'} />
+            <Redirect path="/" exact to={context.startingRoute} />
             <Route path="/address" exact component={AddressPage} />
             <Route path="/address/:id" exact component={AddressPage} />
             <Route path="/checkout" exact component={CheckoutPage} />

@@ -20,15 +20,18 @@ import java.util.HashMap;
 import io.ionic.demo.ecommerce.R;
 import io.ionic.demo.ecommerce.plugins.CheckoutCallback;
 import io.ionic.demo.ecommerce.plugins.ShopAPIViewModel;
-import io.ionic.portalslibrary.Portal;
-import io.ionic.portalslibrary.PortalFragment;
-import io.ionic.portalslibrary.PortalManager;
+import io.ionic.portals.Portal;
+import io.ionic.portals.PortalFragment;
+import io.ionic.portals.PortalManager;
+import io.ionic.portals.PortalMethod;
 
 /**
  * Displays an Ionic Portal containing a checkout app.
  */
+public class CheckoutDialogFragment extends DialogFragment {
+    Portal checkoutPortal;
+    PortalFragment portalFragment;
 
-public class CheckoutDialogFragment extends DialogFragment implements CheckoutCallback {
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_checkout, container, false);
@@ -40,26 +43,21 @@ public class CheckoutDialogFragment extends DialogFragment implements CheckoutCa
         super.onCreate(savedInstanceState);
         setStyle(DialogFragment.STYLE_NORMAL, R.style.CartDialog);
 
-        ShopAPIViewModel viewModel = new ViewModelProvider(requireActivity()).get(ShopAPIViewModel.class);
-        viewModel.setCheckoutCallback(this);
-
         final FragmentManager fragmentManager = getChildFragmentManager();
-
-        Portal checkoutPortal = PortalManager.getPortal("checkout");
-
+        checkoutPortal = PortalManager.getPortal("checkout");
         HashMap<String, String> initialContext = new HashMap<>();
         initialContext.put("startingRoute", "/checkout");
         checkoutPortal.setInitialContext(initialContext);
-
-        PortalFragment portalFragment = new PortalFragment(checkoutPortal);
+        portalFragment = new PortalFragment(checkoutPortal);
+        portalFragment.linkMessageReceivers(this);
 
         fragmentManager.beginTransaction().replace(R.id.checkout_web_app, portalFragment).commit();
 
     }
 
-    @Override
-    public void checkout(String result) {
-        if(result.equals("cancel") || result.equals("success")) {
+    @PortalMethod
+    public void dismiss(String result) {
+        if(result != null && (result.equals("cancel") || result.equals("success"))) {
             this.dismiss();
         }
     }
