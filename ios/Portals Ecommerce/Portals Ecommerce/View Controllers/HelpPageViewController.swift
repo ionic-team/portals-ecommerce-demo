@@ -11,7 +11,7 @@ class HelpPageViewController: HostedContentViewController {
     
     override func webViewCompletedInitialLoad() {
         super.webViewCompletedInitialLoad()
-        webView?.evaluateJavaScript("window.location.href = \"/help\"", completionHandler: nil)
+//       webView?.evaluateJavaScript("window.location.href = \"/help\"", completionHandler: nil)
     }
     
     override func instanceDescriptor() -> InstanceDescriptor {

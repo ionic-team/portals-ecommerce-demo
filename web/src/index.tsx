@@ -6,6 +6,7 @@ import App from './App';
 import { Portals } from 'ionic-portals';
 
 
+
 // const context = Portals.getInitialContext();
 
 //  const contextFromIndex = (window as any).portalInitialContext;
@@ -16,14 +17,15 @@ import { Portals } from 'ionic-portals';
 // );
 
 
-Portals.getInitialContext().then((context) => {
+// Portals.getInitialContext<{ startingRoute: string; }>().then((context) => {
   ReactDOM.render(
     <React.StrictMode>
-      <App context={context.value as any} />
+      <App context={{} as any} />
+      {/* <App context={context.value} /> */}
     </React.StrictMode>,
     document.getElementById('root')
   );
-});
+// });
 
 // checkForContext();
 

@@ -2,15 +2,24 @@ import UIKit
 import Capacitor
 
 class CheckoutViewController: PortalViewController {
-    private(set) var apiPlugin: ShopAPIPlugin?
     
-    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-
-    public required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
+//    init(_ name: String) {
+//        super.init(nibName: nil, bundle: nil)
+//        self.name = name
+//    }
+//
+//    required init?(coder: NSCoder) {
+//        super.init(coder: coder)
+//    }
+    //    private(set) var apiPlugin: ShopAPIPlugin?
+    
+//    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+//        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+//    }
+//
+//    public required init?(coder: NSCoder) {
+//        super.init(coder: coder)
+//    }
 
         
 //    required init?(coder: NSCoder) {
@@ -40,9 +49,9 @@ class CheckoutViewController: PortalViewController {
 //    }
     // MARK: - CAPBridgeViewController
     
-    override func instanceDescriptor() -> InstanceDescriptor {
-        let path = Bundle.main.url(forResource: "portals/shopwebapp", withExtension: nil)!
-        let descriptor = InstanceDescriptor(at: path, configuration: nil, cordovaConfiguration: nil)
-        return descriptor
-    }
+//    override func instanceDescriptor() -> InstanceDescriptor {
+//        let path = Bundle.main.url(forResource: "portals/shopwebapp", withExtension: nil)!
+//        let descriptor = InstanceDescriptor(at: path, configuration: nil, cordovaConfiguration: nil)
+//        return descriptor
+//    }
 }

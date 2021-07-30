@@ -30,49 +30,8 @@ import io.ionic.portalslibrary.PortalView;
  */
 public class HelpFragment extends Fragment {
 
-//    PortalFragment portalFragment;
-
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_help, container, false);
 
     }
-
-//    @Override
-//    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-//        super.onViewCreated(view, savedInstanceState);
-////        PortalView portalView = view.findViewById(R.id.help_web_app);
-////        HashMap<String, String> initialContext = new HashMap<>();
-////        initialContext.put("startingRoute", "/help");
-////        Portal portal = PortalManager.getPortal("help");
-////        portal.setInitialContext(initialContext);
-////        portalFragment = portalView.getPortalFragment();
-////        portalFragment.addWebViewListener(new WebViewListener() {
-////            private boolean isLoaded = false;
-////            @Override
-////            public void onPageLoaded(WebView webView) {
-////                super.onPageLoaded(webView);
-////
-////                if (!isLoaded) {
-////                    isLoaded = true;
-////                    webView.evaluateJavascript("window.portalInitialContext = {\"name\": \"help\", \"value\": { \"startingRoute\": \"/help\" }} ", null);
-////                }
-////            }
-////        });
-//    }
-
-//    @Override
-//    public void onCreate(@Nullable Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//
-//        final FragmentManager fragmentManager = getParentFragmentManager();
-//
-//        portalFragment = // FadeBridgeFragment.newInstance("webapp", android.R.color.white, 500);
-//
-//
-//        // Add plugins
-//        portalFragment.addPlugin(ShopAPIPlugin.class);
-//
-//        // Inflate the fragment
-//        fragmentManager.beginTransaction().replace(R.id.help_web_app, portalFragment).commit();
-//    }
 }

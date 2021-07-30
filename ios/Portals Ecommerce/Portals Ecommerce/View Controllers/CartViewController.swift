@@ -56,7 +56,8 @@ class CartViewController: UIViewController, ApplicationCoordinationParticipant, 
     }
     
     func requestCheckout() {
-        let controller = CheckoutViewController(nibName: nil, bundle: nil)
+        let controller = CheckoutViewController("checkout")
+//        let controller = CheckoutViewController()
         self.present(controller, animated: true, completion: nil)
 //        controller.coordinator = coordinator
 //        controller.prerender { [weak self] in

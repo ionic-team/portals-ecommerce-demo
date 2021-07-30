@@ -22,9 +22,6 @@ import io.ionic.portalslibrary.PortalFragment;
 import io.ionic.portalslibrary.PortalManager;
 
 public class ProfileFragment extends Fragment {
-
-//    BridgeFragment embeddedFragment;
-//    PortalOld portalOld;
     PortalFragment portalFragment;
     Portal profilePortal;
 
@@ -44,7 +41,6 @@ public class ProfileFragment extends Fragment {
 
         profilePortal = PortalManager.getPortal("webapp");
 
-//        portalOld = PortalManagerOld.getPortal("checkout");
         profilePortal.setInitialContext("{ \"startingRoute\": \"/user\" }");
         portalFragment = new PortalFragment(profilePortal);
 

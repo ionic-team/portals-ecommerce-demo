@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		556422EF26AA0E14004E1ECF /* Portal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556422EE26AA0E14004E1ECF /* Portal.swift */; };
+		556422F126AA167C004E1ECF /* PortalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556422F026AA167C004E1ECF /* PortalManager.swift */; };
+		5564231C26AB634E004E1ECF /* PortalWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5564231B26AB634E004E1ECF /* PortalWebView.swift */; };
 		55B52817269F88AA0045E03E /* PortalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B52816269F88AA0045E03E /* PortalViewController.swift */; };
 		6216AF16265EDF07003E3152 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6216AF15265EDF07003E3152 /* ImageLoader.swift */; };
 		6216AF1A265EFB02003E3152 /* ProductCarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6216AF18265EFB02003E3152 /* ProductCarouselCollectionViewCell.swift */; };
@@ -88,6 +91,9 @@
 		0A0AFBF4391B38759EF86C67 /* Pods-EcommerceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcommerceTests.release.xcconfig"; path = "Target Support Files/Pods-EcommerceTests/Pods-EcommerceTests.release.xcconfig"; sourceTree = "<group>"; };
 		163581E2C078F135216029DA /* Pods-Ecommerce.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ecommerce.release.xcconfig"; path = "Target Support Files/Pods-Ecommerce/Pods-Ecommerce.release.xcconfig"; sourceTree = "<group>"; };
 		4870CABF166A6F5F59531192 /* Pods-EcommerceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcommerceTests.debug.xcconfig"; path = "Target Support Files/Pods-EcommerceTests/Pods-EcommerceTests.debug.xcconfig"; sourceTree = "<group>"; };
+		556422EE26AA0E14004E1ECF /* Portal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Portal.swift; sourceTree = "<group>"; };
+		556422F026AA167C004E1ECF /* PortalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortalManager.swift; sourceTree = "<group>"; };
+		5564231B26AB634E004E1ECF /* PortalWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortalWebView.swift; sourceTree = "<group>"; };
 		55B52816269F88AA0045E03E /* PortalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortalViewController.swift; sourceTree = "<group>"; };
 		6216AF15265EDF07003E3152 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		6216AF18265EFB02003E3152 /* ProductCarouselCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCarouselCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -195,6 +201,9 @@
 			isa = PBXGroup;
 			children = (
 				55B52816269F88AA0045E03E /* PortalViewController.swift */,
+				556422EE26AA0E14004E1ECF /* Portal.swift */,
+				556422F026AA167C004E1ECF /* PortalManager.swift */,
+				5564231B26AB634E004E1ECF /* PortalWebView.swift */,
 			);
 			path = Portals;
 			sourceTree = "<group>";
@@ -625,6 +634,7 @@
 			files = (
 				6216AF7626618A50003E3152 /* DemoData.swift in Sources */,
 				6216AF16265EDF07003E3152 /* ImageLoader.swift in Sources */,
+				5564231C26AB634E004E1ECF /* PortalWebView.swift in Sources */,
 				62941E9A265DA71B00EE7FE4 /* ProductGalleryViewController.swift in Sources */,
 				6258AB5E265EB44F006E7D8C /* UserProfileViewController.swift in Sources */,
 				6258AB68265ED89E006E7D8C /* HelpPageViewController.swift in Sources */,
@@ -638,6 +648,7 @@
 				6286966C266FEF4800F3AE9A /* UIColor+Extensions.swift in Sources */,
 				6216AF1B265EFB02003E3152 /* ProductCollectionViewCell.swift in Sources */,
 				6216AF2026601CF1003E3152 /* GalleryViewModel.swift in Sources */,
+				556422EF26AA0E14004E1ECF /* Portal.swift in Sources */,
 				6258AB6A265ED8E2006E7D8C /* CheckoutViewController.swift in Sources */,
 				62D12EBB266826310014A836 /* Cart.swift in Sources */,
 				6286965C266EB97700F3AE9A /* CartItemTableViewCell.swift in Sources */,
@@ -649,6 +660,7 @@
 				62941E86265DA67F00EE7FE4 /* AppDelegate.swift in Sources */,
 				62D12EB426680C0C0014A836 /* CreditCard.swift in Sources */,
 				62D12EB926681ACA0014A836 /* ShopAPIPlugin.m in Sources */,
+				556422F126AA167C004E1ECF /* PortalManager.swift in Sources */,
 				62941E88265DA67F00EE7FE4 /* SceneDelegate.swift in Sources */,
 				6258AB59265E99E5006E7D8C /* Product.swift in Sources */,
 				62D12EB726681AA50014A836 /* ShopAPIPlugin.swift in Sources */,
