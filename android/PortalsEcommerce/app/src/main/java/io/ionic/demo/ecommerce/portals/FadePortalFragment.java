@@ -10,30 +10,30 @@ import com.getcapacitor.WebViewListener;
 import io.ionic.portals.Portal;
 import io.ionic.portals.PortalFragment;
 
-public class FadeBridgeFragment extends PortalFragment {
+public class FadePortalFragment extends PortalFragment {
 
     private View fadeView;
 
     private long duration = 500;
     private int colorResource = android.R.color.white;
 
-    public static FadeBridgeFragment newInstance(String startDir) {
+    public static FadePortalFragment newInstance(String startDir) {
         return newInstance(startDir, android.R.color.white, 500);
     }
 
-    public static FadeBridgeFragment newInstance(String startDir, int colorResource, long duration) {
-        FadeBridgeFragment fragment = new FadeBridgeFragment();
+    public static FadePortalFragment newInstance(String startDir, int colorResource, long duration) {
+        FadePortalFragment fragment = new FadePortalFragment();
         fragment.duration = duration;
         fragment.colorResource = colorResource;
         return fragment;
     }
 
-    public FadeBridgeFragment() {
+    public FadePortalFragment() {
         super();
         addFadeListener();
     }
 
-    public FadeBridgeFragment(Portal portal) {
+    public FadePortalFragment(Portal portal) {
         super(portal);
         addFadeListener();
     }

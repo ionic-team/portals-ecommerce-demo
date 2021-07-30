@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 import io.ionic.demo.ecommerce.data.ShoppingCart;
 import io.ionic.demo.ecommerce.plugins.ShopAPIPlugin;
-import io.ionic.demo.ecommerce.portals.FadeBridgeFragment;
+import io.ionic.demo.ecommerce.portals.FadePortalFragment;
 import io.ionic.portals.PortalManager;
 import io.ionic.portals.PortalsPlugin;
 
@@ -81,7 +81,7 @@ public class EcommerceApp extends Application {
                 .setStartDir("webapp")
                 .setInitialContext(initialContext)
                 .setPlugins(Arrays.asList(ShopAPIPlugin.class))
-                .setPortalFragmentType(FadeBridgeFragment.class)
+                .setPortalFragmentType(FadePortalFragment.class)
                 .create();
 
         // Profile Portal
