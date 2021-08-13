@@ -5,7 +5,7 @@ protocol ApplicationCoordinationParticipant: UIViewController {
     var coordinator: ApplicationCoordinator? { get set }
     // If the view controller wants to be preloaded at app launch. Only applies
     // if the view controller is in the initial tab and/or navigation stack.
-    var requiresPreloading: Bool { get }
+//    var requiresPreloading: Bool { get }
 }
 
 @objc class ApplicationCoordinator: NSObject, UINavigationControllerDelegate {

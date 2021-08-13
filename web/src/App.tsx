@@ -1,7 +1,7 @@
 import React from 'react';
 import { IonApp, IonContent, IonHeader, IonPage, IonRouterOutlet, IonTitle, IonToolbar } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { Route } from 'react-router';
+import { Redirect, Route } from 'react-router';
 import { Link } from 'react-router-dom'
 import { AddressPage } from './pages/AddressPage';
 import { CheckoutPage } from './pages/CheckoutPage';
@@ -52,13 +52,19 @@ const Home: React.FC<HomeProps> = () => {
   );
 };
 
-function App() {
+interface AppProps {
+  context: {
+    startingRoute: string;
+  };
+}
+
+const App: React.FC<AppProps> = ({ context }) => {
   return (
     <DataProvider>
       <IonApp>
         <IonReactRouter>
           <IonRouterOutlet>
-            <Route path="/" exact component={Home} />
+            <Redirect path="/" exact to={context.startingRoute} />
             <Route path="/address" exact component={AddressPage} />
             <Route path="/address/:id" exact component={AddressPage} />
             <Route path="/checkout" exact component={CheckoutPage} />
@@ -71,6 +77,6 @@ function App() {
       </IonApp>
     </DataProvider>
   );
-}
+};
 
 export default App;
