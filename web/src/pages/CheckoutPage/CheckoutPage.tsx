@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import {
   IonButton,
   IonButtons,
-  IonCheckbox,
   IonContent,
   IonHeader,
   IonItem,
@@ -19,7 +18,7 @@ import './CheckoutPage.scss';
 import { Address, CreditCard } from '../../models';
 import AddressItem from '../../components/AddressItem';
 import PaymentItem from '../../components/PaymentItem';
-import { Portals } from '@ionic/portals'
+import { Portals } from '@native-portal/portals'
 
 const CheckoutPage: React.FC = () => {
   const { cart, user, checkout } = useContext(DataContext);
@@ -51,7 +50,6 @@ const CheckoutPage: React.FC = () => {
               onClick={() => {
                 const result = 'cancel'
                 checkout({ result })
-                Portals.sendMessage({ message: 'dismiss', payload: result })
               }}
             >
               Cancel

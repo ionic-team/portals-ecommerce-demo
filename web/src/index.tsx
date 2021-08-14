@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { Portals } from '@native-portal/portals';
 // import reportWebVitals from './reportWebVitals';
-import { Portals } from '@ionic/portals';
 
 Portals.getInitialContext<{ startingRoute: string; }>().then((context) => {
   ReactDOM.render(
