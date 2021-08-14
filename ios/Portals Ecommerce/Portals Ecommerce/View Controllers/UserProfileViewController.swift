@@ -1,41 +1,23 @@
 import UIKit
-import Capacitor
+import IonicPortals
 
-class UserProfileViewController: UIViewController, ApplicationCoordinationParticipant {
-    var requiresPreloading: Bool = false
+class UserProfileViewController: AppParticipantViewController {
     
-    private(set) var apiPlugin: ShopAPIPlugin?
-    weak var coordinator: ApplicationCoordinator? {
-        didSet {
-            apiPlugin?.dataProvider = coordinator?.dataStore
-        }
-    }
-       
+    override var requiresPreloading: Bool { return true }
     
-//    @IBOutlet var webView: PortalWebView!
     override func viewDidLoad() {
+        
+        // Do any additional setup after loading the view.
+        let portal = try! PortalManager.getPortal("user")
+        var initialContext: [String: String] = [:]
+        initialContext["startingRoute"] = "/user"
+        portal.initialContext = initialContext
+        
+        let portalWebView = PortalWebView(frame: view.frame, portal: portal)
+          
+        self.view = portalWebView
+        self.bridge = portalWebView.bridge
+        
         super.viewDidLoad()
-        let webView = PortalWebView(frame: view.frame, portalName: "user")
-        view = webView
-        apiPlugin = webView.bridge?.plugin(withName: "ShopAPI") as? ShopAPIPlugin
-        apiPlugin?.dataProvider = coordinator?.dataStore
     }
-//    override var requiresPreloading: Bool { return true }
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        // Do any additional setup after loading the view.
-//        navigationItem.title = NSLocalizedString("Help", comment: "Help page title")
-//    }
-//
-//    override func webViewCompletedInitialLoad() {
-//        super.webViewCompletedInitialLoad()
-//        webView?.evaluateJavaScript("window.location.href = \"/user\"", completionHandler: nil)
-//    }
-//
-//    override func instanceDescriptor() -> InstanceDescriptor {
-//        let path = Bundle.main.url(forResource: "portals/shopwebapp", withExtension: nil)!
-//        let descriptor = InstanceDescriptor(at: path, configuration: nil, cordovaConfiguration: nil)
-//        return descriptor
-//    }
 }

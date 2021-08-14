@@ -56,7 +56,7 @@ const Home: React.FC<HomeProps> = () => {
 
 interface AppProps {
   context: {
-    startingRoute: string
+    startingRoute: string;
   };
 }
 
@@ -79,6 +79,6 @@ const App: React.FC<AppProps> = ({ context }) => {
       </IonApp>
     </DataProvider>
   );
-}
+};
 
 export default App;

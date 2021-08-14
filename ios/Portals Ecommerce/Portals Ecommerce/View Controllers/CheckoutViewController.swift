@@ -1,57 +1,31 @@
 import UIKit
-import Capacitor
+import IonicPortals
 
-class CheckoutViewController: PortalViewController {
-    
-//    init(_ name: String) {
-//        super.init(nibName: nil, bundle: nil)
-//        self.name = name
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        super.init(coder: coder)
-//    }
-    //    private(set) var apiPlugin: ShopAPIPlugin?
-    
-//    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-//        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-//    }
-//
-//    public required init?(coder: NSCoder) {
-//        super.init(coder: coder)
-//    }
-
-        
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//
+class CheckoutViewController: AppParticipantViewController, ShopAPIActionDelegateProtocol {
     override func viewDidLoad() {
-        super.viewDidLoad()
         
-//        apiPlugin?.actionDelegate = self
+        // Do any additional setup after loading the view.
+        let portal = try! PortalManager.getPortal("checkout")
+        var initialContext: [String: String] = [:]
+        initialContext["startingRoute"] = "/checkout"
+        portal.initialContext = initialContext
+        
+        let portalWebView = PortalWebView(frame: view.frame, portal: portal)
+          
+        self.view = portalWebView
+        self.bridge = portalWebView.bridge
+        
+        
+        super.viewDidLoad()
     }
+
+   func completeCheckout(with status: ShopAPICheckoutStatus) {
+        if status == .completed {
+            coordinator?.dataStore.cart.clear()
+        }
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: nil)
+        }
+   }
     
-//    override func webViewCompletedInitialLoad() {
-//        super.webViewCompletedInitialLoad()
-//        webView?.evaluateJavaScript("window.location.href = \"/checkout\"", completionHandler: nil)
-//    }
-    
-    // MARK: - ShopAPIActionDelegateProtocol
-    
-//    func completeCheckout(with status: ShopAPICheckoutStatus) {
-//        if status == .completed {
-//            coordinator?.dataStore.cart.clear()
-//        }
-//        DispatchQueue.main.async {
-//            self.dismiss(animated: true, completion: nil)
-//        }
-//    }
-    // MARK: - CAPBridgeViewController
-    
-//    override func instanceDescriptor() -> InstanceDescriptor {
-//        let path = Bundle.main.url(forResource: "portals/shopwebapp", withExtension: nil)!
-//        let descriptor = InstanceDescriptor(at: path, configuration: nil, cordovaConfiguration: nil)
-//        return descriptor
-//    }
 }

@@ -1,15 +1,21 @@
 import UIKit
+import IonicPortals
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        // Setup Ionic Portals
         let checkoutPortal = Portal("checkout", "portals/shopwebapp")
         PortalManager.addPortal(checkoutPortal)
-        	
+        
+        let helpPortal = Portal("help", "portals/shopwebapp")
+        PortalManager.addPortal(helpPortal)
+        
         let userPortal = Portal("user", "portals/shopwebapp")
         PortalManager.addPortal(userPortal)
+        
         return true
     }
 
