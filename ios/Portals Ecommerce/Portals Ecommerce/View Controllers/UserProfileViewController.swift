@@ -3,6 +3,8 @@ import IonicPortals
 
 class UserProfileViewController: AppParticipantViewController {
     
+    override var requiresPreloading: Bool { return true }
+    
     override func viewDidLoad() {
         
         // Do any additional setup after loading the view.

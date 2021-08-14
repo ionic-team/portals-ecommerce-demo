@@ -6,6 +6,7 @@ class AppParticipantViewController: UIViewController, ApplicationCoordinationPar
     
     var apiPlugin: ShopAPIPlugin?
     var bridge: CAPBridgeProtocol?
+    var requiresPreloading: Bool { return false }
     
     // MARK: - ApplicationCoordinationParticipant
     weak var coordinator: ApplicationCoordinator? {
@@ -20,6 +21,7 @@ class AppParticipantViewController: UIViewController, ApplicationCoordinationPar
         }
         apiPlugin = bridge?.plugin(withName: "ShopAPI") as? ShopAPIPlugin
         apiPlugin?.dataProvider = coordinator?.dataStore
+        apiPlugin?.actionDelegate = self as Any as? ShopAPIActionDelegateProtocol;
         
         // now call super which will start the initial load
         super.viewDidLoad()

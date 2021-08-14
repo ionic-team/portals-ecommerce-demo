@@ -2,6 +2,8 @@ import UIKit
 import IonicPortals
 
 class HelpPageViewController: AppParticipantViewController {
+    
+    override var requiresPreloading: Bool { return true }
 
     override func viewDidLoad() {
         

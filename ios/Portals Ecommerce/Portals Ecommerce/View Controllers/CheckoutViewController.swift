@@ -15,6 +15,7 @@ class CheckoutViewController: AppParticipantViewController, ShopAPIActionDelegat
         self.view = portalWebView
         self.bridge = portalWebView.bridge
         
+        
         super.viewDidLoad()
     }
 
