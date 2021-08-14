@@ -29,7 +29,9 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import { DataProvider } from './DataProvider';
 
-interface HomeProps {}
+interface HomeProps { }
+
+
 
 const Home: React.FC<HomeProps> = () => {
   return (

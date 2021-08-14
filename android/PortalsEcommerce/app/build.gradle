@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "io.ionic.demo.ecommerce"
-        minSdkVersion 21
+        minSdkVersion 22
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -32,8 +32,9 @@ android {
 
 dependencies {
     // Ionic Portals Dependencies
-    implementation 'io.ionic:portals:3.0.1'
-    implementation 'com.capacitorjs:camera:1.0.1'
+    implementation 'io.ionic:portalslibrary:0.0.4'
+    implementation 'com.capacitorjs:core:3.1.2'
+    implementation 'com.capacitorjs:camera:1.0.3'
 
     // Other Dependencies
     implementation 'com.google.code.gson:gson:2.8.6'

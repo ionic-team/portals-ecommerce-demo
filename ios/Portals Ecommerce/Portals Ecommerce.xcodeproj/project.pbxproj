@@ -191,6 +191,17 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		55B52815269F88990045E03E /* Portals */ = {
+			isa = PBXGroup;
+			children = (
+				55B52816269F88AA0045E03E /* PortalViewController.swift */,
+				556422EE26AA0E14004E1ECF /* Portal.swift */,
+				556422F026AA167C004E1ECF /* PortalManager.swift */,
+				5564231B26AB634E004E1ECF /* PortalWebView.swift */,
+			);
+			path = Portals;
+			sourceTree = "<group>";
+		};
 		6216AF17265EFAEB003E3152 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -333,6 +344,7 @@
 		62941E84265DA67F00EE7FE4 /* Portals Ecommerce */ = {
 			isa = PBXGroup;
 			children = (
+				55B52815269F88990045E03E /* Portals */,
 				62941E85265DA67F00EE7FE4 /* AppDelegate.swift */,
 				62941E87265DA67F00EE7FE4 /* SceneDelegate.swift */,
 				6258AB6B265EDA25006E7D8C /* ApplicationCoordinator.swift */,
@@ -617,6 +629,7 @@
 			files = (
 				6216AF7626618A50003E3152 /* DemoData.swift in Sources */,
 				6216AF16265EDF07003E3152 /* ImageLoader.swift in Sources */,
+				5564231C26AB634E004E1ECF /* PortalWebView.swift in Sources */,
 				62941E9A265DA71B00EE7FE4 /* ProductGalleryViewController.swift in Sources */,
 				6258AB5E265EB44F006E7D8C /* UserProfileViewController.swift in Sources */,
 				6258AB68265ED89E006E7D8C /* HelpPageViewController.swift in Sources */,
@@ -627,9 +640,11 @@
 				6258AB60265EB46C006E7D8C /* ProductDetailViewController.swift in Sources */,
 				556BCDA026C5A5DD006F1DE9 /* AppParticipantViewController.swift in Sources */,
 				6258AB5C265EB413006E7D8C /* CartViewController.swift in Sources */,
+				55B52817269F88AA0045E03E /* PortalViewController.swift in Sources */,
 				6286966C266FEF4800F3AE9A /* UIColor+Extensions.swift in Sources */,
 				6216AF1B265EFB02003E3152 /* ProductCollectionViewCell.swift in Sources */,
 				6216AF2026601CF1003E3152 /* GalleryViewModel.swift in Sources */,
+				556422EF26AA0E14004E1ECF /* Portal.swift in Sources */,
 				6258AB6A265ED8E2006E7D8C /* CheckoutViewController.swift in Sources */,
 				62D12EBB266826310014A836 /* Cart.swift in Sources */,
 				6286965C266EB97700F3AE9A /* CartItemTableViewCell.swift in Sources */,
@@ -641,6 +656,7 @@
 				62941E86265DA67F00EE7FE4 /* AppDelegate.swift in Sources */,
 				62D12EB426680C0C0014A836 /* CreditCard.swift in Sources */,
 				62D12EB926681ACA0014A836 /* ShopAPIPlugin.m in Sources */,
+				556422F126AA167C004E1ECF /* PortalManager.swift in Sources */,
 				62941E88265DA67F00EE7FE4 /* SceneDelegate.swift in Sources */,
 				6258AB59265E99E5006E7D8C /* Product.swift in Sources */,
 				62D12EB726681AA50014A836 /* ShopAPIPlugin.swift in Sources */,
