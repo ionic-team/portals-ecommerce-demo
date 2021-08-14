@@ -1,22 +1,22 @@
 import UIKit
-import Capacitor
+import IonicPortals
 
-class HelpPageViewController: HostedContentViewController {
+class HelpPageViewController: AppParticipantViewController {
+    
+    override var requiresPreloading: Bool { return true }
 
     override func viewDidLoad() {
-        super.viewDidLoad()
+        
         // Do any additional setup after loading the view.
-        navigationItem.title = NSLocalizedString("Help", comment: "Help page title")
-    }
-    
-    override func webViewCompletedInitialLoad() {
-        super.webViewCompletedInitialLoad()
-        webView?.evaluateJavaScript("window.location.href = \"/help\"", completionHandler: nil)
-    }
-    
-    override func instanceDescriptor() -> InstanceDescriptor {
-        let path = Bundle.main.url(forResource: "portals/shopwebapp", withExtension: nil)!
-        let descriptor = InstanceDescriptor(at: path, configuration: nil, cordovaConfiguration: nil)
-        return descriptor
+        let portal = try! PortalManager.getPortal("help")
+        var initialContext: [String: String] = [:]
+        initialContext["startingRoute"] = "/help"
+        portal.initialContext = initialContext
+        
+        let portalWebView = PortalWebView(frame: view.frame, portal: portal)
+          
+        self.view = portalWebView
+        self.bridge = portalWebView.bridge
+        super.viewDidLoad()
     }
 }

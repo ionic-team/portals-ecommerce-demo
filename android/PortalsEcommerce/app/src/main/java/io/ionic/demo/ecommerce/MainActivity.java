@@ -1,13 +1,16 @@
 package io.ionic.demo.ecommerce;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+//import com.capacitorjs.plugins.camera.CameraPlugin;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -15,6 +18,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.widget.ViewPager2;
 
 import io.ionic.demo.ecommerce.data.model.Product;
+import io.ionic.demo.ecommerce.plugins.ShopAPIPlugin;
 import io.ionic.demo.ecommerce.ui.product.HelpFragment;
 
 /**
@@ -29,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     Product selectedProduct;
     boolean hideMenu = true;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -42,7 +42,7 @@ public class PageAdapter extends FragmentStateAdapter {
                 fragment = new CartFragment();
                 break;
             case 2:
-                fragment = new ProfileFragment();
+                fragment = ProfileFragment.newInstance();
                 break;
         }
 

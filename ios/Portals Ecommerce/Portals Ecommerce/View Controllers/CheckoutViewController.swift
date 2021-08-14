@@ -1,33 +1,31 @@
 import UIKit
-import Capacitor
+import IonicPortals
 
-class CheckoutViewController: HostedContentViewController, ShopAPIActionDelegateProtocol {
+class CheckoutViewController: AppParticipantViewController, ShopAPIActionDelegateProtocol {
     override func viewDidLoad() {
-        super.viewDidLoad()
         
-        apiPlugin?.actionDelegate = self
+        // Do any additional setup after loading the view.
+        let portal = try! PortalManager.getPortal("checkout")
+        var initialContext: [String: String] = [:]
+        initialContext["startingRoute"] = "/checkout"
+        portal.initialContext = initialContext
+        
+        let portalWebView = PortalWebView(frame: view.frame, portal: portal)
+          
+        self.view = portalWebView
+        self.bridge = portalWebView.bridge
+        
+        
+        super.viewDidLoad()
     }
-    
-    override func webViewCompletedInitialLoad() {
-        super.webViewCompletedInitialLoad()
-        webView?.evaluateJavaScript("window.location.href = \"/checkout\"", completionHandler: nil)
-    }
-    
-    // MARK: - ShopAPIActionDelegateProtocol
-    
-    func completeCheckout(with status: ShopAPICheckoutStatus) {
+
+   func completeCheckout(with status: ShopAPICheckoutStatus) {
         if status == .completed {
             coordinator?.dataStore.cart.clear()
         }
         DispatchQueue.main.async {
             self.dismiss(animated: true, completion: nil)
         }
-    }
-    // MARK: - CAPBridgeViewController
+   }
     
-    override func instanceDescriptor() -> InstanceDescriptor {
-        let path = Bundle.main.url(forResource: "portals/shopwebapp", withExtension: nil)!
-        let descriptor = InstanceDescriptor(at: path, configuration: nil, cordovaConfiguration: nil)
-        return descriptor
-    }
 }

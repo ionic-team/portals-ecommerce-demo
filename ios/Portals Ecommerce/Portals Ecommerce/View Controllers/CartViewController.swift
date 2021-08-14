@@ -58,10 +58,10 @@ class CartViewController: UIViewController, ApplicationCoordinationParticipant, 
     func requestCheckout() {
         let controller = CheckoutViewController(nibName: nil, bundle: nil)
         controller.coordinator = coordinator
-        controller.prerender { [weak self] in
+//        controller.prerender { [weak self] in
             controller.modalPresentationStyle = .pageSheet
-            self?.present(controller, animated: true, completion: nil)
-        }
+            self.present(controller, animated: true, completion: nil)
+//        }
     }
     
     // MARK: - Private
