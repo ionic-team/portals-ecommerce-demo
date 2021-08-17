@@ -1,2 +1,5 @@
 include ':app'
 rootProject.name = "Portals Ecommerce"
+
+include ':portals'
+project(':portals').projectDir = new File(settingsDir, '../../../../ionic-portals/android/IonicPortals/')

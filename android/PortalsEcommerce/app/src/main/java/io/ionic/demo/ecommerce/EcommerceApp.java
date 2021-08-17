@@ -2,22 +2,33 @@ package io.ionic.demo.ecommerce;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
+
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.OnLifecycleEvent;
 
 import com.capacitorjs.plugins.camera.CameraPlugin;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 
 import io.ionic.demo.ecommerce.data.ShoppingCart;
 import io.ionic.demo.ecommerce.plugins.ShopAPIPlugin;
 import io.ionic.demo.ecommerce.portals.FadePortalFragment;
+import io.ionic.portals.LiveUpdate;
+import io.ionic.portals.LiveUpdateBuilder;
+import io.ionic.portals.LiveUpdateManager;
+import io.ionic.portals.Portal;
 import io.ionic.portals.PortalManager;
 import io.ionic.portals.PortalsPlugin;
 
 /**
  * The parent Application Class for the E-Commerce app.
  */
-public class EcommerceApp extends Application {
+public class EcommerceApp extends Application implements LifecycleObserver {
 
     /**
      * A single instance of this class.
@@ -77,11 +88,17 @@ public class EcommerceApp extends Application {
         // Help Portal
         HashMap<String, String> initialContext = new HashMap<>();
         initialContext.put("startingRoute", "/help");
+
+        LiveUpdate helpLiveUpdate = new LiveUpdateBuilder("f76eb498")
+                .setChannel("Production")
+                .create();
+
         PortalManager.newPortal("help")
                 .setStartDir("webapp")
                 .setInitialContext(initialContext)
                 .setPlugins(Arrays.asList(ShopAPIPlugin.class))
                 .setPortalFragmentType(FadePortalFragment.class)
+                .setLiveUpdate(helpLiveUpdate)
                 .create();
 
         // Profile Portal
@@ -93,5 +110,33 @@ public class EcommerceApp extends Application {
                 .addPlugin(CameraPlugin.class)
                 .setInitialContext(initialContextProfile)
                 .create();
+
+        // Todo: remove. Temporarily save some test values to sharedprefs to test checkUpdate
+        saveVals();
+
+        LiveUpdateManager.sync(getApplicationContext(), PortalManager.getPortals());
+    }
+
+    private void saveVals() {
+        String CHANNEL = "CH_";
+        String BINARY_VERSION = "BINV_";
+        String CURRENT_VERSION_ID = "CVID_";
+        String CURRENT_BUILD_ID = "CBID_";
+
+        for (Map.Entry<String, Portal> entry : PortalManager.getPortals().entrySet()) {
+            Portal portal = entry.getValue();
+            if (portal.getLiveUpdate() != null) {
+                LiveUpdate liveUpdate = portal.getLiveUpdate();
+                String appId = liveUpdate.getAppId();
+
+                SharedPreferences sharedPreferences = getSharedPreferences("ionicDeploySavedPreferences", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString(CHANNEL + appId, liveUpdate.getChannel());
+                editor.putString(BINARY_VERSION + appId, BuildConfig.VERSION_NAME);
+                //editor.putString(CURRENT_VERSION_ID + appId, "fb05009d-8b53-4ba8-85c8-c7a276255b90");
+                //editor.putString(CURRENT_BUILD_ID + appId, "7522169");
+                editor.apply();
+            }
+        }
     }
 }
