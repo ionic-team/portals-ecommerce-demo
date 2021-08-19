@@ -3,9 +3,17 @@ import IonicPortals
 
 class HelpPageViewController: AppParticipantViewController {
     
+    private var subscriptionRef = 0
+    
     override var requiresPreloading: Bool { return true }
 
     override func viewDidLoad() {
+        
+        self.subscriptionRef = IonicPortalsPlugin.subscribe("sayHello", { result in
+            IonicPortalsPlugin.publish("SayHelloBack", [
+                "msg": "why hello back!"
+            ])
+        })
         
         // Do any additional setup after loading the view.
         let portal = try! PortalManager.getPortal("help")
@@ -18,5 +26,9 @@ class HelpPageViewController: AppParticipantViewController {
         self.view = portalWebView
         self.bridge = portalWebView.bridge
         super.viewDidLoad()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        IonicPortalsPlugin.unsubscribe("sayHello", self.subscriptionRef)
     }
 }
