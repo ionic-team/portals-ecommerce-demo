@@ -48,8 +48,7 @@ const CheckoutPage: React.FC = () => {
           <IonButtons slot="start">
             <IonButton
               onClick={() => {
-                const result = 'cancel'
-                checkout({ result })
+                Portals.publish({ topic: 'dismiss', data: 'cancel' });
               }}
             >
               Cancel
