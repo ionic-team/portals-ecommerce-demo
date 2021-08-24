@@ -28,6 +28,7 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import { DataProvider } from './DataProvider';
+import PubSubTest from './pages/PubSubTest/PubSubTest';
 
 interface HomeProps { }
 
@@ -74,6 +75,7 @@ const App: React.FC<AppProps> = ({ context }) => {
             <Route path="/payment" exact component={PaymentPage} />
             <Route path="/payment/:id" component={PaymentPage} />
             <Route path="/user" exact component={UserDetailPage} />
+            <Route path="/pubsub" exact component={PubSubTest} />
           </IonRouterOutlet>
         </IonReactRouter>
       </IonApp>
