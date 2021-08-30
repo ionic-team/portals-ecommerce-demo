@@ -17,15 +17,17 @@ class CheckoutViewController: AppParticipantViewController, ShopAPIActionDelegat
         self.view = portalWebView
         self.bridge = portalWebView.bridge
         
-        self.subscriptionRef = PortalsPlugin.subscribe("dismiss", {result in
-            if(result.data as! String == "cancel" || result.data as! String == "success") {
-                DispatchQueue.main.async {
-                    self.dismiss(animated: true, completion: nil)
-                }
-            }
-        })
+        self.subscriptionRef = PortalsPlugin.subscribe("dismiss", dismiss)
         
         super.viewDidLoad()
+    }
+    
+    func dismiss(result: SubscriptionResult) {
+        if(result.data as! String == "cancel" || result.data as! String == "success") {
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
