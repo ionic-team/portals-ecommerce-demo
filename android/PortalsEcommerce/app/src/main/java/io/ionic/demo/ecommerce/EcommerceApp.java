@@ -71,7 +71,7 @@ public class EcommerceApp extends Application {
         // Checkout Portal
         PortalManager.newPortal("checkout")
                 .setStartDir("webapp")
-                .setPlugins(Arrays.asList(ShopAPIPlugin.class, PortalsPlugin.class))
+                .setPlugins(Arrays.asList(ShopAPIPlugin.class))
                 .create();
 
         // Help Portal

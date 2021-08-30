@@ -46,7 +46,7 @@ public class CheckoutDialogFragment extends DialogFragment {
         initialContext.put("startingRoute", "/checkout");
         checkoutPortal.setInitialContext(initialContext);
         portalFragment = new FadePortalFragment(checkoutPortal);
-        portalFragment.setDuration(1250);
+        portalFragment.setDuration(1000);
         portalFragment.linkMessageReceivers(this);
 
         fragmentManager.beginTransaction().replace(R.id.checkout_web_app, portalFragment).commit();

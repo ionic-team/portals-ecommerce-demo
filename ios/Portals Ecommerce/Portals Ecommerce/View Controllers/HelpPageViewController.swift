@@ -3,6 +3,8 @@ import IonicPortals
 
 class HelpPageViewController: AppParticipantViewController {
     
+    private var subscriptionRef = 0
+    
     override var requiresPreloading: Bool { return true }
 
     override func viewDidLoad() {
@@ -19,4 +21,5 @@ class HelpPageViewController: AppParticipantViewController {
         self.bridge = portalWebView.bridge
         super.viewDidLoad()
     }
+    
 }

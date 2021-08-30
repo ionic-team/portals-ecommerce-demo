@@ -2,7 +2,6 @@ import { Capacitor } from '@capacitor/core';
 import React, { useCallback, useEffect, useState } from 'react';
 import { Cart, Data, User } from './models';
 import ShopAPI, { CheckoutResult } from './ShopAPIPlugin';
-
 export interface DataState {
   loading: boolean;
   user?: User;
