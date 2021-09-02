@@ -18,7 +18,7 @@ import './CheckoutPage.scss';
 import { Address, CreditCard } from '../../models';
 import AddressItem from '../../components/AddressItem';
 import PaymentItem from '../../components/PaymentItem';
-import Portals from '@native-portal/portals'
+import Portals from '@ionic/portals'
 
 const CheckoutPage: React.FC = () => {
   const { cart, user, checkout } = useContext(DataContext);
