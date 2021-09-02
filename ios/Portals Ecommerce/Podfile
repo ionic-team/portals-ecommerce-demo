@@ -5,7 +5,7 @@ use_frameworks!
 
 def portals_pods
     pod 'Capacitor'
-    pod 'IonicPortals'
+    pod 'IonicPortals', :path => '../../../ionic-portals/ios'
     pod "CapacitorCamera"
 end
 
