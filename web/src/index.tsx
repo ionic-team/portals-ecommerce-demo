@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import Portals from '@native-portal/portals';
+import Portals from '@ionic/portals';
 // import reportWebVitals from './reportWebVitals';
 
 Portals.getInitialContext<{ startingRoute: string; }>().then((context) => {

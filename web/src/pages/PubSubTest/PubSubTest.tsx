@@ -8,7 +8,7 @@ import {
   IonList,
   IonPage,
 } from '@ionic/react';
-import Portals, { PortalSubscription } from '@native-portal/portals';
+import Portals, { PortalSubscription } from '@ionic/portals';
 
 
 const PubSubTest = () => {
