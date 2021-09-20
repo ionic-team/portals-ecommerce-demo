@@ -68,6 +68,9 @@ public class EcommerceApp extends Application {
         // Start app with a fresh shopping cart
         shoppingCart = new ShoppingCart();
 
+        // Register your Portal
+        // PortalManager.register("YOUR_KEY_HERE");
+
         // Checkout Portal
         PortalManager.newPortal("checkout")
                 .setStartDir("webapp")

@@ -27,17 +27,13 @@ Enter your Github account when prompted for a username and enter the token you c
 Build and run iOS app
 
 ## Android
-### Add Github credentials to local env
+### Portals registration key
 
-This demo uses Github Packages and requires credentials to an account with access to the Ionic Portals dependencies. Add them to your local Gradle properties file to store them securely outside the project code.
+To use Portals, get your registration key from ionic.io/register-portals and uncomment and insert your Portals registration key into the following line in `EcommerceApp.java`
 
-- Add the user name and token to your local gradle.properties file:
-
-`vi ~/.gradle/gradle.properties`
-
-```
-GITHUB_USER=USER_NAME_HERE
-GITHUB_PERSONAL_ACCESS_TOKEN=XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```Java
+// Register your Portal
+PortalManager.register("YOUR_KEY_HERE");
 ```
 
 ## Web
