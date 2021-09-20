@@ -1,2 +1,2 @@
-import DevPage from "./DevPage";
+import DevPage from './DevPage';
 export { DevPage };

@@ -1,14 +1,14 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
-import Portals from "@ionic/portals";
-import { Capacitor } from "@capacitor/core";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import Portals from '@ionic/portals';
+import { Capacitor } from '@capacitor/core';
 // import reportWebVitals from './reportWebVitals';
 
 if (!Capacitor.isNativePlatform()) {
   // do something
   (window as any).portalInitialContext = {
-    value: { startingRoute: "/" },
+    value: { startingRoute: '/' },
   };
 }
 
@@ -17,7 +17,7 @@ Portals.getInitialContext<{ startingRoute: string }>().then((context) => {
     <React.StrictMode>
       <App context={context.value} />
     </React.StrictMode>,
-    document.getElementById("root")
+    document.getElementById('root'),
   );
 });
 
