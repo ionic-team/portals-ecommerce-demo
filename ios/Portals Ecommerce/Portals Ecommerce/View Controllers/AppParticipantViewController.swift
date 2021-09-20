@@ -17,15 +17,16 @@ class AppParticipantViewController: UIViewController, ApplicationCoordinationPar
     
     override func viewDidLoad() {
         if(self.bridge == nil) {
-            assertionFailure("Capacitor Bridge (self.bridge) must be set in child view controller viewDidLoad method")
+          print("Capacitor Bridge (self.bridge) must be set in child view controller viewDidLoad method")
+            super.viewDidLoad()
+            return
         }
         apiPlugin = bridge?.plugin(withName: "ShopAPI") as? ShopAPIPlugin
         apiPlugin?.dataProvider = coordinator?.dataStore
         apiPlugin?.actionDelegate = self as Any as? ShopAPIActionDelegateProtocol;
         
         // now call super which will start the initial load
-        super.viewDidLoad()
-       
+        super.viewDidLoad()       
     }
     
 }

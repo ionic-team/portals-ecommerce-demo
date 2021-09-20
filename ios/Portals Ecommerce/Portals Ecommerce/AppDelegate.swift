@@ -7,6 +7,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // Setup Ionic Portals
+        
+        //register
+        PortalManager.register("YOUR_API_KEY")
+        
         let checkoutPortal = Portal("checkout", "portals/shopwebapp")
         PortalManager.addPortal(checkoutPortal)
         
