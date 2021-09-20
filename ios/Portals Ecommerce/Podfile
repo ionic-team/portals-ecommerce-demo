@@ -1,8 +1,11 @@
+
 platform :ios, '12.0'
 use_frameworks!
 
 def portals_pods
-    pod 'IonicPortals', '~> 0.2.0'
+    pod 'Capacitor'
+    pod 'IonicPortals'
+    pod "CapacitorCamera"
 end
 
 target 'Ecommerce' do
