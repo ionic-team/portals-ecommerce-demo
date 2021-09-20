@@ -5,6 +5,9 @@ import IonicPortals
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        // Register Portals
+        // PortalManager.register("YOUR_KEY_HERE");
         
         // Setup Ionic Portals
         let checkoutPortal = Portal("checkout", "portals/shopwebapp")
