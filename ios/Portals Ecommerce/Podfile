@@ -1,11 +1,10 @@
-source 'https://github.com/native-portal/podspecs.git'
 
 platform :ios, '12.0'
 use_frameworks!
 
 def portals_pods
     pod 'Capacitor'
-    pod 'IonicPortals', :path => '../../../ionic-portals/ios'
+    pod 'IonicPortals'
     pod "CapacitorCamera"
 end
 

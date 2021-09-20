@@ -59,13 +59,15 @@ public class FadePortalFragment extends PortalFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        this.fadeView = new View(getActivity());
-        fadeView.setId(View.generateViewId());
+        if(getBridge()!= null) {
+            this.fadeView = new View(getActivity());
+            fadeView.setId(View.generateViewId());
 
-        fadeView.setLayoutParams(getBridge().getWebView().getLayoutParams());
-        fadeView.setBackgroundResource(colorResource);
-        getBridge().getWebView().addView(fadeView, 0);
-        fadeView.bringToFront();
+            fadeView.setLayoutParams(getBridge().getWebView().getLayoutParams());
+            fadeView.setBackgroundResource(colorResource);
+            getBridge().getWebView().addView(fadeView, 0);
+            fadeView.bringToFront();
+        }
     }
 
     public long getDuration() {

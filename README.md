@@ -3,42 +3,33 @@ E-commerce Demo App using Ionic Portals
 
 This is an example application built in iOS and Android. Both are using the same web resources for their Portals.
 
-## Github Access
+## Portals Registration Key
 
-Both platforms require the use of a [Github Personal Access Token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token). For Cocopods on iOS, the token needs read access for repositories. For Android, the token needs read access for Packages. If building for both platforms, you can generate separate tokens or a shared token with the necessary access.
+To try our Ionic Portals demo, both iOS and Android applications require you to input a Portals registration key. You may get a key by going to ionic.io/register-portals. Follow the instructions below to add your key to each platform demo application.
 
 ## iOS
-### Add private spec repo
+### Portals registration key
 
-This demo uses a [private spec repo](https://guides.cocoapods.org/making/private-cocoapods.html) to publish the Cocoapods dependencies. You need to add it to your local Cocoapods environment.
+Get you registration key from ionic.io/register-portals, then uncomment the following line in `AppDelegate.swift` and replace `YOUR_KEY_HERE` with your key.
 
+```Swift
+// Register Portals
+PortalManager.register("YOUR_KEY_HERE");
 ```
-pod repo add Portals https://github.com/native-portal/podspecs.git
-```
 
-(`Portals` is only a suggestion, the local name for the repo can be anything)
-
-Enter your Github account when prompted for a username and enter the token you created when prompted for a password.
-
-### Install pod dependencies
-- `cd ./ios/Portals\ Ecommerce`
-- `pod install`
-
-Build and run iOS app
+Build and run the iOS app
 
 ## Android
-### Add Github credentials to local env
+### Portals registration key
 
-This demo uses Github Packages and requires credentials to an account with access to the Ionic Portals dependencies. Add them to your local Gradle properties file to store them securely outside the project code.
+Get you registration key from ionic.io/register-portals, then uncomment the following line in `EcommerceApp.java` and replace `YOUR_KEY_HERE` with your key.
 
-- Add the user name and token to your local gradle.properties file:
-
-`vi ~/.gradle/gradle.properties`
-
+```Java
+// Register Portals
+PortalManager.register("YOUR_KEY_HERE");
 ```
-GITHUB_USER=USER_NAME_HERE
-GITHUB_PERSONAL_ACCESS_TOKEN=XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-```
+
+Build and run the Android app
 
 ## Web
 ### Building
