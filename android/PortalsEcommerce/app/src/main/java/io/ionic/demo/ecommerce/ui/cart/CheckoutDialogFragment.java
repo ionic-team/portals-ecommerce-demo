@@ -20,7 +20,8 @@ import io.ionic.demo.ecommerce.R;
 import io.ionic.demo.ecommerce.portals.FadePortalFragment;
 import io.ionic.portals.Portal;
 import io.ionic.portals.PortalManager;
-import io.ionic.portals.PortalMethod;
+import io.ionic.portals.PortalsPlugin;
+import kotlin.Unit;
 
 /**
  * Displays an Ionic Portal containing a checkout app.
@@ -46,14 +47,17 @@ public class CheckoutDialogFragment extends DialogFragment {
         initialContext.put("startingRoute", "/checkout");
         checkoutPortal.setInitialContext(initialContext);
         portalFragment = new FadePortalFragment(checkoutPortal);
-        portalFragment.setDuration(1000);
-        portalFragment.linkMessageReceivers(this);
+        portalFragment.setDuration(1200);
+
+        // Subscribe to the dismiss topic to close the cart modal
+        PortalsPlugin.subscribe("dismiss", subscriptionResult -> {
+            dismiss((String) subscriptionResult.getData());
+            return Unit.INSTANCE;
+        });
 
         fragmentManager.beginTransaction().replace(R.id.checkout_web_app, portalFragment).commit();
-
     }
 
-    @PortalMethod
     public void dismiss(String result) {
         if(result != null && (result.equals("cancel") || result.equals("success"))) {
             this.dismiss();
