@@ -12,7 +12,7 @@ import {
   IonTitle,
   IonToolbar,
   useIonRouter,
-  useIonModal
+  useIonModal,
 } from '@ionic/react';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { DataContext } from '../../DataProvider';
@@ -22,6 +22,7 @@ import './UserDetailPage.scss';
 import AddressItem from '../../components/AddressItem';
 import PaymentItem from '../../components/PaymentItem';
 import ImageCropper from '../../components/ImageCropper';
+import FadeIn from '../../components/FadeIn';
 
 interface FormData {
   firstName: string;
@@ -46,7 +47,7 @@ const UserDetailPage = () => {
       image={cameraImage!}
       onCropComplete={handleCropComplete}
       closeModal={() => hideCropModal()}
-    />
+    />,
   );
 
   useEffect(() => {
@@ -78,102 +79,107 @@ const UserDetailPage = () => {
           <IonTitle>Profile</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Profile</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        {user && formData && (
-          <>
-            <div className="user-image" onClick={handlePictureClick}>
-              <img src={userPhoto} alt={`${user.firstName} ${user.lastName}`} />
-              <IonIcon icon={add} />
-            </div>
-            <div className="user-info">
-              <IonList lines="full">
-                <IonItem>
-                  <IonLabel>First name</IonLabel>
-                  <IonInput
-                    value={formData.firstName}
-                    onIonChange={(e) => {
-                      const value = e.detail.value!;
-                      if (value) {
-                        setFormData({ ...formData, firstName: value });
-                      }
-                    }}
-                    onBlur={updateUser}
-                  ></IonInput>
-                </IonItem>
-                <IonItem>
-                  <IonLabel>Last name</IonLabel>
-                  <IonInput
-                    value={formData.lastName}
-                    onIonChange={(e) => {
-                      const value = e.detail.value!;
-                      if (value) {
-                        setFormData({ ...formData, lastName: value });
-                      }
-                    }}
-                    onBlur={updateUser}
-                  ></IonInput>
-                </IonItem>
-                <IonItem>
-                  <IonLabel>Email Address</IonLabel>
-                  <IonInput
-                    value={formData.email}
-                    onIonChange={(e) => {
-                      setFormData({ ...formData, email: e.detail.value! });
-                    }}
-                    onBlur={updateUser}
-                  ></IonInput>
-                </IonItem>
-              </IonList>
+      <FadeIn isLoaded={user != null && formData != null}>
+        <IonContent>
+          <IonHeader collapse="condense">
+            <IonToolbar>
+              <IonTitle size="large">Profile</IonTitle>
+            </IonToolbar>
+          </IonHeader>
+          {user && formData && (
+            <>
+              <div className="user-image" onClick={handlePictureClick}>
+                <img
+                  src={userPhoto}
+                  alt={`${user.firstName} ${user.lastName}`}
+                />
+                <IonIcon icon={add} />
+              </div>
+              <div className="user-info">
+                <IonList lines="full">
+                  <IonItem>
+                    <IonLabel>First name</IonLabel>
+                    <IonInput
+                      value={formData.firstName}
+                      onIonChange={(e) => {
+                        const value = e.detail.value!;
+                        if (value) {
+                          setFormData({ ...formData, firstName: value });
+                        }
+                      }}
+                      onBlur={updateUser}
+                    ></IonInput>
+                  </IonItem>
+                  <IonItem>
+                    <IonLabel>Last name</IonLabel>
+                    <IonInput
+                      value={formData.lastName}
+                      onIonChange={(e) => {
+                        const value = e.detail.value!;
+                        if (value) {
+                          setFormData({ ...formData, lastName: value });
+                        }
+                      }}
+                      onBlur={updateUser}
+                    ></IonInput>
+                  </IonItem>
+                  <IonItem>
+                    <IonLabel>Email Address</IonLabel>
+                    <IonInput
+                      value={formData.email}
+                      onIonChange={(e) => {
+                        setFormData({ ...formData, email: e.detail.value! });
+                      }}
+                      onBlur={updateUser}
+                    ></IonInput>
+                  </IonItem>
+                </IonList>
+
+                <div className="list-section">
+                  <IonList lines="none">
+                    <IonListHeader>Addresses</IonListHeader>
+                    {user.addresses.map((address) => (
+                      <AddressItem
+                        key={address.id}
+                        address={address}
+                        selectable={false}
+                        user={user}
+                      />
+                    ))}
+                  </IonList>
+                  <IonButton
+                    expand="block"
+                    color="secondary"
+                    onClick={() => router.push('/address')}
+                  >
+                    New Address
+                  </IonButton>
+                </div>
+              </div>
 
               <div className="list-section">
+                <h4>Payment Methods</h4>
                 <IonList lines="none">
-                  <IonListHeader>Addresses</IonListHeader>
-                  {user.addresses.map((address) => (
-                    <AddressItem
-                      key={address.id}
-                      address={address}
+                  {user.creditCards.map((creditCard) => (
+                    <PaymentItem
+                      key={creditCard.id}
+                      creditCard={creditCard}
                       selectable={false}
-                      user={user}
                     />
                   ))}
                 </IonList>
                 <IonButton
                   expand="block"
                   color="secondary"
-                  onClick={() => router.push('/address')}
+                  onClick={() => router.push('/payment')}
                 >
-                  New Address
+                  New Payment Method
                 </IonButton>
               </div>
-            </div>
-
-            <div className="list-section">
-              <h4>Payment Methods</h4>
-              <IonList lines="none">
-                {user.creditCards.map((creditCard) => (
-                  <PaymentItem
-                    key={creditCard.id}
-                    creditCard={creditCard}
-                    selectable={false}
-                  />
-                ))}
-              </IonList>
-              <IonButton
-                expand="block"
-                color="secondary"
-                onClick={() => router.push('/payment')}
-              >
-                New Payment Method
-              </IonButton>
-            </div>
-          </>
-        )}
-      </IonContent>
+            </>
+          )}
+        </IonContent>
+      </FadeIn>
     </IonPage>
   );
 };

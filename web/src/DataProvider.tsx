@@ -57,7 +57,7 @@ export const DataProvider: React.FC = ({ children }) => {
         cart,
         checkout: checkout,
         userPhoto,
-        setUserPhoto: setPhotoData
+        setUserPhoto: setPhotoData,
       }}
     >
       {children}
@@ -71,6 +71,7 @@ async function getUserDetails(): Promise<User> {
   } else {
     // mock data for use in dev
     const response = await fetch('/data.json');
+    await sleep(1000);
     const data = (await response.json()) as Data;
     return data.user;
   }
@@ -89,6 +90,7 @@ async function getCart(): Promise<Cart> {
     return ShopAPI.getCart();
   } else {
     //test data for dev
+    await sleep(1000);
     return {
       id: 1,
       subTotal: 32.33,
@@ -110,6 +112,7 @@ async function getUserPicture() {
     const userPicture = await ShopAPI.getUserPicture();
     return userPicture.picture;
   } else {
+    await sleep(1000);
     return 'images/jt-avatar.png';
   }
 }
@@ -118,4 +121,8 @@ async function setUserPicture(picture: string) {
   if (Capacitor.isNativePlatform()) {
     return await ShopAPI.setUserPicture({ picture });
   }
+}
+
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
