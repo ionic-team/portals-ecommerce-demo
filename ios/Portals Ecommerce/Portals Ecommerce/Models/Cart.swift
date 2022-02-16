@@ -1,6 +1,7 @@
 import Foundation
+import Combine
 
-class Cart {
+class Cart: ObservableObject {
     // scoped cart item
     struct Item {
         var product: Product

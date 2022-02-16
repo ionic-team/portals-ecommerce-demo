@@ -5,7 +5,7 @@ class ImageLoader: ImageLoaderProtocol {
     private let imageHeight: CGFloat = 500
     private var generatedImageCache: [String:UIImage] = [:]
     
-    func imageFor(_ imageName: String) -> UIImage? {
+    func imageFor(_ imageName: String) -> UIImage {
         if let image = UIImage(named: imageName) {
             return image
         }
