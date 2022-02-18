@@ -1,0 +1,5 @@
+binary "https://github.com/ionic-team/ionic-live-updates-releases/releases/download/0.0.5-carthage/Capacitor.json" "3.4.0"
+binary "https://github.com/ionic-team/ionic-live-updates-releases/releases/download/0.0.5-carthage/CapacitorCordova.json" "3.4.0"
+binary "https://github.com/ionic-team/ionic-live-updates-releases/releases/download/0.0.5-carthage/IonicLiveUpdates.json" "0.0.5"
+binary "https://github.com/ionic-team/ionic-live-updates-releases/releases/download/0.0.5-carthage/IonicPortals.json" "0.5.0"
+binary "https://github.com/ionic-team/ionic-live-updates-releases/releases/download/0.0.5-carthage/ZIPFoundation.json" "0.9.13"
