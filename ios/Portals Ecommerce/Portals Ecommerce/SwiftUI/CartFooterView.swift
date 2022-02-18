@@ -49,14 +49,16 @@ struct CartFooterView: View {
                 .font(.headline)
             }
             .padding(.bottom, 24)
-          
-            Button("Checkout", action: checkoutTapped)
-                .font(.system(size: 15))
-                .frame(maxWidth: .infinity)
-                .frame(height: 50)
-                .foregroundColor(.white)
-                .background(Color.accentColor)
-                .cornerRadius(8)
+        
+            Button(action: checkoutTapped) {
+               Text("Checkout")
+                    .font(.system(size: 15))
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 50)
+                    .foregroundColor(.white)
+                    .background(Color.accentColor)
+                    .cornerRadius(8)
+            }
         }
     }
 }

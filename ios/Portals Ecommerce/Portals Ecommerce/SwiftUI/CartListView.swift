@@ -36,6 +36,7 @@ struct CartListView: View {
                 CartFooterView(total: viewModel.cartTotal) {
                     viewModel.shouldDisplayCheckout = true
                 }
+                .listSectionSeparator(.hidden)
                 .buttonStyle(.plain)
                 .padding(.top, 16)
             }
