@@ -1,7 +1,7 @@
 import UIKit
 
 protocol ImageLoaderProtocol {
-    func imageFor(_ imageName: String) -> UIImage?
+    func imageFor(_ imageName: String) -> UIImage
 }
 
 enum ProductCategory: String, Codable {
