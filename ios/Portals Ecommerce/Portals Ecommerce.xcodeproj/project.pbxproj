@@ -204,13 +204,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		08697526842D12382D3E6C06 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		55B52815269F88990045E03E /* Portals */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,7 +331,6 @@
 				6216AF4C2661825B003E3152 /* Demo Data */,
 				628696742674145500F3AE9A /* EcommerceTests */,
 				62941E83265DA67F00EE7FE4 /* Products */,
-				08697526842D12382D3E6C06 /* Pods */,
 				A70CBE3427C05F5E00B7582D /* Frameworks */,
 			);
 			sourceTree = "<group>";
