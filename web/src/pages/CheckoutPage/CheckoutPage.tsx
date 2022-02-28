@@ -15,7 +15,7 @@ import {
 } from '@ionic/react';
 import { DataContext } from '../../DataProvider';
 import './CheckoutPage.scss';
-import { Address, CreditCard } from '../../models';
+import { Address, CreditCard } from '../../ShopAPIPlugin';
 import AddressItem from '../../components/AddressItem';
 import PaymentItem from '../../components/PaymentItem';
 import Portals from '@ionic/portals';

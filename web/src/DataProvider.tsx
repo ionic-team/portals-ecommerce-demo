@@ -1,7 +1,6 @@
-import { Capacitor } from '@capacitor/core';
 import React, { useCallback, useEffect, useState } from 'react';
-import { Cart, Data, User } from './models';
-import ShopAPI, { CheckoutResult } from './ShopAPIPlugin';
+import { ShopAPI, CheckoutResult, User, Cart } from './ShopAPIPlugin';
+
 export interface DataState {
   loading: boolean;
   user?: User;
@@ -66,63 +65,26 @@ export const DataProvider: React.FC = ({ children }) => {
 };
 
 async function getUserDetails(): Promise<User> {
-  if (Capacitor.isNativePlatform()) {
-    return ShopAPI.getUserDetails();
-  } else {
-    // mock data for use in dev
-    const response = await fetch('/data.json');
-    await sleep(1000);
-    const data = (await response.json()) as Data;
-    return data.user;
-  }
+  return ShopAPI.getUserDetails();
 }
 
 async function updateUserDetails(user: User): Promise<void> {
-  if (Capacitor.isNativePlatform()) {
-    return ShopAPI.updateUserDetails(user);
-  } else {
-    // noop for use in dev
-  }
+  return ShopAPI.updateUserDetails(user);
 }
 
 async function getCart(): Promise<Cart> {
-  if (Capacitor.isNativePlatform()) {
-    return ShopAPI.getCart();
-  } else {
-    //test data for dev
-    await sleep(1000);
-    return {
-      id: 1,
-      subTotal: 32.33,
-      basket: [{ productId: 1, quantity: 1 }],
-    };
-  }
+  return ShopAPI.getCart();
 }
 
 async function checkout(result: CheckoutResult) {
-  if (Capacitor.isNativePlatform()) {
-    ShopAPI.checkoutResult(result);
-  } else {
-    console.log('checkout: ', { result });
-  }
+  ShopAPI.checkoutResult(result);
 }
 
 async function getUserPicture() {
-  if (Capacitor.isNativePlatform()) {
-    const userPicture = await ShopAPI.getUserPicture();
-    return userPicture.picture;
-  } else {
-    await sleep(1000);
-    return 'images/jt-avatar.png';
-  }
+  const userPicture = await ShopAPI.getUserPicture();
+  return userPicture.picture;
 }
 
 async function setUserPicture(picture: string) {
-  if (Capacitor.isNativePlatform()) {
-    return await ShopAPI.setUserPicture({ picture });
-  }
-}
-
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+  return await ShopAPI.setUserPicture({ picture });
 }

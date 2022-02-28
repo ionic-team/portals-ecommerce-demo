@@ -23,7 +23,7 @@ import {
 import { RouteComponentProps } from 'react-router';
 import { DataContext } from '../../DataProvider';
 import './PaymentPage.css';
-import { CreditCard, User } from '../../models';
+import { CreditCard, User } from '../../ShopAPIPlugin';
 
 type PaymentPageMatch = {
   id: string;
@@ -72,7 +72,7 @@ const PaymentPage = (props: RouteComponentProps<PaymentPageMatch>) => {
           ...user,
           creditCards: [
             ...user.creditCards.map((x) =>
-              x.id === creditCard.id ? creditCard : x
+              x.id === creditCard.id ? creditCard : x,
             ),
           ],
         };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { IonContent, IonIcon, IonItem, IonPage } from '@ionic/react';
 import { callOutline, mailOutline } from 'ionicons/icons';
 import FadeIn from '../../components/FadeIn';
