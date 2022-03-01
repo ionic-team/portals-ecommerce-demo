@@ -1,4 +1,21 @@
+export interface UserPicture {
+  picture: string;
+}
+
+export interface ShopAPIPlugin {
+  getCart(): Promise<Cart>;
+  getUserDetails(): Promise<User>;
+  updateUserDetails(user: User): Promise<void>;
+  checkoutResult(result: CheckoutResult): Promise<void>;
+  getUserPicture(): Promise<UserPicture>;
+  setUserPicture(picture: UserPicture): Promise<void>;
+}
+
 export type Categories = 'MustHaves' | 'Featured' | 'Sale' | 'Recommended';
+
+export interface CheckoutResult {
+  result: 'success' | 'cancel' | 'failure';
+}
 
 export interface Product {
   id: number;
@@ -15,8 +32,8 @@ export interface User {
   lastName: string;
   email: string;
   image: string;
-  addresses: Address[],
-  creditCards: CreditCard[]
+  addresses: Address[];
+  creditCards: CreditCard[];
 }
 
 export interface Address {
@@ -30,7 +47,7 @@ export interface Address {
 
 export interface CreditCard {
   id: number;
-  company: 'Visa',
+  company: 'Visa';
   number: string;
   cvv: string;
   zip: string;
@@ -59,4 +76,3 @@ export interface Data {
   products: Product[];
   user: User;
 }
-

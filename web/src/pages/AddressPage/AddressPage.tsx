@@ -22,7 +22,7 @@ import { DataContext } from '../../DataProvider';
 import { stateCodes } from '../../util/states';
 import './AddressPage.css';
 import { RouteComponentProps } from 'react-router';
-import { Address, User } from '../../models';
+import { Address, User } from '../../ShopAPIPlugin';
 
 type AddressPageProps = {
   id: string;

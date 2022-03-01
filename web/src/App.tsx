@@ -1,17 +1,7 @@
 import React from 'react';
-import {
-  IonApp,
-  IonButton,
-  IonContent,
-  IonHeader,
-  IonPage,
-  IonRouterOutlet,
-  IonTitle,
-  IonToolbar,
-} from '@ionic/react';
+import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router';
-import { Link } from 'react-router-dom';
 import { DevPage } from './pages/DevPage';
 import { AddressPage } from './pages/AddressPage';
 import { CheckoutPage } from './pages/CheckoutPage';
@@ -39,29 +29,6 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import { DataProvider } from './DataProvider';
 import PubSubTest from './pages/PubSubTest/PubSubTest';
-
-interface HomeProps {}
-
-const Home: React.FC<HomeProps> = () => {
-  return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Home</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen>
-        <div>
-          <Link to="/address">Address</Link>&nbsp;
-          <Link to="/checkout">Checkout</Link>&nbsp;
-          <Link to="/help">Help</Link>&nbsp;
-          <Link to="/payment">Payment</Link>&nbsp;
-          <Link to="/user">User</Link>&nbsp;
-        </div>
-      </IonContent>
-    </IonPage>
-  );
-};
 
 interface AppProps {
   context: {
