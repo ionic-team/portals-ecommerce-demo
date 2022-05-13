@@ -5,56 +5,47 @@ import IonicPortals
 class CartViewModel: ObservableObject {
     @Published var shouldDisplayCheckout = false
     
-    private var subRef: Int?
-    private var coordinator: ApplicationCoordinator
-    private var apiPlugin: ShopAPIPlugin?
-    private var bridge: CAPBridgeProtocol?
-    private var cartSubscription: AnyCancellable?
+    private var dataStore: DataStoreViewModel
+    private var cancellables: Set<AnyCancellable> = []
    
     var contents: [Cart.Item] {
-        coordinator.dataStore.cart.contents
+        dataStore.cart.contents
     }
     
     var cartTotal: String {
-        coordinator.dataStore.cart.formattedSubtotal ?? ""
+        dataStore.cart.formattedSubtotal ?? ""
     }
     
-    private var cart: Cart { coordinator.dataStore.cart }
+    private var cart: Cart { dataStore.cart }
     
-    init(coordinator: ApplicationCoordinator) {
-        self.coordinator = coordinator
+    init(dataStore: DataStoreViewModel) {
+        self.dataStore = dataStore
         // This is required so that updates to the cart will trigger view updates.
         // Making an @Published property doesn't do anything for an ObervableObject.
-        cartSubscription = coordinator.dataStore.cart.objectWillChange
+        dataStore.cart.objectWillChange
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
                 self?.objectWillChange.send()
             }
+            .store(in: &cancellables)
         
-    }
-    
-    func handle(bridge: CAPBridgeProtocol?) {
-        subRef = PortalsPlugin.subscribe("dismiss") { [weak self] result in
-            if result.data as! String == "cancel" || result.data as! String == "success" {
-                DispatchQueue.main.async {
-                    
-                    self?.shouldDisplayCheckout = false
-                }
+        PortalsPubSub.publisher(for: "dismiss")
+            .data(as: String.self)
+            .compactMap { $0 }
+            .filter { $0 != "cancel" || $0 != "success" }
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.shouldDisplayCheckout = false
             }
-        }
-        
-        apiPlugin = bridge?.plugin(withName: "ShopAPI") as? ShopAPIPlugin
-        apiPlugin?.dataProvider = coordinator.dataStore
-        apiPlugin?.actionDelegate = self
-    }
-    
-    func unsubscribleFromPortal() {
-        if let subRef = subRef {
-            PortalsPlugin.unsubscribe("dismiss", subRef)
-            self.subRef = nil
-        }
-        
-        apiPlugin = nil
+            .store(in: &cancellables)
+       
+        ShopAPI.checkoutStatusPublisher
+            .filter { $0 == .completed }
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.cart.clear()
+            }
+            .store(in: &cancellables)
     }
     
     func deleteProducts(for indexSet: IndexSet) {
@@ -67,15 +58,7 @@ class CartViewModel: ObservableObject {
     }
     
     func image(named name: String) -> UIImage {
-        coordinator.dataStore.imageLoader.imageFor(name)
-    }
-}
-
-extension CartViewModel: ShopAPIActionDelegateProtocol {
-    func completeCheckout(with status: ShopAPICheckoutStatus) {
-        if status == .completed {
-            cart.clear()
-        }
+        dataStore.imageLoader.imageFor(name)
     }
 }
 
@@ -95,11 +78,9 @@ extension CartViewModel {
             Cart.Item(product: $0, quantity: 1)
         }
         
-        let coordinator = ApplicationCoordinator()
+        products.forEach { ShopAPI.dataStore.cart.update(product: $0.product, quantity: $0.quantity) }
         
-        products.forEach { coordinator.dataStore.cart.update(product: $0.product, quantity: $0.quantity) }
-        
-        return CartViewModel(coordinator: coordinator)
+        return CartViewModel(dataStore: ShopAPI.dataStore)
     }()
 }
 #endif

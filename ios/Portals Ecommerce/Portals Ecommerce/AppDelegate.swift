@@ -7,18 +7,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         // Register Portals
-        // PortalManager.register("YOUR_KEY_HERE");
-        
-        // Setup Ionic Portals
-        let checkoutPortal = Portal("checkout", "portals/shopwebapp")
-        PortalManager.addPortal(checkoutPortal)
-        
-        let helpPortal = Portal("help", "portals/shopwebapp")
-        PortalManager.addPortal(helpPortal)
-        
-        let userPortal = Portal("user", "portals/shopwebapp")
-        PortalManager.addPortal(userPortal)
-        
+        // PortalsRegistrationManager.shared.register(key: "YOUR_KEY_HERE")
         return true
     }
 
@@ -35,4 +24,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+}
+
+extension Portal {
+    static let checkout = Self(
+        name: "checkout",
+        startDir: "portals/shopwebapp",
+        initialContext: ["startingRoute": "/checkout" ]
+    )
+    
+    static let help = Self(
+        name: "help",
+        startDir: "portals/shopwebapp",
+        initialContext: ["startingRoute": "/help"]
+    )
+    
+    static let user = Self(
+        name: "user",
+        startDir: "portals/shopwebapp",
+        initialContext: ["startingRoute": "/user"]
+    )
 }

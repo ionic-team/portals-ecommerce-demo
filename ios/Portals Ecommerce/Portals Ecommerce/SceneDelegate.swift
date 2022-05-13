@@ -2,8 +2,6 @@ import UIKit
 import Combine
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-    let coordinator = ApplicationCoordinator()
-
     var window: UIWindow?
     
     private var badgeSubscription: AnyCancellable?
@@ -17,7 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let tabController = window?.rootViewController as? UITabBarController {
             
             // Disgusting hack to get the shopping cart badge to display if it hasn't been rendered yet.
-            badgeSubscription = coordinator.dataStore.cart.$contents
+            badgeSubscription = ShopAPI.dataStore.cart.$contents
                 .receive(on: DispatchQueue.main)
                 .sink { [weak tabController] contents in
                     tabController?.tabBar.items?[safe: 1]?.badgeColor = .clear
@@ -34,26 +32,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
                     tabController?.tabBar.items?[safe: 1]?.badgeValue = contents.isEmpty ? nil : "●"
                 }
-            
-            for viewController in tabController.viewControllers ?? [] {
-                if let participant = viewController as? ApplicationCoordinationParticipant {
-                    participant.coordinator = coordinator
-//                    if participant.requiresPreloading {
-//                        let _ = viewController.view
-//                    }
-                }
-                else if let navController = viewController as? UINavigationController {
-                    navController.delegate = coordinator
-                    for viewController in navController.viewControllers {
-                        if let participant = viewController as? ApplicationCoordinationParticipant {
-                            participant.coordinator = coordinator
-//                            if participant.requiresPreloading {
-//                                let _ = viewController.view
-//                            }
-                        }
-                    }
-                }
-            }
         }
     }
 
