@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string></string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -18,8 +20,16 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>To take profile image</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>To store photos taken with camera</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>To use a photo from your library</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -56,16 +66,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
-	<key>LSApplicationCategoryType</key>
-	<string></string>
-	<key>NSCameraUsageDescription</key>
-	<string>To take profile image</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>To store photos taken with camera</string>
-	<key>CFBundleDisplayName</key>
-	<string></string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>To use a photo from your library</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

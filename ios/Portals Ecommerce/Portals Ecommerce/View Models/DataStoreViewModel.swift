@@ -1,8 +1,7 @@
 import Foundation
 
-class DataStoreViewModel: ShopAPIDataProviderProtocol {
+class DataStoreViewModel {
     private(set) var imageLoader: ImageLoaderProtocol
-    // MARK: - ShopAPIDataProviderProtocol
     private(set) var cart: Cart = Cart()
     var products: [Product] = []
     var user: User

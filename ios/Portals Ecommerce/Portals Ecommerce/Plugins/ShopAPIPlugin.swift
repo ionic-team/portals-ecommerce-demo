@@ -1,98 +1,75 @@
 import Capacitor
-
-enum ShopAPICheckoutStatus: String {
-    case completed = "success"
-    case canceled = "cancel"
-    case failed = "failure"
-}
-
-protocol ShopAPIDataProviderProtocol: AnyObject {
-    var cart: Cart { get }
-    var user: User { get set }
-    var userImage: String { get set }
-}
-
-protocol ShopAPIActionDelegateProtocol: AnyObject {
-    func completeCheckout(with status: ShopAPICheckoutStatus)
-}
+import Combine
 
 @objc (IONShopAPIPlugin)
 class ShopAPIPlugin: CAPPlugin {
-    weak var dataProvider: ShopAPIDataProviderProtocol?
-    weak var actionDelegate: ShopAPIActionDelegateProtocol?
+    private lazy var encoder = JSONEncoder()
+    private lazy var decoder = JSONDecoder()
     
     @objc func getCart(_ call: CAPPluginCall) {
-        guard let cart = dataProvider?.cart, let object = encode(cart) else {
-            call.reject("Cart unavailable!")
-            return
+        let cart = ShopAPI.dataStore.cart
+        guard let cartObject = try? encoder.encodeJSObject(cart) as? JSObject else {
+            return call.reject("Cart unavailable!")
         }
-        call.resolve(object)
+        call.resolve(cartObject)
     }
     
     @objc func getUserDetails(_ call: CAPPluginCall) {
-        guard let user = dataProvider?.user, let object = encode(user) else {
-            call.reject("User unavailable!")
-            return
+        let user = ShopAPI.dataStore.user
+        guard let userObject = try? encoder.encodeJSObject(user) as? JSObject else {
+            return call.reject("User unavailable!")
         }
-        call.resolve(object)
+        call.resolve(userObject)
     }
     
     @objc func updateUserDetails(_ call: CAPPluginCall) {
-        guard let user: User = decode(object: call.jsObjectRepresentation) else {
-            call.reject("Invalid user details!")
-            return
+        guard let user = try? decoder.decodeJSObject(User.self, from: call.jsObjectRepresentation) else {
+           return call.reject("Invalid user details!")
         }
         call.resolve()
-        dataProvider?.user = user
+        ShopAPI.dataStore.user = user
     }
     
     @objc func checkoutResult(_ call: CAPPluginCall) {
-        guard let status = ShopAPICheckoutStatus(rawValue: call.getString("result", "")) else {
-            call.reject("Missing result!")
-            return
+        guard let status = ShopAPI.CheckoutStatus(rawValue: call.getString("result", "")) else {
+            return call.reject("Missing result!")
         }
         call.resolve()
-        actionDelegate?.completeCheckout(with: status)
+        ShopAPI.checkoutStatusSubject.send(status)
     }
     
     @objc func getUserPicture(_ call: CAPPluginCall) {
-        guard let picture = dataProvider?.userImage else {
-            call.reject("No picture available")
-            return
-        }
+        let picture = ShopAPI.dataStore.userImage
         call.resolve(["picture": picture])
     }
     
     @objc func setUserPicture(_ call: CAPPluginCall) {
         if let picture = call.getString("picture") {
-            dataProvider?.userImage = picture
+            ShopAPI.dataStore.userImage = picture
         }
         call.resolve()
     }
 }
 
-private func encode<T: Encodable>(_ object: T) -> JSObject? {
-    do {
-        let data = try JSONEncoder().encode(object)
-        let dictionary = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary
-        if let object = JSTypes.coerceDictionaryToJSObject(dictionary) {
-            return object
-        }
+public enum ShopAPI {
+    enum CheckoutStatus: String {
+        case completed = "success"
+        case canceled = "cancel"
+        case failed = "failure"
     }
-    catch {
-        assertionFailure("Failed to encode object to JSON")
+    
+    static let dataStore: DataStoreViewModel = {
+        guard
+            let url = Bundle.main.url(forResource: "data", withExtension: ".json"),
+            let data = try? Data(contentsOf: url),
+            let demo = try? JSONDecoder().decode(DemoData.self, from: data)
+        else { fatalError("Failed to load demo JSON")}
+        
+        return DataStoreViewModel(with: demo.user, products: demo.products, imageLoader: ImageLoader())
+    }()
+    
+    fileprivate static let checkoutStatusSubject = PassthroughSubject<CheckoutStatus, Never>()
+    static var checkoutStatusPublisher: AnyPublisher<CheckoutStatus, Never> {
+        checkoutStatusSubject.eraseToAnyPublisher()
     }
-    return nil
-}
-
-private func decode<T: Decodable>(object: JSObject) -> T? {
-    do {
-        let data = try JSONSerialization.data(withJSONObject: object, options: [])
-        let result = try JSONDecoder().decode(T.self, from: data)
-        return result
-    }
-    catch {
-        print("failed to decode object from JSON:\(error)")
-    }
-    return nil
 }

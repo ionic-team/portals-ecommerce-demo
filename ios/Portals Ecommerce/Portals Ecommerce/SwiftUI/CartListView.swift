@@ -41,22 +41,10 @@ struct CartListView: View {
                 .padding(.top, 16)
             }
             .listStyle(.plain)
-            .sheet(
-                isPresented: $viewModel.shouldDisplayCheckout,
-                onDismiss: { viewModel.unsubscribleFromPortal() }
-            ) {
-                makeCheckoutPortal()
+            .sheet(isPresented: $viewModel.shouldDisplayCheckout) {
+                PortalView(portal: .checkout)
             }
         }
-    }
-    
-    func makeCheckoutPortal() -> some View {
-        let portal = try! PortalManager.getPortal("checkout")
-        portal.initialContext = ["startingRoute": "/checkout"]
-        
-        let portalWebView = PortalUIWebView(portal, onBridgeAvailable: viewModel.handle(bridge:))
-        
-        return portalWebView
     }
 }
 
@@ -73,18 +61,8 @@ struct CartListView_Previews: PreviewProvider {
         }
         .onAppear {
             // Register Portals
-            PortalManager.register("YOUR KEY HERE");
-            
-            // Setup Ionic Portals
-            let checkoutPortal = Portal("checkout", "portals/shopwebapp")
-            PortalManager.addPortal(checkoutPortal)
+            PortalsRegistrationManager.shared.register(key: "YOUR KEY HERE");
         }
     }
 }
 
-extension Array {
-    subscript(safe index: Index) -> Element? {
-        guard index >= startIndex, index < endIndex else { return nil }
-        return self[index]
-    }
-}

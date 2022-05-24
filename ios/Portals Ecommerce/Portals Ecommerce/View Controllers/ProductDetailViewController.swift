@@ -1,14 +1,7 @@
 import UIKit
 
-class ProductDetailViewController: UIViewController, ApplicationCoordinationParticipant {
-    var requiresPreloading: Bool { return false }
-    
+class ProductDetailViewController: UIViewController {
     var product: Product?
-    weak var coordinator: ApplicationCoordinator? {
-        didSet {
-            populateView()
-        }
-    }
     
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
@@ -18,6 +11,7 @@ class ProductDetailViewController: UIViewController, ApplicationCoordinationPart
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        populateView()
         // style the button
         addButton.setBackgroundImage(view.tintColor.buttonImageWith(cornerRadius: 8), for: .normal)
         addButton.setTitleColor(.white, for: .normal)
@@ -27,15 +21,12 @@ class ProductDetailViewController: UIViewController, ApplicationCoordinationPart
         guard let product = product else {
             return
         }
-        coordinator?.dataStore.cart.add(product: product, quantity: 1)
+        ShopAPI.dataStore.cart.add(product: product, quantity: 1)
     }
     
     @IBAction func showHelp(_ sender: Any?) {
         let controller = HelpPageViewController(nibName: nil, bundle: nil)
-        controller.coordinator = coordinator
-//        controller.prerender { [weak self] in
-            self.navigationController?.pushViewController(controller, animated: true)
-//        }
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     // MARK: - Internal
@@ -45,7 +36,7 @@ class ProductDetailViewController: UIViewController, ApplicationCoordinationPart
             assertionFailure("Product detail has no product!")
             return
         }
-        imageView.image = coordinator?.dataStore.imageLoader.imageFor(product.imageName)
+        imageView.image = ShopAPI.dataStore.imageLoader.imageFor(product.imageName)
         titleLabel.text = product.title
         priceLabel.text = product.formattedPrice
         descriptionLabel.text = product.description

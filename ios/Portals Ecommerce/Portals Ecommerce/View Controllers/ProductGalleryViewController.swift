@@ -1,9 +1,6 @@
 import UIKit
 
-class ProductGalleryViewController: UIViewController, ApplicationCoordinationParticipant, UICollectionViewDelegate {
-    weak var coordinator: ApplicationCoordinator?
-    var requiresPreloading: Bool { return false }
-    
+class ProductGalleryViewController: UIViewController, UICollectionViewDelegate {
     @IBOutlet private weak var collectionView: UICollectionView!
     
     private var viewModel: GalleryViewModel = GalleryViewModel()
@@ -12,11 +9,12 @@ class ProductGalleryViewController: UIViewController, ApplicationCoordinationPar
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.carouselProducts = (coordinator?.dataStore.products ?? [])
-            .filter({ $0.category == .mustHaves })
-        viewModel.listProducts = (coordinator?.dataStore.products ?? [])
-            .shuffled()
-        viewModel.imageLoader = coordinator?.dataStore.imageLoader
+        viewModel.carouselProducts = ShopAPI.dataStore
+            .products
+            .filter { $0.category == .mustHaves }
+        
+        viewModel.listProducts = ShopAPI.dataStore.products.shuffled()
+        viewModel.imageLoader = ShopAPI.dataStore.imageLoader
         viewModel.configure(with: collectionView)
     }
     
