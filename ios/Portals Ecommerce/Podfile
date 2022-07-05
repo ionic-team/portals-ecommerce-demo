@@ -11,6 +11,10 @@ target 'Ecommerce' do
   portals_pods
 end
 
+target 'EcommerceLiveUpdates' do
+  portals_pods
+end
+
 target 'EcommerceTests' do
   portals_pods
 end

@@ -1,12 +1,18 @@
+//
+//  AppDelegate.swift
+//  EcommerceLiveUpdates
+//
+//  Created by Steven Sherry on 7/5/22.
+//
+
 import UIKit
 import IonicPortals
+import IonicLiveUpdates
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-
-        // Register Portals
         // PortalsRegistrationManager.shared.register(key: "YOUR_KEY_HERE")
         return true
     }
@@ -30,19 +36,37 @@ extension Portal {
     static let checkout = Self(
         name: "checkout",
         startDir: "portals/shopwebapp",
-        initialContext: ["startingRoute": "/checkout"]
+        initialContext: ["startingRoute": "/checkout"],
+        liveUpdateConfig: .webapp
     )
     
     static let help = Self(
         name: "help",
         startDir: "portals/shopwebapp",
-        initialContext: ["startingRoute": "/help"]
+        initialContext: ["startingRoute": "/help"],
+        liveUpdateConfig: .help
     )
     
     static let user = Self(
         name: "user",
         startDir: "portals/shopwebapp",
-        initialContext: ["startingRoute": "/user"]
+        initialContext: ["startingRoute": "/user"],
+        liveUpdateConfig: .webapp
     )
 }
 
+extension LiveUpdate {
+    private static let activeChannel = UserDefaults.standard.string(forKey: "active_channel") ?? "production"
+    
+    static let webapp = Self(
+        appId: "186b544f",
+        channel: activeChannel,
+        syncOnAdd: false
+    )
+    
+    static let help = Self(
+        appId: "a81b2440",
+        channel: activeChannel,
+        syncOnAdd: false
+    )
+}
