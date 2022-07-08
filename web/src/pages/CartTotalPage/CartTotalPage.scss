@@ -1,0 +1,23 @@
+#cart-total-page {
+  ion-list {
+    ion-list-header {
+      padding: 0;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    ion-item {
+      --padding-start: 0;
+      --inner-padding-end: 0;
+
+      ion-label {
+        line-height: 160%;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .checkout-button {
+    margin-top: 16px;
+  }
+}

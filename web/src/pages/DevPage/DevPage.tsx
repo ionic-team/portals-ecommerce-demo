@@ -10,6 +10,9 @@ const DevPage: React.FC = () => (
       <IonButton expand="block" href="/user">
         Profile Portal
       </IonButton>
+      <IonButton expand="block" href="/cart-total">
+        Cart Portal
+      </IonButton>
       <IonButton expand="block" href="/checkout">
         Checkout Modal Portal
       </IonButton>
