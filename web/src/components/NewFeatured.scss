@@ -1,0 +1,33 @@
+.product-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 10px;
+  row-gap: 16px;
+}
+ion-card {
+  margin: 0;
+  box-shadow: none;
+
+  img {
+    border-radius: 16px;
+  }
+}
+#shop-page h2 {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 28px;
+  letter-spacing: -0.01em;
+  color: #000;
+}
+ion-card-title {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  margin-top: 8px;
+}
+ion-card-subtitle {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(0, 0, 0, 0.5);
+}
