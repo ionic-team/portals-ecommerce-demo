@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fna-Fy-yW4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fna-Fy-yW4">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,7 +34,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="G8X-1I-W69">
-                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
+                                <rect key="frame" x="0.0" y="540" width="414" height="322"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="08E-MP-uke">
                                     <size key="itemSize" width="128" height="128"/>
@@ -47,19 +47,30 @@
                                     <outlet property="delegate" destination="S2y-an-VTu" id="onR-BP-gln"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9EJ-eC-Ueh">
+                                <rect key="frame" x="0.0" y="140" width="414" height="400"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="q5S-dn-cv9"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cPD-iV-oGG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="G8X-1I-W69" firstAttribute="top" secondItem="cPD-iV-oGG" secondAttribute="top" id="HSD-LQ-BtV"/>
+                            <constraint firstItem="G8X-1I-W69" firstAttribute="top" secondItem="9EJ-eC-Ueh" secondAttribute="bottom" id="J4W-Uz-26O"/>
                             <constraint firstItem="cPD-iV-oGG" firstAttribute="bottom" secondItem="G8X-1I-W69" secondAttribute="bottom" id="JBl-k9-L12"/>
+                            <constraint firstItem="cPD-iV-oGG" firstAttribute="trailing" secondItem="9EJ-eC-Ueh" secondAttribute="trailing" id="KwA-NI-xKw"/>
                             <constraint firstItem="cPD-iV-oGG" firstAttribute="trailing" secondItem="G8X-1I-W69" secondAttribute="trailing" id="Vom-L2-K09"/>
+                            <constraint firstItem="9EJ-eC-Ueh" firstAttribute="leading" secondItem="cPD-iV-oGG" secondAttribute="leading" id="fJA-td-MIx"/>
                             <constraint firstItem="G8X-1I-W69" firstAttribute="leading" secondItem="cPD-iV-oGG" secondAttribute="leading" id="obD-G9-2xo"/>
+                            <constraint firstItem="9EJ-eC-Ueh" firstAttribute="top" secondItem="cPD-iV-oGG" secondAttribute="top" id="zAh-Gf-m8x"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Shop" id="hTk-EF-LI2"/>
                     <connections>
                         <outlet property="collectionView" destination="G8X-1I-W69" id="23K-uN-j0D"/>
+                        <outlet property="portalContainer" destination="9EJ-eC-Ueh" id="TnJ-tq-sNU"/>
                         <segue destination="dUU-BE-oDJ" kind="show" identifier="ShowDetailSegue" id="cfo-cF-w0d"/>
                     </connections>
                 </viewController>

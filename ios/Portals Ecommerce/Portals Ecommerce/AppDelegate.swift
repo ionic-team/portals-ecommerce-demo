@@ -7,7 +7,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         // Register Portals
-        // PortalsRegistrationManager.shared.register(key: "YOUR_KEY_HERE")
+        // PortalsRegistrationManager.shared.register(key: "")
         return true
     }
 
@@ -27,6 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension Portal {
+    static let featured = Self(
+        name: "featured",
+        startDir: "portals/featured",
+    )
+
     static let checkout = Self(
         name: "checkout",
         startDir: "portals/shopwebapp",

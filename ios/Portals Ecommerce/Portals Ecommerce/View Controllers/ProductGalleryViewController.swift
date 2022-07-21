@@ -1,13 +1,25 @@
 import UIKit
+import IonicPortals
 
 class ProductGalleryViewController: UIViewController, UICollectionViewDelegate {
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet weak var portalContainer: UIView!
     
     private var viewModel: GalleryViewModel = GalleryViewModel()
     private let detailSegueIdentifier = "ShowDetailSegue"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let portal = PortalUIView(portal: .featured)
+        portal.translatesAutoresizingMaskIntoConstraints = false
+        portalContainer.addSubview(portal)
+        NSLayoutConstraint.activate([
+            portal.topAnchor.constraint(equalTo: portalContainer.topAnchor),
+            portal.trailingAnchor.constraint(equalTo: portalContainer.trailingAnchor),
+            portal.bottomAnchor.constraint(equalTo: portalContainer.bottomAnchor),
+            portal.leadingAnchor.constraint(equalTo: portalContainer.leadingAnchor)
+        ])
         
         viewModel.carouselProducts = ShopAPI.dataStore
             .products
