@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { IonCard, IonCardTitle, IonCardSubtitle } from '@ionic/react';
 import { DataContext } from '../DataProvider';
+import Portals from '@ionic/portals';
 
 import './NewFeatured.scss';
 
@@ -14,10 +15,14 @@ const NewFeatured = () => {
 
   return (
     <div className="ion-padding">
-      <h2>New &amp; Featured</h2>
+      <h2>Must Haves, Bestsellers &amp; More</h2>
       <div className="product-list">
         {productList.map((product) => (
-          <IonCard routerLink={`/shop/${product.id}`} routerDirection="forward">
+          <IonCard
+            onClick={() => {
+              Portals.publish({ topic: 'select-item', data: product.id });
+            }}
+          >
             <img
               alt={product.title}
               decoding="async"
