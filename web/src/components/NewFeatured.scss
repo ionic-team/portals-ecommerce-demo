@@ -1,15 +1,24 @@
 .product-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 10px;
-  row-gap: 16px;
+  display: flex;
+  align-items: flex-start;
+  overflow-x: auto;
 }
+
+.product-list::-webkit-scrollbar {
+  display: none;
+}
+
 ion-card {
-  margin: 0;
+  scroll-snap-align: center;
+  margin: 0 8px 0 0;
   box-shadow: none;
+  min-width: 250px;
 
   img {
     border-radius: 16px;
+  }
+  &.ion-activated {
+    transform: none;
   }
 }
 #shop-page h2 {

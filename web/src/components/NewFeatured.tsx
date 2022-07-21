@@ -17,11 +17,7 @@ const NewFeatured = () => {
       <h2>New &amp; Featured</h2>
       <div className="product-list">
         {productList.map((product) => (
-          <IonCard
-            key={product.id}
-            routerLink={`/shop/${product.id}`}
-            routerDirection="forward"
-          >
+          <IonCard routerLink={`/shop/${product.id}`} routerDirection="forward">
             <img
               alt={product.title}
               decoding="async"
