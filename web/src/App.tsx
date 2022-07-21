@@ -9,7 +9,6 @@ import { CartTotalPage } from './pages/CartTotalPage';
 import { HelpPage } from './pages/HelpPage';
 import { PaymentPage } from './pages/PaymentPage';
 import { UserDetailPage } from './pages/UserDetailPage';
-import { NewFeaturedPage } from './pages/NewFeaturedPage';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -60,7 +59,6 @@ const App: React.FC<AppProps> = ({ context }) => {
             <Route path="/payment/:id" component={PaymentPage} />
             <Route path="/user" exact component={UserDetailPage} />
             <Route path="/pubsub" exact component={PubSubTest} />
-            <Route path="/new-featured" exact component={NewFeaturedPage} />
           </IonRouterOutlet>
         </IonReactRouter>
       </IonApp>

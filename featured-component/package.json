@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "@capacitor/ios": "^3.6.0",
     "@ionic/portals": "^0.5.0",
     "@ionic/react": "^6.0.0",
     "@ionic/react-router": "^6.0.0",
@@ -38,7 +39,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build; cp ./ios/App/App/capacitor.config.json ./build",
     "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!(@ionic/react|@ionic/react-router|@ionic/core|@stencil/core|ionicons)/)'",
     "eject": "react-scripts eject"
   },
@@ -60,5 +61,8 @@
       "last 1 safari version"
     ]
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project",
+  "devDependencies": {
+    "@capacitor/cli": "^3.6.0"
+  }
 }

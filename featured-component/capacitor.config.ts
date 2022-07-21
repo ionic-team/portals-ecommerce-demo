@@ -4,7 +4,11 @@ const config: CapacitorConfig = {
   appId: 'io.ionic.portals.ecommercewebapp',
   appName: 'Portals Web App',
   webDir: 'build',
-  bundledWebRuntime: false
+  bundledWebRuntime: false,
+  ios: {
+    scrollEnabled: false,
+    contentInset: 'never',
+  },
 };
 
 export default config;
