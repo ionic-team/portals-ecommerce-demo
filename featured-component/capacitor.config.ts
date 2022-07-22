@@ -5,10 +5,6 @@ const config: CapacitorConfig = {
   appName: 'Portals Web App',
   webDir: 'build',
   bundledWebRuntime: false,
-  ios: {
-    scrollEnabled: false,
-    contentInset: 'never',
-  },
 };
 
 export default config;

@@ -25,7 +25,7 @@ setupIonicReact();
 const App: React.FC<{}> = () => {
   return (
     <IonPage>
-      <IonContent>
+      <IonContent scrollY={false}>
         <NewFeatured />
       </IonContent>
     </IonPage>
