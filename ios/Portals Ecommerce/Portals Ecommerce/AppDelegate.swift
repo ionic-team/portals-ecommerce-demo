@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension Portal {
     static let featured = Self(
         name: "featured",
-        startDir: "portals/featured",
+        startDir: "portals/featured"
     )
 
     static let checkout = Self(

@@ -34,7 +34,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="G8X-1I-W69">
-                                <rect key="frame" x="0.0" y="540" width="414" height="322"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="08E-MP-uke">
                                     <size key="itemSize" width="128" height="128"/>
@@ -47,36 +47,25 @@
                                     <outlet property="delegate" destination="S2y-an-VTu" id="onR-BP-gln"/>
                                 </connections>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9EJ-eC-Ueh">
-                                <rect key="frame" x="0.0" y="140" width="414" height="400"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="400" id="q5S-dn-cv9"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cPD-iV-oGG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="G8X-1I-W69" firstAttribute="top" secondItem="9EJ-eC-Ueh" secondAttribute="bottom" id="J4W-Uz-26O"/>
                             <constraint firstItem="cPD-iV-oGG" firstAttribute="bottom" secondItem="G8X-1I-W69" secondAttribute="bottom" id="JBl-k9-L12"/>
-                            <constraint firstItem="cPD-iV-oGG" firstAttribute="trailing" secondItem="9EJ-eC-Ueh" secondAttribute="trailing" id="KwA-NI-xKw"/>
+                            <constraint firstItem="G8X-1I-W69" firstAttribute="top" secondItem="cPD-iV-oGG" secondAttribute="top" id="Jv1-dd-FXP"/>
                             <constraint firstItem="cPD-iV-oGG" firstAttribute="trailing" secondItem="G8X-1I-W69" secondAttribute="trailing" id="Vom-L2-K09"/>
-                            <constraint firstItem="9EJ-eC-Ueh" firstAttribute="leading" secondItem="cPD-iV-oGG" secondAttribute="leading" id="fJA-td-MIx"/>
                             <constraint firstItem="G8X-1I-W69" firstAttribute="leading" secondItem="cPD-iV-oGG" secondAttribute="leading" id="obD-G9-2xo"/>
-                            <constraint firstItem="9EJ-eC-Ueh" firstAttribute="top" secondItem="cPD-iV-oGG" secondAttribute="top" id="zAh-Gf-m8x"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Shop" id="hTk-EF-LI2"/>
                     <connections>
                         <outlet property="collectionView" destination="G8X-1I-W69" id="23K-uN-j0D"/>
-                        <outlet property="portalContainer" destination="9EJ-eC-Ueh" id="TnJ-tq-sNU"/>
                         <segue destination="dUU-BE-oDJ" kind="show" identifier="ShowDetailSegue" id="cfo-cF-w0d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sMh-QA-kxL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1148" y="-551"/>
+            <point key="canvasLocation" x="1147.8260869565217" y="-551.11607142857144"/>
         </scene>
         <!--Product Detail View Controller-->
         <scene sceneID="e3e-fG-JFL">

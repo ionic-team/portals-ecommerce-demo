@@ -9,11 +9,9 @@
 /* Begin PBXBuildFile section */
 		236ED60A4B87B711705E342C /* Pods_Ecommerce.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17DE0FC721BED3D1E6E8DE18 /* Pods_Ecommerce.framework */; };
 		6216AF16265EDF07003E3152 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6216AF15265EDF07003E3152 /* ImageLoader.swift */; };
-		6216AF1A265EFB02003E3152 /* ProductCarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6216AF18265EFB02003E3152 /* ProductCarouselCollectionViewCell.swift */; };
 		6216AF1B265EFB02003E3152 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6216AF19265EFB02003E3152 /* ProductCollectionViewCell.swift */; };
 		6216AF2026601CF1003E3152 /* GalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6216AF1F26601CF1003E3152 /* GalleryViewModel.swift */; };
 		6216AF2526603D18003E3152 /* ProductCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF2326603D18003E3152 /* ProductCollectionViewCell.xib */; };
-		6216AF2726617286003E3152 /* ProductCarouselCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF2626617286003E3152 /* ProductCarouselCollectionViewCell.xib */; };
 		6216AF5F2661825C003E3152 /* capacitor-mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF4E2661825B003E3152 /* capacitor-mask.png */; };
 		6216AF602661825C003E3152 /* ionic-shirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF4F2661825B003E3152 /* ionic-shirt.png */; };
 		6216AF612661825C003E3152 /* ionitron-shirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF502661825B003E3152 /* ionitron-shirt.png */; };
@@ -79,9 +77,7 @@
 		A775FE862874E32F003C2068 /* ProfileTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62869666266EBFFD00F3AE9A /* ProfileTab.storyboard */; };
 		A775FE872874E336003C2068 /* Array+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73E0FA4282F131F00AE7C54 /* Array+Safe.swift */; };
 		A775FE882874E336003C2068 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6286966B266FEF4800F3AE9A /* UIColor+Extensions.swift */; };
-		A775FE892874E344003C2068 /* ProductCarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6216AF18265EFB02003E3152 /* ProductCarouselCollectionViewCell.swift */; };
 		A775FE8A2874E344003C2068 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6216AF19265EFB02003E3152 /* ProductCollectionViewCell.swift */; };
-		A775FE8B2874E34B003C2068 /* ProductCarouselCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF2626617286003E3152 /* ProductCarouselCollectionViewCell.xib */; };
 		A775FE8C2874E34E003C2068 /* ProductCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF2326603D18003E3152 /* ProductCollectionViewCell.xib */; };
 		A775FE8D2874E353003C2068 /* GallerySectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6216AF712661858A003E3152 /* GallerySectionHeaderView.swift */; };
 		A775FE8E2874E353003C2068 /* QuantityPickerInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6286966D2671313F00F3AE9A /* QuantityPickerInputView.swift */; };
@@ -108,6 +104,8 @@
 		A775FEA32874E372003C2068 /* ShopAPIPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D12EB826681ACA0014A836 /* ShopAPIPlugin.m */; };
 		A775FEA52874E54E003C2068 /* SyncPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A775FEA42874E54E003C2068 /* SyncPageViewController.swift */; };
 		A775FEA72874E5FC003C2068 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62941E8E265DA68100EE7FE4 /* Assets.xcassets */; };
+		A7777125288B15EA00AF1405 /* FeaturedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7777124288B15EA00AF1405 /* FeaturedCell.swift */; };
+		A7777126288B15EA00AF1405 /* FeaturedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7777124288B15EA00AF1405 /* FeaturedCell.swift */; };
 		A7D223792874E6D000ECD7D9 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF5E2661825B003E3152 /* data.json */; };
 		A7D2237A2874E6D700ECD7D9 /* ionic-shirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF4F2661825B003E3152 /* ionic-shirt.png */; };
 		A7D2237B2874E6D700ECD7D9 /* capacitor-hat.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF562661825B003E3152 /* capacitor-hat.png */; };
@@ -145,11 +143,9 @@
 		459144074DEC3D9255E30DC6 /* Pods_EcommerceLiveUpdates.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EcommerceLiveUpdates.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5924C9A320D918539CE6B833 /* Pods-Ecommerce.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ecommerce.release.xcconfig"; path = "Target Support Files/Pods-Ecommerce/Pods-Ecommerce.release.xcconfig"; sourceTree = "<group>"; };
 		6216AF15265EDF07003E3152 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
-		6216AF18265EFB02003E3152 /* ProductCarouselCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCarouselCollectionViewCell.swift; sourceTree = "<group>"; };
 		6216AF19265EFB02003E3152 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		6216AF1F26601CF1003E3152 /* GalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewModel.swift; sourceTree = "<group>"; };
 		6216AF2426603D18003E3152 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ProductCollectionViewCell.xib; sourceTree = "<group>"; };
-		6216AF2626617286003E3152 /* ProductCarouselCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCarouselCollectionViewCell.xib; sourceTree = "<group>"; };
 		6216AF4E2661825B003E3152 /* capacitor-mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capacitor-mask.png"; sourceTree = "<group>"; };
 		6216AF4F2661825B003E3152 /* ionic-shirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ionic-shirt.png"; sourceTree = "<group>"; };
 		6216AF502661825B003E3152 /* ionitron-shirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ionitron-shirt.png"; sourceTree = "<group>"; };
@@ -218,6 +214,7 @@
 		A775FE7E2874D32A003C2068 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A775FE822874E311003C2068 /* SyncTab.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SyncTab.storyboard; sourceTree = "<group>"; };
 		A775FEA42874E54E003C2068 /* SyncPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncPageViewController.swift; sourceTree = "<group>"; };
+		A7777124288B15EA00AF1405 /* FeaturedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedCell.swift; sourceTree = "<group>"; };
 		DFC7CD2781858FE5CAB5B660 /* Pods-EcommerceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcommerceTests.release.xcconfig"; path = "Target Support Files/Pods-EcommerceTests/Pods-EcommerceTests.release.xcconfig"; sourceTree = "<group>"; };
 		F24675D3717860556D8D0AE9 /* Pods_EcommerceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EcommerceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -266,10 +263,9 @@
 		6216AF17265EFAEB003E3152 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				6216AF18265EFB02003E3152 /* ProductCarouselCollectionViewCell.swift */,
-				6216AF2626617286003E3152 /* ProductCarouselCollectionViewCell.xib */,
 				6216AF19265EFB02003E3152 /* ProductCollectionViewCell.swift */,
 				6216AF2326603D18003E3152 /* ProductCollectionViewCell.xib */,
+				A7777124288B15EA00AF1405 /* FeaturedCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -606,7 +602,6 @@
 				6216AF632661825C003E3152 /* ionic-hoodie.png in Resources */,
 				62941E8D265DA67F00EE7FE4 /* Main.storyboard in Resources */,
 				6216AF692661825C003E3152 /* jt-avatar.png in Resources */,
-				6216AF2726617286003E3152 /* ProductCarouselCollectionViewCell.xib in Resources */,
 				6216AF622661825C003E3152 /* stencil-shirt.png in Resources */,
 				6216AF612661825C003E3152 /* ionitron-shirt.png in Resources */,
 				6216AF652661825C003E3152 /* ionitron-ascii-shirt.png in Resources */,
@@ -639,7 +634,6 @@
 				A7D223792874E6D000ECD7D9 /* data.json in Resources */,
 				A7D2237C2874E6D700ECD7D9 /* ionic-sticker.png in Resources */,
 				A7D2237F2874E6D700ECD7D9 /* capacitor-mask.png in Resources */,
-				A775FE8B2874E34B003C2068 /* ProductCarouselCollectionViewCell.xib in Resources */,
 				A7D223842874E6D700ECD7D9 /* ionitron-shirt.png in Resources */,
 				A775FE852874E32B003C2068 /* CartTab.storyboard in Resources */,
 				A7D223872874E6D700ECD7D9 /* stencil-shirt.png in Resources */,
@@ -832,10 +826,10 @@
 				6286965726695E8F00F3AE9A /* DataStoreViewModel.swift in Sources */,
 				62869669266EC18800F3AE9A /* CartViewModel.swift in Sources */,
 				62D12EB226680BFD0014A836 /* Address.swift in Sources */,
-				6216AF1A265EFB02003E3152 /* ProductCarouselCollectionViewCell.swift in Sources */,
 				6258AB60265EB46C006E7D8C /* ProductDetailViewController.swift in Sources */,
 				6258AB5C265EB413006E7D8C /* CartViewController.swift in Sources */,
 				6286966C266FEF4800F3AE9A /* UIColor+Extensions.swift in Sources */,
+				A7777125288B15EA00AF1405 /* FeaturedCell.swift in Sources */,
 				6216AF1B265EFB02003E3152 /* ProductCollectionViewCell.swift in Sources */,
 				6216AF2026601CF1003E3152 /* GalleryViewModel.swift in Sources */,
 				A724D67727BC0C830066D5C9 /* CartItemView.swift in Sources */,
@@ -867,6 +861,7 @@
 				A775FE952874E361003C2068 /* GalleryViewModel.swift in Sources */,
 				A775FEA02874E36D003C2068 /* CartViewController.swift in Sources */,
 				A775FE9A2874E368003C2068 /* DemoData.swift in Sources */,
+				A7777126288B15EA00AF1405 /* FeaturedCell.swift in Sources */,
 				A775FE882874E336003C2068 /* UIColor+Extensions.swift in Sources */,
 				A775FEA52874E54E003C2068 /* SyncPageViewController.swift in Sources */,
 				A775FE942874E361003C2068 /* CartViewModel.swift in Sources */,
@@ -880,7 +875,6 @@
 				A775FE712874D329003C2068 /* AppDelegate.swift in Sources */,
 				A775FE9C2874E368003C2068 /* Cart.swift in Sources */,
 				A775FE8E2874E353003C2068 /* QuantityPickerInputView.swift in Sources */,
-				A775FE892874E344003C2068 /* ProductCarouselCollectionViewCell.swift in Sources */,
 				A775FE732874D329003C2068 /* SceneDelegate.swift in Sources */,
 				A775FEA32874E372003C2068 /* ShopAPIPlugin.m in Sources */,
 				A775FE912874E35C003C2068 /* CartFooterView.swift in Sources */,

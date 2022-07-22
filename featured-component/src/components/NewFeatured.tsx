@@ -37,7 +37,7 @@ const NewFeatured = () => {
             <IonCard
               key={product.id}
               onClick={() => {
-                Portals.publish({ topic: 'select-item', data: product.id });
+                Portals.publish({ topic: 'featured:select-item', data: product.id });
               }}
             >
               <img
