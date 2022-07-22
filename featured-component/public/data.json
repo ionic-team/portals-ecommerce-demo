@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "title": "Capacitor Snapback",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "image": "capacitor-hat.png",
+    "category": "MustHaves",
+    "price": 32
+  },
+  {
+    "id": 2,
+    "title": "Ionic Portals Tote",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "image": "portals-tote.png",
+    "category": "MustHaves",
+    "price": 24
+  },
+  {
+    "id": 3,
+    "title": "Capacitor Mask",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "image": "capacitor-mask.png",
+    "category": "MustHaves",
+    "price": 12
+  },
+  {
+    "id": 4,
+    "title": "Portals Shirt",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "image": "portals-shirt.png",
+    "category": "Featured",
+    "price": 29
+  },
+  {
+    "id": 5,
+    "title": "Capacitor Shirt",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "image": "capacitor-shirt.png",
+    "category": "Featured",
+    "price": 29
+  },
+  {
+    "id": 6,
+    "title": "Capacitor Sticker",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "image": "capacitor-sticker.png",
+    "category": "Featured",
+    "price": 3
+  },
+  {
+    "id": 7,
+    "title": "Capacitor Water Bottle",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "image": "capacitor-bottle.png",
+    "category": "Featured",
+    "price": 32
+  },
+  {
+    "id": 8,
+    "title": "Ionitron Shirt",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "image": "ionitron-ascii-shirt.png",
+    "category": "Sale",
+    "price": 14
+  },
+  {
+    "id": 9,
+    "title": "Ionic Hoodie",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "image": "ionic-hoodie.png",
+    "category": "Sale",
+    "price": 30
+  },
+  {
+    "id": 10,
+    "title": "Ionic Logo Shirt",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "image": "ionic-shirt.png",
+    "category": "Sale",
+    "price": 19
+  },
+  {
+    "id": 11,
+    "title": "Ionitron Sticker",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "image": "ionitron-sticker.png",
+    "category": "Sale",
+    "price": 1
+  },
+  {
+    "id": 12,
+    "title": "Stencil Longsleeve",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "image": "stencil-shirt.png",
+    "category": "Recommended",
+    "price": 40
+  },
+  {
+    "id": 13,
+    "title": "Stencil Pin",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "image": "stencil-pin.png",
+    "category": "Recommended",
+    "price": 4
+  },
+  {
+    "id": 14,
+    "title": "Ionic Sticker",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "image": "ionic-sticker.png",
+    "category": "Recommended",
+    "price": 3
+  },
+  {
+    "id": 15,
+    "title": "Ionitron Shirt",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "image": "ionitron-shirt.png",
+    "category": "Recommended",
+    "price": 29
+  }
+]

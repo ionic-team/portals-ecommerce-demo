@@ -1,5 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { ShopAPI, CheckoutResult, User, Cart } from './ShopAPIPlugin';
+import {
+  ShopAPI,
+  CheckoutResult,
+  User,
+  Cart,
+  Data,
+  Product,
+} from './ShopAPIPlugin';
 
 export interface DataState {
   loading: boolean;
@@ -9,6 +16,7 @@ export interface DataState {
   checkout: (result: CheckoutResult) => void;
   userPhoto?: string;
   setUserPhoto: (photo: string) => void;
+  productList: Product[];
 }
 
 export const DataContext = React.createContext<DataState>({} as any);
@@ -18,17 +26,20 @@ export const DataProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState<User>();
   const [cart, setCart] = useState<Cart>();
   const [userPhoto, setUserPhoto] = useState<string>();
+  const [productList, setProductList] = useState<Product[]>([]);
 
   useEffect(() => {
     async function init() {
       setIsLoading(true);
-      const [user, cart, photo] = await Promise.all([
+      const [user, cart, photo, products] = await Promise.all([
         getUserDetails(),
         getCart(),
         getUserPicture(),
+        getProductList(),
       ]);
       setUser(user);
       setCart(cart);
+      setProductList(products);
       setUserPhoto(photo);
       setIsLoading(false);
     }
@@ -57,12 +68,19 @@ export const DataProvider: React.FC = ({ children }) => {
         checkout: checkout,
         userPhoto,
         setUserPhoto: setPhotoData,
+        productList,
       }}
     >
       {children}
     </DataContext.Provider>
   );
 };
+
+async function getProductList(): Promise<Product[]> {
+  const response = await fetch('/data.json');
+  const data = (await response.json()) as Data;
+  return data.products;
+}
 
 async function getUserDetails(): Promise<User> {
   return ShopAPI.getUserDetails();

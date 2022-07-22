@@ -12,7 +12,7 @@ class GalleryViewModel: NSObject, UICollectionViewDataSource {
     // MARK: - Public
     
     func configure(with collectionView: UICollectionView) {
-        collectionView.register(UINib(nibName: "ProductCarouselCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: ProductCarouselCollectionViewCell.cellIdentifier)
+        collectionView.register(FeaturedCell.self, forCellWithReuseIdentifier: FeaturedCell.cellIdentifier)
         collectionView.register(UINib(nibName: "ProductCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: ProductCollectionViewCell.cellIdentifier)
         collectionView.register(UINib(nibName: "GallerySectionHeaderView", bundle: nil), forSupplementaryViewOfKind: "header", withReuseIdentifier: GallerySectionHeaderView.viewIdentifier)
         collectionView.setCollectionViewLayout(collectionLayout(), animated: false)
@@ -20,19 +20,8 @@ class GalleryViewModel: NSObject, UICollectionViewDataSource {
     }
     
     func product(at indexPath: IndexPath) -> Product? {
-        if let section = Sections(rawValue: indexPath.section) {
-            switch section {
-            case .carousel:
-                if indexPath.item < carouselProducts.count {
-                    return carouselProducts[indexPath.item]
-                }
-            case .list:
-                if indexPath.item < listProducts.count {
-                    return listProducts[indexPath.item]
-                }
-            }
-        }
-        return nil
+        guard case .list = Sections(rawValue: indexPath.section) else { return nil }
+        return listProducts[safe: indexPath.item]
     }
     
     // MARK: - UICollectionViewDataSource
@@ -44,18 +33,16 @@ class GalleryViewModel: NSObject, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch Sections(rawValue: section)! {
         case .carousel:
-            return carouselProducts.count
+            return 1
         case .list:
             return listProducts.count
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         switch Sections(rawValue: indexPath.section)! {
         case .carousel:
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCarouselCollectionViewCell.cellIdentifier, for: indexPath) as? ProductCarouselCollectionViewCell {
-                cell.configure(with: carouselProducts[indexPath.item], loader: imageLoader)
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeaturedCell.cellIdentifier, for: indexPath) as? FeaturedCell {
                 return cell
             }
         case .list:
@@ -75,12 +62,10 @@ class GalleryViewModel: NSObject, UICollectionViewDataSource {
             return GallerySectionHeaderView()
         }
         
-        switch Sections(rawValue: indexPath.section)! {
-        case .carousel:
-            headerView.title = ProductCategory.mustHaves.title
-        case .list:
+        if case .list = Sections(rawValue: indexPath.section) {
             headerView.title = ProductCategory.featured.title
         }
+
         return headerView
     }
     
@@ -103,26 +88,21 @@ class GalleryViewModel: NSObject, UICollectionViewDataSource {
     private func carouselSection() -> NSCollectionLayoutSection {
         // item
         let itemSize = NSCollectionLayoutSize(
-            widthDimension: .absolute(ProductCarouselCollectionViewCell.fixedWidth),
-            heightDimension: .estimated(ProductCarouselCollectionViewCell.estimatedHeight))
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .estimated(350))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
         // group
         let groupSize = NSCollectionLayoutSize(
-            widthDimension: .absolute(ProductCarouselCollectionViewCell.fixedWidth + 10),
-            heightDimension: .estimated(ProductCarouselCollectionViewCell.estimatedHeight))
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .estimated(350))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        group.interItemSpacing = .fixed(10)
-        
-        // header
-        let headerItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(44))
-        let headerItem = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerItemSize, elementKind: "header", alignment: .top)
+        group.interItemSpacing = .fixed(0)
         
         // section
         let section = NSCollectionLayoutSection(group: group)
-        section.boundarySupplementaryItems = [headerItem]
         section.orthogonalScrollingBehavior = .continuous
-        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 16, bottom: 0, trailing: 6)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0)
         return section
     }
     

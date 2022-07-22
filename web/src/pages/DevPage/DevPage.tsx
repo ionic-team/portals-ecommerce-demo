@@ -16,6 +16,9 @@ const DevPage: React.FC = () => (
       <IonButton expand="block" href="/checkout">
         Checkout Modal Portal
       </IonButton>
+      <IonButton expand="block" href="/new-featured">
+        New Featured Component
+      </IonButton>
     </IonContent>
   </IonPage>
 );
