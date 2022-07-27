@@ -11,6 +11,7 @@ const NewFeatured = () => {
   const [productList, setProductList] = useState<Product[]>([]);
 
   useEffect(() => {
+    console.log('what effect')
     fetch('/data.json')
       .then((res) => res.json())
       .then((products: Product[]) =>
@@ -42,7 +43,6 @@ const NewFeatured = () => {
             >
               <img
                 alt={product.title}
-                decoding="async"
                 src={`/images/${product.image}`}
               />
               <IonCardTitle>{product.title}</IonCardTitle>

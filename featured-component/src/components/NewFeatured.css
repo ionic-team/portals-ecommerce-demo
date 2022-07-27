@@ -13,7 +13,6 @@
   margin-left: 16px;
 }
 .featured-products ion-card {
-  scroll-snap-align: center;
   margin: 0 10px 0 0;
   box-shadow: none;
   min-width: 245px;
