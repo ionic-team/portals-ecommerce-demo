@@ -22,6 +22,10 @@ class DataStoreViewModel {
     }
     private var userImageOverride: String?
     
+    func product(for id: Int) -> Product? {
+        products.first { $0.id == id }
+    }
+    
     init(with user: User, products: [Product], imageLoader: ImageLoaderProtocol) {
         self.user = user
         self.products = products
