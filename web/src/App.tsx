@@ -32,8 +32,8 @@ import { DataProvider } from './DataProvider';
 import PubSubTest from './pages/PubSubTest/PubSubTest';
 
 interface AppProps {
-  context: {
-    startingRoute: string;
+  context?: {
+    startingRoute?: string;
   };
 }
 
@@ -43,13 +43,10 @@ const App: React.FC<AppProps> = ({ context }) => {
       <IonApp>
         <IonReactRouter>
           <IonRouterOutlet>
-            <Route exact path="/">
-              {context.startingRoute === '/' ? (
-                <DevPage />
-              ) : (
-                <Redirect to={context.startingRoute} />
-              )}
-            </Route>
+            {context?.startingRoute ?
+              <Route exact path="/">
+                {context.startingRoute === '/' ? <DevPage /> : <Redirect to={context.startingRoute} />}
+              </Route> : null}
             <Route path="/address" exact component={AddressPage} />
             <Route path="/address/:id" exact component={AddressPage} />
             <Route path="/checkout" exact component={CheckoutPage} />
