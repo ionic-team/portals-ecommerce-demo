@@ -31,7 +31,8 @@
     "web-vitals": "^1.1.2"
   },
   "devDependencies": {
-    "@types/react-router": "^5.1.14"
+    "@types/react-router": "^5.1.14",
+    "prettier": "^2.7.1"
   },
   "scripts": {
     "start": "react-scripts start",
