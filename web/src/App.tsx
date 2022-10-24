@@ -32,8 +32,8 @@ import { DataProvider } from './DataProvider';
 import PubSubTest from './pages/PubSubTest/PubSubTest';
 
 interface AppProps {
-  context?: {
-    startingRoute?: string;
+  context: {
+    startingRoute: string;
   };
 }
 

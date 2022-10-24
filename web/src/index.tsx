@@ -2,21 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { getInitialContext } from '@ionic/portals';
-import { Capacitor } from '@capacitor/core';
-// import reportWebVitals from './reportWebVitals';
 
-if (!Capacitor.isNativePlatform()) {
-  // do something
-  (window as any).portalInitialContext = {
-    value: { startingRoute: '/' },
-  };
-}
-
-const initialContext = getInitialContext<{ startingRoute: string }>();
+const initialContext = getInitialContext<{ startingRoute: string }>()
+  ?.value ?? { startingRoute: '/' };
 
 ReactDOM.render(
   <React.StrictMode>
-    <App context={initialContext?.value} />
+    <App context={initialContext} />
   </React.StrictMode>,
   document.getElementById('root'),
 );

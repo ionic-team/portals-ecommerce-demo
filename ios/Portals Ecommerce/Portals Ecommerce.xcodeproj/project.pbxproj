@@ -99,13 +99,13 @@
 		A775FE9E2874E36D003C2068 /* ProductGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62941E99265DA71B00EE7FE4 /* ProductGalleryViewController.swift */; };
 		A775FE9F2874E36D003C2068 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258AB5F265EB46C006E7D8C /* ProductDetailViewController.swift */; };
 		A775FEA02874E36D003C2068 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258AB5B265EB413006E7D8C /* CartViewController.swift */; };
-		A775FEA12874E36D003C2068 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258AB5D265EB44F006E7D8C /* UserProfileViewController.swift */; };
 		A775FEA22874E372003C2068 /* ShopAPIPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D12EB626681AA50014A836 /* ShopAPIPlugin.swift */; };
 		A775FEA32874E372003C2068 /* ShopAPIPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D12EB826681ACA0014A836 /* ShopAPIPlugin.m */; };
 		A775FEA52874E54E003C2068 /* SyncPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A775FEA42874E54E003C2068 /* SyncPageViewController.swift */; };
 		A775FEA72874E5FC003C2068 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62941E8E265DA68100EE7FE4 /* Assets.xcassets */; };
 		A7777125288B15EA00AF1405 /* FeaturedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7777124288B15EA00AF1405 /* FeaturedCell.swift */; };
 		A7777126288B15EA00AF1405 /* FeaturedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7777124288B15EA00AF1405 /* FeaturedCell.swift */; };
+		A795AE272901CDDC0092B4B1 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795AE262901CDDC0092B4B1 /* UserProfileViewController.swift */; };
 		A7D223792874E6D000ECD7D9 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF5E2661825B003E3152 /* data.json */; };
 		A7D2237A2874E6D700ECD7D9 /* ionic-shirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF4F2661825B003E3152 /* ionic-shirt.png */; };
 		A7D2237B2874E6D700ECD7D9 /* capacitor-hat.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF562661825B003E3152 /* capacitor-hat.png */; };
@@ -215,6 +215,7 @@
 		A775FE822874E311003C2068 /* SyncTab.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SyncTab.storyboard; sourceTree = "<group>"; };
 		A775FEA42874E54E003C2068 /* SyncPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncPageViewController.swift; sourceTree = "<group>"; };
 		A7777124288B15EA00AF1405 /* FeaturedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedCell.swift; sourceTree = "<group>"; };
+		A795AE262901CDDC0092B4B1 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		DFC7CD2781858FE5CAB5B660 /* Pods-EcommerceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcommerceTests.release.xcconfig"; path = "Target Support Files/Pods-EcommerceTests/Pods-EcommerceTests.release.xcconfig"; sourceTree = "<group>"; };
 		F24675D3717860556D8D0AE9 /* Pods_EcommerceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EcommerceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -458,6 +459,7 @@
 				A775FE792874D32A003C2068 /* Assets.xcassets */,
 				A775FE7B2874D32A003C2068 /* LaunchScreen.storyboard */,
 				A775FE7E2874D32A003C2068 /* Info.plist */,
+				A795AE262901CDDC0092B4B1 /* UserProfileViewController.swift */,
 			);
 			path = EcommerceLiveUpdates;
 			sourceTree = "<group>";
@@ -853,6 +855,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A775FE982874E368003C2068 /* Address.swift in Sources */,
+				A795AE272901CDDC0092B4B1 /* UserProfileViewController.swift in Sources */,
 				A775FE9E2874E36D003C2068 /* ProductGalleryViewController.swift in Sources */,
 				A775FE962874E368003C2068 /* CreditCard.swift in Sources */,
 				A775FE872874E336003C2068 /* Array+Safe.swift in Sources */,
@@ -871,7 +874,6 @@
 				A775FE992874E368003C2068 /* ImageLoader.swift in Sources */,
 				A775FE902874E35C003C2068 /* CartItemView.swift in Sources */,
 				A775FE8A2874E344003C2068 /* ProductCollectionViewCell.swift in Sources */,
-				A775FEA12874E36D003C2068 /* UserProfileViewController.swift in Sources */,
 				A775FE712874D329003C2068 /* AppDelegate.swift in Sources */,
 				A775FE9C2874E368003C2068 /* Cart.swift in Sources */,
 				A775FE8E2874E353003C2068 /* QuantityPickerInputView.swift in Sources */,

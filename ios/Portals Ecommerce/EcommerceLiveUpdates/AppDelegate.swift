@@ -13,7 +13,9 @@ import IonicLiveUpdates
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        // PortalsRegistrationManager.shared.register(key: "YOUR_KEY_HERE")
+//         PortalsRegistrationManager.shared.register(key: "YOUR_KEY_HERE")
+        try? LiveUpdateManager.shared.add(.help)
+        try? LiveUpdateManager.shared.add(.webapp)
         return true
     }
 
@@ -52,6 +54,11 @@ extension Portal {
         startDir: "portals/shopwebapp",
         initialContext: ["startingRoute": "/user"],
         liveUpdateConfig: .webapp
+    )
+
+    static let featured = Self(
+        name: "featured",
+        startDir: "portals/featured"
     )
 }
 
