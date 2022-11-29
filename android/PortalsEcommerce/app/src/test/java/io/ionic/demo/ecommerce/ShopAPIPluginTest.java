@@ -86,7 +86,7 @@ public class ShopAPIPluginTest {
 
         ArgumentCaptor<JSObject> argument = ArgumentCaptor.forClass(JSObject.class);
         verify(call).resolve(argument.capture());
-        assertEquals("storedimagebase64", argument.getValue().getString("picture"));
+        assertEquals("data:image/jpeg;base64,storedimagebase64", argument.getValue().getString("picture"));
     }
 
     @Test
