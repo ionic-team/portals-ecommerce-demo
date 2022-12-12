@@ -3,7 +3,7 @@ use_frameworks!
 
 def portals_pods
   pod 'Capacitor'
-  pod 'IonicPortals', '~> 0.6.0'
+  pod 'IonicPortals', :git => 'https://github.com/ionic-team/ionic-portals-ios.git', :branch => 'main'
   pod "CapacitorCamera"
 end
 
