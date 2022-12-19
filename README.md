@@ -34,7 +34,13 @@ Build and run the Android app
 ## Web
 ### Building
 
-Before you build the iOS or Android source you will need to build the web resource.
-- `cd ./web`
-- `npm install`
-- `npm run build`
+Before you build the iOS or Android source you will need to build the web resources in the `web` and `featured-component` directories:
+```bash
+cd ./web
+npm install
+npm run build
+
+cd ../featured-component
+npm install
+npm run build
+```
