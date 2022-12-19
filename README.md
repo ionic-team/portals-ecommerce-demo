@@ -9,7 +9,7 @@ To try our Ionic Portals demo, both iOS and Android applications require you to 
 
 ## iOS
 
-### Install the dependencies an open the project
+### Install the dependencies and open the project
 
 ```bash
 cd ./ios/Portals\ Ecommerce/
