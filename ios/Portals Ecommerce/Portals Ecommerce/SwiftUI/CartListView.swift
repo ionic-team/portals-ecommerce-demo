@@ -52,17 +52,17 @@ extension Cart.Item: Identifiable {
     var id: Int { product.id }
 }
 
-//struct CartListView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationView {
-//            CartListView(viewModel: .debug)
-//                .navigationTitle("Cart")
-//                .navigationBarTitleDisplayMode(.large)
-//        }
-//        .onAppear {
-//            // Register Portals
-//            PortalsRegistrationManager.shared.register(key: "YOUR KEY HERE");
-//        }
-//    }
-//}
+struct CartListView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            CartListView(viewModel: .debug)
+                .navigationTitle("Cart")
+                .navigationBarTitleDisplayMode(.large)
+        }
+        .onAppear {
+            // Register Portals
+            PortalsRegistrationManager.shared.register(key: "YOUR KEY HERE");
+        }
+    }
+}
 
