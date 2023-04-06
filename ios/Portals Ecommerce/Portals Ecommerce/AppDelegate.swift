@@ -35,7 +35,10 @@ extension Portal {
     static let checkout = Self(
         name: "checkout",
         startDir: "portals/shopwebapp",
-        initialContext: ["startingRoute": "/checkout"]
+        initialContext: ["startingRoute": "/checkout"],
+        performanceReporter: WebPerformanceReporter {
+            print("FCP:", $1)
+        }
     )
     
     static let help = Self(
