@@ -62,6 +62,8 @@
 		62D12EB926681ACA0014A836 /* ShopAPIPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D12EB826681ACA0014A836 /* ShopAPIPlugin.m */; };
 		62D12EBB266826310014A836 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D12EBA266826310014A836 /* Cart.swift */; };
 		6609B555AB8F50E9F32007EA /* Pods_EcommerceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F24675D3717860556D8D0AE9 /* Pods_EcommerceTests.framework */; };
+		A71E306829C4AC330073D47A /* SyncView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E306729C4AC330073D47A /* SyncView.swift */; };
+		A71E306A29C4D1DB0073D47A /* SyncViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E306929C4D1DB0073D47A /* SyncViewModel.swift */; };
 		A724D67727BC0C830066D5C9 /* CartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724D67627BC0C830066D5C9 /* CartItemView.swift */; };
 		A724D67927BC21AB0066D5C9 /* CartFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724D67827BC21AB0066D5C9 /* CartFooterView.swift */; };
 		A724D67D27BC296E0066D5C9 /* CartListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724D67C27BC296E0066D5C9 /* CartListView.swift */; };
@@ -201,6 +203,8 @@
 		62D12EBA266826310014A836 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		7158868713C630326C9BE0AF /* Pods-EcommerceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcommerceTests.debug.xcconfig"; path = "Target Support Files/Pods-EcommerceTests/Pods-EcommerceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7624663880C541C4180813C9 /* Pods-EcommerceLiveUpdates.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcommerceLiveUpdates.release.xcconfig"; path = "Target Support Files/Pods-EcommerceLiveUpdates/Pods-EcommerceLiveUpdates.release.xcconfig"; sourceTree = "<group>"; };
+		A71E306729C4AC330073D47A /* SyncView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncView.swift; sourceTree = "<group>"; };
+		A71E306929C4D1DB0073D47A /* SyncViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncViewModel.swift; sourceTree = "<group>"; };
 		A724D67627BC0C830066D5C9 /* CartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemView.swift; sourceTree = "<group>"; };
 		A724D67827BC21AB0066D5C9 /* CartFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartFooterView.swift; sourceTree = "<group>"; };
 		A724D67C27BC296E0066D5C9 /* CartListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListView.swift; sourceTree = "<group>"; };
@@ -460,6 +464,8 @@
 				A775FE7B2874D32A003C2068 /* LaunchScreen.storyboard */,
 				A775FE7E2874D32A003C2068 /* Info.plist */,
 				A795AE262901CDDC0092B4B1 /* UserProfileViewController.swift */,
+				A71E306729C4AC330073D47A /* SyncView.swift */,
+				A71E306929C4D1DB0073D47A /* SyncViewModel.swift */,
 			);
 			path = EcommerceLiveUpdates;
 			sourceTree = "<group>";
@@ -800,7 +806,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nAPP_NAME=\"shopwebapp\"\nEMBEDDED_DIR=\"${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.app/portals\"\nEMBEDDED_APP=\"${SRCROOT}/../../web/build\"\nZIP_FILE=\"${APP_NAME}.zip\"\n\nmkdir \"${EMBEDDED_DIR}\"\n\nif [ -d \"${EMBEDDED_DIR}/${APP_NAME}\" ]\nthen\n    cd \"${EMBEDDED_DIR}\"\n    rm -r \"${APP_NAME}\"\nfi\n\nmkdir \"${EMBEDDED_DIR}/${APP_NAME}\"\n\nif [ -d \"${EMBEDDED_APP}\" ] \nthen\n    cd \"${EMBEDDED_APP}\"\n    zip -vr \"${ZIP_FILE}\" * -x \"*.DS_Store\"\n    unzip \"${ZIP_FILE}\" -d \"${EMBEDDED_DIR}/${APP_NAME}\"\n    rm \"${ZIP_FILE}\"\nelse\n    echo \"App ${APP_NAME} has not been built!\"\n    exit 999\nfi\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert # Type a script or drag a script file from your workspace to insert its path.\nEMBEDDED_DIR=\"${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.app/portals\"\nAPP_LIST=(\n    \"shopwebapp|/../../web/build\"\n    \"featured|/../../featured-component/build\"\n)\n\nmkdir \"${EMBEDDED_DIR}\"\n\nfor APP_INFO in ${APP_LIST[@]}\ndo\n    IFS=\"|\" read -r -a arr <<< \"${APP_INFO}\"\n    APP_NAME=\"${arr[0]}\"\n    EMBEDDED_APP=\"${SRCROOT}${arr[1]}\"\n    \n    echo \"${APP_NAME} ${EMBEDDED_APP}\"\n    \n    if [ -d \"${EMBEDDED_DIR}/${APP_NAME}\" ]\n    then\n        cd \"${EMBEDDED_DIR}\"\n        rm -r \"${APP_NAME}\"\n    fi\n\n    mkdir \"${EMBEDDED_DIR}/${APP_NAME}\"\n\n    ZIP_FILE=\"${APP_NAME}.zip\"\n\n    if [ -d \"${EMBEDDED_APP}\" ] \n    then\n        cd \"${EMBEDDED_APP}\"\n        zip -vr \"${ZIP_FILE}\" * -x \"*.DS_Store\"\n        unzip \"${ZIP_FILE}\" -d \"${EMBEDDED_DIR}/${APP_NAME}\"\n        rm \"${ZIP_FILE}\"\n    else\n        echo \"App ${APP_NAME} has not been built! ${EMBEDDED_APP}\"\n        exit 999\n    fi\ndone\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -862,6 +868,7 @@
 				A775FE9D2874E36D003C2068 /* HelpPageViewController.swift in Sources */,
 				A775FEA22874E372003C2068 /* ShopAPIPlugin.swift in Sources */,
 				A775FE952874E361003C2068 /* GalleryViewModel.swift in Sources */,
+				A71E306A29C4D1DB0073D47A /* SyncViewModel.swift in Sources */,
 				A775FEA02874E36D003C2068 /* CartViewController.swift in Sources */,
 				A775FE9A2874E368003C2068 /* DemoData.swift in Sources */,
 				A7777126288B15EA00AF1405 /* FeaturedCell.swift in Sources */,
@@ -869,6 +876,7 @@
 				A775FEA52874E54E003C2068 /* SyncPageViewController.swift in Sources */,
 				A775FE942874E361003C2068 /* CartViewModel.swift in Sources */,
 				A775FE922874E35C003C2068 /* CartListView.swift in Sources */,
+				A71E306829C4AC330073D47A /* SyncView.swift in Sources */,
 				A775FE8D2874E353003C2068 /* GallerySectionHeaderView.swift in Sources */,
 				A775FE972874E368003C2068 /* User.swift in Sources */,
 				A775FE992874E368003C2068 /* ImageLoader.swift in Sources */,
@@ -1167,8 +1175,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1198,8 +1206,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
