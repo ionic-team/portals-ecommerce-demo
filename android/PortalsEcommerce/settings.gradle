@@ -10,4 +10,6 @@ pluginManagement {
 }
 
 include ':app'
+include ':IonicPortals'
+project(':IonicPortals').projectDir = new File('../../../ionic-portals-android/IonicPortals')
 rootProject.name = "Portals Ecommerce"

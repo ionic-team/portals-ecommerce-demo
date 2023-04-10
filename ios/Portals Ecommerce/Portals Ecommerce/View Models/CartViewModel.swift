@@ -16,10 +16,13 @@ class CartViewModel: ObservableObject {
         dataStore.cart.formattedSubtotal ?? ""
     }
     
+    private(set) var pubsub: PortalsPubSub
+    
     private var cart: Cart { dataStore.cart }
     
     init(dataStore: DataStoreViewModel) {
         self.dataStore = dataStore
+        self.pubsub = .shared
         // This is required so that updates to the cart will trigger view updates.
         // Making an @Published property doesn't do anything for an ObervableObject.
         dataStore.cart.objectWillChange
@@ -29,7 +32,9 @@ class CartViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
-        PortalsPubSub.publisher(for: "dismiss")
+        
+        
+        pubsub.publisher(for: "dismiss")
             .data(as: String.self)
             .compactMap { $0 }
             .filter { $0 != "cancel" || $0 != "success" }

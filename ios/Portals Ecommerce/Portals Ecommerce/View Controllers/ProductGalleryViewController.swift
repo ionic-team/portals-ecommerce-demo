@@ -7,6 +7,7 @@ class ProductGalleryViewController: UIViewController, UICollectionViewDelegate {
     private var viewModel: GalleryViewModel = GalleryViewModel()
     private let detailSegueIdentifier = "ShowDetailSegue"
     private var featuredItemSelectedCancellable: AnyCancellable?
+    private var dismissCancellable: AnyCancellable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,13 @@ class ProductGalleryViewController: UIViewController, UICollectionViewDelegate {
             .sink { [weak self] product in
                 guard let self = self else { return }
                 self.performSegue(withIdentifier: self.detailSegueIdentifier, sender: product)
+            }
+        
+        dismissCancellable = PortalsPubSub.publisher(for: "dismiss")
+            .data(as: String.self)
+            .compactMap { $0 }
+            .sink { result in
+                print("Checkout dismissed with result: \(result)")
             }
     }
     

@@ -31,7 +31,8 @@ android {
 
 dependencies {
     // Ionic Portals and Capacitor Dependencies
-    implementation 'io.ionic:portals:0.7.0'
+//    implementation 'io.ionic:portals:0.7.0'
+    implementation project(':IonicPortals')
     implementation 'com.capacitorjs:camera:4.1.4'
 
     // Other Dependencies

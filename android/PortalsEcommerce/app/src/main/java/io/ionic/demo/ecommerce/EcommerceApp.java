@@ -96,5 +96,14 @@ public class EcommerceApp extends Application {
                 .addPlugin(CameraPlugin.class)
                 .setInitialContext(initialContextProfile)
                 .create();
+
+//        HashMap<String, String> initialContextPubSub = new HashMap<>();
+//        initialContextPubSub.put("startingRoute", "/pubsub");
+//        PortalManager.newPortal("pubsub")
+//                .setStartDir("webapp")
+//                .setInitialContext(initialContextPubSub)
+//                .addPlugin(ShopAPIPlugin.class)
+//                .setPortalFragmentType(FadePortalFragment.class)
+//                .create();
     }
 }

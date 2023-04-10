@@ -18,7 +18,7 @@ import './CheckoutPage.scss';
 import { Address, CreditCard } from '../../ShopAPIPlugin';
 import AddressItem from '../../components/AddressItem';
 import PaymentItem from '../../components/PaymentItem';
-import Portals from '@ionic/portals';
+import { publish } from '@ionic/portals';
 import FadeIn from '../../components/FadeIn';
 
 const CheckoutPage: React.FC = () => {
@@ -49,7 +49,7 @@ const CheckoutPage: React.FC = () => {
           <IonButtons slot="start">
             <IonButton
               onClick={() => {
-                Portals.publish({ topic: 'dismiss', data: 'cancel' });
+                publish({ topic: 'dismiss', data: 'cancel' });
               }}
             >
               Cancel
@@ -116,7 +116,7 @@ const CheckoutPage: React.FC = () => {
                 onClick={() => {
                   const result = 'success';
                   checkout({ result });
-                  Portals.publish({ topic: 'dismiss', data: result });
+                  publish({ topic: 'dismiss', data: result });
                 }}
               >
                 Place Your Order

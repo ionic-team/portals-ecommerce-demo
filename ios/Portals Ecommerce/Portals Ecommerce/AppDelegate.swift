@@ -52,5 +52,11 @@ extension Portal {
         startDir: "portals/shopwebapp",
         initialContext: ["startingRoute": "/user"]
     )
+    
+    static let pubsub = Self(
+        name: "pubsub",
+        startDir: "portals/shopwebapp",
+        initialContext: ["startingRoute": "/pubsub"]
+    )
 }
 

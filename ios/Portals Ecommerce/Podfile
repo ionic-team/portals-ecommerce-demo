@@ -2,7 +2,7 @@ platform :ios, '14.0'
 use_frameworks!
 
 def portals_pods
-  pod 'IonicPortals', '~> 0.7.0'
+  pod 'IonicPortals', path: '../../../ionic-portals-ios'
   pod 'CapacitorCamera'
   pod 'IonicLiveUpdates', '~> 0.4.0'
 end

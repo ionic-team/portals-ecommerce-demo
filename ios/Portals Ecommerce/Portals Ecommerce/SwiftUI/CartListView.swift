@@ -42,7 +42,11 @@ struct CartListView: View {
             }
             .listStyle(.plain)
             .sheet(isPresented: $viewModel.shouldDisplayCheckout) {
-                PortalView(portal: .checkout)
+//                PortalView(portal: .checkout
+//                    .adding(PortalsPlugin(pubsub: viewModel.pubsub))
+//                    .adding(ShopAPIPlugin.self)
+//                )
+                PubSubTest()
             }
         }
     }

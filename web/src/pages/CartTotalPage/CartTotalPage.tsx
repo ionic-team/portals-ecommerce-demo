@@ -8,7 +8,7 @@ import {
   IonNote,
   IonPage,
 } from '@ionic/react';
-import Portals from '@ionic/portals';
+import { publish } from '@ionic/portals';
 import { DataContext } from '../../DataProvider';
 import FadeIn from '../../components/FadeIn';
 
@@ -41,7 +41,7 @@ const CartTotalPage: React.FC = () => {
                 className="checkout-button"
                 expand="block"
                 onClick={() => {
-                  Portals.publish({ topic: 'showCheckout' });
+                  publish({ topic: 'showCheckout' });
                 }}
               >
                 Checkout

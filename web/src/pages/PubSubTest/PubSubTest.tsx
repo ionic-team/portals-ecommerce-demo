@@ -8,38 +8,30 @@ import {
   IonList,
   IonPage,
 } from '@ionic/react';
-import Portals, { PortalSubscription } from '@ionic/portals';
+import { subscribe, publish, getInitialContext } from '@ionic/portals';
+import type { PluginListenerHandle } from '@capacitor/core';
 
 
 const PubSubTest = () => {
   const [topic, setTopic] = useState('sayHi');
+  const receiveTopic = getInitialContext()?.name ?? "not_in_portal"
   const [portalsSubscription, setPortalsSubscription] =
-    useState<PortalSubscription>();
+    useState<PluginListenerHandle>();
   const [message, setMessage] = useState('');
   const [messageFromApp, setMessageFromApp] = useState<any>();
 
-  const subscribe = async () => {
-    const portalSubscription = await Portals.subscribe(
-      {
-        topic,
-      },
-      (result) => {
-        setMessageFromApp(result);
-      }
-    );
-    setPortalsSubscription(portalSubscription);
+  const mySubscribe = async () => {
+    const handle = await subscribe(receiveTopic, (result) => setMessageFromApp(result));
+    setPortalsSubscription(handle);
   };
 
   const unsubscribe = async () => {
-    Portals.unsubscribe(portalsSubscription!);
+    await portalsSubscription?.remove()
   };
 
-  const publish = async () => {
+  const myPublish = async () => {
     setMessageFromApp('');
-    Portals.publish({
-      topic,
-      data: { message },
-    });
+    publish({ topic, data: { message } });
   };
 
   return (
@@ -61,7 +53,7 @@ const PubSubTest = () => {
             ></IonInput>
           </IonItem>
         </IonList>
-        <IonButton expand="block" onClick={subscribe}>
+        <IonButton expand="block" onClick={mySubscribe}>
           Subscribe
         </IonButton>
         <IonButton
@@ -71,12 +63,12 @@ const PubSubTest = () => {
         >
           Unsubscribe
         </IonButton>
-        <IonButton expand="block" onClick={publish}>
+        <IonButton expand="block" onClick={myPublish}>
           Publish
         </IonButton>
         portalSubscription: <br />
         {JSON.stringify(portalsSubscription)}
-        <br/><br/>
+        <br /><br />
         messageFromApp: <br />
         {JSON.stringify(messageFromApp)}
       </IonContent>
