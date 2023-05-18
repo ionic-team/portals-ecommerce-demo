@@ -5,12 +5,12 @@ plugins {
 apply plugin: "androidx.navigation.safeargs"
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion 33
 
     defaultConfig {
         applicationId "io.ionic.demo.ecommerce"
         minSdkVersion 22
-        targetSdkVersion 32
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
 
@@ -24,15 +24,16 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
+    namespace 'io.ionic.demo.ecommerce'
 }
 
 dependencies {
     // Ionic Portals and Capacitor Dependencies
-    implementation 'io.ionic:portals:0.7.0'
-    implementation 'com.capacitorjs:camera:4.1.4'
+    implementation 'io.ionic:portals:0.8.0'
+    implementation 'com.capacitorjs:camera:5.0.2'
 
     // Other Dependencies
     implementation 'com.google.code.gson:gson:2.9.0'

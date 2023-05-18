@@ -21,6 +21,7 @@ import io.ionic.demo.ecommerce.portals.FadePortalFragment;
 import io.ionic.portals.Portal;
 import io.ionic.portals.PortalManager;
 import io.ionic.portals.PortalsPlugin;
+import io.ionic.portals.PortalsPubSub;
 import kotlin.Unit;
 
 /**
@@ -50,7 +51,7 @@ public class CheckoutDialogFragment extends DialogFragment {
         portalFragment.setDuration(1200);
 
         // Subscribe to the dismiss topic to close the cart modal
-        PortalsPlugin.subscribe("dismiss", subscriptionResult -> {
+        PortalsPubSub.getShared().subscribe("dismiss", subscriptionResult -> {
             dismiss((String) subscriptionResult.getData());
             return Unit.INSTANCE;
         });
