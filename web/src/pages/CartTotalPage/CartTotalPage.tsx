@@ -8,7 +8,7 @@ import {
   IonNote,
   IonPage,
 } from '@ionic/react';
-import Portals from '@ionic/portals';
+import * as Portals from '@ionic/portals';
 import { DataContext } from '../../DataProvider';
 import FadeIn from '../../components/FadeIn';
 
