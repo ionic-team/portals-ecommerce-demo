@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import {
   IonButton,
   IonContent,
@@ -8,30 +8,22 @@ import {
   IonList,
   IonPage,
 } from '@ionic/react';
-import Portals, { PortalSubscription } from '@ionic/portals';
+import * as Portals from '@ionic/portals';
 
 
 const PubSubTest = () => {
   const [topic, setTopic] = useState('sayHi');
-  const [portalsSubscription, setPortalsSubscription] =
-    useState<PortalSubscription>();
+  const portalsSubscription = useRef<any | undefined>(undefined);
   const [message, setMessage] = useState('');
   const [messageFromApp, setMessageFromApp] = useState<any>();
 
   const subscribe = async () => {
-    const portalSubscription = await Portals.subscribe(
-      {
-        topic,
-      },
+    const portalSubscription = await Portals.subscribe(topic,
       (result) => {
         setMessageFromApp(result);
       }
     );
-    setPortalsSubscription(portalSubscription);
-  };
-
-  const unsubscribe = async () => {
-    Portals.unsubscribe(portalsSubscription!);
+    portalsSubscription.current = portalSubscription;
   };
 
   const publish = async () => {
@@ -64,19 +56,12 @@ const PubSubTest = () => {
         <IonButton expand="block" onClick={subscribe}>
           Subscribe
         </IonButton>
-        <IonButton
-          expand="block"
-          disabled={!portalsSubscription}
-          onClick={unsubscribe}
-        >
-          Unsubscribe
-        </IonButton>
         <IonButton expand="block" onClick={publish}>
           Publish
         </IonButton>
         portalSubscription: <br />
         {JSON.stringify(portalsSubscription)}
-        <br/><br/>
+        <br /><br />
         messageFromApp: <br />
         {JSON.stringify(messageFromApp)}
       </IonContent>

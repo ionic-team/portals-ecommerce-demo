@@ -18,7 +18,7 @@ import './CheckoutPage.scss';
 import { Address, CreditCard } from '../../ShopAPIPlugin';
 import AddressItem from '../../components/AddressItem';
 import PaymentItem from '../../components/PaymentItem';
-import Portals from '@ionic/portals';
+import * as Portals from '@ionic/portals';
 import FadeIn from '../../components/FadeIn';
 
 const CheckoutPage: React.FC = () => {

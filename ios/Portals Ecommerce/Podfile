@@ -2,8 +2,8 @@ platform :ios, '14.0'
 use_frameworks!
 
 def portals_pods
-  pod 'IonicPortals', '~> 0.7.0'
-  pod 'CapacitorCamera'
+  pod 'IonicPortals', '~> 0.8.0'
+  pod 'CapacitorCamera', '~> 5.0'
   pod 'IonicLiveUpdates', '~> 0.4.0'
 end
 
