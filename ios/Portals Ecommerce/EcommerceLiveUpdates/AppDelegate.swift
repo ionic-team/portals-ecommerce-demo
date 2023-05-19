@@ -8,6 +8,7 @@
 import UIKit
 import IonicPortals
 import IonicLiveUpdates
+import CapacitorCamera
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -35,10 +36,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension Portal {
+    private static let commonPlugins: [Plugin] = [
+        .type(ShopAPIPlugin.self),
+        .instance(
+            WebVitalsPlugin { portalName, duration in
+                print("Portal \(portalName) - First Contentful Paint: \(duration)ms")
+            }
+        )
+    ]
+
     static let checkout = Self(
         name: "checkout",
         startDir: "portals/shopwebapp",
         initialContext: ["startingRoute": "/checkout"],
+        plugins: commonPlugins,
         liveUpdateConfig: .webapp
     )
     
@@ -46,6 +57,7 @@ extension Portal {
         name: "help",
         startDir: "portals/shopwebapp",
         initialContext: ["startingRoute": "/help"],
+        plugins: commonPlugins,
         liveUpdateConfig: .help
     )
     
@@ -53,8 +65,10 @@ extension Portal {
         name: "user",
         startDir: "portals/shopwebapp",
         initialContext: ["startingRoute": "/user"],
+        plugins: commonPlugins,
         liveUpdateConfig: .webapp
     )
+    .adding(CameraPlugin.self)
 
     static let featured = Self(
         name: "featured",

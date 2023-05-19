@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import {
   IonButton,
   IonContent,
@@ -13,7 +13,7 @@ import * as Portals from '@ionic/portals';
 
 const PubSubTest = () => {
   const [topic, setTopic] = useState('sayHi');
-  const [portalsSubscription, setPortalsSubscription] =useState<any>();
+  const portalsSubscription = useRef<any | undefined>(undefined);
   const [message, setMessage] = useState('');
   const [messageFromApp, setMessageFromApp] = useState<any>();
 
@@ -23,7 +23,7 @@ const PubSubTest = () => {
         setMessageFromApp(result);
       }
     );
-    setPortalsSubscription(portalSubscription);
+    portalsSubscription.current = portalSubscription;
   };
 
   const publish = async () => {
@@ -61,7 +61,7 @@ const PubSubTest = () => {
         </IonButton>
         portalSubscription: <br />
         {JSON.stringify(portalsSubscription)}
-        <br/><br/>
+        <br /><br />
         messageFromApp: <br />
         {JSON.stringify(messageFromApp)}
       </IonContent>

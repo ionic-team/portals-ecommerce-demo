@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { IonCard, IonCardTitle, IonCardSubtitle } from '@ionic/react';
-import Portals from '@ionic/portals';
+import { publish } from '@ionic/portals';
 
 import './NewFeatured.css';
 import { Product } from '../models';
@@ -38,7 +38,7 @@ const NewFeatured = () => {
             <IonCard
               key={product.id}
               onClick={() => {
-                Portals.publish({ topic: 'featured:select-item', data: product.id });
+                publish({ topic: 'featured:select-item', data: product.id });
               }}
             >
               <img
