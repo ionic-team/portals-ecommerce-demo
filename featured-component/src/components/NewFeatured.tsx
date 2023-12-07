@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { IonCard, IonCardTitle, IonCardSubtitle } from '@ionic/react';
-import { publish } from '@ionic/portals';
+import Portals from '@ionic/portals';
 
 import './NewFeatured.css';
 import { Product } from '../models';
@@ -11,7 +11,6 @@ const NewFeatured = () => {
   const [productList, setProductList] = useState<Product[]>([]);
 
   useEffect(() => {
-    console.log('what effect')
     fetch('/data.json')
       .then((res) => res.json())
       .then((products: Product[]) =>
@@ -38,13 +37,13 @@ const NewFeatured = () => {
             <IonCard
               key={product.id}
               onClick={() => {
-                publish({ topic: 'featured:select-item', data: product.id });
+                Portals.publish({
+                  topic: 'featured:select-item',
+                  data: product.id,
+                });
               }}
             >
-              <img
-                alt={product.title}
-                src={`/images/${product.image}`}
-              />
+              <img alt={product.title} src={`/images/${product.image}`} />
               <IonCardTitle>{product.title}</IonCardTitle>
               <IonCardSubtitle>
                 {formatter.format(product.price)}
