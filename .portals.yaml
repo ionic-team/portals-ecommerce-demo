@@ -1,0 +1,7 @@
+sync:
+  - file-path: ./web/build
+    directory-name: portals/shopwebapp
+  - file-path: ./featured-component/build
+    directory-name: portals/featured
+  - file-path: ./portals-debug-app
+    directory-name: portals/portals-debug-app
