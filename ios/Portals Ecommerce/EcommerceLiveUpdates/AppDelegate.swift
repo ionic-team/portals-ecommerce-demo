@@ -45,35 +45,29 @@ extension Portal {
         )
     ]
 
-    static let checkout = Self(
-        name: "checkout",
-        startDir: "portals/shopwebapp",
-        initialContext: ["startingRoute": "/checkout"],
-        plugins: commonPlugins,
-        liveUpdateConfig: .webapp
-    )
-    
-    static let help = Self(
-        name: "help",
-        startDir: "portals/shopwebapp",
-        initialContext: ["startingRoute": "/help"],
-        plugins: commonPlugins,
-        liveUpdateConfig: .help
-    )
-    
-    static let user = Self(
-        name: "user",
-        startDir: "portals/shopwebapp",
-        initialContext: ["startingRoute": "/user"],
-        plugins: commonPlugins,
-        liveUpdateConfig: .webapp
-    )
-    .adding(CameraPlugin.self)
+    private static func shopPortal(named name: String, liveUpdateConfig: LiveUpdate) -> Portal {
+        .init(
+            name: name,
+            startDir: "shopwebapp",
+            initialContext: ["startingRoute": "/checkout"],
+            plugins: [
+                .type(ShopAPIPlugin.self),
+                .instance(
+                    WebVitalsPlugin { portalName, duration in
+                        print("Portal \(portalName) - First Contentful Paint: \(duration)ms")
+                    }
+                )
+            ],
+            liveUpdateConfig: liveUpdateConfig
+        )
+    }
 
-    static let featured = Self(
-        name: "featured",
-        startDir: "portals/featured"
-    )
+    static let checkout = shopPortal(named: "checkout", liveUpdateConfig: .webapp)
+    static let user = shopPortal(named: "user", liveUpdateConfig: .webapp)
+        .adding(CameraPlugin.self)
+
+    static let help = shopPortal(named: "help", liveUpdateConfig: .help)
+    static let featured = Portal(name: "featured")
 }
 
 extension LiveUpdate {

@@ -63,10 +63,16 @@ dependencies {
     testImplementation "org.powermock:powermock-classloading-xstream:2.0.4"
 }
 
-task CopyWebAssets(type: Copy) {
-    def webBuildFolder = '../../../web/build'
-    from webBuildFolder
-    into layout.projectDirectory.dir("src/main/assets/webapp")
+import org.apache.tools.ant.taskdefs.condition.Os
+
+task PortalsSync(type: Exec) {
+    if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+        commandLine 'cmd', '/c', 'portals', 'sync', '--config', '../../../.portals.yaml', '--destination', layout.projectDirectory.dir("src/main/assets").toString()
+    } else {
+        // Adds /opt/homebrew/bin for arm64 macs
+        environment PATH: "/opt/homebrew/bin:${environment.PATH}"
+        commandLine 'bash', '-c', 'portals sync --config ../../../.portals.yaml --destination ' + layout.projectDirectory.dir("src/main/assets").toString()
+    }
 }
 
-preBuild.dependsOn(CopyWebAssets)
+preBuild.dependsOn(PortalsSync)

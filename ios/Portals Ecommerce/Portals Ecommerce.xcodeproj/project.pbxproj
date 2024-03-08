@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -732,7 +732,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert # Type a script or drag a script file from your workspace to insert its path.\nEMBEDDED_DIR=\"${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.app/portals\"\nAPP_LIST=(\n    \"shopwebapp|/../../web/build\"\n    \"featured|/../../featured-component/build\"\n)\n\nmkdir \"${EMBEDDED_DIR}\"\n\nfor APP_INFO in ${APP_LIST[@]}\ndo\n    IFS=\"|\" read -r -a arr <<< \"${APP_INFO}\"\n    APP_NAME=\"${arr[0]}\"\n    EMBEDDED_APP=\"${SRCROOT}${arr[1]}\"\n    \n    echo \"${APP_NAME} ${EMBEDDED_APP}\"\n    \n    if [ -d \"${EMBEDDED_DIR}/${APP_NAME}\" ]\n    then\n        cd \"${EMBEDDED_DIR}\"\n        rm -r \"${APP_NAME}\"\n    fi\n\n    mkdir \"${EMBEDDED_DIR}/${APP_NAME}\"\n\n    ZIP_FILE=\"${APP_NAME}.zip\"\n\n    if [ -d \"${EMBEDDED_APP}\" ] \n    then\n        cd \"${EMBEDDED_APP}\"\n        zip -vr \"${ZIP_FILE}\" * -x \"*.DS_Store\"\n        unzip \"${ZIP_FILE}\" -d \"${EMBEDDED_DIR}/${APP_NAME}\"\n        rm \"${ZIP_FILE}\"\n    else\n        echo \"App ${APP_NAME} has not been built! ${EMBEDDED_APP}\"\n        exit 999\n    fi\ndone\n";
+			shellScript = "# Add /opt/hombrew/bin to path for arm64 macs\nPATH=$PATH:/opt/homebrew/bin\nportals sync --config ../../.portals.yaml\n";
 		};
 		586BC590428B74F5AA2A8AF4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

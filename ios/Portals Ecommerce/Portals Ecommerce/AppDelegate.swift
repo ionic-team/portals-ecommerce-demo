@@ -28,40 +28,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension Portal {
-    static let featured = Self(
-        name: "featured",
-        startDir: "portals/featured"
-    )
+    static let featured = Self(name: "featured")
 
-    private static let commonPlugins: [Plugin] = [
-        .type(ShopAPIPlugin.self),
-        .instance(
-            WebVitalsPlugin { portalName, duration in
-                print("Portal \(portalName) - First Contentful Paint: \(duration)ms")
-            }
+    private static func shopPortal(named name: String) -> Portal {
+        .init(
+            name: name,
+            startDir: "shopwebapp",
+            initialContext: ["startingRoute": "/\(name)"],
+            plugins: [
+                .type(ShopAPIPlugin.self),
+                .instance(
+                    WebVitalsPlugin { portalName, duration in
+                        print("Portal \(portalName) - First Contentful Paint: \(duration)ms")
+                    }
+                )
+            ]
         )
-    ]
+    }
 
-    static let checkout = Self(
-        name: "checkout",
-        startDir: "portals/shopwebapp",
-        initialContext: ["startingRoute": "/checkout"],
-        plugins: commonPlugins
-    )
-    
-    static let help = Self(
-        name: "help",
-        startDir: "portals/shopwebapp",
-        initialContext: ["startingRoute": "/help"],
-        plugins: commonPlugins
-    )
-    
-    static let user = Self(
-        name: "user",
-        startDir: "portals/shopwebapp",
-        initialContext: ["startingRoute": "/user"],
-        plugins: commonPlugins
-    )
-    .adding(CameraPlugin.self)
+    static let checkout = shopPortal(named: "checkout")
+    static let help = shopPortal(named: "help")
+    static let user = shopPortal(named: "user")
+        .adding(CameraPlugin.self)
 }
 
