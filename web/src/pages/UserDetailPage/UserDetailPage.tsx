@@ -5,7 +5,6 @@ import {
   IonIcon,
   IonInput,
   IonItem,
-  IonLabel,
   IonList,
   IonListHeader,
   IonPage,
@@ -98,8 +97,9 @@ const UserDetailPage = () => {
               <div className="user-info">
                 <IonList lines="full">
                   <IonItem>
-                    <IonLabel>First name</IonLabel>
                     <IonInput
+                      label="First name"
+                      labelPlacement="start"
                       value={formData.firstName}
                       onIonChange={(e) => {
                         const value = e.detail.value!;
@@ -111,8 +111,9 @@ const UserDetailPage = () => {
                     ></IonInput>
                   </IonItem>
                   <IonItem>
-                    <IonLabel>Last name</IonLabel>
                     <IonInput
+                      label="Last name"
+                      labelPlacement="start"
                       value={formData.lastName}
                       onIonChange={(e) => {
                         const value = e.detail.value!;
@@ -124,8 +125,9 @@ const UserDetailPage = () => {
                     ></IonInput>
                   </IonItem>
                   <IonItem>
-                    <IonLabel>Email Address</IonLabel>
                     <IonInput
+                      label="Email Address"
+                      labelPlacement="start"
                       value={formData.email}
                       onIonChange={(e) => {
                         setFormData({ ...formData, email: e.detail.value! });

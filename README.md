@@ -25,7 +25,7 @@ Get you registration key from [ionic.io/register-portals](https://ionic.io/regis
 
 ```Swift
 // Register Portals
-PortalManager.register("YOUR_KEY_HERE");
+PortalsRegistrationManager.shared.register(key: "YOUR_PORTALS_KEY")
 ```
 
 ## Android

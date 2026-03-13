@@ -1,16 +1,22 @@
-import React from 'react';
-import { CSSTransition } from 'react-transition-group';
+import React, { PropsWithChildren } from 'react';
 import './FadeIn.scss';
 
-const AddressItem: React.FC<{ isLoaded: boolean }> = ({
-  isLoaded,
-  children,
-}) => {
-  return (
-    <CSSTransition in={isLoaded} timeout={500} classNames="fade-in">
-      {children}
-    </CSSTransition>
-  );
+type FadeInProps = PropsWithChildren<{ isLoaded: boolean }>;
+
+const FadeIn = ({ isLoaded, children }: FadeInProps) => {
+  const child = React.Children.only(children) as React.ReactElement<{
+    className?: string;
+  }>;
+
+  const className = [
+    child.props.className,
+    'fade-in',
+    isLoaded ? 'fade-in-visible' : 'fade-in-hidden',
+  ]
+    .filter(Boolean)
+    .join(' ');
+
+  return React.cloneElement(child, { className });
 };
 
-export default AddressItem;
+export default FadeIn;

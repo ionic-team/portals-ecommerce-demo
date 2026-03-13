@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { PropsWithChildren, useCallback, useEffect, useState } from 'react';
 import {
   ShopAPI,
   CheckoutResult,
@@ -21,7 +21,7 @@ export interface DataState {
 
 export const DataContext = React.createContext<DataState>({} as any);
 
-export const DataProvider: React.FC = ({ children }) => {
+export const DataProvider = ({ children }: PropsWithChildren<{}>) => {
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState<User>();
   const [cart, setCart] = useState<Cart>();

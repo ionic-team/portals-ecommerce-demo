@@ -4,7 +4,6 @@ import {
   IonContent,
   IonInput,
   IonItem,
-  IonLabel,
   IonList,
   IonPage,
 } from '@ionic/react';
@@ -39,15 +38,17 @@ const PubSubTest = () => {
       <IonContent>
         <IonList>
           <IonItem>
-            <IonLabel>Topic</IonLabel>
             <IonInput
+              label="Topic"
+              labelPlacement="start"
               value={topic}
               onIonChange={(e) => setTopic(e.detail.value!)}
             ></IonInput>
           </IonItem>
           <IonItem>
-            <IonLabel>Message</IonLabel>
             <IonInput
+              label="Message"
+              labelPlacement="start"
               value={message}
               onIonChange={(e) => setMessage(e.detail.value!)}
             ></IonInput>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonApp, IonRouterOutlet } from '@ionic/react';
+import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router';
 import { DevPage } from './pages/DevPage';
@@ -30,6 +30,8 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import { DataProvider } from './DataProvider';
 import PubSubTest from './pages/PubSubTest/PubSubTest';
+
+setupIonicReact();
 
 interface AppProps {
   context: {

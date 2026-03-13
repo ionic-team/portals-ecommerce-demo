@@ -5,18 +5,22 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
-//import com.capacitorjs.plugins.camera.CameraPlugin;
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.widget.ViewPager2;
-
 import io.ionic.demo.ecommerce.data.model.Product;
 import io.ionic.demo.ecommerce.plugins.ShopAPIPlugin;
 import io.ionic.demo.ecommerce.ui.product.HelpFragment;
@@ -49,7 +53,11 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setUserInputEnabled(false);
         viewPager.setOffscreenPageLimit(3);
 
+        // Apply window inset padding so top app bar and bottom tabs sit above
+        // system bars when the activity is rendered edge-to-edge.
+        AppBarLayout appBarLayout = findViewById(R.id.app_bar);
         tabLayout = findViewById(R.id.tab_layout);
+        applyEdgeToEdgeInsets(appBarLayout, tabLayout);
         new TabLayoutMediator(tabLayout, viewPager, true, false, (tab, position) -> {
             switch(position) {
                 case 0:
@@ -175,5 +183,39 @@ public class MainActivity extends AppCompatActivity {
     public void showHelpMenu(boolean showMenu) {
         hideMenu = !showMenu;
         invalidateOptionsMenu();
+    }
+
+    private void applyEdgeToEdgeInsets(AppBarLayout appBarLayout, TabLayout bottomTabs) {
+        // Draw behind system bars; then manually apply safe-area padding
+        // to UI chrome that must remain visible.
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+
+        View container = findViewById(R.id.container);
+        final int appBarStart = appBarLayout.getPaddingTop();
+        final int tabsStart = bottomTabs.getPaddingBottom();
+
+        ViewCompat.setOnApplyWindowInsetsListener(container, (view, windowInsets) -> {
+            Insets systemBars = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
+
+            // Keep toolbar/action area below status bar/cutout.
+            appBarLayout.setPadding(
+                    appBarLayout.getPaddingLeft(),
+                    appBarStart + systemBars.top,
+                    appBarLayout.getPaddingRight(),
+                    appBarLayout.getPaddingBottom()
+            );
+
+            // Keep bottom tab bar above gesture/nav controls.
+            bottomTabs.setPadding(
+                    bottomTabs.getPaddingLeft(),
+                    bottomTabs.getPaddingTop(),
+                    bottomTabs.getPaddingRight(),
+                    tabsStart + systemBars.bottom
+            );
+
+            return windowInsets;
+        });
+
+        ViewCompat.requestApplyInsets(container);
     }
 }

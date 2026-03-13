@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { caretDownOutline } from 'ionicons/icons';
 import {
   IonItem,
-  IonLabel,
   IonInput,
+  IonSelect,
+  IonSelectOption,
   IonHeader,
   IonButtons,
   IonBackButton,
@@ -12,10 +12,8 @@ import {
   IonButton,
   IonContent,
   IonPage,
-  IonIcon,
   IonCheckbox,
   IonText,
-  useIonPicker,
   useIonRouter,
 } from '@ionic/react';
 import { DataContext } from '../../DataProvider';
@@ -34,7 +32,6 @@ const AddressPage: React.FC<RouteComponentProps<AddressPageProps>> = (
   const { id } = props.match.params;
   const { user, setUser } = useContext(DataContext);
   const [address, setAddress] = useState<Address>();
-  const [present] = useIonPicker();
   const router = useIonRouter();
 
   useEffect(() => {
@@ -54,30 +51,6 @@ const AddressPage: React.FC<RouteComponentProps<AddressPageProps>> = (
       }
     }
   }, [id, user]);
-
-  const pickStateCode = () => {
-    present({
-      buttons: [
-        {
-          text: 'Confirm',
-          handler: (selected) => {
-            if (address) {
-              setAddress({ ...address, state: selected.StateCode.value });
-            }
-          },
-        },
-      ],
-      columns: [
-        {
-          name: 'StateCode',
-          options: stateCodes.map((code) => {
-            return { text: code, value: code };
-          }),
-          selectedIndex: stateCodes.findIndex((x) => x === address?.state),
-        },
-      ],
-    });
-  };
 
   const handleSave = () => {
     if (user && address) {
@@ -125,16 +98,18 @@ const AddressPage: React.FC<RouteComponentProps<AddressPageProps>> = (
       </IonHeader>
       <IonContent>
         <IonItem lines="full">
-          <IonLabel position="fixed">Full Name</IonLabel>
           <IonInput
+            label="Full Name"
+            labelPlacement="fixed"
             placeholder=""
             disabled
             value={`${user?.firstName} ${user?.lastName}`.trim()}
           ></IonInput>
         </IonItem>
         <IonItem lines="full">
-          <IonLabel position="fixed">Address</IonLabel>
           <IonInput
+            label="Address"
+            labelPlacement="fixed"
             placeholder=""
             debounce={500}
             onIonChange={(event) => {
@@ -144,8 +119,9 @@ const AddressPage: React.FC<RouteComponentProps<AddressPageProps>> = (
           ></IonInput>
         </IonItem>
         <IonItem lines="full">
-          <IonLabel position="fixed">Zip Code</IonLabel>
           <IonInput
+            label="Zip Code"
+            labelPlacement="fixed"
             placeholder=""
             type="number"
             pattern="[0-9]*"
@@ -157,8 +133,9 @@ const AddressPage: React.FC<RouteComponentProps<AddressPageProps>> = (
           ></IonInput>
         </IonItem>
         <IonItem lines="full">
-          <IonLabel position="fixed">City</IonLabel>
           <IonInput
+            label="City"
+            labelPlacement="fixed"
             placeholder=""
             debounce={500}
             onIonChange={(event) => {
@@ -168,21 +145,21 @@ const AddressPage: React.FC<RouteComponentProps<AddressPageProps>> = (
           ></IonInput>
         </IonItem>
         <IonItem lines="full">
-          <IonLabel position="fixed">State</IonLabel>
-          <IonInput
-            placeholder=""
-            onClick={pickStateCode}
+          <IonSelect
+            label="State"
+            labelPlacement="fixed"
+            interface="popover"
             value={address.state}
-          ></IonInput>
-          {/* TODO: Style this to fit design better */}
-          <IonButton
-            color="light"
-            fill="clear"
-            expand="block"
-            onClick={pickStateCode}
+            onIonChange={(event) => {
+              setAddress({ ...address, state: event.detail.value });
+            }}
           >
-            <IonIcon slot="icon-only" icon={caretDownOutline} />
-          </IonButton>
+            {stateCodes.map((code) => (
+              <IonSelectOption key={code} value={code}>
+                {code}
+              </IonSelectOption>
+            ))}
+          </IonSelect>
         </IonItem>
         <IonItem lines="none">
           <IonCheckbox

@@ -126,17 +126,17 @@ const PaymentPage = (props: RouteComponentProps<PaymentPageMatch>) => {
                 <IonText slot="end">{creditCard.number.slice(-4)}</IonText>
               </IonItem>
               <IonItem lines="none">
-                <IonLabel slot="start">Card exp date</IonLabel>
+                <IonText slot="start">Card exp date</IonText>
                 <IonText slot="end">{dateString}</IonText>
               </IonItem>
             </>
           ) : (
             <>
               <IonItem lines="none">
-                <IonLabel position="stacked">Card Number</IonLabel>
                 <IonInput
+                  label="Card Number"
+                  labelPlacement="stacked"
                   type="number"
-                  pattern="[0-9]*"
                   maxlength={16}
                   placeholder="Card Number"
                   onIonFocus={() => {
@@ -145,39 +145,45 @@ const PaymentPage = (props: RouteComponentProps<PaymentPageMatch>) => {
                     }
                   }}
                   onIonBlur={(event) => {
-                    const number = (event.target as any).value as string;
-                    if (!number.includes('*')) {
+                    const number = (
+                      (event.target as HTMLIonInputElement | null)?.value ?? ''
+                    ).toString();
+                    if (number && !number.includes('*')) {
                       setCreditCard({ ...creditCard, number });
                     }
                   }}
                   value={creditCard.number}
                 ></IonInput>
               </IonItem>
-              <IonItem lines="none">
-                <IonGrid>
-                  <IonRow>
-                    <IonCol>
+              <IonGrid>
+                <IonRow>
+                  <IonCol>
+                    <IonItem lines="none">
                       <IonLabel position="stacked">Exp Date</IonLabel>
                       <IonDatetime
-                        displayFormat="MM/YYYY"
+                        presentation="month-year"
                         min={new Date().toISOString()}
                         max="2031"
-                        placeholder="Exp Date"
                         value={creditCard.expirationDate}
-                        onIonChange={(event) =>
+                        onIonChange={(event) => {
+                          const value = event.detail.value;
                           setCreditCard({
                             ...creditCard,
-                            expirationDate: event.detail.value!,
-                          })
-                        }
+                            expirationDate: Array.isArray(value)
+                              ? value[0] ?? ''
+                              : value ?? '',
+                          });
+                        }}
                       ></IonDatetime>
-                    </IonCol>
-                    <IonCol>
-                      <IonLabel position="stacked">CVV</IonLabel>
+                    </IonItem>
+                  </IonCol>
+                  <IonCol>
+                    <IonItem lines="none">
                       <IonInput
+                        label="CVV"
+                        labelPlacement="stacked"
                         placeholder="CVV"
                         type="number"
-                        pattern="[0-9]*"
                         maxlength={4}
                         debounce={500}
                         onIonChange={(event) => {
@@ -188,18 +194,18 @@ const PaymentPage = (props: RouteComponentProps<PaymentPageMatch>) => {
                         }}
                         value={creditCard.cvv}
                       ></IonInput>
-                    </IonCol>
-                  </IonRow>
-                </IonGrid>
-              </IonItem>
+                    </IonItem>
+                  </IonCol>
+                </IonRow>
+              </IonGrid>
             </>
           )}
           <IonItem lines="none">
-            <IonLabel position="stacked">Zip Code</IonLabel>
             <IonInput
+              label="Zip Code"
+              labelPlacement="stacked"
               placeholder="Zip Code"
               type="number"
-              pattern="[0-9]*"
               maxlength={5}
               debounce={500}
               onIonChange={(event) => {

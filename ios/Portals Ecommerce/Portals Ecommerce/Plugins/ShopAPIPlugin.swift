@@ -1,14 +1,14 @@
 import Capacitor
 import Combine
 
-@objc (IONShopAPIPlugin)
+@objc(IONShopAPIPlugin)
 class ShopAPIPlugin: CAPPlugin {
-    private lazy var encoder = JSONEncoder()
-    private lazy var decoder = JSONDecoder()
+    private lazy var encoder = JSValueEncoder()
+    private lazy var decoder = JSValueDecoder()
     
     @objc func getCart(_ call: CAPPluginCall) {
         let cart = ShopAPI.dataStore.cart
-        guard let cartObject = try? encoder.encodeJsObject(cart) else {
+        guard let cartObject = try? encoder.encodeJSObject(cart) else {
             return call.reject("Cart unavailable!")
         }
         call.resolve(cartObject)
@@ -16,15 +16,16 @@ class ShopAPIPlugin: CAPPlugin {
     
     @objc func getUserDetails(_ call: CAPPluginCall) {
         let user = ShopAPI.dataStore.user
-        guard let userObject = try? encoder.encodeJsObject(user) else {
+        guard let userObject = try? encoder.encodeJSObject(user) else {
             return call.reject("User unavailable!")
         }
         call.resolve(userObject)
     }
     
     @objc func updateUserDetails(_ call: CAPPluginCall) {
-        guard let user = try? decoder.decodeJsObject(User.self, from: call.jsObjectRepresentation) else {
-           return call.reject("Invalid user details!")
+        guard let options = call.options as? JSObject,
+              let user = try? decoder.decode(User.self, from: options) else {
+            return call.reject("Invalid user details!")
         }
         call.resolve()
         ShopAPI.dataStore.user = user
@@ -73,3 +74,4 @@ public enum ShopAPI {
         checkoutStatusSubject.eraseToAnyPublisher()
     }
 }
+
