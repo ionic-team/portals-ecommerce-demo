@@ -1,55 +1,67 @@
 # portals-ecommerce-demo
-E-commerce Demo App using Ionic Portals
 
-This is an example application built in iOS and Android. Both are using the same web resources for their Portals.
+An Ionic Portals ecommerce demo with native iOS and Android host apps.
 
-## Portals Registration Key
+This repo contains native host apps and Portal web bundles:
 
-To try our Ionic Portals demo, both iOS and Android applications require you to input a Portals registration key. You may get a key by going to [ionic.io/register-portals](https://ionic.io/register-portals). Follow the instructions below to add your key to each platform demo application.
+```text
+apps/
+  ios/        Native iOS app using Ionic Portals
+  android/    Native Android app using Ionic Portals
+portals/
+  shop/       Shop, checkout, help, and profile Portal bundle
+  featured/   Featured products Portal bundle
+shared/
+  assets/     Shared product images
+  data.json   Shared product data
+```
+
+The committed native apps are the Portals host apps. The Portal web bundles are built as static assets and embedded by the native apps at build time.
+
+## Install
+
+Install JavaScript dependencies from the repo root:
+
+```bash
+npm install
+```
+
+## Build Portal Bundles
+
+Build both Portal bundles before building either native app:
+
+```bash
+npm run build
+```
+
+You can also build each Portal separately:
+
+```bash
+npm run build:shop
+npm run build:featured
+```
 
 ## iOS
 
-### Install the dependencies and open the project
+Open the native iOS project:
 
 ```bash
-cd ./ios/Portals\ Ecommerce/
-pod install
-xed Portals\ Ecommerce.xcworkspace
+xed apps/ios/Portals\ Ecommerce.xcodeproj
 ```
 
-It is **important** that you open the `xcworkspace` and _not_ the `xcodeproj` file.
-
-### Portals registration key
-
-Get you registration key from [ionic.io/register-portals](https://ionic.io/register-portals), then uncomment the following line in `AppDelegate.swift` and replace `YOUR_KEY_HERE` with your key.
-
-```Swift
-// Register Portals
-PortalManager.register("YOUR_KEY_HERE");
-```
+The iOS app uses Swift Package Manager for native dependencies. Xcode resolves packages when the project opens.
 
 ## Android
-### Portals registration key
 
-Get you registration key from [ionic.io/register-portals](https://ionic.io/register-portals), then uncomment the following line in `EcommerceApp.java` and replace `YOUR_KEY_HERE` with your key.
+Open `apps/android` in Android Studio or build from the command line:
 
-```Java
-// Register Portals
-PortalManager.register("YOUR_KEY_HERE");
-```
-
-Build and run the Android app
-
-## Web
-### Building
-
-Before you build the iOS or Android source you will need to build the web resources in the `web` and `featured-component` directories:
 ```bash
-cd ./web
-npm install
-npm run build
-
-cd ../featured-component
-npm install
-npm run build
+cd apps/android
+./gradlew assembleDebug
 ```
+
+## Portal Web Apps
+
+The Portal web apps remain Capacitor-aware so they can use Capacitor and Portals JavaScript APIs inside the native host apps. This repo does not commit generated standalone Capacitor native shells for those web apps.
+
+See [docs/architecture.md](docs/architecture.md) for the repo architecture.
