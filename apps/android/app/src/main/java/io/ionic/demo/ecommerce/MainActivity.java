@@ -1,16 +1,13 @@
 package io.ionic.demo.ecommerce;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-//import com.capacitorjs.plugins.camera.CameraPlugin;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -18,7 +15,6 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.widget.ViewPager2;
 
 import io.ionic.demo.ecommerce.data.model.Product;
-import io.ionic.demo.ecommerce.plugins.ShopAPIPlugin;
 import io.ionic.demo.ecommerce.ui.product.HelpFragment;
 
 /**
@@ -33,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     Product selectedProduct;
     boolean hideMenu = true;
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.pager);
         viewPager.setAdapter(pageAdapter);
         viewPager.setUserInputEnabled(false);
-        viewPager.setOffscreenPageLimit(3);
+        viewPager.setOffscreenPageLimit(4);
 
         tabLayout = findViewById(R.id.tab_layout);
         new TabLayoutMediator(tabLayout, viewPager, true, false, (tab, position) -> {
@@ -60,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case 2:
                     tab.setIcon(R.drawable.ic_profile_material);
+                    break;
+                case 3:
+                    tab.setIcon(R.drawable.ic_notifications_black_24dp);
                     break;
             }
         }).attach();
@@ -95,6 +93,12 @@ public class MainActivity extends AppCompatActivity {
                         hideUpButton();
                         showHelpMenu(false);
                         setTitle("Profile");
+                        break;
+                    case 3:
+                        getSupportActionBar().show();
+                        hideUpButton();
+                        showHelpMenu(false);
+                        setTitle("Updates");
                         break;
                 }
             }

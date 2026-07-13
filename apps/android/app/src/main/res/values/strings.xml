@@ -6,6 +6,15 @@
     <string name="title_cart">Cart</string>
     <string name="title_checkout">Checkout</string>
     <string name="title_profile">Profile</string>
+    <string name="title_updates">Updates</string>
+    <string name="update_status_idle">Profile Portal is using the bundled app assets.</string>
+    <string name="update_status_syncing">Syncing Profile Portal...</string>
+    <string name="update_status_synced">Profile Portal synced. Use Reload Profile Portal to load the update.</string>
+    <string name="update_status_reloading">Reloading Profile Portal if active...</string>
+    <string name="update_status_failed">Provider sync failed: %1$s</string>
+    <string name="sync_provider_app_suspend">Sync (suspend)</string>
+    <string name="sync_provider_app_async">Sync (async)</string>
+    <string name="reload_provider_app">Reload Profile Portal</string>
     <string name="product_image_cd">Product Image</string>
     <string name="shop_must_haves_title"><![CDATA[Must Haves, Bestsellers & More]]></string>
     <string name="add_to_cart">Add to cart</string>

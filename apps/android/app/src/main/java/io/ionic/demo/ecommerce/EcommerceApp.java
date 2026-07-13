@@ -11,8 +11,9 @@ import java.util.HashMap;
 import io.ionic.demo.ecommerce.data.ShoppingCart;
 import io.ionic.demo.ecommerce.plugins.ShopAPIPlugin;
 import io.ionic.demo.ecommerce.portals.FadePortalFragment;
+import io.ionic.liveupdateprovidermock.MockProviderConfig;
+import io.ionic.liveupdateprovidermock.MockProviderManager;
 import io.ionic.portals.PortalManager;
-import io.ionic.portals.PortalsPlugin;
 
 /**
  * The parent Application Class for the E-Commerce app.
@@ -65,16 +66,17 @@ public class EcommerceApp extends Application {
         instance = this;
         super.onCreate();
 
-        // Start app with a fresh shopping cart
         shoppingCart = new ShoppingCart();
+        MockProviderManager liveUpdateProviderManager = new MockProviderManager(
+                this,
+                MockProviderConfig.Companion.from(new HashMap<>())
+        );
 
-        // Checkout Portal
         PortalManager.newPortal("checkout")
                 .setStartDir("webapp")
                 .setPlugins(Arrays.asList(ShopAPIPlugin.class))
                 .create();
 
-        // Help Portal
         HashMap<String, String> initialContext = new HashMap<>();
         initialContext.put("startingRoute", "/help");
         PortalManager.newPortal("help")
@@ -84,7 +86,6 @@ public class EcommerceApp extends Application {
                 .setPortalFragmentType(FadePortalFragment.class)
                 .create();
 
-        // Profile Portal
         HashMap<String, String> initialContextProfile = new HashMap<>();
         initialContextProfile.put("startingRoute", "/user");
         PortalManager.newPortal("profile")
@@ -92,6 +93,7 @@ public class EcommerceApp extends Application {
                 .addPlugin(ShopAPIPlugin.class)
                 .addPlugin(CameraPlugin.class)
                 .setInitialContext(initialContextProfile)
+                .setLiveUpdateProviderManager(liveUpdateProviderManager)
                 .create();
     }
 }

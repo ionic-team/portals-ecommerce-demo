@@ -1,5 +1,5 @@
 {
-  "originHash" : "aa864fe4bcfbecf621f3bd7dce478170fff2ce1edc7ec71c29df7fadafc6d76a",
+  "originHash" : "5e752ffa97752fe2b2deb7d1c32edbd0560c073619f2646404a5fa864f525c12",
   "pins" : [
     {
       "identity" : "capacitor-swift-pm",
@@ -26,15 +26,6 @@
       "state" : {
         "revision" : "e577a3735249a62f5dedd79d21c06d71e28f6855",
         "version" : "0.5.8"
-      }
-    },
-    {
-      "identity" : "live-update-provider-sdk",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/ionic-team/live-update-provider-sdk",
-      "state" : {
-        "revision" : "668f2bc50e4518e35e993dbf54fe22256f2ef782",
-        "version" : "0.1.0"
       }
     }
   ],

@@ -4,14 +4,12 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
-import io.ionic.demo.ecommerce.EcommerceApp;
 import io.ionic.demo.ecommerce.data.model.AppData;
 import io.ionic.demo.ecommerce.data.model.Product;
 import io.ionic.demo.ecommerce.data.model.User;
@@ -92,7 +90,6 @@ public class DataService {
                 saveStream.flush();
                 saveStream.close();
 
-                // image was saved
                 user.image = "user-image.jpg";
                 return true;
             } catch (IOException e) {
@@ -100,7 +97,6 @@ public class DataService {
             }
         }
 
-        // image was not saved
         return false;
     }
 }

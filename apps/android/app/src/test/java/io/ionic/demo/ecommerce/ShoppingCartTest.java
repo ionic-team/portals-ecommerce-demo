@@ -1,7 +1,5 @@
 package io.ionic.demo.ecommerce;
 
-import com.getcapacitor.PluginCall;
-
 import org.junit.Before;
 import org.junit.Test;
 

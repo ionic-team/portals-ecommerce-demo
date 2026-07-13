@@ -37,10 +37,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension Portal {
     private static let mockProviderManager = {
         do {
-            return try LiveUpdateProviderMock(id: "mock").createManager(config: [
-                "appType": "portals",
-                "autoSync": false
+            let config = try MockProviderConfig([
+                "simulateFailure": false,
+                "metadata": [:]
             ])
+            return MockProviderManager(config: config)
         } catch {
             fatalError("Failed to configure mock live update provider: \(error)")
         }

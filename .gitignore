@@ -1,6 +1,5 @@
 .DS_Store
 DerivedData/
-Pods/
 build/
 node_modules/
 .gradle/

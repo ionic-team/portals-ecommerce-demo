@@ -9,6 +9,8 @@ import io.ionic.portals.PortalManager;
 
 public class ProfileFragment extends PortalFragment {
 
+    public static final String RELOAD_REQUEST_KEY = "reload_profile_portal";
+
     public static ProfileFragment newInstance() {
         return new ProfileFragment(PortalManager.getPortal("profile"));
     }
@@ -25,5 +27,7 @@ public class ProfileFragment extends PortalFragment {
     public void onViewCreated(@NotNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setHasOptionsMenu(false);
+        getParentFragmentManager().setFragmentResultListener(
+                RELOAD_REQUEST_KEY, getViewLifecycleOwner(), (requestKey, result) -> reload());
     }
 }

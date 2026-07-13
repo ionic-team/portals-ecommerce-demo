@@ -11,8 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.badge.BadgeDrawable;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.imageview.ShapeableImageView;
 
 import java.text.NumberFormat;
@@ -103,14 +101,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             builder.createView((ViewGroup) v.getRootView(), product, quantity);
             builder.setupListeners();
             builder.setPositiveButton("OK", (dialog, which) -> {
-                // Decrement badge number on the bottom nav
-//                BottomNavigationView navView = activity.findViewById(R.id.nav_view);
-//                BadgeDrawable badge = navView.getOrCreateBadge(R.id.navigation_cart);
-//                badge.setNumber(EcommerceApp.getInstance().getShoppingCart().getTotalItemCount());
-//                if (EcommerceApp.getInstance().getShoppingCart().getTotalItemCount() == 0) {
-//                    badge.setVisible(false);
-//                }
-
                 self.notifyDataSetChanged();
                 updateListener.onClick(v);
             });

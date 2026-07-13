@@ -1,9 +1,6 @@
 package io.ionic.demo.ecommerce.data;
 
-import android.os.Build;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 
 import java.util.Collection;
 import java.util.HashMap;

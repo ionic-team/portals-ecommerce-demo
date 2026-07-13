@@ -1,0 +1,5 @@
+[tools]
+# Capacitor 8 targets JDK 21. Gradle 8.14.3's embedded Kotlin-DSL compiler
+# cannot parse newer JDK version strings (e.g. Java 26), so the Android build
+# is pinned to Temurin 21 here.
+java = "temurin-21"

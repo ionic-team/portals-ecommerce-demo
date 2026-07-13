@@ -10,13 +10,11 @@ import com.getcapacitor.Bridge;
 import com.getcapacitor.JSObject;
 import com.getcapacitor.PluginCall;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
-import org.powermock.api.mockito.PowerMockito;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
+import org.mockito.MockedStatic;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -24,7 +22,6 @@ import java.io.InputStream;
 
 import io.ionic.demo.ecommerce.data.DataService;
 import io.ionic.demo.ecommerce.data.ShoppingCart;
-import io.ionic.demo.ecommerce.data.model.Cart;
 import io.ionic.demo.ecommerce.plugins.ShopAPIPlugin;
 
 import static junit.framework.TestCase.assertEquals;
@@ -32,11 +29,10 @@ import static junit.framework.TestCase.fail;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@RunWith(PowerMockRunner.class)
-@PrepareForTest({EcommerceApp.class, BitmapFactory.class, Base64.class})
 public class ShopAPIPluginTest {
     private static final String APP_DATA = "data.json";
 
@@ -48,34 +44,44 @@ public class ShopAPIPluginTest {
     FileOutputStream fileOutputStream = mock(FileOutputStream.class);
     EcommerceApp ecommerceApp = mock(EcommerceApp.class);
 
+    MockedStatic<EcommerceApp> ecommerceAppStatic;
+    MockedStatic<BitmapFactory> bitmapFactoryStatic;
+    MockedStatic<Base64> base64Static;
+
     private InputStream getTestInputStream() {
         return this.getClass().getClassLoader().getResourceAsStream(ShopAPIPluginTest.APP_DATA);
     }
 
     @Before
     public void init() {
-        try{
+        try {
             // general mocks
             when(bridge.getContext()).thenReturn(context);
             when(context.getAssets()).thenReturn(assetManager);
             when(assetManager.open("data.json")).thenReturn(getTestInputStream());
 
             // image tests
-            PowerMockito.mockStatic(EcommerceApp.class);
-            PowerMockito.mockStatic(BitmapFactory.class);
-            PowerMockito.mockStatic(Base64.class);
-            when(EcommerceApp.getContext()).thenReturn(context);
-            when(BitmapFactory.decodeResource(context.getResources(), R.drawable.jt_avatar)).thenReturn(bitmap);
-            when(Base64.encodeToString(any(byte[].class), eq(Base64.DEFAULT))).thenReturn("storedimagebase64");
+            ecommerceAppStatic = mockStatic(EcommerceApp.class);
+            bitmapFactoryStatic = mockStatic(BitmapFactory.class);
+            base64Static = mockStatic(Base64.class);
+            ecommerceAppStatic.when(EcommerceApp::getContext).thenReturn(context);
+            bitmapFactoryStatic.when(() -> BitmapFactory.decodeResource(context.getResources(), R.drawable.jt_avatar)).thenReturn(bitmap);
+            base64Static.when(() -> Base64.encodeToString(any(byte[].class), eq(Base64.DEFAULT))).thenReturn("storedimagebase64");
             when(context.openFileOutput("user-image.jpg", Context.MODE_PRIVATE)).thenReturn(fileOutputStream);
 
             // data tests
-            when(EcommerceApp.getInstance()).thenReturn(ecommerceApp);
+            ecommerceAppStatic.when(EcommerceApp::getInstance).thenReturn(ecommerceApp);
             when(ecommerceApp.getShoppingCart()).thenReturn(new ShoppingCart());
-
         } catch (IOException e) {
             fail();
         }
+    }
+
+    @After
+    public void tearDown() {
+        ecommerceAppStatic.close();
+        bitmapFactoryStatic.close();
+        base64Static.close();
     }
 
     @Test
@@ -117,7 +123,6 @@ public class ShopAPIPluginTest {
 
         ArgumentCaptor<JSObject> argument = ArgumentCaptor.forClass(JSObject.class);
         verify(call).resolve(argument.capture());
-        JSObject resultCheck = argument.getValue();
         assertEquals("mock - Josh", argument.getValue().getString("firstName"));
     }
 }
