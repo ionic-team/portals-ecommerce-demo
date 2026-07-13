@@ -63,9 +63,10 @@ cd apps/android
 The Android app targets Capacitor 8 and uses Java 21 for native builds.
 
 The Android app includes an Updates tab that syncs the Profile Portal through
-the sibling `live-update-provider-mock` repo. Tap Sync Provider App to install
-the mock provider bundle, then the Profile Portal reloads from the synced
-directory when active.
+the sibling `live-update-provider-mock` repo. Tap Sync (suspend) or Sync (async)
+to install the mock provider bundle — these call Portal's two sync APIs,
+`syncProvider()` and `syncProviderAsync()`, respectively — then tap Reload
+Profile Portal to load the update.
 
 Android builds expect `live-update-provider-mock` to exist next to this repo in
 the local workspace.
