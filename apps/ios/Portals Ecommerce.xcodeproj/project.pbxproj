@@ -1,0 +1,1191 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		100000000000000000000001 /* CapacitorCamera in Frameworks */ = {isa = PBXBuildFile; productRef = 100000000000000000000101 /* CapacitorCamera */; };
+		100000000000000000000002 /* IonicPortals in Frameworks */ = {isa = PBXBuildFile; productRef = 100000000000000000000102 /* IonicPortals */; };
+		100000000000000000000003 /* CapacitorCamera in Frameworks */ = {isa = PBXBuildFile; productRef = 100000000000000000000101 /* CapacitorCamera */; };
+		100000000000000000000004 /* IonicPortals in Frameworks */ = {isa = PBXBuildFile; productRef = 100000000000000000000102 /* IonicPortals */; };
+		100000000000000000000005 /* CapacitorCamera in Frameworks */ = {isa = PBXBuildFile; productRef = 100000000000000000000101 /* CapacitorCamera */; };
+		100000000000000000000006 /* IonicPortals in Frameworks */ = {isa = PBXBuildFile; productRef = 100000000000000000000102 /* IonicPortals */; };
+		100000000000000000000007 /* IonicLiveUpdates in Frameworks */ = {isa = PBXBuildFile; productRef = 100000000000000000000103 /* IonicLiveUpdates */; };
+		100000000000000000000008 /* LiveUpdateProviderMock in Frameworks */ = {isa = PBXBuildFile; productRef = 100000000000000000000104 /* LiveUpdateProviderMock */; };
+		6216AF16265EDF07003E3152 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6216AF15265EDF07003E3152 /* ImageLoader.swift */; };
+		6216AF1B265EFB02003E3152 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6216AF19265EFB02003E3152 /* ProductCollectionViewCell.swift */; };
+		6216AF2026601CF1003E3152 /* GalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6216AF1F26601CF1003E3152 /* GalleryViewModel.swift */; };
+		6216AF2526603D18003E3152 /* ProductCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF2326603D18003E3152 /* ProductCollectionViewCell.xib */; };
+		6216AF5F2661825C003E3152 /* capacitor-mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF4E2661825B003E3152 /* capacitor-mask.png */; };
+		6216AF602661825C003E3152 /* ionic-shirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF4F2661825B003E3152 /* ionic-shirt.png */; };
+		6216AF612661825C003E3152 /* ionitron-shirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF502661825B003E3152 /* ionitron-shirt.png */; };
+		6216AF622661825C003E3152 /* stencil-shirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF512661825B003E3152 /* stencil-shirt.png */; };
+		6216AF632661825C003E3152 /* ionic-hoodie.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF522661825B003E3152 /* ionic-hoodie.png */; };
+		6216AF642661825C003E3152 /* ionic-sticker.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF532661825B003E3152 /* ionic-sticker.png */; };
+		6216AF652661825C003E3152 /* ionitron-ascii-shirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF542661825B003E3152 /* ionitron-ascii-shirt.png */; };
+		6216AF662661825C003E3152 /* capacitor-bottle.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF552661825B003E3152 /* capacitor-bottle.png */; };
+		6216AF672661825C003E3152 /* capacitor-hat.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF562661825B003E3152 /* capacitor-hat.png */; };
+		6216AF682661825C003E3152 /* capacitor-sticker.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF572661825B003E3152 /* capacitor-sticker.png */; };
+		6216AF692661825C003E3152 /* jt-avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF582661825B003E3152 /* jt-avatar.png */; };
+		6216AF6A2661825C003E3152 /* ionitron-sticker.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF592661825B003E3152 /* ionitron-sticker.png */; };
+		6216AF6B2661825C003E3152 /* portals-shirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF5A2661825B003E3152 /* portals-shirt.png */; };
+		6216AF6C2661825C003E3152 /* capacitor-shirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF5B2661825B003E3152 /* capacitor-shirt.png */; };
+		6216AF6D2661825C003E3152 /* portals-tote.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF5C2661825B003E3152 /* portals-tote.png */; };
+		6216AF6E2661825C003E3152 /* stencil-pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF5D2661825B003E3152 /* stencil-pin.png */; };
+		6216AF6F2661825C003E3152 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF5E2661825B003E3152 /* data.json */; };
+		6216AF722661858A003E3152 /* GallerySectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6216AF712661858A003E3152 /* GallerySectionHeaderView.swift */; };
+		6216AF74266185A0003E3152 /* GallerySectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF73266185A0003E3152 /* GallerySectionHeaderView.xib */; };
+		6216AF7626618A50003E3152 /* DemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6216AF7526618A50003E3152 /* DemoData.swift */; };
+		6258AB59265E99E5006E7D8C /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258AB58265E99E5006E7D8C /* Product.swift */; };
+		6258AB5C265EB413006E7D8C /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258AB5B265EB413006E7D8C /* CartViewController.swift */; };
+		6258AB5E265EB44F006E7D8C /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258AB5D265EB44F006E7D8C /* UserProfileViewController.swift */; };
+		6258AB60265EB46C006E7D8C /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258AB5F265EB46C006E7D8C /* ProductDetailViewController.swift */; };
+		6258AB62265EB608006E7D8C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258AB61265EB608006E7D8C /* User.swift */; };
+		6258AB68265ED89E006E7D8C /* HelpPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258AB67265ED89E006E7D8C /* HelpPageViewController.swift */; };
+		6286965726695E8F00F3AE9A /* DataStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6286965626695E8F00F3AE9A /* DataStoreViewModel.swift */; };
+		62869663266EBDC700F3AE9A /* ShopTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62869662266EBDC700F3AE9A /* ShopTab.storyboard */; };
+		62869665266EBEFD00F3AE9A /* CartTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62869664266EBEFD00F3AE9A /* CartTab.storyboard */; };
+		62869667266EBFFD00F3AE9A /* ProfileTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62869666266EBFFD00F3AE9A /* ProfileTab.storyboard */; };
+		62869669266EC18800F3AE9A /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62869668266EC18800F3AE9A /* CartViewModel.swift */; };
+		6286966C266FEF4800F3AE9A /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6286966B266FEF4800F3AE9A /* UIColor+Extensions.swift */; };
+		6286966E2671313F00F3AE9A /* QuantityPickerInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6286966D2671313F00F3AE9A /* QuantityPickerInputView.swift */; };
+		628696762674145500F3AE9A /* EcommerceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628696752674145500F3AE9A /* EcommerceTests.swift */; };
+		628696802674173900F3AE9A /* MockBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 6286967F2674173900F3AE9A /* MockBridge.m */; };
+		628696832677FD9B00F3AE9A /* ShopAPIPluginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628696822677FD9B00F3AE9A /* ShopAPIPluginTests.swift */; };
+		628696842678070700F3AE9A /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF5E2661825B003E3152 /* data.json */; };
+		628696852678071400F3AE9A /* jt-avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF582661825B003E3152 /* jt-avatar.png */; };
+		62941E86265DA67F00EE7FE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62941E85265DA67F00EE7FE4 /* AppDelegate.swift */; };
+		62941E88265DA67F00EE7FE4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62941E87265DA67F00EE7FE4 /* SceneDelegate.swift */; };
+		62941E8D265DA67F00EE7FE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62941E8B265DA67F00EE7FE4 /* Main.storyboard */; };
+		62941E8F265DA68100EE7FE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62941E8E265DA68100EE7FE4 /* Assets.xcassets */; };
+		62941E92265DA68100EE7FE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62941E90265DA68100EE7FE4 /* LaunchScreen.storyboard */; };
+		62941E9A265DA71B00EE7FE4 /* ProductGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62941E99265DA71B00EE7FE4 /* ProductGalleryViewController.swift */; };
+		62D12EB226680BFD0014A836 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D12EB126680BFD0014A836 /* Address.swift */; };
+		62D12EB426680C0C0014A836 /* CreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D12EB326680C0C0014A836 /* CreditCard.swift */; };
+		62D12EB726681AA50014A836 /* ShopAPIPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D12EB626681AA50014A836 /* ShopAPIPlugin.swift */; };
+		62D12EB926681ACA0014A836 /* ShopAPIPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D12EB826681ACA0014A836 /* ShopAPIPlugin.m */; };
+		62D12EBB266826310014A836 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D12EBA266826310014A836 /* Cart.swift */; };
+		A71E306829C4AC330073D47A /* SyncView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E306729C4AC330073D47A /* SyncView.swift */; };
+		A71E306A29C4D1DB0073D47A /* SyncViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E306929C4D1DB0073D47A /* SyncViewModel.swift */; };
+		A724D67727BC0C830066D5C9 /* CartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724D67627BC0C830066D5C9 /* CartItemView.swift */; };
+		A724D67927BC21AB0066D5C9 /* CartFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724D67827BC21AB0066D5C9 /* CartFooterView.swift */; };
+		A724D67D27BC296E0066D5C9 /* CartListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724D67C27BC296E0066D5C9 /* CartListView.swift */; };
+		A73E0FA5282F132000AE7C54 /* Array+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73E0FA4282F131F00AE7C54 /* Array+Safe.swift */; };
+		A775FE712874D329003C2068 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A775FE702874D329003C2068 /* AppDelegate.swift */; };
+		A775FE732874D329003C2068 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A775FE722874D329003C2068 /* SceneDelegate.swift */; };
+		A775FE782874D329003C2068 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A775FE762874D329003C2068 /* Main.storyboard */; };
+		A775FE7A2874D32A003C2068 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A775FE792874D32A003C2068 /* Assets.xcassets */; };
+		A775FE7D2874D32A003C2068 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A775FE7B2874D32A003C2068 /* LaunchScreen.storyboard */; };
+		A775FE832874E311003C2068 /* SyncTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A775FE822874E311003C2068 /* SyncTab.storyboard */; };
+		A775FE842874E328003C2068 /* ShopTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62869662266EBDC700F3AE9A /* ShopTab.storyboard */; };
+		A775FE852874E32B003C2068 /* CartTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62869664266EBEFD00F3AE9A /* CartTab.storyboard */; };
+		A775FE862874E32F003C2068 /* ProfileTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62869666266EBFFD00F3AE9A /* ProfileTab.storyboard */; };
+		A775FE872874E336003C2068 /* Array+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73E0FA4282F131F00AE7C54 /* Array+Safe.swift */; };
+		A775FE882874E336003C2068 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6286966B266FEF4800F3AE9A /* UIColor+Extensions.swift */; };
+		A775FE8A2874E344003C2068 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6216AF19265EFB02003E3152 /* ProductCollectionViewCell.swift */; };
+		A775FE8C2874E34E003C2068 /* ProductCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF2326603D18003E3152 /* ProductCollectionViewCell.xib */; };
+		A775FE8D2874E353003C2068 /* GallerySectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6216AF712661858A003E3152 /* GallerySectionHeaderView.swift */; };
+		A775FE8E2874E353003C2068 /* QuantityPickerInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6286966D2671313F00F3AE9A /* QuantityPickerInputView.swift */; };
+		A775FE8F2874E357003C2068 /* GallerySectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF73266185A0003E3152 /* GallerySectionHeaderView.xib */; };
+		A775FE902874E35C003C2068 /* CartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724D67627BC0C830066D5C9 /* CartItemView.swift */; };
+		A775FE912874E35C003C2068 /* CartFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724D67827BC21AB0066D5C9 /* CartFooterView.swift */; };
+		A775FE922874E35C003C2068 /* CartListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724D67C27BC296E0066D5C9 /* CartListView.swift */; };
+		A775FE932874E361003C2068 /* DataStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6286965626695E8F00F3AE9A /* DataStoreViewModel.swift */; };
+		A775FE942874E361003C2068 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62869668266EC18800F3AE9A /* CartViewModel.swift */; };
+		A775FE952874E361003C2068 /* GalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6216AF1F26601CF1003E3152 /* GalleryViewModel.swift */; };
+		A775FE962874E368003C2068 /* CreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D12EB326680C0C0014A836 /* CreditCard.swift */; };
+		A775FE972874E368003C2068 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258AB61265EB608006E7D8C /* User.swift */; };
+		A775FE982874E368003C2068 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D12EB126680BFD0014A836 /* Address.swift */; };
+		A775FE992874E368003C2068 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6216AF15265EDF07003E3152 /* ImageLoader.swift */; };
+		A775FE9A2874E368003C2068 /* DemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6216AF7526618A50003E3152 /* DemoData.swift */; };
+		A775FE9B2874E368003C2068 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258AB58265E99E5006E7D8C /* Product.swift */; };
+		A775FE9C2874E368003C2068 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D12EBA266826310014A836 /* Cart.swift */; };
+		A775FE9D2874E36D003C2068 /* HelpPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258AB67265ED89E006E7D8C /* HelpPageViewController.swift */; };
+		A775FE9E2874E36D003C2068 /* ProductGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62941E99265DA71B00EE7FE4 /* ProductGalleryViewController.swift */; };
+		A775FE9F2874E36D003C2068 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258AB5F265EB46C006E7D8C /* ProductDetailViewController.swift */; };
+		A775FEA02874E36D003C2068 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258AB5B265EB413006E7D8C /* CartViewController.swift */; };
+		A775FEA22874E372003C2068 /* ShopAPIPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D12EB626681AA50014A836 /* ShopAPIPlugin.swift */; };
+		A775FEA32874E372003C2068 /* ShopAPIPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D12EB826681ACA0014A836 /* ShopAPIPlugin.m */; };
+		A775FEA52874E54E003C2068 /* SyncPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A775FEA42874E54E003C2068 /* SyncPageViewController.swift */; };
+		A775FEA72874E5FC003C2068 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62941E8E265DA68100EE7FE4 /* Assets.xcassets */; };
+		A7777125288B15EA00AF1405 /* FeaturedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7777124288B15EA00AF1405 /* FeaturedCell.swift */; };
+		A7777126288B15EA00AF1405 /* FeaturedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7777124288B15EA00AF1405 /* FeaturedCell.swift */; };
+		A795AE272901CDDC0092B4B1 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795AE262901CDDC0092B4B1 /* UserProfileViewController.swift */; };
+		A7D223792874E6D000ECD7D9 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF5E2661825B003E3152 /* data.json */; };
+		A7D2237A2874E6D700ECD7D9 /* ionic-shirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF4F2661825B003E3152 /* ionic-shirt.png */; };
+		A7D2237B2874E6D700ECD7D9 /* capacitor-hat.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF562661825B003E3152 /* capacitor-hat.png */; };
+		A7D2237C2874E6D700ECD7D9 /* ionic-sticker.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF532661825B003E3152 /* ionic-sticker.png */; };
+		A7D2237D2874E6D700ECD7D9 /* capacitor-sticker.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF572661825B003E3152 /* capacitor-sticker.png */; };
+		A7D2237E2874E6D700ECD7D9 /* capacitor-bottle.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF552661825B003E3152 /* capacitor-bottle.png */; };
+		A7D2237F2874E6D700ECD7D9 /* capacitor-mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF4E2661825B003E3152 /* capacitor-mask.png */; };
+		A7D223802874E6D700ECD7D9 /* capacitor-shirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF5B2661825B003E3152 /* capacitor-shirt.png */; };
+		A7D223812874E6D700ECD7D9 /* portals-tote.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF5C2661825B003E3152 /* portals-tote.png */; };
+		A7D223822874E6D700ECD7D9 /* ionitron-sticker.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF592661825B003E3152 /* ionitron-sticker.png */; };
+		A7D223832874E6D700ECD7D9 /* jt-avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF582661825B003E3152 /* jt-avatar.png */; };
+		A7D223842874E6D700ECD7D9 /* ionitron-shirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF502661825B003E3152 /* ionitron-shirt.png */; };
+		A7D223852874E6D700ECD7D9 /* portals-shirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF5A2661825B003E3152 /* portals-shirt.png */; };
+		A7D223862874E6D700ECD7D9 /* ionic-hoodie.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF522661825B003E3152 /* ionic-hoodie.png */; };
+		A7D223872874E6D700ECD7D9 /* stencil-shirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF512661825B003E3152 /* stencil-shirt.png */; };
+		A7D223882874E6D700ECD7D9 /* ionitron-ascii-shirt.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF542661825B003E3152 /* ionitron-ascii-shirt.png */; };
+		A7D223892874E6D700ECD7D9 /* stencil-pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 6216AF5D2661825B003E3152 /* stencil-pin.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		628696782674145500F3AE9A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 62941E7A265DA67F00EE7FE4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 62941E81265DA67F00EE7FE4;
+			remoteInfo = Ecommerce;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6216AF15265EDF07003E3152 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		6216AF19265EFB02003E3152 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		6216AF1F26601CF1003E3152 /* GalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewModel.swift; sourceTree = "<group>"; };
+		6216AF2426603D18003E3152 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ProductCollectionViewCell.xib; sourceTree = "<group>"; };
+		6216AF4E2661825B003E3152 /* capacitor-mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capacitor-mask.png"; sourceTree = "<group>"; };
+		6216AF4F2661825B003E3152 /* ionic-shirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ionic-shirt.png"; sourceTree = "<group>"; };
+		6216AF502661825B003E3152 /* ionitron-shirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ionitron-shirt.png"; sourceTree = "<group>"; };
+		6216AF512661825B003E3152 /* stencil-shirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stencil-shirt.png"; sourceTree = "<group>"; };
+		6216AF522661825B003E3152 /* ionic-hoodie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ionic-hoodie.png"; sourceTree = "<group>"; };
+		6216AF532661825B003E3152 /* ionic-sticker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ionic-sticker.png"; sourceTree = "<group>"; };
+		6216AF542661825B003E3152 /* ionitron-ascii-shirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ionitron-ascii-shirt.png"; sourceTree = "<group>"; };
+		6216AF552661825B003E3152 /* capacitor-bottle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capacitor-bottle.png"; sourceTree = "<group>"; };
+		6216AF562661825B003E3152 /* capacitor-hat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capacitor-hat.png"; sourceTree = "<group>"; };
+		6216AF572661825B003E3152 /* capacitor-sticker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capacitor-sticker.png"; sourceTree = "<group>"; };
+		6216AF582661825B003E3152 /* jt-avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jt-avatar.png"; sourceTree = "<group>"; };
+		6216AF592661825B003E3152 /* ionitron-sticker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ionitron-sticker.png"; sourceTree = "<group>"; };
+		6216AF5A2661825B003E3152 /* portals-shirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "portals-shirt.png"; sourceTree = "<group>"; };
+		6216AF5B2661825B003E3152 /* capacitor-shirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capacitor-shirt.png"; sourceTree = "<group>"; };
+		6216AF5C2661825B003E3152 /* portals-tote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "portals-tote.png"; sourceTree = "<group>"; };
+		6216AF5D2661825B003E3152 /* stencil-pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stencil-pin.png"; sourceTree = "<group>"; };
+		6216AF5E2661825B003E3152 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		6216AF712661858A003E3152 /* GallerySectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GallerySectionHeaderView.swift; sourceTree = "<group>"; };
+		6216AF73266185A0003E3152 /* GallerySectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GallerySectionHeaderView.xib; sourceTree = "<group>"; };
+		6216AF7526618A50003E3152 /* DemoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoData.swift; sourceTree = "<group>"; };
+		6258AB58265E99E5006E7D8C /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		6258AB5B265EB413006E7D8C /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		6258AB5D265EB44F006E7D8C /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		6258AB5F265EB46C006E7D8C /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
+		6258AB61265EB608006E7D8C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		6258AB67265ED89E006E7D8C /* HelpPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpPageViewController.swift; sourceTree = "<group>"; };
+		6286965626695E8F00F3AE9A /* DataStoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreViewModel.swift; sourceTree = "<group>"; };
+		62869662266EBDC700F3AE9A /* ShopTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShopTab.storyboard; sourceTree = "<group>"; };
+		62869664266EBEFD00F3AE9A /* CartTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CartTab.storyboard; sourceTree = "<group>"; };
+		62869666266EBFFD00F3AE9A /* ProfileTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileTab.storyboard; sourceTree = "<group>"; };
+		62869668266EC18800F3AE9A /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
+		6286966B266FEF4800F3AE9A /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		6286966D2671313F00F3AE9A /* QuantityPickerInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityPickerInputView.swift; sourceTree = "<group>"; };
+		628696732674145500F3AE9A /* EcommerceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EcommerceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		628696752674145500F3AE9A /* EcommerceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcommerceTests.swift; sourceTree = "<group>"; };
+		628696772674145500F3AE9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6286967D2674173900F3AE9A /* EcommerceTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EcommerceTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		6286967E2674173900F3AE9A /* MockBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MockBridge.h; sourceTree = "<group>"; };
+		6286967F2674173900F3AE9A /* MockBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MockBridge.m; sourceTree = "<group>"; };
+		628696822677FD9B00F3AE9A /* ShopAPIPluginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopAPIPluginTests.swift; sourceTree = "<group>"; };
+		62941E82265DA67F00EE7FE4 /* Ecommerce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ecommerce.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		62941E85265DA67F00EE7FE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		62941E87265DA67F00EE7FE4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		62941E8C265DA67F00EE7FE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		62941E8E265DA68100EE7FE4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		62941E91265DA68100EE7FE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		62941E93265DA68100EE7FE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62941E99265DA71B00EE7FE4 /* ProductGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductGalleryViewController.swift; sourceTree = "<group>"; };
+		62D12EB126680BFD0014A836 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		62D12EB326680C0C0014A836 /* CreditCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCard.swift; sourceTree = "<group>"; };
+		62D12EB626681AA50014A836 /* ShopAPIPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopAPIPlugin.swift; sourceTree = "<group>"; };
+		62D12EB826681ACA0014A836 /* ShopAPIPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopAPIPlugin.m; sourceTree = "<group>"; };
+		62D12EBA266826310014A836 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
+		A71E306729C4AC330073D47A /* SyncView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncView.swift; sourceTree = "<group>"; };
+		A71E306929C4D1DB0073D47A /* SyncViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncViewModel.swift; sourceTree = "<group>"; };
+		A724D67627BC0C830066D5C9 /* CartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemView.swift; sourceTree = "<group>"; };
+		A724D67827BC21AB0066D5C9 /* CartFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartFooterView.swift; sourceTree = "<group>"; };
+		A724D67C27BC296E0066D5C9 /* CartListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListView.swift; sourceTree = "<group>"; };
+		A73E0FA4282F131F00AE7C54 /* Array+Safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Safe.swift"; sourceTree = "<group>"; };
+		A775FE6E2874D329003C2068 /* EcommerceLiveUpdates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EcommerceLiveUpdates.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A775FE702874D329003C2068 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A775FE722874D329003C2068 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		A775FE772874D329003C2068 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A775FE792874D32A003C2068 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A775FE7C2874D32A003C2068 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A775FE7E2874D32A003C2068 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A775FE822874E311003C2068 /* SyncTab.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SyncTab.storyboard; sourceTree = "<group>"; };
+		A775FEA42874E54E003C2068 /* SyncPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncPageViewController.swift; sourceTree = "<group>"; };
+		A7777124288B15EA00AF1405 /* FeaturedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedCell.swift; sourceTree = "<group>"; };
+		A795AE262901CDDC0092B4B1 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		628696702674145500F3AE9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				100000000000000000000003 /* CapacitorCamera in Frameworks */,
+				100000000000000000000004 /* IonicPortals in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62941E7F265DA67F00EE7FE4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				100000000000000000000001 /* CapacitorCamera in Frameworks */,
+				100000000000000000000002 /* IonicPortals in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A775FE6B2874D329003C2068 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				100000000000000000000005 /* CapacitorCamera in Frameworks */,
+				100000000000000000000006 /* IonicPortals in Frameworks */,
+				100000000000000000000007 /* IonicLiveUpdates in Frameworks */,
+				100000000000000000000008 /* LiveUpdateProviderMock in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6216AF17265EFAEB003E3152 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				6216AF19265EFB02003E3152 /* ProductCollectionViewCell.swift */,
+				6216AF2326603D18003E3152 /* ProductCollectionViewCell.xib */,
+				A7777124288B15EA00AF1405 /* FeaturedCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		6216AF1C265FEB7B003E3152 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				6286965626695E8F00F3AE9A /* DataStoreViewModel.swift */,
+				6216AF1F26601CF1003E3152 /* GalleryViewModel.swift */,
+				62869668266EC18800F3AE9A /* CartViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		6216AF4C2661825B003E3152 /* Demo Data */ = {
+			isa = PBXGroup;
+			children = (
+				6216AF4D2661825B003E3152 /* images */,
+				6216AF5E2661825B003E3152 /* data.json */,
+			);
+			name = "Demo Data";
+			path = "Portals Ecommerce/Demo Data";
+			sourceTree = "<group>";
+		};
+		6216AF4D2661825B003E3152 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				6216AF4E2661825B003E3152 /* capacitor-mask.png */,
+				6216AF4F2661825B003E3152 /* ionic-shirt.png */,
+				6216AF502661825B003E3152 /* ionitron-shirt.png */,
+				6216AF512661825B003E3152 /* stencil-shirt.png */,
+				6216AF522661825B003E3152 /* ionic-hoodie.png */,
+				6216AF532661825B003E3152 /* ionic-sticker.png */,
+				6216AF542661825B003E3152 /* ionitron-ascii-shirt.png */,
+				6216AF552661825B003E3152 /* capacitor-bottle.png */,
+				6216AF562661825B003E3152 /* capacitor-hat.png */,
+				6216AF572661825B003E3152 /* capacitor-sticker.png */,
+				6216AF582661825B003E3152 /* jt-avatar.png */,
+				6216AF592661825B003E3152 /* ionitron-sticker.png */,
+				6216AF5A2661825B003E3152 /* portals-shirt.png */,
+				6216AF5B2661825B003E3152 /* capacitor-shirt.png */,
+				6216AF5C2661825B003E3152 /* portals-tote.png */,
+				6216AF5D2661825B003E3152 /* stencil-pin.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		6216AF7026618535003E3152 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6216AF712661858A003E3152 /* GallerySectionHeaderView.swift */,
+				6216AF73266185A0003E3152 /* GallerySectionHeaderView.xib */,
+				6286966D2671313F00F3AE9A /* QuantityPickerInputView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6258AB5A265E99EB006E7D8C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6216AF7526618A50003E3152 /* DemoData.swift */,
+				6258AB58265E99E5006E7D8C /* Product.swift */,
+				6258AB61265EB608006E7D8C /* User.swift */,
+				62D12EB126680BFD0014A836 /* Address.swift */,
+				62D12EB326680C0C0014A836 /* CreditCard.swift */,
+				62D12EBA266826310014A836 /* Cart.swift */,
+				6216AF15265EDF07003E3152 /* ImageLoader.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6258AB64265ED770006E7D8C /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				62941E99265DA71B00EE7FE4 /* ProductGalleryViewController.swift */,
+				6258AB5F265EB46C006E7D8C /* ProductDetailViewController.swift */,
+				6258AB5B265EB413006E7D8C /* CartViewController.swift */,
+				6258AB5D265EB44F006E7D8C /* UserProfileViewController.swift */,
+				6258AB67265ED89E006E7D8C /* HelpPageViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		6286966A266FEF0300F3AE9A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6286966B266FEF4800F3AE9A /* UIColor+Extensions.swift */,
+				A73E0FA4282F131F00AE7C54 /* Array+Safe.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		628696742674145500F3AE9A /* EcommerceTests */ = {
+			isa = PBXGroup;
+			children = (
+				628696752674145500F3AE9A /* EcommerceTests.swift */,
+				628696822677FD9B00F3AE9A /* ShopAPIPluginTests.swift */,
+				6286967E2674173900F3AE9A /* MockBridge.h */,
+				6286967F2674173900F3AE9A /* MockBridge.m */,
+				6286967D2674173900F3AE9A /* EcommerceTests-Bridging-Header.h */,
+				628696772674145500F3AE9A /* Info.plist */,
+			);
+			path = EcommerceTests;
+			sourceTree = "<group>";
+		};
+		62941E79265DA67F00EE7FE4 = {
+			isa = PBXGroup;
+			children = (
+				62941E84265DA67F00EE7FE4 /* Portals Ecommerce */,
+				6216AF4C2661825B003E3152 /* Demo Data */,
+				628696742674145500F3AE9A /* EcommerceTests */,
+				A775FE6F2874D329003C2068 /* EcommerceLiveUpdates */,
+				62941E83265DA67F00EE7FE4 /* Products */,
+				8A3CC88AE8D4A10AA21018AF /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		62941E83265DA67F00EE7FE4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				62941E82265DA67F00EE7FE4 /* Ecommerce.app */,
+				628696732674145500F3AE9A /* EcommerceTests.xctest */,
+				A775FE6E2874D329003C2068 /* EcommerceLiveUpdates.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		62941E84265DA67F00EE7FE4 /* Portals Ecommerce */ = {
+			isa = PBXGroup;
+			children = (
+				62941E85265DA67F00EE7FE4 /* AppDelegate.swift */,
+				62941E87265DA67F00EE7FE4 /* SceneDelegate.swift */,
+				62D12EB526681A710014A836 /* Plugins */,
+				6258AB64265ED770006E7D8C /* View Controllers */,
+				6258AB5A265E99EB006E7D8C /* Models */,
+				6216AF1C265FEB7B003E3152 /* View Models */,
+				A724D67527BC0C180066D5C9 /* SwiftUI */,
+				6216AF7026618535003E3152 /* Views */,
+				6216AF17265EFAEB003E3152 /* Cells */,
+				6286966A266FEF0300F3AE9A /* Extensions */,
+				62941E8B265DA67F00EE7FE4 /* Main.storyboard */,
+				62869662266EBDC700F3AE9A /* ShopTab.storyboard */,
+				62869664266EBEFD00F3AE9A /* CartTab.storyboard */,
+				62869666266EBFFD00F3AE9A /* ProfileTab.storyboard */,
+				62941E8E265DA68100EE7FE4 /* Assets.xcassets */,
+				62941E90265DA68100EE7FE4 /* LaunchScreen.storyboard */,
+				62941E93265DA68100EE7FE4 /* Info.plist */,
+			);
+			path = "Portals Ecommerce";
+			sourceTree = "<group>";
+		};
+		62D12EB526681A710014A836 /* Plugins */ = {
+			isa = PBXGroup;
+			children = (
+				62D12EB626681AA50014A836 /* ShopAPIPlugin.swift */,
+				62D12EB826681ACA0014A836 /* ShopAPIPlugin.m */,
+			);
+			path = Plugins;
+			sourceTree = "<group>";
+		};
+		8A3CC88AE8D4A10AA21018AF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A724D67527BC0C180066D5C9 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				A724D67627BC0C830066D5C9 /* CartItemView.swift */,
+				A724D67C27BC296E0066D5C9 /* CartListView.swift */,
+				A724D67827BC21AB0066D5C9 /* CartFooterView.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		A775FE6F2874D329003C2068 /* EcommerceLiveUpdates */ = {
+			isa = PBXGroup;
+			children = (
+				A775FEA42874E54E003C2068 /* SyncPageViewController.swift */,
+				A775FE702874D329003C2068 /* AppDelegate.swift */,
+				A775FE722874D329003C2068 /* SceneDelegate.swift */,
+				A775FE822874E311003C2068 /* SyncTab.storyboard */,
+				A775FE762874D329003C2068 /* Main.storyboard */,
+				A775FE792874D32A003C2068 /* Assets.xcassets */,
+				A775FE7B2874D32A003C2068 /* LaunchScreen.storyboard */,
+				A775FE7E2874D32A003C2068 /* Info.plist */,
+				A795AE262901CDDC0092B4B1 /* UserProfileViewController.swift */,
+				A71E306729C4AC330073D47A /* SyncView.swift */,
+				A71E306929C4D1DB0073D47A /* SyncViewModel.swift */,
+			);
+			path = EcommerceLiveUpdates;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		628696722674145500F3AE9A /* EcommerceTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6286967C2674145500F3AE9A /* Build configuration list for PBXNativeTarget "EcommerceTests" */;
+			buildPhases = (
+				6286966F2674145500F3AE9A /* Sources */,
+				628696702674145500F3AE9A /* Frameworks */,
+				628696712674145500F3AE9A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				628696792674145500F3AE9A /* PBXTargetDependency */,
+			);
+			name = EcommerceTests;
+			packageProductDependencies = (
+				100000000000000000000101 /* CapacitorCamera */,
+				100000000000000000000102 /* IonicPortals */,
+			);
+			productName = EcommerceTests;
+			productReference = 628696732674145500F3AE9A /* EcommerceTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		62941E81265DA67F00EE7FE4 /* Ecommerce */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 62941E96265DA68100EE7FE4 /* Build configuration list for PBXNativeTarget "Ecommerce" */;
+			buildPhases = (
+				62941E7E265DA67F00EE7FE4 /* Sources */,
+				62941E7F265DA67F00EE7FE4 /* Frameworks */,
+				62941E80265DA67F00EE7FE4 /* Resources */,
+				553259E02671AE5B004DA7E3 /* Copy Web App */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Ecommerce;
+			packageProductDependencies = (
+				100000000000000000000101 /* CapacitorCamera */,
+				100000000000000000000102 /* IonicPortals */,
+			);
+			productName = "Portals Ecommerce";
+			productReference = 62941E82265DA67F00EE7FE4 /* Ecommerce.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A775FE6D2874D329003C2068 /* EcommerceLiveUpdates */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A775FE812874D32A003C2068 /* Build configuration list for PBXNativeTarget "EcommerceLiveUpdates" */;
+			buildPhases = (
+				A775FE6A2874D329003C2068 /* Sources */,
+				A775FE6B2874D329003C2068 /* Frameworks */,
+				A775FE6C2874D329003C2068 /* Resources */,
+				A775FEA62874E5B4003C2068 /* Copy Web App */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EcommerceLiveUpdates;
+			packageProductDependencies = (
+				100000000000000000000101 /* CapacitorCamera */,
+				100000000000000000000102 /* IonicPortals */,
+				100000000000000000000103 /* IonicLiveUpdates */,
+				100000000000000000000104 /* LiveUpdateProviderMock */,
+			);
+			productName = EcommerceLiveUpdates;
+			productReference = A775FE6E2874D329003C2068 /* EcommerceLiveUpdates.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		62941E7A265DA67F00EE7FE4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					628696722674145500F3AE9A = {
+						CreatedOnToolsVersion = 12.5;
+						LastSwiftMigration = 1250;
+						TestTargetID = 62941E81265DA67F00EE7FE4;
+					};
+					62941E81265DA67F00EE7FE4 = {
+						CreatedOnToolsVersion = 12.5;
+						LastSwiftMigration = 1250;
+					};
+					A775FE6D2874D329003C2068 = {
+						CreatedOnToolsVersion = 13.4;
+					};
+				};
+			};
+			buildConfigurationList = 62941E7D265DA67F00EE7FE4 /* Build configuration list for PBXProject "Portals Ecommerce" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 62941E79265DA67F00EE7FE4;
+			packageReferences = (
+				100000000000000000000201 /* XCLocalSwiftPackageReference "../../portals/shop/node_modules/@capacitor/camera" */,
+				100000000000000000000202 /* XCLocalSwiftPackageReference "../../../ionic-portals-ios" */,
+				100000000000000000000203 /* XCRemoteSwiftPackageReference "ionic-live-updates-releases" */,
+				100000000000000000000204 /* XCLocalSwiftPackageReference "../../../live-update-provider-mock" */,
+			);
+			productRefGroup = 62941E83265DA67F00EE7FE4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				62941E81265DA67F00EE7FE4 /* Ecommerce */,
+				628696722674145500F3AE9A /* EcommerceTests */,
+				A775FE6D2874D329003C2068 /* EcommerceLiveUpdates */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		628696712674145500F3AE9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				628696852678071400F3AE9A /* jt-avatar.png in Resources */,
+				628696842678070700F3AE9A /* data.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62941E80265DA67F00EE7FE4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6216AF5F2661825C003E3152 /* capacitor-mask.png in Resources */,
+				6216AF6A2661825C003E3152 /* ionitron-sticker.png in Resources */,
+				6216AF6B2661825C003E3152 /* portals-shirt.png in Resources */,
+				6216AF682661825C003E3152 /* capacitor-sticker.png in Resources */,
+				6216AF6E2661825C003E3152 /* stencil-pin.png in Resources */,
+				62941E92265DA68100EE7FE4 /* LaunchScreen.storyboard in Resources */,
+				62869663266EBDC700F3AE9A /* ShopTab.storyboard in Resources */,
+				6216AF642661825C003E3152 /* ionic-sticker.png in Resources */,
+				62941E8F265DA68100EE7FE4 /* Assets.xcassets in Resources */,
+				6216AF74266185A0003E3152 /* GallerySectionHeaderView.xib in Resources */,
+				6216AF672661825C003E3152 /* capacitor-hat.png in Resources */,
+				6216AF2526603D18003E3152 /* ProductCollectionViewCell.xib in Resources */,
+				62869667266EBFFD00F3AE9A /* ProfileTab.storyboard in Resources */,
+				6216AF6D2661825C003E3152 /* portals-tote.png in Resources */,
+				62869665266EBEFD00F3AE9A /* CartTab.storyboard in Resources */,
+				6216AF6F2661825C003E3152 /* data.json in Resources */,
+				6216AF662661825C003E3152 /* capacitor-bottle.png in Resources */,
+				6216AF632661825C003E3152 /* ionic-hoodie.png in Resources */,
+				62941E8D265DA67F00EE7FE4 /* Main.storyboard in Resources */,
+				6216AF692661825C003E3152 /* jt-avatar.png in Resources */,
+				6216AF622661825C003E3152 /* stencil-shirt.png in Resources */,
+				6216AF612661825C003E3152 /* ionitron-shirt.png in Resources */,
+				6216AF652661825C003E3152 /* ionitron-ascii-shirt.png in Resources */,
+				6216AF602661825C003E3152 /* ionic-shirt.png in Resources */,
+				6216AF6C2661825C003E3152 /* capacitor-shirt.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A775FE6C2874D329003C2068 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7D223822874E6D700ECD7D9 /* ionitron-sticker.png in Resources */,
+				A7D2237D2874E6D700ECD7D9 /* capacitor-sticker.png in Resources */,
+				A7D223832874E6D700ECD7D9 /* jt-avatar.png in Resources */,
+				A775FE7D2874D32A003C2068 /* LaunchScreen.storyboard in Resources */,
+				A7D223892874E6D700ECD7D9 /* stencil-pin.png in Resources */,
+				A775FE832874E311003C2068 /* SyncTab.storyboard in Resources */,
+				A7D2237A2874E6D700ECD7D9 /* ionic-shirt.png in Resources */,
+				A775FEA72874E5FC003C2068 /* Assets.xcassets in Resources */,
+				A7D2237B2874E6D700ECD7D9 /* capacitor-hat.png in Resources */,
+				A7D223852874E6D700ECD7D9 /* portals-shirt.png in Resources */,
+				A775FE8C2874E34E003C2068 /* ProductCollectionViewCell.xib in Resources */,
+				A7D223882874E6D700ECD7D9 /* ionitron-ascii-shirt.png in Resources */,
+				A775FE7A2874D32A003C2068 /* Assets.xcassets in Resources */,
+				A775FE8F2874E357003C2068 /* GallerySectionHeaderView.xib in Resources */,
+				A7D223812874E6D700ECD7D9 /* portals-tote.png in Resources */,
+				A775FE782874D329003C2068 /* Main.storyboard in Resources */,
+				A7D223862874E6D700ECD7D9 /* ionic-hoodie.png in Resources */,
+				A7D223792874E6D000ECD7D9 /* data.json in Resources */,
+				A7D2237C2874E6D700ECD7D9 /* ionic-sticker.png in Resources */,
+				A7D2237F2874E6D700ECD7D9 /* capacitor-mask.png in Resources */,
+				A7D223842874E6D700ECD7D9 /* ionitron-shirt.png in Resources */,
+				A775FE852874E32B003C2068 /* CartTab.storyboard in Resources */,
+				A7D223872874E6D700ECD7D9 /* stencil-shirt.png in Resources */,
+				A775FE862874E32F003C2068 /* ProfileTab.storyboard in Resources */,
+				A775FE842874E328003C2068 /* ShopTab.storyboard in Resources */,
+				A7D2237E2874E6D700ECD7D9 /* capacitor-bottle.png in Resources */,
+				A7D223802874E6D700ECD7D9 /* capacitor-shirt.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		553259E02671AE5B004DA7E3 /* Copy Web App */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Web App";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert # Type a script or drag a script file from your workspace to insert its path.\nEMBEDDED_DIR=\"${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.app/portals\"\nAPP_LIST=(\n    \"shopwebapp|/../../portals/shop/build\"\n    \"featured|/../../portals/featured/build\"\n)\n\nmkdir \"${EMBEDDED_DIR}\"\n\nfor APP_INFO in ${APP_LIST[@]}\ndo\n    IFS=\"|\" read -r -a arr <<< \"${APP_INFO}\"\n    APP_NAME=\"${arr[0]}\"\n    EMBEDDED_APP=\"${SRCROOT}${arr[1]}\"\n    \n    echo \"${APP_NAME} ${EMBEDDED_APP}\"\n    \n    if [ -d \"${EMBEDDED_DIR}/${APP_NAME}\" ]\n    then\n        cd \"${EMBEDDED_DIR}\"\n        rm -r \"${APP_NAME}\"\n    fi\n\n    mkdir \"${EMBEDDED_DIR}/${APP_NAME}\"\n\n    ZIP_FILE=\"${APP_NAME}.zip\"\n\n    if [ -d \"${EMBEDDED_APP}\" ] \n    then\n        cd \"${EMBEDDED_APP}\"\n        zip -vr \"${ZIP_FILE}\" * -x \"*.DS_Store\"\n        unzip \"${ZIP_FILE}\" -d \"${EMBEDDED_DIR}/${APP_NAME}\"\n        rm \"${ZIP_FILE}\"\n    else\n        echo \"App ${APP_NAME} has not been built! ${EMBEDDED_APP}\"\n        exit 999\n    fi\ndone\n";
+		};
+		A775FEA62874E5B4003C2068 /* Copy Web App */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Web App";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert # Type a script or drag a script file from your workspace to insert its path.\nEMBEDDED_DIR=\"${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.app/portals\"\nAPP_LIST=(\n    \"shopwebapp|/../../portals/shop/build\"\n    \"featured|/../../portals/featured/build\"\n)\n\nmkdir \"${EMBEDDED_DIR}\"\n\nfor APP_INFO in ${APP_LIST[@]}\ndo\n    IFS=\"|\" read -r -a arr <<< \"${APP_INFO}\"\n    APP_NAME=\"${arr[0]}\"\n    EMBEDDED_APP=\"${SRCROOT}${arr[1]}\"\n    \n    echo \"${APP_NAME} ${EMBEDDED_APP}\"\n    \n    if [ -d \"${EMBEDDED_DIR}/${APP_NAME}\" ]\n    then\n        cd \"${EMBEDDED_DIR}\"\n        rm -r \"${APP_NAME}\"\n    fi\n\n    mkdir \"${EMBEDDED_DIR}/${APP_NAME}\"\n\n    ZIP_FILE=\"${APP_NAME}.zip\"\n\n    if [ -d \"${EMBEDDED_APP}\" ] \n    then\n        cd \"${EMBEDDED_APP}\"\n        zip -vr \"${ZIP_FILE}\" * -x \"*.DS_Store\"\n        unzip \"${ZIP_FILE}\" -d \"${EMBEDDED_DIR}/${APP_NAME}\"\n        rm \"${ZIP_FILE}\"\n    else\n        echo \"App ${APP_NAME} has not been built! ${EMBEDDED_APP}\"\n        exit 999\n    fi\ndone\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6286966F2674145500F3AE9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				628696802674173900F3AE9A /* MockBridge.m in Sources */,
+				628696832677FD9B00F3AE9A /* ShopAPIPluginTests.swift in Sources */,
+				628696762674145500F3AE9A /* EcommerceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62941E7E265DA67F00EE7FE4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6216AF7626618A50003E3152 /* DemoData.swift in Sources */,
+				6216AF16265EDF07003E3152 /* ImageLoader.swift in Sources */,
+				62941E9A265DA71B00EE7FE4 /* ProductGalleryViewController.swift in Sources */,
+				6258AB5E265EB44F006E7D8C /* UserProfileViewController.swift in Sources */,
+				A724D67927BC21AB0066D5C9 /* CartFooterView.swift in Sources */,
+				6258AB68265ED89E006E7D8C /* HelpPageViewController.swift in Sources */,
+				6286965726695E8F00F3AE9A /* DataStoreViewModel.swift in Sources */,
+				62869669266EC18800F3AE9A /* CartViewModel.swift in Sources */,
+				62D12EB226680BFD0014A836 /* Address.swift in Sources */,
+				6258AB60265EB46C006E7D8C /* ProductDetailViewController.swift in Sources */,
+				6258AB5C265EB413006E7D8C /* CartViewController.swift in Sources */,
+				6286966C266FEF4800F3AE9A /* UIColor+Extensions.swift in Sources */,
+				A7777125288B15EA00AF1405 /* FeaturedCell.swift in Sources */,
+				6216AF1B265EFB02003E3152 /* ProductCollectionViewCell.swift in Sources */,
+				6216AF2026601CF1003E3152 /* GalleryViewModel.swift in Sources */,
+				A724D67727BC0C830066D5C9 /* CartItemView.swift in Sources */,
+				62D12EBB266826310014A836 /* Cart.swift in Sources */,
+				6216AF722661858A003E3152 /* GallerySectionHeaderView.swift in Sources */,
+				6286966E2671313F00F3AE9A /* QuantityPickerInputView.swift in Sources */,
+				6258AB62265EB608006E7D8C /* User.swift in Sources */,
+				62941E86265DA67F00EE7FE4 /* AppDelegate.swift in Sources */,
+				62D12EB426680C0C0014A836 /* CreditCard.swift in Sources */,
+				62D12EB926681ACA0014A836 /* ShopAPIPlugin.m in Sources */,
+				62941E88265DA67F00EE7FE4 /* SceneDelegate.swift in Sources */,
+				A73E0FA5282F132000AE7C54 /* Array+Safe.swift in Sources */,
+				6258AB59265E99E5006E7D8C /* Product.swift in Sources */,
+				62D12EB726681AA50014A836 /* ShopAPIPlugin.swift in Sources */,
+				A724D67D27BC296E0066D5C9 /* CartListView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A775FE6A2874D329003C2068 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A775FE982874E368003C2068 /* Address.swift in Sources */,
+				A795AE272901CDDC0092B4B1 /* UserProfileViewController.swift in Sources */,
+				A775FE9E2874E36D003C2068 /* ProductGalleryViewController.swift in Sources */,
+				A775FE962874E368003C2068 /* CreditCard.swift in Sources */,
+				A775FE872874E336003C2068 /* Array+Safe.swift in Sources */,
+				A775FE9D2874E36D003C2068 /* HelpPageViewController.swift in Sources */,
+				A775FEA22874E372003C2068 /* ShopAPIPlugin.swift in Sources */,
+				A775FE952874E361003C2068 /* GalleryViewModel.swift in Sources */,
+				A71E306A29C4D1DB0073D47A /* SyncViewModel.swift in Sources */,
+				A775FEA02874E36D003C2068 /* CartViewController.swift in Sources */,
+				A775FE9A2874E368003C2068 /* DemoData.swift in Sources */,
+				A7777126288B15EA00AF1405 /* FeaturedCell.swift in Sources */,
+				A775FE882874E336003C2068 /* UIColor+Extensions.swift in Sources */,
+				A775FEA52874E54E003C2068 /* SyncPageViewController.swift in Sources */,
+				A775FE942874E361003C2068 /* CartViewModel.swift in Sources */,
+				A775FE922874E35C003C2068 /* CartListView.swift in Sources */,
+				A71E306829C4AC330073D47A /* SyncView.swift in Sources */,
+				A775FE8D2874E353003C2068 /* GallerySectionHeaderView.swift in Sources */,
+				A775FE972874E368003C2068 /* User.swift in Sources */,
+				A775FE992874E368003C2068 /* ImageLoader.swift in Sources */,
+				A775FE902874E35C003C2068 /* CartItemView.swift in Sources */,
+				A775FE8A2874E344003C2068 /* ProductCollectionViewCell.swift in Sources */,
+				A775FE712874D329003C2068 /* AppDelegate.swift in Sources */,
+				A775FE9C2874E368003C2068 /* Cart.swift in Sources */,
+				A775FE8E2874E353003C2068 /* QuantityPickerInputView.swift in Sources */,
+				A775FE732874D329003C2068 /* SceneDelegate.swift in Sources */,
+				A775FEA32874E372003C2068 /* ShopAPIPlugin.m in Sources */,
+				A775FE912874E35C003C2068 /* CartFooterView.swift in Sources */,
+				A775FE9F2874E36D003C2068 /* ProductDetailViewController.swift in Sources */,
+				A775FE932874E361003C2068 /* DataStoreViewModel.swift in Sources */,
+				A775FE9B2874E368003C2068 /* Product.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		628696792674145500F3AE9A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 62941E81265DA67F00EE7FE4 /* Ecommerce */;
+			targetProxy = 628696782674145500F3AE9A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6216AF2326603D18003E3152 /* ProductCollectionViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6216AF2426603D18003E3152 /* Base */,
+			);
+			name = ProductCollectionViewCell.xib;
+			sourceTree = "<group>";
+		};
+		62941E8B265DA67F00EE7FE4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				62941E8C265DA67F00EE7FE4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		62941E90265DA68100EE7FE4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				62941E91265DA68100EE7FE4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A775FE762874D329003C2068 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A775FE772874D329003C2068 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A775FE7B2874D32A003C2068 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A775FE7C2874D32A003C2068 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6286967A2674145500F3AE9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9YN2HU59K8;
+				INFOPLIST_FILE = EcommerceTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.ionic.EcommerceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "EcommerceTests/EcommerceTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ecommerce.app/Ecommerce";
+			};
+			name = Debug;
+		};
+		6286967B2674145500F3AE9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9YN2HU59K8;
+				INFOPLIST_FILE = EcommerceTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.ionic.EcommerceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "EcommerceTests/EcommerceTests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ecommerce.app/Ecommerce";
+			};
+			name = Release;
+		};
+		62941E94265DA68100EE7FE4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		62941E95265DA68100EE7FE4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		62941E97265DA68100EE7FE4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9YN2HU59K8;
+				INFOPLIST_FILE = "Portals Ecommerce/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.ionic.portals.ecommerce;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		62941E98265DA68100EE7FE4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9YN2HU59K8;
+				INFOPLIST_FILE = "Portals Ecommerce/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.ionic.portals.ecommerce;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A775FE7F2874D32A003C2068 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9YN2HU59K8;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EcommerceLiveUpdates/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.ionic.portals.ecommerceliveupdates.EcommerceLiveUpdates;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A775FE802874D32A003C2068 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9YN2HU59K8;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EcommerceLiveUpdates/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.ionic.portals.ecommerceliveupdates.EcommerceLiveUpdates;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6286967C2674145500F3AE9A /* Build configuration list for PBXNativeTarget "EcommerceTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6286967A2674145500F3AE9A /* Debug */,
+				6286967B2674145500F3AE9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		62941E7D265DA67F00EE7FE4 /* Build configuration list for PBXProject "Portals Ecommerce" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62941E94265DA68100EE7FE4 /* Debug */,
+				62941E95265DA68100EE7FE4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		62941E96265DA68100EE7FE4 /* Build configuration list for PBXNativeTarget "Ecommerce" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62941E97265DA68100EE7FE4 /* Debug */,
+				62941E98265DA68100EE7FE4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A775FE812874D32A003C2068 /* Build configuration list for PBXNativeTarget "EcommerceLiveUpdates" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A775FE7F2874D32A003C2068 /* Debug */,
+				A775FE802874D32A003C2068 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		100000000000000000000201 /* XCLocalSwiftPackageReference "../../portals/shop/node_modules/@capacitor/camera" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../../portals/shop/node_modules/@capacitor/camera";
+		};
+		100000000000000000000202 /* XCLocalSwiftPackageReference "../../../ionic-portals-ios" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../../../ionic-portals-ios";
+		};
+		100000000000000000000204 /* XCLocalSwiftPackageReference "../../../live-update-provider-mock" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../../../live-update-provider-mock";
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		100000000000000000000203 /* XCRemoteSwiftPackageReference "ionic-live-updates-releases" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ionic-team/ionic-live-updates-releases";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		100000000000000000000101 /* CapacitorCamera */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 100000000000000000000201 /* XCLocalSwiftPackageReference "../../portals/shop/node_modules/@capacitor/camera" */;
+			productName = CapacitorCamera;
+		};
+		100000000000000000000102 /* IonicPortals */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 100000000000000000000202 /* XCLocalSwiftPackageReference "../../../ionic-portals-ios" */;
+			productName = IonicPortals;
+		};
+		100000000000000000000103 /* IonicLiveUpdates */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 100000000000000000000203 /* XCRemoteSwiftPackageReference "ionic-live-updates-releases" */;
+			productName = IonicLiveUpdates;
+		};
+		100000000000000000000104 /* LiveUpdateProviderMock */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 100000000000000000000204 /* XCLocalSwiftPackageReference "../../../live-update-provider-mock" */;
+			productName = LiveUpdateProviderMock;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 62941E7A265DA67F00EE7FE4 /* Project object */;
+}

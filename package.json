@@ -1,0 +1,16 @@
+{
+  "name": "portals-ecommerce-demo",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "portals/shop",
+    "portals/featured"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "build:shop": "npm run build --workspace portals/shop",
+    "build:featured": "npm run build --workspace portals/featured",
+    "test:shop": "npm run test --workspace portals/shop -- --watchAll=false",
+    "test:featured": "npm run test --workspace portals/featured -- --watchAll=false"
+  }
+}

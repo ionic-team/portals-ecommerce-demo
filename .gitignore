@@ -1,2 +1,9 @@
 .DS_Store
+DerivedData/
+build/
+node_modules/
+.gradle/
+.kotlin/
 webapp
+xcuserdata/
+*.xcuserstate
